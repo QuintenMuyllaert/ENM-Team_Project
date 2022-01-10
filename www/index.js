@@ -55,10 +55,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   setInterval(() => {
-    slideNr = slideNr + (1 % pages.length);
+    slideNr = (slideNr + 1) % pages.length;
     window.scroll({
       top: 0,
-      left: slideNr * document.body.offsetWidth,
+      left: (slideNr / pages.length) * document.body.offsetWidth,
       behavior: "smooth",
     });
   }, 10 * 1000);
