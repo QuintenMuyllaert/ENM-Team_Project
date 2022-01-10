@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const { InfluxDB, Point, HttpError } = require('@influxdata/influxdb-client');
-const config = fs.existsSync(path.join(__dirname, 'config.json')) ? require('./config.json') : false;
+const config = fs.existsSync(path.join(__dirname, '../config.json')) ? require('../config.json') : false;
 const { url, token, org, bucket } = config;
 
 module.exports = {
