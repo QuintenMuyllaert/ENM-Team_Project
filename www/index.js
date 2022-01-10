@@ -1,5 +1,5 @@
 const devMode = true;
-const staticSlideNr = 1;
+const staticSlideNr = 2;
 
 const fetchFile = async (url) => {
   const data = await fetch(url);
@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   pages.push(await fetchFile("./page1.html"));
   pages.push(await fetchFile("./info.html"));
+  pages.push(await fetchFile("./geschiedenis.html"));
 
   if (devMode) {
     changeSlideContent(staticSlideNr);
