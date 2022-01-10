@@ -98,13 +98,20 @@ body {
   color: var(--page1-color-text);
 }
 
+.page1--info {
+  padding: 100px 20px;
+  display: flex;
+  gap: 20px;
+}
+
 .page1--image {
-  max-width: 80%;
-  max-height: auto;
+  /* max-width: 80%;
+  max-height: auto; */
+  height: 400px;
+  width: 850px;
 }
 
 
 .page1--chart {
-  height: 200px;
-  width: 200px;
+  width: 600px;
 }
