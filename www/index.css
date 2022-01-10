@@ -1,38 +1,38 @@
 /*Used by titles & headers*/
 @font-face {
-  font-family: "RobotoCondensed";
-  src: url("./font/RobotoCondensed-Light.ttf");
+  font-family: 'RobotoCondensed';
+  src: url('./font/RobotoCondensed-Light.ttf');
   font-weight: 200;
 }
 
 @font-face {
-  font-family: "RobotoCondensed";
-  src: url("./font/RobotoCondensed-Regular.ttf");
+  font-family: 'RobotoCondensed';
+  src: url('./font/RobotoCondensed-Regular.ttf');
   font-weight: 400;
 }
 
 @font-face {
-  font-family: "RobotoCondensed";
-  src: url("./font/RobotoCondensed-Bold.ttf");
+  font-family: 'RobotoCondensed';
+  src: url('./font/RobotoCondensed-Bold.ttf');
   font-weight: 600;
 }
 
 /*Used by main content*/
 @font-face {
-  font-family: "Roboto";
-  src: url("./font/Roboto-Light.ttf");
+  font-family: 'Roboto';
+  src: url('./font/Roboto-Light.ttf');
   font-weight: 200;
 }
 
 @font-face {
-  font-family: "Roboto";
-  src: url("./font/Roboto-Medium.ttf");
+  font-family: 'Roboto';
+  src: url('./font/Roboto-Medium.ttf');
   font-weight: 400;
 }
 
 @font-face {
-  font-family: "Roboto";
-  src: url("./font/Roboto-Bold.ttf");
+  font-family: 'Roboto';
+  src: url('./font/Roboto-Bold.ttf');
   font-weight: 600;
 }
 
@@ -62,7 +62,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "RobotoCondensed", serif;
+  font-family: 'RobotoCondensed', serif;
   font-weight: 400;
 }
 
@@ -70,7 +70,7 @@ p,
 a,
 li,
 span {
-  font-family: "Roboto", serif;
+  font-family: 'Roboto', serif;
   font-weight: 200;
 }
 
@@ -111,19 +111,21 @@ body {
   width: 850px;
 }
 
-
 .page1--chart {
   width: 600px;
 }
 
 .info--weetjes {
-  display: flex;
-  max-width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
 }
 
 .info--list {
   list-style-type: none;
   width: 300px;
+  grid-column-start: 2;
+  grid-row-start: 1;
 }
 
 .info--list__element {
@@ -136,6 +138,8 @@ body {
 
 .info--image {
   max-width: 100%;
+  grid-column-start: 1;
+  grid-row-start: 1;
 }
 
 .info--titel {
@@ -144,5 +148,14 @@ body {
 .info--beschrijving {
   margin-bottom: 10px;
   margin-top: 10px;
-  font-size: calc(24em/16);
+  font-size: calc(24em / 16);
+}
+
+.info--vergelijkingen {
+  grid-row-start: 2;
+  grid-column-end: span 2;
+}
+
+.info--paragraph {
+  margin-bottom: 16px;
 }
