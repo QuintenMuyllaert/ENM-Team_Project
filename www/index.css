@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Light.ttf");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Bold.ttf");
+  font-weight: 600;
+}
+
+:root {
+  /* colors */
+  --global-color-neutral: #ffffff;
+  --global-color-background: #dc3545;
+  /* shadows */
+
+  /* border radius */
+
+  /* transitions */
+
+  /* whitespace */
+}
+
+html {
+  font-size: 16px;
+  line-height: 24px;
+  font-family: "RobotoCondensed Light", serif;
+  color: var(--global-color-neutral);
+  background-color: var(--global-color-background);
+}
