@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   pages.push(await fetchFile("./page1.html"));
   pages.push(await fetchFile("./info.html"));
+  pages.push(await fetchFile("./geschiedenis.html"));
 
   let html = "";
   pages.forEach((page) => {
