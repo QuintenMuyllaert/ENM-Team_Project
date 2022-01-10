@@ -1,5 +1,5 @@
 const devMode = true;
-const staticSlideNr = 0;
+const staticSlideNr = 1;
 
 const fetchFile = async (url) => {
   const data = await fetch(url);
