@@ -1,3 +1,6 @@
+const devMode = true;
+const staticSlideNr = 0;
+
 const fetchFile = async (url) => {
   const data = await fetch(url);
   return await data.text();
@@ -5,19 +8,34 @@ const fetchFile = async (url) => {
 
 let pages = [];
 let slideNr = 0;
-const changeSlide = () => {
+const changeSlideContent = (nr) => {
+  document.querySelector(".slide-content").innerHTML = pages[nr];
+  try {
+    drawChart();
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+const changeSlide = (nr) => {
   if (!pages.length) {
     return;
   }
-  document.querySelector('.slide-content').innerHTML = pages[slideNr];
+
+  changeSlideContent(slideNr);
   slideNr = slideNr + (1 % pages.length);
-  drawChart();
 };
 
-document.addEventListener('DOMContentLoaded', async () => {
-  console.log('loaded!');
-  pages.push(await fetchFile('./page1.html'));
-  pages.push(await fetchFile('./info.html'));
+document.addEventListener("DOMContentLoaded", async () => {
+  console.log("loaded!");
+
+  pages.push(await fetchFile("./page1.html"));
+  pages.push(await fetchFile("./info.html"));
+
+  if (devMode) {
+    changeSlideContent(staticSlideNr);
+    return;
+  }
 
   changeSlide();
   let timer = setInterval(() => {
