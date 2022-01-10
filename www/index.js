@@ -9,13 +9,15 @@ const changeSlide = () => {
   if (!pages.length) {
     return;
   }
-  document.querySelector(".slide-content").innerHTML = pages[slideNr];
+  document.querySelector('.slide-content').innerHTML = pages[slideNr];
   slideNr = slideNr + (1 % pages.length);
+  drawChart();
 };
 
-document.addEventListener("DOMContentLoaded", async () => {
-  console.log("loaded!");
-  pages.push(await fetchFile("./page1.html"));
+document.addEventListener('DOMContentLoaded', async () => {
+  console.log('loaded!');
+  pages.push(await fetchFile('./page1.html'));
+  pages.push(await fetchFile('./info.html'));
 
   changeSlide();
   let timer = setInterval(() => {
