@@ -2,7 +2,6 @@ const path = require('path');
 const fs = require('fs');
 const express = require('express');
 const { InfluxDB, Point, HttpError } = require('@influxdata/influxdb-client');
-const { deflateSync } = require('zlib');
 const influx = require('./modules/get_influx.js');
 
 const config = fs.existsSync(path.join(__dirname, 'config.json')) ? require('./config.json') : false;
