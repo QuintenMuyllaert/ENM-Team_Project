@@ -2,14 +2,14 @@ const path = require('path');
 const fs = require('fs');
 const { InfluxDB, Point, HttpError } = require('@influxdata/influxdb-client');
 const config = fs.existsSync(path.join(__dirname, '../config.json')) ? require('../config.json') : false;
-const { url, token, org, bucket } = config;
+const { url, token, org, bucket, start, stop } = config;
 
 module.exports = {
   run: async () => {
     try {
       console.log('Reading');
       const queryApi = new InfluxDB({ url, token }).getQueryApi(org);
-      const fluxQuery = `from(bucket: "${bucket}") |> range(start: 2020-01-01T00:00:00Z, stop: 2024-01-02T00:00:20Z)`;
+      const fluxQuery = `from(bucket: "${bucket}") |> range(start: ${start}, stop: ${stop})`;
       console.log('*** QUERY ROWS ***');
       const api = await queryApi;
       const data = await api.collectRows(fluxQuery);

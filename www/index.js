@@ -1,5 +1,4 @@
-const devMode = true;
-const staticSlideNr = 2;
+const staticSlideNr = null;
 
 const fetchFile = async (url) => {
   const data = await fetch(url);
@@ -33,13 +32,34 @@ document.addEventListener("DOMContentLoaded", async () => {
   pages.push(await fetchFile("./info.html"));
   pages.push(await fetchFile("./geschiedenis.html"));
 
-  if (devMode) {
-    changeSlideContent(staticSlideNr);
+  let html = "";
+  pages.forEach((page) => {
+    html += `<main class="slide-content">${page}</main>`;
+  });
+  document.querySelector(".main-container").innerHTML = html;
+
+  drawChart();
+  if (staticSlideNr !== null) {
+    window.scroll({
+      top: 0,
+      left: staticSlideNr * document.body.offsetWidth,
+      behavior: "smooth",
+    });
     return;
   }
 
-  changeSlide();
-  let timer = setInterval(() => {
-    changeSlide();
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+
+  setInterval(() => {
+    slideNr = (slideNr + 1) % pages.length;
+    window.scroll({
+      top: 0,
+      left: (slideNr / pages.length) * document.body.offsetWidth,
+      behavior: "smooth",
+    });
   }, 10 * 1000);
 });
