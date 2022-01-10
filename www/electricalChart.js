@@ -11,16 +11,18 @@ const drawChart = (data) => {
       datasets: [
         {
           label: "kW/jaar",
-          barPercentage: 0.9,
-          barThickness: 20,
-          maxBarThickness: 8,
+          barPercentage: 0.2,
+          barThickness: 30,
+          maxBarThickness: 100,
           minBarLength: 1,
           data: [10, 20, 30, 40, 50, 60, 70],
-          backgroundColor: ["red", "green", "yellow", "blue", "black", "brown", "gray"]
+          backgroundColor: ["red", "gray"]
         },
       ],
     },
     options: {
+      maintainAspectRatio: false,
+      responsive: false,
       plugins: {
         legend: {
           labels: {
