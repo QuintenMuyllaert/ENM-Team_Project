@@ -77,11 +77,23 @@ span {
 body {
   color: var(--global-color-text);
   background-color: var(--global-color-background);
-  min-width: 100vw;
+  min-width: 200vw;
   min-height: 100vh;
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.main-container {
+  min-width: 100%;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-items: center;
 }
@@ -111,38 +123,6 @@ body {
   width: 850px;
 }
 
-
 .page1--chart {
   width: 600px;
-}
-
-.info--weetjes {
-  display: flex;
-  max-width: 100%;
-}
-
-.info--list {
-  list-style-type: none;
-  width: 300px;
-}
-
-.info--list__element {
-  margin-bottom: 10px;
-}
-
-/* .info--image {
-  max-width: 60%;
-} */
-
-.info--image {
-  max-width: 100%;
-}
-
-.info--titel {
-}
-
-.info--beschrijving {
-  margin-bottom: 10px;
-  margin-top: 10px;
-  font-size: calc(24em/16);
 }
