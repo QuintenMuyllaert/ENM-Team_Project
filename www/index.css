@@ -97,3 +97,8 @@ body {
 .page1--title {
   color: var(--page1-color-text);
 }
+
+.page1--image {
+  max-width: 80%;
+  max-height: auto;
+}
