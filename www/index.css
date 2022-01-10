@@ -159,3 +159,16 @@ body {
 .info--paragraph {
   margin-bottom: 16px;
 }
+
+.geschiedenis--container {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.geschiedenis--text {
+  grid-row-start: 1;
+}
+
+.geschiedenis--foto {
+  grid-row-start: 2;
+}
