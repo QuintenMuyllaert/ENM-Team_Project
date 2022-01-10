@@ -49,6 +49,9 @@
   /* transitions */
 
   /* whitespace */
+
+  /* misc */
+  --pagecount: 3;
 }
 
 * {
@@ -77,7 +80,7 @@ span {
 body {
   color: var(--global-color-text);
   background-color: var(--global-color-background);
-  min-width: 200vw;
+  min-width: calc(var(--pagecount) * 100vw);
   min-height: 100vh;
   display: grid;
   grid-template-rows: 1fr;
@@ -93,7 +96,7 @@ body {
   min-height: 100%;
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(var(--pagecount), 1fr);
   align-items: center;
   justify-items: center;
 }
@@ -196,13 +199,35 @@ body {
 
 .geschiedenis--container {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+.geschiedenis--beschrijving {
+  margin-bottom: 16px;
+  margin-top: 16px;
+  font-size: calc(24em/ 16);
 }
 
 .geschiedenis--text {
   grid-row-start: 1;
+  grid-column-end: span 2;
 }
 
-.geschiedenis--foto {
+.geschiedenis--koolcentrale {
   grid-row-start: 2;
+  grid-column-start: 1;
+}
+
+.geschiedenis--koolcentrale__element {
+  width: 100%;
+  height: 100%;
+}
+
+.geschiedenis--duiktankt {
+  grid-row-start: 2;
+  grid-column-start: 2;
+}
+
+.geschiedenis--duiktankt__element {
 }
