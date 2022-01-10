@@ -102,3 +102,9 @@ body {
   max-width: 80%;
   max-height: auto;
 }
+
+
+.page1--chart {
+  height: 200px;
+  width: 200px;
+}

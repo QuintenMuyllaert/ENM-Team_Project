@@ -11,6 +11,7 @@ const changeSlide = () => {
   }
   document.querySelector('.slide-content').innerHTML = pages[slideNr];
   slideNr = slideNr + (1 % pages.length);
+  drawChart();
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
