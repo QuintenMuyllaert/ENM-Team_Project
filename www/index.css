@@ -36,3 +36,9 @@ html {
   color: var(--global-color-neutral);
   background-color: var(--global-color-background);
 }
+
+
+.page1--chart {
+  height: 200px;
+  width: 200px;
+}
