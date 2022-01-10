@@ -17,5 +17,4 @@ app.listen(80, async () => {
   }
   const data = await get_influx.run();
   console.log(data);
-  
 });
