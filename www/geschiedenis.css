@@ -1,0 +1,36 @@
+.geschiedenis--container {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+.geschiedenis--beschrijving {
+  margin-bottom: 16px;
+  margin-top: 16px;
+  font-size: calc(24em / 16);
+}
+
+.geschiedenis--text {
+  grid-row-start: 1;
+  grid-column-end: span 2;
+}
+
+.geschiedenis--koolcentrale {
+  grid-row-start: 2;
+  grid-column-start: 1;
+}
+
+.geschiedenis--koolcentrale__element {
+  width: 100%;
+  height: 100%;
+}
+
+.geschiedenis--duiktankt {
+  grid-row-start: 2;
+  grid-column-start: 2;
+  width: 50%;
+}
+
+.geschiedenis--duiktankt__element {
+  width: 50%;
+}
