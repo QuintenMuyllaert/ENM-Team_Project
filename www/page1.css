@@ -15,7 +15,7 @@
 }
 .page1 {
   display: grid;
-  grid-template-rows: 50px 40px 40px 350px 50px auto 40px;
+  grid-template-rows: 50fr 40fr 40fr 350fr 50fr auto 40;
   grid-template-columns: repeat(10, 1fr);
   height: 100%;
   width: 100%;
@@ -30,15 +30,20 @@
 }
 
 .page1--chart {
-  grid-area: 4/2/5/3; /* start coor: 3row, 2col --> 7row, 3col */
+  grid-area: 4/1/5/6; /* start coor: 3row, 2col --> 7row, 3col */
+  height: 100% !important;
+  width: 100% !important;
+  padding-left: 20px;
 }
 
 .page1--picture {
-  grid-area: 4/4/5/12;
+  padding-left: 50px;
+  padding-top: 10px;
+  grid-area: 4/6/5/12;
 }
 
 .page1--weetje {
-  grid-area: 7/5/8/11;
+  grid-area: 7/8/8/11;
   padding: 10px;
   background-color: var(--global-color-background);
   color: var(--global-color-neutral);
@@ -50,4 +55,10 @@
   grid-template-columns: 1fr;
   justify-items: center;
   align-items: center;
+}
+
+.page1--chart-title {
+  display: grid;
+  align-items: center;
+  justify-items: center;
 }
