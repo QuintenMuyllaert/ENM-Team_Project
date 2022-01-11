@@ -25,6 +25,7 @@ const drawChart = (data) => {
       responsive: false,
       plugins: {
         legend: {
+          display: false,
           labels: {
             color: "#dc0000",
             font: {
