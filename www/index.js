@@ -22,7 +22,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   let html = "";
   if (staticSlideNr == -1) {
     pages.forEach((page) => {
-      html += `<main class="slide-content">${page}</main>`;
+      html += `<main class="slide-content">
+        <div class="logo--container">
+          <img src="./img/logo.png" alt="logo" />
+        </div>
+        <div class="slide-content-style">${page}</div>
+      </main>`;
     });
     document.querySelector(".main-container").innerHTML = html;
   } else {
