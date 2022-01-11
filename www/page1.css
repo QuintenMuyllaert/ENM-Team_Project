@@ -7,7 +7,7 @@
   max-width: 80%;
   max-height: auto;
   height: 350px;
-  width: 700px;
+  width: 602px;
 }
 
 .page1--chart {
@@ -38,8 +38,13 @@
 }
 
 .page1--weetje {
-  grid-area: 7/7/8/11;
+  grid-area: 7/5/8/11;
+  padding: 10px;
   background-color: var(--global-color-background);
+  color: var(--global-color-neutral);
+  border: 1px solid var(--global-color-background);
+  border-radius: 10px;
+  box-shadow: 2px 4px 5px #00000080;
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr;
