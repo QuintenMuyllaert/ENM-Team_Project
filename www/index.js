@@ -1,4 +1,4 @@
-const staticSlideNr = 0;
+const staticSlideNr = -1;
 
 const fetchFile = async (url) => {
   const data = await fetch(url);
@@ -6,24 +6,7 @@ const fetchFile = async (url) => {
 };
 
 let pages = [];
-let slideNr = 0;
-const changeSlideContent = (nr) => {
-  document.querySelector(".slide-content").innerHTML = pages[nr];
-  try {
-    drawChart();
-  } catch (e) {
-    console.error(e);
-  }
-};
-
-const changeSlide = (nr) => {
-  if (!pages.length) {
-    return;
-  }
-
-  changeSlideContent(slideNr);
-  slideNr = slideNr + (1 % pages.length);
-};
+let slideNr = null;
 
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("loaded!");
@@ -33,26 +16,26 @@ document.addEventListener("DOMContentLoaded", async () => {
   pages.push(await fetchFile("./geschiedenis.html"));
 
   let html = "";
-  pages.forEach((page) => {
-    html += `<main class="slide-content">${page}</main>`;
-  });
-  document.querySelector(".main-container").innerHTML = html;
+  if (staticSlideNr == -1) {
+    pages.forEach((page) => {
+      html += `<main class="slide-content">${page}</main>`;
+    });
+    document.querySelector(".main-container").innerHTML = html;
+  } else {
+    document.querySelector(".main-container").innerHTML = `<main class="slide-content">${pages[staticSlideNr]}</main>`;
+  }
 
   drawChart();
-  if (staticSlideNr !== null) {
-    window.scroll({
-      top: 0,
-      left: staticSlideNr * document.body.offsetWidth,
-      behavior: "smooth",
-    });
-    return;
-  }
 
   window.scroll({
     top: 0,
     left: 0,
     behavior: "smooth",
   });
+
+  if (staticSlideNr != -1) {
+    return;
+  }
 
   setInterval(() => {
     slideNr = (slideNr + 1) % pages.length;
@@ -61,5 +44,5 @@ document.addEventListener("DOMContentLoaded", async () => {
       left: (slideNr / pages.length) * document.body.offsetWidth,
       behavior: "smooth",
     });
-  }, 10 * 1000);
+  }, 3 * 1000);
 });
