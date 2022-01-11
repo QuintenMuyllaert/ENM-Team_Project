@@ -1,0 +1,41 @@
+.info--weetjes {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.info--list {
+  list-style-type: none;
+  width: 300px;
+  grid-column-start: 2;
+  grid-row-start: 1;
+}
+
+.info--list__element {
+  padding-bottom: 10px;
+}
+
+/* .info--image {
+    max-width: 60%;
+  } */
+
+.info--image {
+  max-width: 100%;
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
+.info--beschrijving {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-size: calc(24em / 16);
+}
+
+.info--vergelijkingen {
+  grid-row-start: 2;
+  grid-column-end: span 2;
+}
+
+.info--paragraph {
+  padding-bottom: 16px;
+}
