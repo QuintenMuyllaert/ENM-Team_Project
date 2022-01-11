@@ -22,6 +22,11 @@ io.on("connection", (socket) => {
   socket.on("echo", (msg) => {
     socket.emit("echo", msg);
   });
+  socket.on("data", async (msg) => {
+    const data = await get_influx.run();
+
+    socket.emit("echo", data);
+  });
 
   socket.on("error", (err) => console.error);
 });
@@ -32,6 +37,4 @@ server.listen(80, async () => {
     console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
     return;
   }
-  const data = await get_influx.run();
-  console.log(data);
 });
