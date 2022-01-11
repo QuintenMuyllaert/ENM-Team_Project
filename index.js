@@ -33,19 +33,13 @@ io.on("connection", (socket) => {
       console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
       return;
     }
+    let today = new Date(Date.now());
+    console.log(today.toISOString());
 
-    let date_ob = new Date();
-    let seconds = date_ob.getSeconds();
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-    const stopdate = date_ob.getFullYear() + "-" + ("0" + (date_ob.getMonth() + 1)).slice(-2) + "-" + ("0" + date_ob.getDate()).slice(-2) + "T" + date_ob.getHours() + ":" + date_ob.getMinutes() + ":" + seconds + "Z";
-    date_ob = date_ob.minusDays(msg);
-    seconds = date_ob.getSeconds();
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-    const startdate = date_ob.getFullYear() + "-" + ("0" + (date_ob.getMonth() + 1)).slice(-2) + "-" + ("0" + date_ob.getDate()).slice(-2) + "T" + date_ob.getHours() + ":" + date_ob.getMinutes() + ":" + seconds + "Z";
+    const stopdate = today.toISOString();
+    today = today.minusDays(msg);
+    const startdate = today.toISOString();
+    console.log(startdate);
     const data = await get_influx.run(startdate, stopdate);
 
     socket.emit("echo", data);
