@@ -1,4 +1,4 @@
-const staticSlideNr = 3;
+const staticSlideNr = 0;
 
 const fetchFile = async (url) => {
   const data = await fetch(url);
