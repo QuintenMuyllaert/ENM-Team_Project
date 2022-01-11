@@ -21,23 +21,19 @@
 .geschiedenis--koolcentrale {
   grid-row-start: 2;
   grid-column-start: 1;
-  max-height: 50%;
 }
 
 .geschiedenis--koolcentrale__element {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .geschiedenis--duiktank {
   grid-row-start: 2;
   grid-column-start: 2;
-  max-height: 50%;
-  max-width: 50%;
-  display: block;
 }
 
 .geschiedenis--duiktank__element {
-  max-height: 100%;
-  max-width: 50%;
+  height: 100%;
+  width: 50%;
 }
