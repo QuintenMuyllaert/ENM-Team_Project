@@ -168,6 +168,11 @@ body {
   background-color: var(--global-color-background);
 }
 
+.title {
+  color: var(--page1-color-text);
+}
+
+
 @keyframes move-up {
   0% {
     top: 200vh;
