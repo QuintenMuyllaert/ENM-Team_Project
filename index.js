@@ -22,6 +22,13 @@ io.on("connection", (socket) => {
   socket.on("echo", (msg) => {
     socket.emit("echo", msg);
   });
+  socket.on("data", async (msg) => {
+    const startdate = "2020-01-01T00:00:00Z";
+    const stopdate = "2024-01-02T00:00:20Z";
+    const data = await get_influx.run(startdate, stopdate);
+
+    socket.emit("echo", data);
+  });
 
   socket.on("error", (err) => console.error);
 });
@@ -32,6 +39,4 @@ server.listen(80, async () => {
     console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
     return;
   }
-  const data = await get_influx.run();
-  console.log(data);
 });
