@@ -15,12 +15,8 @@
   padding-bottom: 10px;
 }
 
-/* .info--image {
-    max-width: 60%;
-  } */
-
 .info--image {
-  max-width: 100%;
+  max-width: 80%;
   grid-column-start: 1;
   grid-row-start: 1;
 }
