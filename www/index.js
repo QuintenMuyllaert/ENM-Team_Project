@@ -1,4 +1,4 @@
-const staticSlideNr = -1;
+const staticSlideNr = 2;
 
 const delay = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time));
