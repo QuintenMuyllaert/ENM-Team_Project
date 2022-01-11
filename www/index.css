@@ -1,38 +1,38 @@
 /*Used by titles & headers*/
 @font-face {
-  font-family: 'RobotoCondensed';
-  src: url('./font/RobotoCondensed-Light.ttf');
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Light.ttf");
   font-weight: 200;
 }
 
 @font-face {
-  font-family: 'RobotoCondensed';
-  src: url('./font/RobotoCondensed-Regular.ttf');
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Regular.ttf");
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'RobotoCondensed';
-  src: url('./font/RobotoCondensed-Bold.ttf');
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Bold.ttf");
   font-weight: 600;
 }
 
 /*Used by main content*/
 @font-face {
-  font-family: 'Roboto';
-  src: url('./font/Roboto-Light.ttf');
+  font-family: "Roboto";
+  src: url("./font/Roboto-Light.ttf");
   font-weight: 200;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('./font/Roboto-Medium.ttf');
+  font-family: "Roboto";
+  src: url("./font/Roboto-Medium.ttf");
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('./font/Roboto-Bold.ttf');
+  font-family: "Roboto";
+  src: url("./font/Roboto-Bold.ttf");
   font-weight: 600;
 }
 
@@ -65,7 +65,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'RobotoCondensed', serif;
+  font-family: "RobotoCondensed", serif;
   font-weight: 400;
 }
 
@@ -73,7 +73,7 @@ p,
 a,
 li,
 span {
-  font-family: 'Roboto', serif;
+  font-family: "Roboto", serif;
   font-weight: 200;
 }
 
@@ -107,4 +107,112 @@ body {
   background-color: var(--global-color-neutral);
   padding: 1em;
   border-radius: 8px;
+}
+
+.animation--container {
+  z-index: 10;
+  position: fixed;
+  top: 500vh;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.animation--logo-container {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  z-index: 20;
+  opacity: 0;
+}
+
+.animation--display {
+  animation: move-up ease-in 1s;
+  top: 0px;
+  left: 0px;
+}
+
+.animation--logo-display {
+  animation: show ease 2.5s;
+  opacity: 1;
+}
+
+.animation--display-reverse {
+  animation: move-down ease-in 2.5s;
+  top: 500vh;
+  left: 0px;
+}
+
+.animation--logo-display-reverse {
+  animation: hide ease 1s;
+  opacity: 0;
+}
+
+.animation--logo {
+  transition: opacity ease 1s;
+}
+
+.animation--redpart {
+  width: 200%;
+  height: 200%;
+  transform: rotateZ(30deg) translateX(-50%);
+  transform-origin: center;
+  background-color: var(--global-color-background);
+}
+
+@keyframes move-up {
+  0% {
+    top: 200vh;
+    left: 0px;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes move-down {
+  0% {
+    top: 0px;
+    left: 0px;
+  }
+  50% {
+    top: 0px;
+    left: 0px;
+  }
+  100% {
+    top: 200vh;
+    left: 0px;
+  }
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }

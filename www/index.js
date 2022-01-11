@@ -1,5 +1,9 @@
 const staticSlideNr = -1;
 
+const delay = (time) => {
+  return new Promise((resolve) => setTimeout(resolve, time));
+};
+
 const fetchFile = async (url) => {
   const data = await fetch(url);
   return await data.text();
@@ -37,12 +41,38 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  setInterval(() => {
+  const loopHandle = async () => {
+    await loop();
+    setTimeout(async () => {
+      await loopHandle();
+    }, 3 * 1000);
+  };
+
+  const loop = async () => {
     slideNr = (slideNr + 1) % pages.length;
+    if (slideNr == 0) {
+      document.querySelector(".animation--container").classList.add("animation--display");
+      document.querySelector(".animation--logo-container").classList.add("animation--logo-display");
+      await delay(3000);
+
+      document.querySelector(".animation--container").classList.add("animation--display-reverse");
+      document.querySelector(".animation--logo-container").classList.add("animation--logo-display-reverse");
+      document.querySelector(".animation--container").classList.remove("animation--display");
+      document.querySelector(".animation--logo-container").classList.remove("animation--logo-display");
+      window.scroll({
+        top: 0,
+        left: 0,
+      });
+      await delay(3000);
+      document.querySelector(".animation--container").classList.remove("animation--display-reverse");
+      document.querySelector(".animation--logo-container").classList.remove("animation--logo-display-reverse");
+    }
     window.scroll({
       top: 0,
       left: (slideNr / pages.length) * document.body.offsetWidth,
       behavior: "smooth",
     });
-  }, 3 * 1000);
+  };
+
+  loopHandle();
 });
