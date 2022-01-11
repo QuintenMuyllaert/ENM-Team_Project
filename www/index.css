@@ -156,6 +156,7 @@ body {
 }
 
 .animation--logo {
+  height: 100%;
   transition: opacity ease 1s;
 }
 
