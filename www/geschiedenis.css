@@ -2,6 +2,9 @@
   display: grid;
   grid-template-rows: 1fr 2fr;
   grid-template-columns: 1fr 1fr;
+  max-height: 100px;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .geschiedenis--beschrijving {
@@ -18,8 +21,6 @@
 .geschiedenis--koolcentrale {
   grid-row-start: 2;
   grid-column-start: 1;
-  display: flex;
-  justify-content: center;
 }
 
 .geschiedenis--koolcentrale__element {
@@ -33,5 +34,6 @@
 }
 
 .geschiedenis--duiktank__element {
+  height: 100%;
   width: 50%;
 }
