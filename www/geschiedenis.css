@@ -7,12 +7,6 @@
   padding-bottom: 0;
 }
 
-.geschiedenis--beschrijving {
-  padding-bottom: 16px;
-  padding-top: 16px;
-  font-size: calc(24em / 16);
-}
-
 .geschiedenis--text {
   grid-row-start: 1;
   grid-column-end: span 2;
