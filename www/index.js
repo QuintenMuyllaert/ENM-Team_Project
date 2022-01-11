@@ -1,4 +1,4 @@
-const staticSlideNr = 0;
+const staticSlideNr = -1;
 
 const delay = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time));
@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let html = "";
   if (staticSlideNr == -1) {
     pages.forEach((page) => {
+      console.log("found page");
       html += `<main class="slide-content">
         <div class="logo--container">
           <img src="./img/logo.png" alt="logo" />
@@ -31,7 +32,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
     document.querySelector(".main-container").innerHTML = html;
   } else {
-    document.querySelector(".main-container").innerHTML = `<main class="slide-content">${pages[staticSlideNr]}</main>`;
+    document.querySelector(".main-container").innerHTML = `<main class="slide-content">
+        <div class="logo--container">
+          <img src="./img/logo.png" alt="logo" />
+        </div>
+        <div class="slide-content-style">${pages[staticSlideNr]}</div>
+      </main>`;
   }
 
   drawChart();
