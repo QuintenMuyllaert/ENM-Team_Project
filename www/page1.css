@@ -6,8 +6,8 @@
 .page1--image {
   max-width: 80%;
   max-height: auto;
-  height: 350px;
-  width: 602px;
+  height: 100%;
+  width: 100%;
 }
 
 .page1--chart {
