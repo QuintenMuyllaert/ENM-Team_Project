@@ -7,6 +7,12 @@ const { Server } = require("socket.io");
 const get_influx = require("./modules/get_influx.js");
 const config = fs.existsSync(path.join(__dirname, "config.json")) ? require("./config.json") : false;
 
+Date.prototype.minusDays = function (days) {
+  var date = new Date(this.valueOf());
+  date.setDate(date.getDate() - days);
+  return date;
+};
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
@@ -27,8 +33,19 @@ io.on("connection", (socket) => {
       console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
       return;
     }
-    const startdate = "2020-01-01T00:00:00Z";
-    const stopdate = "2024-01-02T00:00:20Z";
+
+    let date_ob = new Date();
+    let seconds = date_ob.getSeconds();
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+    const stopdate = date_ob.getFullYear() + "-" + ("0" + (date_ob.getMonth() + 1)).slice(-2) + "-" + ("0" + date_ob.getDate()).slice(-2) + "T" + date_ob.getHours() + ":" + date_ob.getMinutes() + ":" + seconds + "Z";
+    date_ob = date_ob.minusDays(msg);
+    seconds = date_ob.getSeconds();
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+    const startdate = date_ob.getFullYear() + "-" + ("0" + (date_ob.getMonth() + 1)).slice(-2) + "-" + ("0" + date_ob.getDate()).slice(-2) + "T" + date_ob.getHours() + ":" + date_ob.getMinutes() + ":" + seconds + "Z";
     const data = await get_influx.run(startdate, stopdate);
 
     socket.emit("echo", data);
