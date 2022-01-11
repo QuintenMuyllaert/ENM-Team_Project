@@ -23,6 +23,10 @@ io.on("connection", (socket) => {
     socket.emit("echo", msg);
   });
   socket.on("data", async (msg) => {
+    if (!config) {
+      console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
+      return;
+    }
     const startdate = "2020-01-01T00:00:00Z";
     const stopdate = "2024-01-02T00:00:20Z";
     const data = await get_influx.run(startdate, stopdate);
