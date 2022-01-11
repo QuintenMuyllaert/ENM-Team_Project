@@ -17,7 +17,7 @@
 }
 .page1 {
   display: grid;
-  /* grid-template-rows: 50px 50px auto 50px; */
+  grid-template-rows: 50px 50px auto 50px;
   grid-template-columns: repeat(10, 1fr);
   height: 100%;
   width: 100%;
@@ -41,4 +41,5 @@
 
 .page1--weetje {
   grid-area: 9/11/9/11;
+  background-color: var(--global-color-background);
 }
