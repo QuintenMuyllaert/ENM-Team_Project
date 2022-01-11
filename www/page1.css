@@ -1,0 +1,45 @@
+.page1--title {
+  color: var(--page1-color-text);
+}
+
+.page1--info {
+  padding: 100px 20px;
+  gap: 20px;
+}
+
+.page1--image {
+  max-width: 80%;
+  max-height: auto;
+}
+
+.page1--chart {
+  width: 600px;
+}
+.page1 {
+  display: grid;
+  grid-template-rows: 50px 50px auto 50px;
+  grid-template-columns: repeat(10, 1fr);
+  height: 100%;
+  width: 100%;
+}
+
+.page1--title {
+  grid-area: 1/1/1/4; /* lengte column, lengte row*/
+}
+
+.page1--sub {
+  grid-area: 2/1/4/8; /* verticaal horizontaal verticaal horizontaal */
+}
+
+.page1--chart {
+  grid-area: 4/2/9/3; /* start coor: 3row, 2col --> 7row, 3col */
+}
+
+.page1--picture {
+  grid-area: 4/4/9/11;
+}
+
+.page1--weetje {
+  grid-area: 9/11/9/11;
+  background-color: var(--global-color-background);
+}
