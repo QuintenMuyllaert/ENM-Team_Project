@@ -13,18 +13,13 @@
 
 .info--list__element {
   padding-bottom: 10px;
+  display: flex;
 }
 
 .info--image {
   max-width: 80%;
   grid-column-start: 1;
   grid-row-start: 1;
-}
-
-.info--beschrijving {
-  padding-bottom: 10px;
-  padding-top: 10px;
-  font-size: calc(24em / 16);
 }
 
 .info--vergelijkingen {
@@ -34,4 +29,8 @@
 
 .info--paragraph {
   padding-bottom: 16px;
+}
+
+.info--list__element-value {
+  color: green;
 }
