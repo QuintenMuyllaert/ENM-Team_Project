@@ -204,6 +204,11 @@ body {
   color: var(--page1-color-text);
 }
 
+.description {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-size: calc(24em / 16);
+}
 @keyframes move-up {
   0% {
     top: 200vh;
