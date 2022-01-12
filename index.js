@@ -6,6 +6,7 @@ const { Server } = require("socket.io");
 
 const get_influx = require("./modules/get_influx.js");
 const tree = require("./modules/tree.js");
+const mqtt = require("./modules/mqtt.js");
 
 const config = fs.existsSync(path.join(__dirname, "config.json")) ? require("./config.json") : false;
 
@@ -18,6 +19,9 @@ Date.prototype.minusDays = function (days) {
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
+
+mqtt.attachSocketIO(io);
+mqtt.subscribe("test");
 
 app.use(express.static(path.join(__dirname, "www")));
 
