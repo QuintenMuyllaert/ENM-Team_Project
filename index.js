@@ -48,6 +48,7 @@ io.on("connection", (socket) => {
     today = today.minusDays(msg);
     const startdate = today.toISOString();
     const data = await get_influx.run(startdate, stopdate);
+
     socket.emit("echo", data);
   });
   socket.on("error", (err) => console.error);
