@@ -1,4 +1,4 @@
-const staticSlideNr = 2;
+const staticSlideNr = 3;
 
 const delay = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time));
@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   pages.push(await fetchFile("./page1.html"));
   pages.push(await fetchFile("./info.html"));
   pages.push(await fetchFile("./geschiedenis.html"));
+  pages.push(await fetchFile("./svgtest.html"));
 
   let html = "";
   if (staticSlideNr == -1) {
