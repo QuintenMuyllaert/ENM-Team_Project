@@ -5,6 +5,8 @@ const express = require("express");
 const { Server } = require("socket.io");
 
 const get_influx = require("./modules/get_influx.js");
+const tree = require("./modules/tree.js");
+
 const config = fs.existsSync(path.join(__dirname, "config.json")) ? require("./config.json") : false;
 
 Date.prototype.minusDays = function (days) {
@@ -18,6 +20,10 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 app.use(express.static(path.join(__dirname, "www")));
+
+app.get("/tree.json", async (req, res) => {
+  res.send(JSON.stringify(await tree(path.join(__dirname, "www")), null, 4));
+});
 
 io.on("connection", (socket) => {
   console.log(`A user connected to the server : "${socket.id}"`);
@@ -33,24 +39,13 @@ io.on("connection", (socket) => {
       console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
       return;
     }
-
-    let date_ob = new Date();
-    let seconds = date_ob.getSeconds();
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-    const stopdate = date_ob.getFullYear() + "-" + ("0" + (date_ob.getMonth() + 1)).slice(-2) + "-" + ("0" + date_ob.getDate()).slice(-2) + "T" + date_ob.getHours() + ":" + date_ob.getMinutes() + ":" + seconds + "Z";
-    date_ob = date_ob.minusDays(msg);
-    seconds = date_ob.getSeconds();
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-    const startdate = date_ob.getFullYear() + "-" + ("0" + (date_ob.getMonth() + 1)).slice(-2) + "-" + ("0" + date_ob.getDate()).slice(-2) + "T" + date_ob.getHours() + ":" + date_ob.getMinutes() + ":" + seconds + "Z";
+    let today = new Date(Date.now());
+    const stopdate = today.toISOString();
+    today = today.minusDays(msg);
+    const startdate = today.toISOString();
     const data = await get_influx.run(startdate, stopdate);
-
     socket.emit("echo", data);
   });
-
   socket.on("error", (err) => console.error);
 });
 
