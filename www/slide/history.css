@@ -22,6 +22,12 @@
   grid-area: 2/1/3/8; /* verticaal horizontaal verticaal horizontaal */
 }
 
+.history--sub-activities {
+  grid-area: 4/1/5/8;
+  padding-left: 50px;
+  padding-top: 290px;
+}
+
 /*
   Section for the picture
 */
@@ -38,6 +44,7 @@
   max-height: auto;
   height: 60%;
   width: 80%;
+  border-radius: 8px;
 }
 
 .history--collage {
@@ -86,7 +93,7 @@
 */
 
 .history--weetje {
-  grid-area: 7/8/8/11;
+  /* grid-area: 7/8/8/11; */
   padding: 10px;
   background-color: var(--global-color-background);
   color: var(--global-color-neutral);
@@ -98,4 +105,13 @@
   grid-template-columns: 1fr;
   justify-items: center;
   align-items: center;
+}
+
+
+.history--weetje-links {
+  grid-area: 7/1/8/4;
+}
+
+.history--weetje-rechts {
+  grid-area: 7/8/8/11;
 }
