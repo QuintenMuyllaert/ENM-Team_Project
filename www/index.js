@@ -9,15 +9,36 @@ const fetchFile = async (url) => {
   return await data.text();
 };
 
+const fetchJSON = async (url) => {
+  const data = await fetch(url);
+  return await data.json();
+};
+
+const lookupList = (list, includes) => {
+  const results = [];
+  list = Object.keys(list);
+  for (const item of list) {
+    if (item.includes(includes)) {
+      results.push(item);
+    }
+  }
+  return results;
+};
+
 let pages = [];
 let slideNr = null;
 
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("loaded!");
 
-  pages.push(await fetchFile("./slide/page1.html"));
-  pages.push(await fetchFile("./slide/info.html"));
-  pages.push(await fetchFile("./slide/history.html"));
+  const tree = await fetchJSON("./tree.json");
+  const pageNames = lookupList(tree["slide"], ".html");
+  for (const page of pageNames) {
+    pages.push(await fetchFile(`./slide/${page}`));
+  }
+
+  document.querySelector(":root").style.setProperty("--pagecount", pages.length);
+  console.log(pages.length);
 
   let html = "";
   if (staticSlideNr == -1) {
