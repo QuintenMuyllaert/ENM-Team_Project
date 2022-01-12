@@ -47,6 +47,10 @@
   border-radius: 8px;
 }
 
+/*
+  Section for the collage of pictures
+*/
+
 .history--collage {
   grid-area: 3/6/5/12;
   gap: 8px;
@@ -106,7 +110,6 @@
   justify-items: center;
   align-items: center;
 }
-
 
 .history--weetje-links {
   grid-area: 7/1/8/4;
