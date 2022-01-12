@@ -1,0 +1,59 @@
+/*
+  Section for the general styling of this specific page
+*/
+
+.history {
+  display: grid;
+  grid-template-rows: 50fr 40fr 40fr 350fr 50fr auto 40fr;
+  grid-template-columns: repeat(10, 1fr);
+  height: 100%;
+  width: 100%;
+}
+
+/*
+  Section for the title and the info of this specific page
+*/
+
+.history--title {
+  grid-area: 1/1/2/3; /* row start, column start --> row end, column end*/
+}
+
+.history--sub {
+  grid-area: 2/1/3/8; /* verticaal horizontaal verticaal horizontaal */
+}
+
+/*
+  Section for the picture
+*/
+
+.history--picture {
+  padding-left: 50px;
+  padding-top: 10px;
+  grid-area: 3/1/5/6;
+}
+
+.history--image {
+  max-width: 80%;
+  max-height: auto;
+  height: 60%;
+  width: 60%;
+}
+
+/*
+  Section for the "did you know"
+*/
+
+.history--weetje {
+  grid-area: 7/8/8/11;
+  padding: 10px;
+  background-color: var(--global-color-background);
+  color: var(--global-color-neutral);
+  border: 1px solid var(--global-color-background);
+  border-radius: 10px;
+  box-shadow: 2px 4px 5px #00000080;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+}
