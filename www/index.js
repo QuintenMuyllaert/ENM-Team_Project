@@ -30,7 +30,6 @@ let slideNr = null;
 
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("loaded!");
-
   const tree = await fetchJSON("./tree.json");
   const pageNames = lookupList(tree["slide"], ".html");
   for (const page of pageNames) {
