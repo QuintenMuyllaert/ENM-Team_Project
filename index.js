@@ -40,17 +40,12 @@ io.on("connection", (socket) => {
       return;
     }
     let today = new Date(Date.now());
-    console.log(today.toISOString());
-
     const stopdate = today.toISOString();
     today = today.minusDays(msg);
     const startdate = today.toISOString();
-    console.log(startdate);
     const data = await get_influx.run(startdate, stopdate);
-
     socket.emit("echo", data);
   });
-
   socket.on("error", (err) => console.error);
 });
 
