@@ -34,6 +34,13 @@ const generateSlide = (html) => {
       </main>`;
 };
 
+const addClassRemoveAfter = (element, className, time) => {
+  element.classList.add(className);
+  setTimeout(() => {
+    element.classList.remove(className);
+  }, time);
+};
+
 const loopHandle = async () => {
   await loop();
   setTimeout(async () => {
@@ -43,22 +50,20 @@ const loopHandle = async () => {
 
 const loop = async () => {
   slideNr = (slideNr + 1) % pages.length;
-  if (slideNr == 0) {
-    document.querySelector(".animation--container").classList.add("animation--display");
-    document.querySelector(".animation--logo-container").classList.add("animation--logo-display");
-    await delay(3000);
+  const red = document.querySelector(".animation--container");
+  const logo = document.querySelector(".animation--logo-container");
 
-    document.querySelector(".animation--container").classList.add("animation--display-reverse");
-    document.querySelector(".animation--logo-container").classList.add("animation--logo-display-reverse");
-    document.querySelector(".animation--container").classList.remove("animation--display");
-    document.querySelector(".animation--logo-container").classList.remove("animation--logo-display");
+  if (slideNr == 0) {
+    addClassRemoveAfter(red, "animation--display", 3000);
+    addClassRemoveAfter(logo, "animation--logo-display", 3000);
+    await delay(3000);
+    addClassRemoveAfter(red, "animation--display-reverse", 3000);
+    addClassRemoveAfter(logo, "animation--logo-display-reverse", 3000);
     window.scroll({
       top: 0,
       left: 0,
     });
     await delay(3000);
-    document.querySelector(".animation--container").classList.remove("animation--display-reverse");
-    document.querySelector(".animation--logo-container").classList.remove("animation--logo-display-reverse");
   }
   window.scroll({
     top: 0,
