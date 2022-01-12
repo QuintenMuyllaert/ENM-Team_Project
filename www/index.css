@@ -39,6 +39,7 @@
 :root {
   /* colors */
   --global-color-neutral: #ffffff;
+  --global-color-neutral-x-dark: #00000033;
   --global-color-background: #dc0000;
   --global-color-text: #000000;
   --page1-color-text: green;
