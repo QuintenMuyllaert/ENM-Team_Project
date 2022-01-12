@@ -8,6 +8,10 @@ module.exports = {
   run: async (start, stop) => {
     try {
       console.log("Reading");
+      if (!url) {
+        console.log("NO URL PROVIDED FOR INFLUXDB!");
+        return;
+      }
       const queryApi = new InfluxDB({ url, token }).getQueryApi(org);
       const fluxQuery = `from(bucket: "${bucket}") |> range(start: ${start}, stop: ${stop})`;
       console.log("*** QUERY ROWS ***");
