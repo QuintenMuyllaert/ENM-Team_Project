@@ -5,6 +5,8 @@ const express = require("express");
 const { Server } = require("socket.io");
 
 const get_influx = require("./modules/get_influx.js");
+const tree = require("./modules/tree.js");
+
 const config = fs.existsSync(path.join(__dirname, "config.json")) ? require("./config.json") : false;
 
 Date.prototype.minusDays = function (days) {
@@ -18,6 +20,10 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 app.use(express.static(path.join(__dirname, "www")));
+
+app.get("/tree.json", async (req, res) => {
+  res.send(JSON.stringify(await tree(path.join(__dirname, "www")), null, 4));
+});
 
 io.on("connection", (socket) => {
   console.log(`A user connected to the server : "${socket.id}"`);
@@ -34,17 +40,12 @@ io.on("connection", (socket) => {
       return;
     }
     let today = new Date(Date.now());
-    console.log(today.toISOString());
-
     const stopdate = today.toISOString();
     today = today.minusDays(msg);
     const startdate = today.toISOString();
-    console.log(startdate);
     const data = await get_influx.run(startdate, stopdate);
-
     socket.emit("echo", data);
   });
-
   socket.on("error", (err) => console.error);
 });
 
