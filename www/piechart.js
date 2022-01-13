@@ -3,17 +3,24 @@ const rngHex = () => {
   return a.length == 1 ? "0" + a : a;
 };
 
-const drawPie = (element, data = [25, 25, 20, 15, 5, 5, 5]) => {
-  let colors = ["#FF0000"];
+const rngColor = () => {
+  return `#${rngHex()}${rngHex()}${rngHex()}`;
+};
 
+const drawPie = (element, data = [25, 25, 80]) => {
+  const total = data.reduce((a, b) => a + b, 0);
+  element.querySelector(".piechart-center-value").innerHTML = total;
+
+  let colors = [];
   data = data.reverse();
   for (let i = 0; i < data.length; i++) {
-    colors.push(Math.round(i * 16777215) / data.length);
+    data[i] = Math.round((100 * data[i]) / total);
+    colors.push(rngColor());
   }
 
-  const piechart = element;
+  const piechart = element.querySelector(".piechart");
   for (let i in data) {
-    piechart.innerHTML += `<circle class="duiktank--circle js-pie" data-name="duiktank"></circle>`;
+    piechart.innerHTML += `<circle class="piechart--circle js-pie"></circle>`;
   }
 
   let sum = 0;
