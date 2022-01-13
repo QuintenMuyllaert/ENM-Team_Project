@@ -90,3 +90,35 @@
   .duiktank--info {
       font-weight: bold;
   }
+
+  /*
+    Section for the info in the circle
+  */
+
+  .duiktank--info-circle {
+    --donut-viewbox: 100px;
+    --donut__circle-center: calc(var(--donut-viewbox)/2);
+    --donut__circle-stroke-width: 10px;
+    --donut__circle-radius: calc(var(--donut-viewbox) / 2 - var(--donut__circle-stroke-width)/2);
+    --pi: 3.1415926535897932384626433832795;
+    --donut__circle-circumreference: calc(var(--donut__circle-radius) *2 * var(--pi));
+    grid-area: 4/7/6/10;
+    /* height: 100%;
+    width: 100%; */
+    display: block;
+    transform: rotate(-90deg);
+    transform-origin: center;
+  }
+
+  .duiktank--circle {
+    r: var(--donut__circle-radius);
+    cx: var(--donut__circle-center);
+    cy: var(--donut__circle-center);
+    fill: none;
+    stroke: var(--global-color-neutral-x-dark);
+    stroke-width: var(--donut__circle-stroke-width);
+    stroke-dasharray: var(--donut__circle-circumreference);
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.6s ease;
+    transform-origin: center;
+  }

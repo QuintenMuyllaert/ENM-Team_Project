@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   drawChart();
+  drawPie();
 
   if (staticSlideNr != -1) {
     return;
