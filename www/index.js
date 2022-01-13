@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   drawChart();
   document.querySelectorAll(".piechart-container").forEach((chart) => {
+    //chart <html>, title "", data [], labels []
     drawPie(chart);
   });
 
