@@ -1,44 +1,45 @@
 /*Used by titles & headers*/
 @font-face {
-  font-family: 'RobotoCondensed';
-  src: url('./font/RobotoCondensed-Light.ttf');
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Light.ttf");
   font-weight: 200;
 }
 
 @font-face {
-  font-family: 'RobotoCondensed';
-  src: url('./font/RobotoCondensed-Regular.ttf');
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Regular.ttf");
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'RobotoCondensed';
-  src: url('./font/RobotoCondensed-Bold.ttf');
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Bold.ttf");
   font-weight: 600;
 }
 
 /*Used by main content*/
 @font-face {
-  font-family: 'Roboto';
-  src: url('./font/Roboto-Light.ttf');
+  font-family: "Roboto";
+  src: url("./font/Roboto-Light.ttf");
   font-weight: 200;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('./font/Roboto-Medium.ttf');
+  font-family: "Roboto";
+  src: url("./font/Roboto-Medium.ttf");
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('./font/Roboto-Bold.ttf');
+  font-family: "Roboto";
+  src: url("./font/Roboto-Bold.ttf");
   font-weight: 600;
 }
 
 :root {
   /* colors */
   --global-color-neutral: #ffffff;
+  --global-color-neutral-x-dark: #00000033;
   --global-color-background: #dc0000;
   --global-color-text: #000000;
   --page1-color-text: green;
@@ -51,7 +52,6 @@
   /* whitespace */
 
   /* misc */
-  --pagecount: 3;
 }
 
 * {
@@ -65,7 +65,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'RobotoCondensed', serif;
+  font-family: "RobotoCondensed", serif;
   font-weight: 400;
 }
 
@@ -73,7 +73,7 @@ p,
 a,
 li,
 span {
-  font-family: 'Roboto', serif;
+  font-family: "Roboto", serif;
   font-weight: 200;
 }
 

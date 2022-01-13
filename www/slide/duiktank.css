@@ -1,0 +1,124 @@
+/*
+  Section for the general styling of this specific page
+*/
+
+.duiktank {
+    display: grid;
+    grid-template-rows: 50fr 40fr 40fr 350fr 50fr auto 40fr;
+    grid-template-columns: repeat(10, 1fr);
+    height: 100%;
+    width: 100%;
+  }
+  
+  /*
+    Section for the title and the info of this specific page
+  */
+  
+  .duiktank--title {
+    grid-area: 1/1/2/3; /* row start, column start --> row end, column end*/
+  }
+  
+  .duiktank--sub {
+    grid-area: 2/1/3/8; /* verticaal horizontaal verticaal horizontaal */
+  }
+  
+  .duiktank--sub-activities {
+    grid-area: 4/1/5/8;
+    padding-left: 50px;
+    padding-top: 290px;
+  }
+  
+  /*
+    Section for the picture
+  */
+  
+  .duiktank--picture {
+    padding-left: 50px;
+    padding-top: 10px;
+    grid-area: 3/1/8/4;
+    border-radius: 8px;
+    height: 100%;
+  }
+  
+  .duiktank--image {
+    max-width: 80%;
+    max-height: auto;
+    height: 60%;
+    width: 80%;
+    border-radius: 8px;
+  }
+  
+  /*
+    Section for the "did you know"
+  */
+  
+  .duiktank--weetje {
+    /* grid-area: 7/8/8/11; */
+    padding: 10px;
+    background-color: var(--global-color-background);
+    color: var(--global-color-neutral);
+    border: 1px solid var(--global-color-background);
+    border-radius: 10px;
+    box-shadow: 2px 4px 5px #00000080;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+  }
+  
+  
+  .duiktank--weetje-links {
+    grid-area: 7/1/8/4;
+  }
+  
+  .duiktank--weetje-rechts {
+    grid-area: 7/8/8/11;
+  }
+
+  /*
+    Section for info about the electrical stuff
+  */
+
+  .duiktank--info-case {
+    grid-area: 3/5/4/8;
+    border: 1px solid var(--global-color-background);
+    border-radius: 8px;
+    background-color: var(--global-color-neutral-x-dark);
+  }
+
+  .duiktank--info {
+      font-weight: bold;
+  }
+
+  /*
+    Section for the info in the circle
+  */
+
+  .duiktank--info-circle {
+    --donut-viewbox: 100px;
+    --donut__circle-center: calc(var(--donut-viewbox)/2);
+    --donut__circle-stroke-width: 10px;
+    --donut__circle-radius: calc(var(--donut-viewbox) / 2 - var(--donut__circle-stroke-width)/2);
+    --pi: 3.1415926535897932384626433832795;
+    --donut__circle-circumreference: calc(var(--donut__circle-radius) *2 * var(--pi));
+    grid-area: 4/7/6/10;
+    /* height: 100%;
+    width: 100%; */
+    display: block;
+    transform: rotate(-90deg);
+    transform-origin: center;
+  }
+
+  .duiktank--circle {
+    r: var(--donut__circle-radius);
+    cx: var(--donut__circle-center);
+    cy: var(--donut__circle-center);
+    fill: none;
+    stroke: var(--global-color-neutral-x-dark);
+    stroke-width: var(--donut__circle-stroke-width);
+    stroke-dasharray: var(--donut__circle-circumreference);
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.6s ease;
+    transform-origin: center;
+  }

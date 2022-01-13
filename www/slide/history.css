@@ -22,6 +22,12 @@
   grid-area: 2/1/3/8; /* verticaal horizontaal verticaal horizontaal */
 }
 
+.history--sub-activities {
+  grid-area: 4/1/5/8;
+  padding-left: 50px;
+  padding-top: 290px;
+}
+
 /*
   Section for the picture
 */
@@ -30,13 +36,60 @@
   padding-left: 50px;
   padding-top: 10px;
   grid-area: 3/1/5/6;
+  border-radius: 8px;
 }
 
 .history--image {
   max-width: 80%;
   max-height: auto;
   height: 60%;
-  width: 60%;
+  width: 80%;
+  border-radius: 8px;
+}
+
+/*
+  Section for the collage of pictures
+*/
+
+.history--collage {
+  grid-area: 3/6/5/12;
+  gap: 8px;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  background-color: var(--global-color-neutral-x-dark);
+  border: 2px solid var(--global-color-background);
+  border-radius: 8px;
+  box-shadow: 4px 4px 5px #00000040;
+}
+
+.history--collage-small-up-left {
+  grid-area: 1/1/2/2;
+  max-height: 100%;
+  min-height: 1px;
+  width: 100%;
+}
+
+.history--collage-small-down-left {
+  grid-area: 2/1/3/2;
+  /* max-height: 100%;
+  min-height: 1px; */
+  height: 100%;
+  width: 100%;
+}
+
+.history--collage-small-up-right {
+  grid-area: 1/2/2/3;
+  max-height: 100%;
+  min-height: 1px;
+  width: 100%;
+}
+
+.history--collage-small-down-right {
+  grid-area: 2/2/3/3;
+  max-height: 100%;
+  min-height: 1px;
+  width: 100%;
 }
 
 /*
@@ -44,7 +97,7 @@
 */
 
 .history--weetje {
-  grid-area: 7/8/8/11;
+  /* grid-area: 7/8/8/11; */
   padding: 10px;
   background-color: var(--global-color-background);
   color: var(--global-color-neutral);
@@ -56,4 +109,12 @@
   grid-template-columns: 1fr;
   justify-items: center;
   align-items: center;
+}
+
+.history--weetje-links {
+  grid-area: 7/1/8/4;
+}
+
+.history--weetje-rechts {
+  grid-area: 7/8/8/11;
 }
