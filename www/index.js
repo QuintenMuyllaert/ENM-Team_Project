@@ -1,4 +1,4 @@
-const staticSlideNr = -1; //DON'T COMMIT THIS LINE!
+const staticSlideNr = 3; //DON'T COMMIT THIS LINE!
 
 const delay = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time));
@@ -15,10 +15,10 @@ let slideNr = null;
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("loaded!");
 
-  pages.push(await fetchFile("./page1.html"));
-  pages.push(await fetchFile("./info.html"));
-  pages.push(await fetchFile("./geschiedenis.html"));
-  pages.push(await fetchFile("./svgtest.html"));
+  pages.push(await fetchFile("./slide/page1.html"));
+  pages.push(await fetchFile("./slide/info.html"));
+  pages.push(await fetchFile("./slide/geschiedenis.html"));
+  pages.push(await fetchFile("./slide/svgtest.html"));
 
   let html = "";
   if (staticSlideNr == -1) {
