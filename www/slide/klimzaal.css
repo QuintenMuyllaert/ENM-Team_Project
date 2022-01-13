@@ -2,7 +2,7 @@
   Section for the general styling of this specific page
 */
 
-.duiktank {
+.klimzaal {
     display: grid;
     grid-template-rows: 50fr 40fr 40fr 350fr 50fr auto 40fr;
     grid-template-columns: repeat(10, 1fr);
@@ -14,15 +14,15 @@
     Section for the title and the info of this specific page
   */
   
-  .duiktank--title {
+  .klimzaal--title {
     grid-area: 1/1/2/3; /* row start, column start --> row end, column end*/
   }
   
-  .duiktank--sub {
+  .klimzaal--sub {
     grid-area: 2/1/3/8; /* verticaal horizontaal verticaal horizontaal */
   }
   
-  .duiktank--sub-activities {
+  .klimzaal--sub-activities {
     grid-area: 4/1/5/8;
     padding-left: 50px;
     padding-top: 290px;
@@ -32,15 +32,15 @@
     Section for the picture
   */
   
-  .duiktank--picture {
+  .klimzaal--picture {
     padding-left: 50px;
-    padding-top: 10px;
-    grid-area: 3/1/8/4;
+    padding-top: 20px;
+    grid-area: 3/1/8/6;
     border-radius: 8px;
-    height: 100%;
+    width: 100%;
   }
   
-  .duiktank--image {
+  .klimzaal--image {
     max-width: 80%;
     max-height: auto;
     height: 60%;
@@ -52,7 +52,7 @@
     Section for the "did you know"
   */
   
-  .duiktank--weetje {
+  .klimzaal--weetje {
     /* grid-area: 7/8/8/11; */
     padding: 10px;
     background-color: var(--global-color-background);
@@ -68,11 +68,11 @@
   }
   
   
-  .duiktank--weetje-links {
+  .klimzaal--weetje-links {
     grid-area: 7/1/8/4;
   }
   
-  .duiktank--weetje-rechts {
+  .klimzaal--weetje-rechts {
     grid-area: 7/8/8/11;
   }
 
@@ -80,13 +80,13 @@
     Section for info about the electrical stuff
   */
 
-  .duiktank--info-case {
+  .klimzaal--info-case {
     grid-area: 3/5/4/8;
     border: 1px solid var(--global-color-background);
     border-radius: 8px;
     background-color: var(--global-color-neutral-x-dark);
   }
 
-  .duiktank--info {
+  .klimzaal--info {
       font-weight: bold;
   }

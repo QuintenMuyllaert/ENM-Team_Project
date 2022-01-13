@@ -226,6 +226,7 @@ body {
 .piechart {
   width: 100%;
   height: 100%;
+  transform: rotateZ(-90deg);
 }
 
 .piechart-center {
