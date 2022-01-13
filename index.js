@@ -21,7 +21,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 mqtt.attachSocketIO(io);
-mqtt.subscribe("test");
+mqtt.subscribe("servicelocation/477d2645-2919-44c3-acf7-cad592ce7cdc/realtime");
 
 app.use(express.static(path.join(__dirname, "www")));
 
