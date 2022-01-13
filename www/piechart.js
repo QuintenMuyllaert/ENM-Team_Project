@@ -25,9 +25,11 @@ const drawPie = () => {
 
     duiktank = 100 - points[i];
 
-    piece.style.stroke = `#${rngHex() + rngHex() + rngHex()}`;
-    percentage = (duiktank / 100) * 283.14;
-    piece.style.strokeDashoffset = percentage;
+    try {
+      piece.style.stroke = `#${rngHex() + rngHex() + rngHex()}`;
+      percentage = (duiktank / 100) * 283.14;
+      piece.style.strokeDashoffset = percentage;
+    } catch (e) {}
     //283.140 is de top en zorgt voor niks van percentage (100%)
   }
 };
