@@ -101,7 +101,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   drawChart();
-  drawPie();
+  document.querySelectorAll(".piechart").forEach((chart) => {
+    drawPie(chart);
+  });
 
   if (staticSlideNr != -1) {
     return;
