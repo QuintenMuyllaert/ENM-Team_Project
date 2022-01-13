@@ -1,38 +1,38 @@
 /*Used by titles & headers*/
 @font-face {
-  font-family: "RobotoCondensed";
-  src: url("./font/RobotoCondensed-Light.ttf");
+  font-family: 'RobotoCondensed';
+  src: url('./font/RobotoCondensed-Light.ttf');
   font-weight: 200;
 }
 
 @font-face {
-  font-family: "RobotoCondensed";
-  src: url("./font/RobotoCondensed-Regular.ttf");
+  font-family: 'RobotoCondensed';
+  src: url('./font/RobotoCondensed-Regular.ttf');
   font-weight: 400;
 }
 
 @font-face {
-  font-family: "RobotoCondensed";
-  src: url("./font/RobotoCondensed-Bold.ttf");
+  font-family: 'RobotoCondensed';
+  src: url('./font/RobotoCondensed-Bold.ttf');
   font-weight: 600;
 }
 
 /*Used by main content*/
 @font-face {
-  font-family: "Roboto";
-  src: url("./font/Roboto-Light.ttf");
+  font-family: 'Roboto';
+  src: url('./font/Roboto-Light.ttf');
   font-weight: 200;
 }
 
 @font-face {
-  font-family: "Roboto";
-  src: url("./font/Roboto-Medium.ttf");
+  font-family: 'Roboto';
+  src: url('./font/Roboto-Medium.ttf');
   font-weight: 400;
 }
 
 @font-face {
-  font-family: "Roboto";
-  src: url("./font/Roboto-Bold.ttf");
+  font-family: 'Roboto';
+  src: url('./font/Roboto-Bold.ttf');
   font-weight: 600;
 }
 
@@ -65,7 +65,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "RobotoCondensed", serif;
+  font-family: 'RobotoCondensed', serif;
   font-weight: 400;
 }
 
@@ -73,7 +73,7 @@ p,
 a,
 li,
 span {
-  font-family: "Roboto", serif;
+  font-family: 'Roboto', serif;
   font-weight: 200;
 }
 
@@ -213,6 +213,42 @@ body {
   padding-top: 10px;
   /* font-size: calc(24em / 16); */
 }
+
+.piechart-container {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.piechart {
+  width: 100%;
+  height: 100%;
+}
+
+.piechart-center {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.piechart-center,
+.piechart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  grid-area: 1/1/1/1;
+}
+
+.piechart-horizontal-align {
+  display: grid;
+  justify-items: center;
+}
+
 @keyframes move-up {
   0% {
     top: 200vh;
