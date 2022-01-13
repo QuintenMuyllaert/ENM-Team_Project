@@ -256,6 +256,20 @@ body {
   animation: create-circle 1s ease;
 }
 
+.piechart--circle {
+  r: var(--donut__circle-radius);
+  cx: var(--donut__circle-center);
+  cy: var(--donut__circle-center);
+  fill: none;
+  stroke: var(--global-color-neutral-x-dark);
+  stroke-width: var(--donut__circle-stroke-width);
+  stroke-dasharray: var(--donut__circle-circumreference);
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.6s ease;
+  transform-origin: center;
+}
+
+
 @keyframes create-circle {
   from {
     stroke-dashoffset: 283.14; /*Toby's magic number*/
