@@ -45,7 +45,7 @@ const loopHandle = async () => {
   await loop();
   setTimeout(async () => {
     await loopHandle();
-  }, 3 * 1000);
+  }, 10 * 1000);
 };
 
 const loop = async () => {
@@ -69,6 +69,12 @@ const loop = async () => {
     top: 0,
     left: (slideNr / pages.length) * document.body.offsetWidth,
     behavior: "smooth",
+  });
+
+  drawChart();
+  document.querySelectorAll(".piechart-container").forEach((chart) => {
+    //chart <html>, title "", data [], labels []
+    drawPie(chart);
   });
 };
 
