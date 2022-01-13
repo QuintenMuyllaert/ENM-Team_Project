@@ -1,4 +1,4 @@
-const staticSlideNr = 3; //DON'T COMMIT THIS LINE!
+const staticSlideNr = -1; //DON'T COMMIT THIS LINE!
 
 const delay = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time));
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   drawChart();
-  document.querySelectorAll(".piechart").forEach((chart) => {
+  document.querySelectorAll(".piechart-container").forEach((chart) => {
     drawPie(chart);
   });
 
