@@ -1,38 +1,38 @@
 /*Used by titles & headers*/
 @font-face {
-  font-family: 'RobotoCondensed';
-  src: url('./font/RobotoCondensed-Light.ttf');
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Light.ttf");
   font-weight: 200;
 }
 
 @font-face {
-  font-family: 'RobotoCondensed';
-  src: url('./font/RobotoCondensed-Regular.ttf');
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Regular.ttf");
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'RobotoCondensed';
-  src: url('./font/RobotoCondensed-Bold.ttf');
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Bold.ttf");
   font-weight: 600;
 }
 
 /*Used by main content*/
 @font-face {
-  font-family: 'Roboto';
-  src: url('./font/Roboto-Light.ttf');
+  font-family: "Roboto";
+  src: url("./font/Roboto-Light.ttf");
   font-weight: 200;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('./font/Roboto-Medium.ttf');
+  font-family: "Roboto";
+  src: url("./font/Roboto-Medium.ttf");
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('./font/Roboto-Bold.ttf');
+  font-family: "Roboto";
+  src: url("./font/Roboto-Bold.ttf");
   font-weight: 600;
 }
 
@@ -65,7 +65,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'RobotoCondensed', serif;
+  font-family: "RobotoCondensed", serif;
   font-weight: 400;
 }
 
@@ -73,7 +73,7 @@ p,
 a,
 li,
 span {
-  font-family: 'Roboto', serif;
+  font-family: "Roboto", serif;
   font-weight: 200;
 }
 
@@ -247,6 +247,22 @@ body {
 .piechart-horizontal-align {
   display: grid;
   justify-items: center;
+}
+
+.js-pie {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+  animation: create-circle 1s ease;
+}
+
+@keyframes create-circle {
+  from {
+    stroke-dashoffset: 283.14; /*Toby's magic number*/
+  }
+}
+
+path.computed {
+  stroke-dashoffset: 0;
 }
 
 @keyframes move-up {
