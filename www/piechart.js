@@ -8,7 +8,7 @@ const drawPie = () => {
 
   let data = [25, 25, 25, 10, 10, 5];
   for (let p of data) {
-    piechart.innerHTML += `<circle class="duiktank--circle js-pie" data-name="duiktank"></circle>`;
+    piechart.innerHTML += `<circle class="page1--circle js-pie"></circle>`;
   }
 
   let sum = 0;

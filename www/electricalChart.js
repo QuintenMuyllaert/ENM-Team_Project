@@ -7,7 +7,7 @@ const drawChart = (data) => {
   graph = new Chart(chart, {
     type: "bar",
     data: {
-      labels: ["first", "second", "third", "fourth", "fifth", "sixth", "seventh"],
+      labels: ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"],
       datasets: [
         {
           label: "kW/jaar",
@@ -15,7 +15,7 @@ const drawChart = (data) => {
           barThickness: 30,
           maxBarThickness: 100,
           minBarLength: 1,
-          data: [10, 20, 30, 40, 50, 60, 70],
+          data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120],
           backgroundColor: ["red", "gray"]
         },
       ],
