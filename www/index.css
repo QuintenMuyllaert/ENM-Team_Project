@@ -202,6 +202,7 @@ body {
   transform: rotateZ(30deg) translateX(-50%);
   transform-origin: center;
   background-color: var(--global-color-background);
+  box-shadow: 8px -8px 5px #00000040;
 }
 
 .title {
@@ -294,7 +295,6 @@ body {
   transition: stroke-dashoffset 0.6s ease;
   transform-origin: center;
 }
-
 
 @keyframes create-circle {
   from {
