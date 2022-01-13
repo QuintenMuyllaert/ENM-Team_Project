@@ -45,12 +45,21 @@ const hsv2hex = (h, s, v) => {
   return rgb2hex(...hsv2rgb(h, s, v));
 };
 
-const drawPie = (element, title = "KW/uur", data = [25, 25, 80, 50, 50, 50, 50], labels = []) => {
+const drawPie = async (element, title = "KW/uur", data = [25, 25, 80, 50, 50, 50, 50], labels = []) => {
+  await delay(500);
   const total = data.reduce((a, b) => a + b, 0);
   const count = data.length;
   element.querySelector(".piechart-center-label").textContent = title;
   element.querySelector(".piechart-center-value").textContent = total;
+
+  let c = element.querySelector(".piechart").querySelectorAll(".js-pie");
+
+  for (let e of c) {
+    e.remove();
+  }
+
   const legend = element.parentNode.querySelector(".js-legend");
+  legend.innerHTML = "";
   let colors = [];
   for (let i = 0; i < data.length; i++) {
     const col = hsv2hex((i * 360) / count, 100, (i % 2) * 25 + 75);
