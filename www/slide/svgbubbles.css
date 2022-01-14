@@ -1,0 +1,39 @@
+.svg--bubbles {
+  /* opacity: 0; */
+}
+
+.svg--bubbles #Bubble_1 {
+  opacity: 0;
+  animation-name: animation_bubbles;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+.svg--bubbles #Bubble_2 {
+  opacity: 0;
+  animation-name: animation_bubbles;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-delay: 0.5s;
+}
+
+@keyframes animation_bubbles {
+  0% {
+    transform: translateY(100%);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes color {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}

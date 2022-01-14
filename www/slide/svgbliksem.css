@@ -1,0 +1,33 @@
+.svg--bliksem {
+  animation-name: animation;
+  animation-duration: 0.75s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.svg--2 {
+  animation-name: color;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes animation {
+  0% {
+    transform: translateY(-2%);
+  }
+  100% {
+    transform: translateX(-2%);
+  }
+}
+
+@keyframes color {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
