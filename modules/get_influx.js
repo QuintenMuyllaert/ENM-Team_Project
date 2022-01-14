@@ -13,7 +13,7 @@ module.exports = {
         return;
       }
       const queryApi = new InfluxDB({ url, token }).getQueryApi(org);
-      const fluxQuery = `from(bucket: "${bucket}") |> range(start: ${start}, stop: ${stop})`;
+      const fluxQuery = `from(bucket: "${bucket}") |> range(start: ${start}, stop: ${stop}) |> aggregateWindow(every: 1h, fn: last, createEmpty: false) `;
       console.log("*** QUERY ROWS ***");
       const api = await queryApi;
       const data = await api.collectRows(fluxQuery);
