@@ -1,2 +1,1 @@
-from(bucket: "enm-G2")
-    |> range(start: 2020-01-01T00:00:00Z, stop: 2021-01-01T00:00:20Z)
+from(bucket: "Transfosite") |> range(start: 2022-01-01T00:00:00Z, stop: 2022-02-01T00:00:00Z) |> aggregateWindow(every: 1h, fn: last, createEmpty: false)
