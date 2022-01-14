@@ -54,7 +54,7 @@ io.on("connection", (socket) => {
   socket.on("error", (err) => console.error);
 });
 
-server.listen(80, async () => {
+server.listen(config.port || 80, async () => {
   console.log("App launched");
   if (!config) {
     console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
