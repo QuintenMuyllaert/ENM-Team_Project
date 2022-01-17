@@ -49,8 +49,15 @@ io.on("connection", (socket) => {
     const startdate = today.toISOString();
     const querry = `from(bucket: "${bucket}") |> range(start: ${startdate}, stop: ${stopdate}) |> aggregateWindow(every: 1h, fn: last, createEmpty: false) `;
     const data = await get_influx.run(querry);
-
-    socket.emit("echo", data);
+    const ret = {};
+    for (const thing of data) {
+      if (!ret[thing._field]) {
+        ret[thing._field] = [thing._value];
+      } else {
+        ret[thing._field].push(thing._value);
+      }
+    }
+    socket.emit("echo", ret);
   });
   socket.on("Field", async (msg) => {
     if (!config) {
