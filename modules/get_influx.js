@@ -5,7 +5,7 @@ const config = fs.existsSync(path.join(__dirname, "../config.json")) ? require("
 const { url, token, org, bucket } = config;
 
 module.exports = {
-  run: async (start, stop) => {
+  run: async (querry) => {
     try {
       console.log("Reading");
       if (!url) {
@@ -13,7 +13,7 @@ module.exports = {
         return;
       }
       const queryApi = new InfluxDB({ url, token }).getQueryApi(org);
-      const fluxQuery = `from(bucket: "${bucket}") |> range(start: ${start}, stop: ${stop}) |> aggregateWindow(every: 1h, fn: last, createEmpty: false) `;
+      const fluxQuery = querry;
       console.log("*** QUERY ROWS ***");
       const api = await queryApi;
       const data = await api.collectRows(fluxQuery);

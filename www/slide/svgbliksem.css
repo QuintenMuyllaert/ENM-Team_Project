@@ -16,10 +16,10 @@
 
 @keyframes animation {
   0% {
-    transform: translateY(-2%);
+    transform: translateY(-5%);
   }
   100% {
-    transform: translateX(-2%);
+    transform: translateX(-5%);
   }
 }
 
