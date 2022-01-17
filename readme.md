@@ -15,6 +15,6 @@ The config file needs to include the following:<br>
 "token": INFLUXDBTOKEN,<br>
 "org": INFLUXDBORG,<br>
 "bucket": INFLUXDBBUCKET,<br>
-"topics": [],<br>
+"topic": TOPIC,<br>
 "mqtt": MQTTURL<br>
 }<br>
