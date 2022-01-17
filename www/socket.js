@@ -2,11 +2,12 @@ const socket = io();
 
 socket.on("connect", () => {
   console.log("Connection to server made!");
-
-  socket.emit("echo", "Hello world!");
   socket.emit("data", 1);
-  socket.on("echo", (data) => {
-    console.log("echo", data);
+  socket.on("Influx", (data) => {
+    console.log("Influx Data", data);
+  });
+  socket.on("mqtt_data", (data) => {
+    console.log("MQTT Data", data);
   });
 
   socket.on("close", () => {
