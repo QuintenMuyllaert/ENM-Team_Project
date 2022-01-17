@@ -38,9 +38,6 @@ io.on("connection", (socket) => {
     console.log(`User disconnected : ${socket.id}`);
   });
 
-  socket.on("echo", (msg) => {
-    socket.emit("echo", msg);
-  });
   socket.on("data", async (msg) => {
     if (!config) {
       console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
@@ -60,7 +57,7 @@ io.on("connection", (socket) => {
         ret[thing._field].push(thing._value);
       }
     }
-    socket.emit("echo", ret);
+    socket.emit("Influx", ret);
   });
 
   socket.auth = false;
