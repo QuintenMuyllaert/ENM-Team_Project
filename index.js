@@ -9,7 +9,7 @@ const tree = require("./modules/tree.js");
 const mqtt = require("./modules/mqtt.js");
 
 const config = fs.existsSync(path.join(__dirname, "config.json")) ? require("./config.json") : false;
-
+const { url, token, org, bucket } = config;
 Date.prototype.minusDays = function (days) {
   var date = new Date(this.valueOf());
   date.setDate(date.getDate() - days);
@@ -47,7 +47,22 @@ io.on("connection", (socket) => {
     const stopdate = today.toISOString();
     today = today.minusDays(msg);
     const startdate = today.toISOString();
-    const data = await get_influx.run(startdate, stopdate);
+    const querry = `from(bucket: "${bucket}") |> range(start: ${startdate}, stop: ${stopdate}) |> aggregateWindow(every: 1h, fn: last, createEmpty: false) `;
+    const data = await get_influx.run(querry);
+
+    socket.emit("echo", data);
+  });
+  socket.on("Field", async (msg) => {
+    if (!config) {
+      console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
+      return;
+    }
+    let today = new Date(Date.now());
+    const stopdate = today.toISOString();
+    today = today.minusDays(msg);
+    const startdate = today.toISOString();
+    const querry = `from(bucket: "${bucket}") |> range(start: ${startdate}, stop: ${stopdate}) |> aggregateWindow(every: 1h, fn: last, createEmpty: false) |> toString() |> group(columns: ["_field*", "_field"], mode: "by") |> distinct(column: "_field*") `;
+    const data = await get_influx.run(querry);
 
     socket.emit("echo", data);
   });

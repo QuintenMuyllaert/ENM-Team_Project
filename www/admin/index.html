@@ -6,28 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ENM-Team Project - Admin</title>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="./index.js"></script>
     <link rel="stylesheet" href="../index.css" />
     <link rel="stylesheet" href="./index.css" />
     <script src="./index.js"></script>
     <link rel="icon" type="image/x-icon" href="../favicon.ico" />
   </head>
   <body>
-    <main class="admin-ocntainer">
+    <main class="admin-container">
 
-      <fieldset class="admin-fieldset">
-        <legend class="admin-fieldset-label">
-          <label for="username">Username</label>
-        </legend>
-        <input class="admin-fieldset-input admin-authentication-login" type="text" value="John" id="username">
-      </fieldset>
+        <label class="admin-fieldset-label admin-fieldset-login" for="username">Username</label>
+        <input class="admin-fieldset-input admin-fieldset-login admin-authentication-login" type="text" value="John" id=username>
 
-      <fieldset class="admin-fieldset">
-        <legend class="admin-fieldset-label">
-          <label for="password">Password</label>
-        </legend>
-        <input class="admin-fieldset-input admin-authentication-password" type="text" value="abc123" id="password">
-      </fieldset>
+        <label class="admin-fieldset-label admin-fieldset-password" for="password">Password</label>
+        <input class="admin-fieldset-input admin-fieldset-password admin-authentication-password" type="text" value="abc123" id="password">
 
       <button class="admin-authentication">Login</button>
 
