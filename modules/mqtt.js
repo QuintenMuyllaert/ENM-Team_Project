@@ -25,12 +25,9 @@ if (client) {
       return;
     }
 
-    // console.log("MQTT message received :", topic, obj);
     if (io) {
       io.emit("mqtt", topic, obj);
-      // io.emit("echo", obj);
       for (let channel of obj.channelPowers) {
-        // ret[serviceLocationId]
         if (!ret[channel.serviceLocationId]) {
           ret[channel.serviceLocationId] = [channel];
         } else {

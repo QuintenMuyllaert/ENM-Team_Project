@@ -10,7 +10,7 @@ const tree = require("./modules/tree.js");
 const mqtt = require("./modules/mqtt.js");
 
 const config = fs.existsSync(path.join(__dirname, "config.json")) ? require("./config.json") : false;
-const { url, token, org, bucket } = config;
+const { bucket } = config;
 Date.prototype.minusDays = function (days) {
   var date = new Date(this.valueOf());
   date.setDate(date.getDate() - days);
