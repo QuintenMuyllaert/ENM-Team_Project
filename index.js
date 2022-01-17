@@ -1,6 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const http = require("http");
+const bcrypt = require("bcrypt");
 const express = require("express");
 const { Server } = require("socket.io");
 
@@ -74,7 +75,7 @@ io.on("connection", (socket) => {
     socket.emit("echo", data);
   });
   socket.auth = false;
-  socket.on("auth", (obj) => {
+  socket.on("auth", async (obj) => {
     if (!obj) {
       socket.emit("auth", false);
       return;
@@ -84,8 +85,16 @@ io.on("connection", (socket) => {
       return;
     }
 
-    if (obj.username === config.username && obj.password === config.password) {
-      //spooky plaintext (need to test it somehow)
+    if (!config.username || !config.password) {
+      console.log("No username and/or password provided in config.");
+
+      config.username = await bcrypt.hash(obj.username, await bcrypt.genSalt(10));
+      config.password = await bcrypt.hash(obj.password, await bcrypt.genSalt(10));
+
+      fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
+    }
+
+    if ((await bcrypt.compare(obj.username, config.username)) && (await bcrypt.compare(obj.password, config.password))) {
       socket.emit("auth", true);
       socket.auth = true;
     } else {
