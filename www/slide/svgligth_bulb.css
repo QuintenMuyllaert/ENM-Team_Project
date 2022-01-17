@@ -6,7 +6,7 @@
   animation-direction: alternate;
 }
 
-.svg--bulb-ligth {
+.svg--bulb-light {
   animation-name: bulb_opacity;
   animation-duration: 2s;
   animation-timing-function: ease-in-out;
