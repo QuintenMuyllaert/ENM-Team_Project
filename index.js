@@ -60,20 +60,7 @@ io.on("connection", (socket) => {
     }
     socket.emit("echo", ret);
   });
-  socket.on("Field", async (msg) => {
-    if (!config) {
-      console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
-      return;
-    }
-    let today = new Date(Date.now());
-    const stopdate = today.toISOString();
-    today = today.minusDays(msg);
-    const startdate = today.toISOString();
-    const querry = `from(bucket: "${bucket}") |> range(start: ${startdate}, stop: ${stopdate}) |> aggregateWindow(every: 1h, fn: last, createEmpty: false) |> toString() |> group(columns: ["_field*", "_field"], mode: "by") |> distinct(column: "_field*") `;
-    const data = await get_influx.run(querry);
 
-    socket.emit("echo", data);
-  });
   socket.auth = false;
   socket.on("auth", async (obj) => {
     if (!obj) {
