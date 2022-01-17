@@ -1,4 +1,6 @@
 const staticSlideNr = -1; //DON'T COMMIT THIS LINE!
+const showEndAnimation = true;
+const slideLength = 10;
 
 const delay = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time));
@@ -41,11 +43,17 @@ const addClassRemoveAfter = (element, className, time) => {
   }, time);
 };
 
+const triggerClass = async (element, className) => {
+  element.classList.remove(className);
+  await delay(10);
+  element.classList.add(className);
+};
+
 const loopHandle = async () => {
   await loop();
   setTimeout(async () => {
     await loopHandle();
-  }, 10 * 1000);
+  }, slideLength * 1000);
 };
 
 const loop = async () => {
@@ -53,7 +61,7 @@ const loop = async () => {
   const red = document.querySelector(".animation--container");
   const logo = document.querySelector(".animation--logo-container");
 
-  if (slideNr == 0) {
+  if (showEndAnimation && slideNr == 0) {
     addClassRemoveAfter(red, "animation--display", 3000);
     addClassRemoveAfter(logo, "animation--logo-display", 3000);
     await delay(3000);
@@ -71,26 +79,35 @@ const loop = async () => {
     behavior: "smooth",
   });
 
-  document.querySelectorAll(".bubbles").forEach((bubble) => {
-    addClassRemoveAfter(bubble, "svg--bubbles", 2000);
-  });
+  console.log(pageNames[slideNr]);
 
   drawChart();
   document.querySelectorAll(".piechart-container").forEach((chart) => {
     //chart <html>, title "", data [], labels []
     drawPie(chart);
   });
+
+  document.querySelectorAll(".bubbles").forEach((bubble) => {
+    console.log(bubble);
+
+    triggerClass(bubble, "svg--bubbles");
+  });
 };
 
 const pages = [];
+let pageNames;
 let slideNr = 0;
 
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("loaded!");
   const tree = await fetchJSON("./tree.json");
-  const pageNames = lookupList(tree["slide"], ".html");
-  for (const page of pageNames) {
-    pages.push(await fetchFile(`./slide/${page}`));
+  pageNames = lookupList(tree["slide"], ".html");
+  if (staticSlideNr == -1) {
+    for (const page of pageNames) {
+      pages.push(await fetchFile(`./slide/${page}`));
+    }
+  } else {
+    pages.push(await fetchFile(`./slide/${pageNames[staticSlideNr]}`));
   }
 
   document.querySelector(":root").style.setProperty("--pagecount", pages.length);
@@ -101,14 +118,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   let html = "";
-  if (staticSlideNr == -1) {
-    pages.forEach((page) => {
-      html += generateSlide(page);
-    });
-    document.querySelector(".main-container").innerHTML = html;
-  } else {
-    document.querySelector(".main-container").innerHTML = generateSlide(pages[staticSlideNr]);
-  }
+  pages.forEach((page) => {
+    html += generateSlide(page);
+  });
+  document.querySelector(".main-container").innerHTML = html;
 
   drawChart();
   document.querySelectorAll(".piechart-container").forEach((chart) => {
@@ -116,8 +129,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     drawPie(chart);
   });
 
-  if (staticSlideNr != -1) {
-    return;
-  }
   loopHandle();
 });
