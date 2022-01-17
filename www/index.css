@@ -120,8 +120,8 @@ body {
 }
 
 .slide-content-style {
-  width: 80% !important;
-  height: 80vh !important;
+  width: 95% !important;
+  height: 80% !important;
   background-color: var(--global-color-neutral);
   padding: 1em;
   border-radius: 8px;
