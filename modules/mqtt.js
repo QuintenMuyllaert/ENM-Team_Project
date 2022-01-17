@@ -35,7 +35,7 @@ if (client) {
         }
       }
 
-      io.emit("echo", ret);
+      io.emit("mqtt_data", ret);
     } else {
       console.log("PLEASE ATTACH SOCKETIO TO MQTT!");
     }
