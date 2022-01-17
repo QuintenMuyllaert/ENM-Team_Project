@@ -19,6 +19,7 @@
   "homepage": "https://github.com/QuintenMuyllaert/ENM-Team_Project#readme",
   "dependencies": {
     "@influxdata/influxdb-client": "^1.21.0",
+    "bcrypt": "^5.0.1",
     "express": "^4.17.1",
     "mqtt": "^4.3.4",
     "socket.io": "^4.4.1"
