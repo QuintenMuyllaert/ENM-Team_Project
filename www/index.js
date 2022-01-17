@@ -71,6 +71,10 @@ const loop = async () => {
     behavior: "smooth",
   });
 
+  document.querySelectorAll(".bubbles").forEach((bubble) => {
+    addClassRemoveAfter(bubble, "svg--bubbles", 2000);
+  });
+
   drawChart();
   document.querySelectorAll(".piechart-container").forEach((chart) => {
     //chart <html>, title "", data [], labels []
