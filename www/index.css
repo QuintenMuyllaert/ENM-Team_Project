@@ -143,9 +143,12 @@ body {
 }
 
 .logo--container img {
-  padding: 0 1em;
+  padding-left: 4em;
+  padding-right: 4em;
+  padding-top: 1em;
   background-color: white;
   border-radius: 8px;
+  width: 17%;
 }
 
 .animation--container {
