@@ -51,6 +51,26 @@ io.on("connection", (socket) => {
 
     socket.emit("echo", data);
   });
+  socket.auth = false;
+  socket.on("auth", (obj) => {
+    if (!obj) {
+      socket.emit("auth", false);
+      return;
+    }
+    if (!(obj.username && obj.password)) {
+      socket.emit("auth", false);
+      return;
+    }
+
+    if (obj.username === config.username && obj.password === config.password) {
+      //spooky plaintext (need to test it somehow)
+      socket.emit("auth", true);
+      socket.auth = true;
+    } else {
+      socket.emit("auth", false);
+      socket.auth = false;
+    }
+  });
   socket.on("error", (err) => console.error);
 });
 
