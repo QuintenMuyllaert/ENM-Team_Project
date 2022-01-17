@@ -1,4 +1,7 @@
-//help?
+const delay = (time) => {
+  return new Promise((resolve) => setTimeout(resolve, time));
+};
+
 const socket = io();
 let connected = false;
 let auth = false;
@@ -10,7 +13,7 @@ socket.on("connect", () => {
   connected = true;
   console.log("Connection to server made!");
 
-  socket.on("auth", (success) => {
+  socket.on("auth", async (success) => {
     console.log("auth", success);
     if (success) {
       console.log("Authentication successfull!");
@@ -26,6 +29,18 @@ socket.on("connect", () => {
       passwordHTML.disabled = false;
       authButtonHTML.disabled = false;
     }
+
+    usernameHTML.classList[!auth ? "add" : "remove"]("admin-authentication-error");
+    passwordHTML.classList[!auth ? "add" : "remove"]("admin-authentication-error");
+    usernameHTML.classList[auth ? "add" : "remove"]("admin-authentication-success");
+    passwordHTML.classList[auth ? "add" : "remove"]("admin-authentication-success");
+
+    if (!auth) {
+      return;
+    }
+
+    await delay(2000);
+    document.querySelector("body").innerHTML = `<h1>Auth successfull!</h1>`;
   });
 
   socket.on("admin", (data) => {
@@ -58,17 +73,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   passwordToggle.addEventListener("change", () => {
-    console.log("test");
-    if (passwordShow == false){
-      passwordIconShow.classList.add("o-hide-accessible");
-      passwordIconHide.classList.remove("o-hide-accessible");
-      passwordShow = true;
-      passwordText.type="text";
-    } else {
-      passwordIconShow.classList.remove("o-hide-accessible");
-      passwordIconHide.classList.add("o-hide-accessible");
-      passwordShow = false;
-      passwordText.type="password";
-    }
+    passwordShow = !passwordShow;
+    passwordIconShow.classList[passwordShow ? "add" : "remove"]("o-hide-accessible");
+    passwordIconHide.classList[!passwordShow ? "add" : "remove"]("o-hide-accessible");
+    passwordText.type = passwordShow ? "text" : "password";
   });
 });
