@@ -19,13 +19,52 @@
   animation-delay: 0.5s;
 }
 
+.svg--bubbles #Bubble_3 {
+  opacity: 0;
+  animation-name: animation_bubbles;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-delay: 0.7s;
+}
+.svg--bubbles #Bubble_4 {
+  opacity: 0;
+  animation-name: animation_bubbles;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-delay: 1s;
+}
+.svg--bubbles #Bubble_5 {
+  opacity: 0;
+  animation-name: animation_bubbles;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-delay: 1.2s;
+}
+.svg--bubbles #Bubble_6 {
+  opacity: 0;
+  animation-name: animation_bubbles;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-delay: 1.4s;
+}
+
+.svg--bubbles #Bubble_7 {
+  opacity: 0;
+  animation-name: animation_bubbles;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-delay: 1.6s;
+}
+
 @keyframes animation_bubbles {
   0% {
     transform: translateY(100%);
     opacity: 1;
-  }
-  100% {
-    opacity: 0;
   }
 }
 
