@@ -2,8 +2,9 @@
 const socket = io();
 let connected = false;
 let auth = false;
+let passwordShow = false;
 
-let usernameHTML, passwordHTML, authButtonHTML;
+let usernameHTML, passwordHTML, authButtonHTML, passwordToggle;
 
 socket.on("connect", () => {
   connected = true;
@@ -41,6 +42,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   usernameHTML = document.querySelector(".admin-authentication-login");
   passwordHTML = document.querySelector(".admin-authentication-password");
   authButtonHTML = document.querySelector(".admin-authentication");
+  passwordToggle = document.querySelector(".admin-fieldset-password-checkbox");
+  passwordIconShow = document.querySelector(".admin-fieldset-password-icon-show");
+  passwordIconHide = document.querySelector(".admin-fieldset-password-icon-hide");
+  passwordText = document.querySelector(".admin-authentication-password");
 
   authButtonHTML.addEventListener("click", () => {
     const username = usernameHTML.value;
@@ -50,5 +55,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     authButtonHTML.disabled = true;
     socket.emit("auth", { username: username, password: password });
     console.log("Auth request sent!");
+  });
+
+  passwordToggle.addEventListener("change", () => {
+    console.log("test");
+    if (passwordShow == false){
+      passwordIconShow.classList.add("o-hide-accessible");
+      passwordIconHide.classList.remove("o-hide-accessible");
+      passwordShow = true;
+      passwordText.type="text";
+    } else {
+      passwordIconShow.classList.remove("o-hide-accessible");
+      passwordIconHide.classList.add("o-hide-accessible");
+      passwordShow = false;
+      passwordText.type="password";
+    }
   });
 });
