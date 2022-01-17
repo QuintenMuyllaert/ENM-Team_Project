@@ -1,0 +1,42 @@
+{
+    "fields":[
+        "Bord_EB_Niveau1_L1",
+        "Bord_EB_Niveau1_L2",
+        "Bord_EB_Niveau1_L3",
+        "Bord_EB_Niveau1_Totaal",
+        "Bord_HVAC_L1",
+        "Bord_HVAC_L2",
+        "Bord_HVAC_L3",
+        "Bord_HVAC_Totaal",
+        "Bord_Waterbehandeling_L1",
+        "Bord_Waterbehandeling_L2",
+        "Bord_Waterbehandeling_L3",
+        "Bord_Waterbehandeling_Totaal",
+        "Buitenbar_L1",
+        "Buitenbar_L2",
+        "Buitenbar_L3",
+        "Buitenbar_Totaal",
+        "CO2_5min",
+        "Compressor_L1",
+        "Compressor_L2",
+        "Compressor_L3",
+        "Compressor_Totaal",
+        "Net_L1",
+        "Net_L2",
+        "Net_L3",
+        "Stopcontacten_Circuit_Niveau0_Cafetaria_55Q1_L2",
+        "Stopcontacten_Circuit_Niveau0_Cafetaria_55Q3_L3",
+        "Stopcontacten_Circuit_Niveau0_Cafetaria_55Q5_L1",
+        "Stopcontacten_Circuit_Niveau0_Cafetaria_55Q7_L2",
+        "Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal",
+        "TotaalNet",
+        "Voeding_Datarack_L3",
+        "Description_Weather",
+        "Humidity",
+        "Pressure",
+        "Temperature",
+        "Windspeed"
+
+    ]
+
+}
