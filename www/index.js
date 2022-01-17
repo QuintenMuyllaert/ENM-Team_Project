@@ -2,6 +2,11 @@ const staticSlideNr = -1; //DON'T COMMIT THIS LINE!
 const showEndAnimation = true;
 const slideLength = 10;
 
+const pages = [];
+let pageNames;
+let slideNr = 0;
+let skeletonSlide = "";
+
 const delay = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time));
 };
@@ -28,12 +33,7 @@ const lookupList = (list, includes) => {
 };
 
 const generateSlide = (html) => {
-  return `<main class="slide-content">
-        <div class="logo--container">
-          <img src="./img/logo.png" alt="logo" />
-        </div>
-        <div class="slide-content-style">${html}</div>
-      </main>`;
+  return skeletonSlide.replace("<!--INNERHTML-->", html);
 };
 
 const addClassRemoveAfter = (element, className, time) => {
@@ -94,13 +94,10 @@ const loop = async () => {
   });
 };
 
-const pages = [];
-let pageNames;
-let slideNr = 0;
-
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("loaded!");
   const tree = await fetchJSON("./tree.json");
+  skeletonSlide = await fetchFile("./skeletonSlide.html");
   pageNames = lookupList(tree["slide"], ".html");
   if (staticSlideNr == -1) {
     for (const page of pageNames) {
