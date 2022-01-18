@@ -175,7 +175,49 @@ body {
 }
 
 .slide--didyouknow-box {
-  width: 128px !important;
+  width: 25rem;
+  height: 7rem;
+  display: grid;
+  grid-template-columns: auto auto;
+  animation: didyouanimate ease 2s;
+  overflow: hidden;
+  margin: 1rem;
+  padding: 0 1rem;
+  gap: 8px;
+  background-color: var(--global-color-background);
+  border-radius: 24px;
+  align-items: center;
+}
+
+.slide--didyouknow-box svg {
+  border-radius: 50%;
+}
+
+.slide--didyouknow-text-container {
+  width: 100vw;
+
+  overflow: hidden;
+  color: var(--global-color-neutral);
+}
+
+.slide--didyouknow-text-container h2 {
+  font-weight: 600;
+}
+.slide--didyouknow-text-container p {
+  font-weight: 400;
+}
+
+@keyframes didyouanimate {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 25rem;
+  }
+}
+
+.slide--didyouknow-box svg {
+  width: 4rem;
 }
 
 .animation--container {
