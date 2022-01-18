@@ -179,7 +179,7 @@ body {
 }
 
 .animation--container {
-  z-index: 10;
+  z-index: 9001;
   position: fixed;
   top: 500vh;
   left: 0px;
