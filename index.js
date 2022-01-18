@@ -83,7 +83,7 @@ io.on("connection", (socket) => {
     }
     if (!config.twofactor) {
       var secret = speakeasy.generateSecret({
-        name: "name",
+        name: "Transfo_Recovery",
       });
       config.twofactor = secret.ascii;
       qrcode.toDataURL(secret.otpauth_url, function (err, data) {
