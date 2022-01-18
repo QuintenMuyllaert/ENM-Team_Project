@@ -4,6 +4,8 @@ const http = require("http");
 const bcrypt = require("bcrypt");
 const express = require("express");
 const { Server } = require("socket.io");
+const speakeasy = require("speakeasy");
+const qrcode = require("qrcode");
 
 const get_influx = require("./modules/get_influx.js");
 const tree = require("./modules/tree.js");
@@ -79,7 +81,16 @@ io.on("connection", (socket) => {
 
       fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
     }
-
+    if (!config.twofactor) {
+      var secret = speakeasy.generateSecret({
+        name: "Transfo_Recovery",
+      });
+      config.twofactor = secret.ascii;
+      qrcode.toDataURL(secret.otpauth_url, function (err, data) {
+        socket.emit("qrcode", data);
+      });
+      fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
+    }
     if ((await bcrypt.compare(obj.username, config.username)) && (await bcrypt.compare(obj.password, config.password))) {
       socket.emit("auth", true);
       socket.auth = true;
