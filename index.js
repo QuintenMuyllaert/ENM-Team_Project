@@ -87,7 +87,7 @@ io.on("connection", (socket) => {
       });
       config.twofactor = secret.ascii;
       qrcode.toDataURL(secret.otpauth_url, function (err, data) {
-        console.log(data);
+        socket.emit("qrcode", data);
       });
       fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
     }
