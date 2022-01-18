@@ -49,8 +49,8 @@ const drawPie = async (element, title = "KW/uur", data = [50, 50, 50, 50, 80], l
   await delay(500);
   let total = data.reduce((a, b) => a + b, 0);
   const count = data.length;
-  element.querySelector(".piechart-center-label").textContent = title;
-  element.querySelector(".piechart-center-value").textContent = total;
+  element.querySelector(".piechart--center-label").textContent = title;
+  element.querySelector(".piechart--center-value").textContent = total;
 
   let c = element.querySelector(".piechart").querySelectorAll(".js-pie");
 
