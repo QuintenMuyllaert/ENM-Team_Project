@@ -92,29 +92,21 @@ body {
   background-color: var(--global-color-background);
   min-width: calc(var(--pagecount) * 100vw);
   min-height: 100vh;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
-  align-items: center;
-  justify-items: center;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
-.notch {
-  --global-color-background-notch: none;
-  --global-shadow-slidecontent: none;
-  --global-shadow-slidecontent-style: var(--global-shadow-background);
+.center {
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 100%;
+  align-items: center;
+  justify-items: center;
 }
 
 .main-container {
   min-width: 100%;
   min-height: 100%;
-  display: grid;
-  grid-template-rows: 1fr;
   grid-template-columns: repeat(var(--pagecount), 1fr);
-  align-items: center;
-  justify-items: center;
 }
 
 .notch .slide--content {
@@ -125,11 +117,10 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
-  align-items: center;
-  justify-items: center;
+}
+
+.slide--content > * {
+  position: absolute;
 }
 
 .slide--content-style {
@@ -172,6 +163,21 @@ body {
   height: var(--logo-height);
 }
 
+.slide--didyouknow {
+  grid-area: 1/1/1/1;
+  width: var(--slide-width);
+  height: var(--slide-height);
+  z-index: 100;
+  display: grid;
+
+  align-items: start;
+  justify-items: end;
+}
+
+.slide--didyouknow-box {
+  width: 128px !important;
+}
+
 .animation--container {
   z-index: 10;
   position: fixed;
@@ -187,11 +193,6 @@ body {
   left: 0px;
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
-  align-items: center;
-  justify-items: center;
   z-index: 20;
   opacity: 0;
 }
@@ -244,17 +245,13 @@ body {
 
 .piechart-container {
   position: relative;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  justify-items: center;
+  width: 20em;
+  height: 20em;
 }
 
 .piechart--info-legend {
   padding-top: 50px;
   padding-right: 50px;
-  grid-area: 1/2/1/3;
 }
 
 .piechart--info-legend-item {
@@ -283,20 +280,25 @@ body {
   transform: rotateZ(-90deg);
 }
 
-.piechart-center {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  align-items: center;
-  justify-items: center;
-}
-
 .piechart-center,
 .piechart {
   position: absolute;
   top: 0;
   left: 0;
   grid-area: 1/1/1/1;
+}
+
+.piechart-center-value {
+  font-weight: 400;
+  font-size: 48px;
+}
+.piechart-center-label {
+  font-weight: 200;
+  font-size: 24px;
+}
+.piechart-icon {
+  width: 100%;
+  height: 100%;
 }
 
 .piechart-horizontal-align {
