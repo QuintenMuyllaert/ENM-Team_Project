@@ -96,6 +96,10 @@ const loop = async () => {
 
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("loaded!");
+  const width = document.body.offsetWidth;
+  const scale = (100 * width) / 1920 - 100;
+  document.querySelector("html").style["font-size"] = `${100 + 2 * scale}%`;
+
   const tree = await fetchJSON("./tree.json");
   skeletonSlide = await fetchFile("./skeletonSlide.html");
   pageNames = lookupList(tree["slide"], ".html");
