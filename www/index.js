@@ -1,7 +1,7 @@
 const staticSlideNr = -1; //DON'T COMMIT THIS LINE!
 const showEndAnimation = true;
 const useScalingFunction = true;
-const slideLength = 3;
+const slideLength = 5;
 
 const pages = [];
 let pageNames;
@@ -50,7 +50,7 @@ const triggerClass = async (element, className) => {
   element.classList.add(className);
 };
 
-const onRenderPage = (pagename) => {
+const onRenderPage = async (pagename) => {
   drawChart();
   drawChartDayNight();
   document.querySelectorAll(".piechart--container").forEach((chart) => {
@@ -62,8 +62,14 @@ const onRenderPage = (pagename) => {
     triggerClass(element, "svg--bubbles");
   });
 
-  document.querySelectorAll(".slide--didyouknow-box").forEach((element) => {
-    //triggerClass(element, "slide--didyouknow-animate");
+  await delay(1000);
+  document.querySelectorAll(".slide--didyouknow-box").forEach(async (element) => {
+    element.classList.add("slide--didyouknow-animate");
+    await delay((slideLength - 1) * 1000);
+    element.classList.remove("slide--didyouknow-animate");
+    element.classList.add("slide--didyouknow-animate-again");
+    await delay(500);
+    element.classList.remove("slide--didyouknow-animate-again");
   });
 };
 
@@ -96,8 +102,7 @@ const loop = async () => {
     left: slideNr * screen.width,
     behavior: "smooth",
   });
-
-  onRenderPage(pageNames[slideNr]);
+  onRenderPage();
 };
 
 window.onresize = () => {
