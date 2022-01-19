@@ -1,5 +1,6 @@
 const staticSlideNr = -1; //DON'T COMMIT THIS LINE!
 const showEndAnimation = true;
+const useScalingFunction = true;
 const slideLength = 10;
 
 const pages = [];
@@ -75,7 +76,7 @@ const loop = async () => {
   }
   window.scroll({
     top: 0,
-    left: (slideNr / pages.length) * document.body.offsetWidth,
+    left: (slideNr / pages.length) * screen.width,
     behavior: "smooth",
   });
 
@@ -94,11 +95,26 @@ const loop = async () => {
   });
 };
 
+window.onresize = () => {
+  if (useScalingFunction) {
+    const width = screen.width;
+    const scale = width / 1920;
+    document.querySelector("html").style.setProperty("--scalefactor", scale);
+  }
+
+  window.scroll({
+    top: 0,
+    left: (slideNr / pages.length) * screen.width,
+  });
+};
+
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("loaded!");
-  const width = document.body.offsetWidth;
-  const scale = (100 * width) / 1920 - 100;
-  document.querySelector("html").style["font-size"] = `${100 + 2 * scale}%`;
+  if (useScalingFunction) {
+    const width = screen.width;
+    const scale = width / 1920;
+    document.querySelector("html").style.setProperty("--scalefactor", scale);
+  }
 
   const tree = await fetchJSON("./tree.json");
   skeletonSlide = await fetchFile("./skeletonSlide.html");
