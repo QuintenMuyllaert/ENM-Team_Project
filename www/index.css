@@ -43,6 +43,7 @@
   --global-color-background: #dc0000;
   --global-color-text: #000000;
   --page1-color-text: green;
+  --global-color-title:#808080;
 
   /* border radius */
 
@@ -52,6 +53,7 @@
   /* whitespace */
 
   /* misc */
+  --global-font-size: 1rem;
   --scalefactor: 1;
   --slide-height: 85%;
   --slide-width: 95%;
