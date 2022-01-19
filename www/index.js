@@ -2,10 +2,11 @@ const staticSlideNr = 0; //DON'T COMMIT THIS LINE!
 const showEndAnimation = false;
 const useScalingFunction = true;
 const slideLength = 10;
+const endAnimationLength = 5000;
 
 const pages = [];
 let pageNames;
-let slideNr = 0;
+let slideNr = -1;
 let skeletonSlide = "";
 let didyouknow = [];
 
@@ -131,11 +132,11 @@ const loop = async () => {
   const logo = document.querySelector(".animation--logo-container");
 
   if (showEndAnimation && slideNr == 0) {
-    addClassRemoveAfter(red, "animation--display", 3000);
-    addClassRemoveAfter(logo, "animation--logo-display", 3000);
-    await delay(3000);
-    addClassRemoveAfter(red, "animation--display-reverse", 3000);
-    addClassRemoveAfter(logo, "animation--logo-display-reverse", 3000);
+    addClassRemoveAfter(red, "animation--display", endAnimationLength);
+    addClassRemoveAfter(logo, "animation--logo-display", endAnimationLength);
+    await delay(endAnimationLength);
+    addClassRemoveAfter(red, "animation--display-reverse", endAnimationLength);
+    addClassRemoveAfter(logo, "animation--logo-display-reverse", endAnimationLength);
     window.scroll({
       top: 0,
       left: 0,
