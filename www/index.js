@@ -7,6 +7,7 @@ const pages = [];
 let pageNames;
 let slideNr = 0;
 let skeletonSlide = "";
+let didyouknow = [];
 
 let day = 0;
 let night = 0;
@@ -86,6 +87,7 @@ const onRenderPage = async (pagename) => {
 
   await delay(1000);
   document.querySelectorAll(".slide--didyouknow-box").forEach(async (element) => {
+    element.querySelector(".weetje").innerHTML = didyouknow[Math.round(Math.random() * didyouknow.length - 1)];
     element.classList.add("slide--didyouknow-animate");
     await delay((slideLength - 1) * 1000);
     element.classList.remove("slide--didyouknow-animate");
@@ -150,6 +152,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   const tree = await fetchJSON("./tree.json");
+  didyouknow = await fetchJSON("./data/facts.json");
+
   skeletonSlide = await fetchFile("./skeletonSlide.html");
   pageNames = lookupList(tree["slide"], ".html");
   if (staticSlideNr == -1) {
