@@ -61,7 +61,12 @@ io.on("connection", (socket) => {
         ret[thing._field].push(thing);
       }
     }
-    socket.emit("Influx", ret);
+    if (msg == 1) {
+      socket.emit("Influx", ret);
+    }
+    if (msg == 7) {
+      socket.emit("Influx_week", ret);
+    }
   });
 
   socket.on("forget", async (code) => {
