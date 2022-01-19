@@ -24,8 +24,8 @@ socket.on("Influx", (data) => {
   }
   night = night / 1000;
   day = day / 1000;
-  document.querySelector(".js-day").innerText = `Opbrengst dag: ${day.toFixed(2)} kW`;
-  document.querySelector(".js-night").innerText = `Opbrengst dag: ${night.toFixed(2)} kW`;
+  document.querySelector(".js-day").innerText = `Verbruik dag: ${day.toFixed(2)} kW`;
+  document.querySelector(".js-night").innerText = `Verbruik dag: ${night.toFixed(2)} kW`;
 
   console.log(day, night);
   drawChartDayNight([day, night]);
