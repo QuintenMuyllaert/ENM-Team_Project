@@ -7,6 +7,7 @@ const pages = [];
 let pageNames;
 let slideNr = 0;
 let skeletonSlide = "";
+let didyouknow = [];
 
 let day = 0;
 let night = 0;
@@ -93,7 +94,7 @@ const triggerClass = async (element, className) => {
   element.classList.add(className);
 };
 
-const onRenderPage = (pagename) => {
+const onRenderPage = async (pagename) => {
   drawChart();
   drawChartDayNight([day, night]);
   document.querySelectorAll(".piechart--container").forEach((chart) => {
@@ -105,8 +106,15 @@ const onRenderPage = (pagename) => {
     triggerClass(element, "svg--bubbles");
   });
 
-  document.querySelectorAll(".slide--didyouknow-box").forEach((element) => {
-    //triggerClass(element, "slide--didyouknow-animate");
+  await delay(1000);
+  document.querySelectorAll(".slide--didyouknow-box").forEach(async (element) => {
+    element.querySelector(".weetje").innerHTML = didyouknow[Math.round(Math.random() * (didyouknow.length - 1))];
+    element.classList.add("slide--didyouknow-animate");
+    await delay((slideLength - 1) * 1000);
+    element.classList.remove("slide--didyouknow-animate");
+    element.classList.add("slide--didyouknow-animate-again");
+    await delay(500);
+    element.classList.remove("slide--didyouknow-animate-again");
   });
 };
 
@@ -165,6 +173,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   const tree = await fetchJSON("./tree.json");
+  didyouknow = await fetchJSON("./data/facts.json");
+
   skeletonSlide = await fetchFile("./skeletonSlide.html");
   pageNames = lookupList(tree["slide"], ".html");
   if (staticSlideNr == -1) {
