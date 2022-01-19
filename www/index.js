@@ -76,7 +76,7 @@ const loop = async () => {
   }
   window.scroll({
     top: 0,
-    left: (slideNr / pages.length) * screen.width,
+    left: slideNr * screen.width,
     behavior: "smooth",
   });
 
@@ -104,7 +104,7 @@ window.onresize = () => {
 
   window.scroll({
     top: 0,
-    left: (slideNr / pages.length) * screen.width,
+    left: slideNr * screen.width,
   });
 };
 
