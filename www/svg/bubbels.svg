@@ -9,11 +9,11 @@
         fill: #b9dcf8;
       }
 
-      .cls-3 {
+      .cls-bubbles_2 {
         fill: #1e87e3;
       }
 
-      .cls-4 {
+      .cls-secondary_2 {
         fill: #8fc9f7;
       }
     </style>
@@ -38,19 +38,19 @@
       </g>
     </g>
     <g id="Bubble_6" data-name="Bubble 6">
-      <circle class="cls-3" cx="60.97" cy="43.84" r="5.45"/>
+      <circle class="cls-bubbles_2" cx="60.97" cy="43.84" r="5.45"/>
     </g>
     <g id="Bubble_7" data-name="Bubble 7">
-      <circle class="cls-3" cx="48.35" cy="41.5" r="3.25"/>
+      <circle class="cls-bubbles_2" cx="48.35" cy="41.5" r="3.25"/>
     </g>
     <g id="Bubble_5" data-name="Bubble 5">
-      <circle class="cls-3" cx="87.72" cy="38.87" r="5.45"/>
+      <circle class="cls-bubbles_2" cx="87.72" cy="38.87" r="5.45"/>
     </g>
     <g id="Bubble_2" data-name="Bubble 2">
-      <circle class="cls-3" cx="70.86" cy="22.04" r="5.45"/>
+      <circle class="cls-bubbles_2" cx="70.86" cy="22.04" r="5.45"/>
     </g>
     <g id="Bubble_4" data-name="Bubble 4">
-      <circle class="cls-3" cx="25.55" cy="34.27" r="6.36"/>
+      <circle class="cls-bubbles_2" cx="25.55" cy="34.27" r="6.36"/>
     </g>
   </g>
   <g id="Group_2" data-name="Group 2">
@@ -73,16 +73,16 @@
       </g>
     </g>
     <g id="Bubble_5-2" data-name="Bubble 5">
-      <circle class="cls-3" cx="55.52" cy="26.27" r="2.23"/>
+      <circle class="cls-bubbles_2" cx="55.52" cy="26.27" r="2.23"/>
     </g>
     <g id="Bubble_8" data-name="Bubble 8">
-      <circle class="cls-3" cx="12.67" cy="39.37" r="5.62"/>
+      <circle class="cls-bubbles_2" cx="12.67" cy="39.37" r="5.62"/>
     </g>
     <g id="Bubble_6-2" data-name="Bubble 6">
-      <circle class="cls-3" cx="81.23" cy="32.21" r="4.48"/>
+      <circle class="cls-bubbles_2" cx="81.23" cy="32.21" r="4.48"/>
     </g>
     <g id="Bubble_7-2" data-name="Bubble 7">
-      <circle class="cls-3" cx="56.57" cy="33.88" r="3.92"/>
+      <circle class="cls-bubbles_2" cx="56.57" cy="33.88" r="3.92"/>
     </g>
     <g id="Bubble_4-2" data-name="Bubble 4">
       <g id="Bubble_1-6" data-name="Bubble 1">
@@ -94,51 +94,51 @@
       </g>
     </g>
     <g id="Bubble_1-2" data-name="Bubble 1">
-      <circle class="cls-3" cx="77.96" cy="21.96" r="4.31"/>
+      <circle class="cls-bubbles_2" cx="77.96" cy="21.96" r="4.31"/>
     </g>
   </g>
   <g id="Group_3" data-name="Group 3">
     <g id="Bubble_6-3" data-name="Bubble 6">
       <g id="Bubble_1-8" data-name="Bubble 1">
-        <circle class="cls-3" cx="79.83" cy="28.43" r="19.66"/>
+        <circle class="cls-bubbles_2" cx="79.83" cy="28.43" r="19.66"/>
       </g>
       <g>
-        <path class="cls-3" d="M109.33,48.33a14.35,14.35,0,0,0-4.33,2c-5.16,3.55-6.24,9.51-6.47,11" transform="translate(-32.14 -32.67)"/>
-        <path class="cls-4" d="M108.93,46.89a15.77,15.77,0,0,0-9.42,7.23A19,19,0,0,0,97.09,61a1.54,1.54,0,0,0,1,1.84A1.5,1.5,0,0,0,100,61.76a18.92,18.92,0,0,1,.51-2.35,14.36,14.36,0,0,1,1.44-3.48,12.78,12.78,0,0,1,7.8-6.15,1.5,1.5,0,0,0-.8-2.89Z" transform="translate(-32.14 -32.67)"/>
+        <path class="cls-bubbles_2" d="M109.33,48.33a14.35,14.35,0,0,0-4.33,2c-5.16,3.55-6.24,9.51-6.47,11" transform="translate(-32.14 -32.67)"/>
+        <path class="cls-secondary_2" d="M108.93,46.89a15.77,15.77,0,0,0-9.42,7.23A19,19,0,0,0,97.09,61a1.54,1.54,0,0,0,1,1.84A1.5,1.5,0,0,0,100,61.76a18.92,18.92,0,0,1,.51-2.35,14.36,14.36,0,0,1,1.44-3.48,12.78,12.78,0,0,1,7.8-6.15,1.5,1.5,0,0,0-.8-2.89Z" transform="translate(-32.14 -32.67)"/>
       </g>
     </g>
     <g id="Bubble_10" data-name="Bubble 10">
       <g id="Bubble_1-9" data-name="Bubble 1">
-        <circle class="cls-3" cx="19.66" cy="40.6" r="19.66"/>
+        <circle class="cls-bubbles_2" cx="19.66" cy="40.6" r="19.66"/>
       </g>
       <g>
-        <path class="cls-3" d="M49.16,60.5a14.35,14.35,0,0,0-4.33,2C39.67,66,38.59,72,38.36,73.54" transform="translate(-32.14 -32.67)"/>
-        <path class="cls-4" d="M48.76,59.06a15.82,15.82,0,0,0-9.43,7.23,19.2,19.2,0,0,0-2.41,6.85A1.54,1.54,0,0,0,38,75a1.5,1.5,0,0,0,1.84-1,18.69,18.69,0,0,1,.51-2.36,14.36,14.36,0,0,1,1.44-3.48A12.78,12.78,0,0,1,49.56,62a1.5,1.5,0,0,0-.8-2.89Z" transform="translate(-32.14 -32.67)"/>
+        <path class="cls-bubbles_2" d="M49.16,60.5a14.35,14.35,0,0,0-4.33,2C39.67,66,38.59,72,38.36,73.54" transform="translate(-32.14 -32.67)"/>
+        <path class="cls-secondary_2" d="M48.76,59.06a15.82,15.82,0,0,0-9.43,7.23,19.2,19.2,0,0,0-2.41,6.85A1.54,1.54,0,0,0,38,75a1.5,1.5,0,0,0,1.84-1,18.69,18.69,0,0,1,.51-2.36,14.36,14.36,0,0,1,1.44-3.48A12.78,12.78,0,0,1,49.56,62a1.5,1.5,0,0,0-.8-2.89Z" transform="translate(-32.14 -32.67)"/>
       </g>
     </g>
     <g id="Bubble_4-3" data-name="Bubble 4">
-      <circle class="cls-3" cx="60.97" cy="9.92" r="5.45"/>
+      <circle class="cls-bubbles_2" cx="60.97" cy="9.92" r="5.45"/>
     </g>
     <g id="Bubble_5-3" data-name="Bubble 5">
-      <circle class="cls-3" cx="49.35" cy="13.31" r="3.96"/>
+      <circle class="cls-bubbles_2" cx="49.35" cy="13.31" r="3.96"/>
     </g>
     <g id="Bubble_9" data-name="Bubble 9">
-      <circle class="cls-3" cx="52.62" cy="24.13" r="6.21"/>
+      <circle class="cls-bubbles_2" cx="52.62" cy="24.13" r="6.21"/>
     </g>
     <g id="Bubble_7-3" data-name="Bubble 7">
-      <circle class="cls-3" cx="36.13" cy="16.41" r="5.45"/>
+      <circle class="cls-bubbles_2" cx="36.13" cy="16.41" r="5.45"/>
     </g>
     <g id="Bubble_8-3" data-name="Bubble 8">
-      <circle class="cls-3" cx="20.92" cy="16.41" r="3.9"/>
+      <circle class="cls-bubbles_2" cx="20.92" cy="16.41" r="3.9"/>
     </g>
     <g id="Bubble_1-3" data-name="Bubble 1">
-      <circle class="cls-3" cx="71.02" cy="5.2" r="3.57"/>
+      <circle class="cls-bubbles_2" cx="71.02" cy="5.2" r="3.57"/>
     </g>
     <g id="Bubble_2-3" data-name="Bubble 2">
-      <circle class="cls-3" cx="88.89" cy="4.68" r="4.68"/>
+      <circle class="cls-bubbles_2" cx="88.89" cy="4.68" r="4.68"/>
     </g>
     <g id="Bubble_3-3" data-name="Bubble 3">
-      <circle class="cls-3" cx="101.99" cy="9.92" r="6.49"/>
+      <circle class="cls-bubbles_2" cx="101.99" cy="9.92" r="6.49"/>
     </g>
     <g id="Bubble_11" data-name="Bubble 11">
       <g id="Bubble_1-11" data-name="Bubble 1">
