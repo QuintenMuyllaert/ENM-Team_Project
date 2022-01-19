@@ -203,7 +203,6 @@ body {
   height: 7rem;
   display: grid;
   grid-template-columns: auto auto;
-  animation: didyouanimate ease 2s;
   overflow: hidden;
   margin: 1rem;
   margin-right: 2rem;
@@ -212,6 +211,17 @@ body {
   background-color: var(--global-color-background);
   border-radius: 1.5rem;
   align-items: center;
+}
+
+.slide--didyouknow-animate {
+  animation: didyouanimate ease 2s;
+  animation-iteration-count: infinite;
+}
+
+.slide--didyouknow-animate-again {
+  animation: didyouanimate ease 2s;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
 }
 
 .slide--didyouknow-box svg {
@@ -233,11 +243,17 @@ body {
 }
 
 @keyframes didyouanimate {
-  from {
+  0% {
     width: 0;
+    opacity: 0;
   }
-  to {
+  50% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
     width: 25rem;
+    opacity: 1;
   }
 }
 
