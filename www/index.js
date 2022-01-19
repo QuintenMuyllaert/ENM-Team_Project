@@ -1,7 +1,7 @@
-const staticSlideNr = 0; //DON'T COMMIT THIS LINE!
-const showEndAnimation = false;
+const staticSlideNr = -1; //DON'T COMMIT THIS LINE!
+const showEndAnimation = true;
 const useScalingFunction = true;
-const slideLength = 10;
+const slideLength = 15;
 const endAnimationLength = 5000;
 
 const pages = [];
@@ -35,6 +35,7 @@ socket.on("Influx", (data) => {
   console.log(day, night);
   drawChartDayNight([day, night]);
 });
+
 socket.emit("data", 7);
 socket.on("Influx_week", (data) => {
   let night_week = 0;
