@@ -310,7 +310,7 @@ body {
 }
 
 .piechart--container {
-  --piechart-size: 20rem;
+  --piechart-size: 18rem;
   display: grid;
   grid-template-columns: var(--piechart-size) auto;
   height: var(--piechart-size);

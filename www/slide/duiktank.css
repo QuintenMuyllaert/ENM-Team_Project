@@ -19,17 +19,20 @@
   */
   
   .duiktank--header {
-    grid-area: 1/1/2/25;
-    --vertical-grid: 24;
-    display: grid;
-    grid-template-columns: repeat(var(--vertical-grid), minmax(0, calc(100% / var(--vertical-grid))));
+    grid-area: 1/2/2/25;
+    padding-top: 2%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 130%;
+    text-decoration: underline;
   }
 
   .duiktank--title {
-    grid-area: 1/1/2/3; /* row start, column start --> row end, column end*/
+    grid-area: 1/2/2/4; /* row start, column start --> row end, column end*/
     font-size: 2em;
     font-weight: 500;
-    padding: 5px 0 0 5px;
+    display: flex;
+    justify-content: start;
   }
   
   .duiktank--weetje {
@@ -69,7 +72,15 @@
   */
 
   .duiktank--main-graph {
-    grid-area: 3/2/12/13;
+    grid-area: 3/2/10/13;
+  }
+
+  .duiktank--data-below-left {
+    grid-area: 10/2/12/7;
+  }
+
+  .duiktank--data-below-middle {
+    grid-area: 10/7/12/13;
   }
 
   .duiktank--data-above-left {
@@ -90,6 +101,13 @@
 
   .duiktank--piechart {
     grid-area: 7/14/12/24;
+    display: flex;
+  }
+
+  .duiktank--piechart-title {
+    padding: 2% 7%;
+    font-size: 200%;
+    color: gray;
   }
 
   /*
@@ -209,21 +227,41 @@
   .duiktank--item-big-day {
     display: flex;
     gap: 2%;
-    /* justify-content: center; */
+    justify-content: space-between;
     align-items: center;
+    height: 100%;
   }
 
   .duiktank--item-big-day-info {
+    padding-left: 5%;
     font-size: 150%;
-    font-weight: bold;;
+    font-weight: bold;
+    width: 100%;
+  }
+
+  .duiktank--item-big-night-info {
+    padding-left: 5%;
+    font-size: 150%;
+    font-weight: bold;
+    width: 100%;
   }
 
   .duiktank--item-big-day-icon {
     height: 100%;
     width: 100%;
+    display: flex;
+    justify-content: end;
+    padding-right: 5%;
+    align-items: center;
+  }
+  
+  .duiktank--item-piechart {
+    height: 100%;
+    padding: 0 5% 0 5%;
+    display: flex;
+    align-items: center;
   }
 
-  .duiktank--item-big-night-info {
-    font-size: 150%;
-    font-weight: bold;
+  .duiktank--piechart-legend {
+    padding-left: 40%;
   }
