@@ -141,6 +141,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.querySelector(".main-container").innerHTML = html;
 
   drawChart();
+  drawChartDayNight();
   document.querySelectorAll(".piechart-container").forEach((chart) => {
     //chart <html>, title "", data [], labels []
     drawPie(chart);

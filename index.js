@@ -62,6 +62,15 @@ io.on("connection", (socket) => {
     socket.emit("Influx", ret);
   });
 
+  socket.on("forget", async (code) => {
+    var verfied = speakeasy.totp.verify({
+      secret: `${config.twofactor}`,
+      encoding: "ascii",
+      token: `${code}`,
+    });
+    console.log(verfied);
+  });
+
   socket.auth = false;
   socket.on("auth", async (obj) => {
     if (!obj) {
