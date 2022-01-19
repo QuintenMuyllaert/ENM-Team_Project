@@ -87,7 +87,7 @@ const onRenderPage = async (pagename) => {
 
   await delay(1000);
   document.querySelectorAll(".slide--didyouknow-box").forEach(async (element) => {
-    element.querySelector(".weetje").innerHTML = didyouknow[Math.round(Math.random() * didyouknow.length - 1)];
+    element.querySelector(".weetje").innerHTML = didyouknow[Math.round(Math.random() * (didyouknow.length - 1))];
     element.classList.add("slide--didyouknow-animate");
     await delay((slideLength - 1) * 1000);
     element.classList.remove("slide--didyouknow-animate");
