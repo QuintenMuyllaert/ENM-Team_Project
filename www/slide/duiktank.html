@@ -1,20 +1,101 @@
-<div class="duiktank">
-  <h1 class="title duiktank--title">De duiktank</h1>
-  <div class="duiktank--sub">
-    <p>Op de Transfo is er een duiktank aanwezig voor de liefhebbers.</p>
+<main class="duiktank">
+  <header class="duiktank--header">
+    <p class="duiktank--title">Duiktank</p>
+  </header>
+
+  <div class="duiktank--item duiktank--item-big duiktank--main-graph">
+    <p class="duiktank--item-big-title">Grafiek energie opbrengst dag/nacht</p>
+    <canvas class="duiktank--item-graph js-day-night"></canvas>
+    <div class="duiktank--item-big-info">
+      <div class="duiktank--item-big-day">
+        <p class="duiktank--item-big-day-info">Opbrengst dag: 1234 kW</p>
+        <picture class="duiktank--item-big-day-icon">
+          <img src="../img/sun.png" alt="">
+        </picture>
+      </div>
+      <p class="duiktank--item-big-night-info">Opbrengst nacht: 1234 kW</p>
+    </div>
   </div>
+  <div class="duiktank--item duiktank--item-small duiktank--data-above-left">
+    <div class="duiktank--item-style-info">
+      <picture class="duiktank--item-icon">
+        <svg class="svg--bliksem" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50.44 100.83">
+          <defs>
+            <style>
+              .a {
+                fill: #ff9c2a;
+              }
+        
+              .b {
+                fill: #ffe00a;
+              }
+            </style>
+          </defs>
+          <polygon class="a svg--1" points="36.15 36.26 23.35 36.26 37.34 0 20.49 0 0 53.11 0.4 53.11 16.85 53.11 26.73 53.11 8.25 100.83 50.06 36.37 50.11 36.26 36.15 36.26 36.15 36.26" />
+          <polygon class="b svg--2" points="50.44 36.26 44.25 36.26 41.91 36.26 23.83 36.26 37.08 0.71 37.11 0.63 37.31 0.11 37.3 0.11 37.31 0.07 37.34 0 30.91 0 30.91 0 30.84 0 11.03 44.54 16.49 44.63 16.48 44.65 19.54 44.65 20.7 44.65 21.19 44.65 30.94 44.65 37.53 44.65 8.25 100.83 50.44 36.26" />
+        </svg>
+      </picture>
+      <div class="duiktank--item-info">
+        <div class="duiktank--item-line">
+          <p class="duiktank--item-value">1234</p>
+          <p class="duiktank--item-unit">kW</p>
+          <div class="duiktank--item-arrow">
+            <img class="duiktank--item-arrow-image" src="../img/arrow-up.png" alt="">
+          </div>
+        </div>
+        <p class="duiktank--item-title">Opbrengst/week</p>
+      </div>
+    </div>
+  </div>
+  <div class="duiktank--item duiktank--item-small duiktank--data-above-right">
+    <div class="duiktank--item-style-vergelijking">
+      <div class="duiktank--item-line-vergelijking">
+        <p class="duiktank--item-value">1234</p>
+        <p class="duiktank--item-unit">kW</p>
+      </div>
+      <div class="duiktank--item-icons-vergelijking">
+        <img src="../img/car.png" alt="">
+        <img src="../img/car.png" alt="">
+        <img src="../img/car.png" alt="">
+      </div>
+      <p class="duiktank--item-title-vergelijking">Vergelijking elektrische wagens</p>
+    </div>
+  </div>
+  <div class="duiktank--item duiktank--item-small duiktank--data-middle-left">
+    <div class="duiktank--item-style-info">
+      <picture class="duiktank--item-icon">
+        <svg class="svg--bliksem" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50.44 100.83">
+          <defs>
+            <style>
+              .a {
+                fill: #ff9c2a;
+              }
+        
+              .b {
+                fill: #ffe00a;
+              }
+            </style>
+          </defs>
+          <polygon class="a svg--1" points="36.15 36.26 23.35 36.26 37.34 0 20.49 0 0 53.11 0.4 53.11 16.85 53.11 26.73 53.11 8.25 100.83 50.06 36.37 50.11 36.26 36.15 36.26 36.15 36.26" />
+          <polygon class="b svg--2" points="50.44 36.26 44.25 36.26 41.91 36.26 23.83 36.26 37.08 0.71 37.11 0.63 37.31 0.11 37.3 0.11 37.31 0.07 37.34 0 30.91 0 30.91 0 30.84 0 11.03 44.54 16.49 44.63 16.48 44.65 19.54 44.65 20.7 44.65 21.19 44.65 30.94 44.65 37.53 44.65 8.25 100.83 50.44 36.26" />
+        </svg>
+      </picture>
+      <div class="duiktank--item-info">
 
-  <picture class="duiktank--picture">
-    <img class="duiktank--image" src="./img/duiktank.png" alt="foto van duikers in de duiktank" />
-  </picture>
+        <div class="duiktank--item-line">
+          <p class="duiktank--item-value">1234</p>
+          <p class="duiktank--item-unit">kW</p>
+          <div class="duiktank--item-arrow">
+            <img class="duiktank--item-arrow-image" src="../img/arrow-down.png" alt="">
+          </div>
+        </div>
 
-  <!-- <div class="duiktank--info-case">
-        <p class="duiktank--info">Opgewekte energie (heden): </p>
-        <p class="duiktank--info">Opgewekte energie (afgelopen maand): </p>
-        <p class="duiktank--info">Opgewekte energie (afgelopen jaar): </p>
-    </div> -->
+        <p class="duiktank--item-title">Verbruik/week</p>
 
-  <p class="duiktank--weetje duiktank--weetje-links">Een gemiddeld gezin verbruikt 2741kWh/jaar</p>
+      </div>
 
-  <p class="duiktank--weetje duiktank--weetje-rechts">Een gemiddeld gezin verbruikt 2741kWh/jaar</p>
-</div>
+    </div>
+  </div>
+  <!-- <div class="duiktank--item duiktank--item-small duiktank--data-middle-right"></div> -->
+  <div class="duiktank--item duiktank--item-small duiktank--piechart"></div>
+</main>
