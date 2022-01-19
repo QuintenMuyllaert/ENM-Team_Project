@@ -47,7 +47,20 @@ const drawChartDayNight = async (data = [20, 10]) => {
       scales: {
         y: {
           beginAtZero: true,
+          ticks: {
+            font: {
+              size: 40,
+            }
+          }
         },
+        x: {
+          beginAtZero: true,
+          ticks: {
+            font: {
+              size: 40,
+            }
+          }
+        }
       },
     },
   });
