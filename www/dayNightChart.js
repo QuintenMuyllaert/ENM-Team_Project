@@ -1,4 +1,4 @@
-const drawChartDayNight = async (data = [20, 10]) => {
+const drawChartDayNight = async (data) => {
   const chartHTML = document.querySelector(".js-day-night");
   if (!chartHTML) {
     return;

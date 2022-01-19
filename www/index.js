@@ -1,13 +1,32 @@
 const staticSlideNr = -1; //DON'T COMMIT THIS LINE!
 const showEndAnimation = true;
 const useScalingFunction = true;
-const slideLength = 3;
+const slideLength = 10;
 
 const pages = [];
 let pageNames;
 let slideNr = 0;
 let skeletonSlide = "";
 
+let day = 0;
+let night = 0;
+socket.emit("data", 1);
+socket.on("Influx", (data) => {
+  console.log(data);
+
+  for (waarde of data.TotaalNet) {
+    const time = parseInt(waarde._time.split("T")[1].split(":")[0]);
+    if (time >= 22 || time < 6) {
+      night += waarde._value;
+    } else {
+      day += waarde._value;
+    }
+  }
+  night = night / 1000;
+  day = day / 1000;
+  console.log(day, night);
+  drawChartDayNight([day, night]);
+});
 const delay = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time));
 };
@@ -52,7 +71,7 @@ const triggerClass = async (element, className) => {
 
 const onRenderPage = (pagename) => {
   drawChart();
-  drawChartDayNight();
+  drawChartDayNight([day, night]);
   document.querySelectorAll(".piechart--container").forEach((chart) => {
     //chart <html>, title "", data [], labels []
     drawPie(chart);
