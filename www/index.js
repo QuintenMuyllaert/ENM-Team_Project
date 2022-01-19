@@ -1,7 +1,7 @@
 const staticSlideNr = -1; //DON'T COMMIT THIS LINE!
-const showEndAnimation = false;
+const showEndAnimation = true;
 const useScalingFunction = true;
-const slideLength = 10;
+const slideLength = 3;
 
 const pages = [];
 let pageNames;
@@ -50,6 +50,23 @@ const triggerClass = async (element, className) => {
   element.classList.add(className);
 };
 
+const onRenderPage = (pagename) => {
+  drawChart();
+  drawChartDayNight();
+  document.querySelectorAll(".piechart--container").forEach((chart) => {
+    //chart <html>, title "", data [], labels []
+    drawPie(chart);
+  });
+
+  document.querySelectorAll(".bubbles").forEach((element) => {
+    triggerClass(element, "svg--bubbles");
+  });
+
+  document.querySelectorAll(".slide--didyouknow-box").forEach((element) => {
+    //triggerClass(element, "slide--didyouknow-animate");
+  });
+};
+
 const loopHandle = async () => {
   await loop();
   setTimeout(async () => {
@@ -72,7 +89,7 @@ const loop = async () => {
       top: 0,
       left: 0,
     });
-    await delay(3000);
+    await delay(1500);
   }
   window.scroll({
     top: 0,
@@ -80,19 +97,7 @@ const loop = async () => {
     behavior: "smooth",
   });
 
-  console.log(pageNames[slideNr]);
-
-  drawChart();
-  document.querySelectorAll(".piechart--container").forEach((chart) => {
-    //chart <html>, title "", data [], labels []
-    drawPie(chart);
-  });
-
-  document.querySelectorAll(".bubbles").forEach((bubble) => {
-    console.log(bubble);
-
-    triggerClass(bubble, "svg--bubbles");
-  });
+  onRenderPage(pageNames[slideNr]);
 };
 
 window.onresize = () => {
@@ -139,13 +144,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     html += generateSlide(page);
   });
   document.querySelector(".main-container").innerHTML = html;
-
-  drawChart();
-  drawChartDayNight();
-  document.querySelectorAll(".piechart-container").forEach((chart) => {
-    //chart <html>, title "", data [], labels []
-    drawPie(chart);
-  });
 
   loopHandle();
 });
