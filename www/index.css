@@ -211,17 +211,19 @@ body {
   background-color: var(--global-color-background);
   border-radius: 1.5rem;
   align-items: center;
+  opacity: 0;
 }
 
 .slide--didyouknow-animate {
+  opacity: 1;
+  width: 25rem;
   animation: didyouanimate ease 2s;
-  animation-iteration-count: infinite;
 }
 
 .slide--didyouknow-animate-again {
-  animation: didyouanimate ease 2s;
-  animation-iteration-count: infinite;
-  animation-direction: reverse;
+  opacity: 0;
+  width: 0;
+  animation: didyouanimate2 ease 1s;
 }
 
 .slide--didyouknow-box svg {
@@ -254,6 +256,21 @@ body {
   100% {
     width: 25rem;
     opacity: 1;
+  }
+}
+
+@keyframes didyouanimate2 {
+  0% {
+    width: 25rem;
+    opacity: 1;
+  }
+  50% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
   }
 }
 
