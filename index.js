@@ -15,6 +15,7 @@ const config = fs.existsSync(path.join(__dirname, "config.json")) ? require("./c
 const { bucket } = config;
 Date.prototype.minusDays = function (days) {
   var date = new Date(this.valueOf());
+  date.setHours(1, 0, 0, 0);
   date.setDate(date.getDate() - days);
   return date;
 };
@@ -46,6 +47,7 @@ io.on("connection", (socket) => {
       return;
     }
     let today = new Date(Date.now());
+    today.setHours(1, 0, 0, 0);
     const stopdate = today.toISOString();
     today = today.minusDays(msg);
     const startdate = today.toISOString();
@@ -54,9 +56,9 @@ io.on("connection", (socket) => {
     const ret = {};
     for (const thing of data) {
       if (!ret[thing._field]) {
-        ret[thing._field] = [thing._value];
+        ret[thing._field] = [thing];
       } else {
-        ret[thing._field].push(thing._value);
+        ret[thing._field].push(thing);
       }
     }
     socket.emit("Influx", ret);
