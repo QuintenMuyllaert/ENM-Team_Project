@@ -14,6 +14,14 @@
   animation-delay: 0.3s;
 }
 
+.svg--auto-carroserie {
+  animation-name: animation_carroserie;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
 @keyframes animation_wielen {
   0% {
     transform: translateY(-2%);
@@ -25,6 +33,12 @@
     transform: translateY(0%);
   }
   100% {
+    transform: translateY(-2%);
+  }
+}
+
+@keyframes animation_carroserie {
+  0% {
     transform: translateY(-2%);
   }
 }

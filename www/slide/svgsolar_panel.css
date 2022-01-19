@@ -1,0 +1,27 @@
+.svg--solar-panel-light {
+  animation-name: solar-light;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.svg--solar-panel-stand {
+  animation-name: solar-stand;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes solar-light {
+  0% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes solar-stand {
+  0% {
+    transform: translateY(-2%);
+  }
+}
