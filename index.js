@@ -64,7 +64,7 @@ io.on("connection", (socket) => {
 
   socket.on("forget", async (code) => {
     var verfied = speakeasy.totp.verify({
-      secret: "^i[Cug[c{g633W:dBJXVo.ttolaodhZ?",
+      secret: `${config.twofactor}`,
       encoding: "ascii",
       token: `${code}`,
     });
