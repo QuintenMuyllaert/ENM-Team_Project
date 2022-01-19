@@ -83,7 +83,7 @@ const loop = async () => {
   console.log(pageNames[slideNr]);
 
   drawChart();
-  document.querySelectorAll(".piechart-container").forEach((chart) => {
+  document.querySelectorAll(".piechart--container").forEach((chart) => {
     //chart <html>, title "", data [], labels []
     drawPie(chart);
   });

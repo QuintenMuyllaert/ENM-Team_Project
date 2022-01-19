@@ -359,7 +359,7 @@ body {
 .piechart--info-legend-item {
   display: grid;
   grid-template-columns: 1rem auto;
-  gap: 0.5rem;
+  gap: 5%;
   padding-top: 0.5rem;
 }
 
