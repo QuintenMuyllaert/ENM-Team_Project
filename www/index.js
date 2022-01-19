@@ -24,6 +24,9 @@ socket.on("Influx", (data) => {
   }
   night = night / 1000;
   day = day / 1000;
+  document.querySelector(".js-day").innerText = `Opbrengst dag: ${day.toFixed(2)} kW`;
+  document.querySelector(".js-night").innerText = `Opbrengst dag: ${night.toFixed(2)} kW`;
+
   console.log(day, night);
   drawChartDayNight([day, night]);
 });
@@ -69,7 +72,7 @@ const triggerClass = async (element, className) => {
   element.classList.add(className);
 };
 
-const onRenderPage = async (pagename) => {
+const onRenderPage = (pagename) => {
   drawChart();
   drawChartDayNight([day, night]);
   document.querySelectorAll(".piechart--container").forEach((chart) => {
@@ -81,14 +84,8 @@ const onRenderPage = async (pagename) => {
     triggerClass(element, "svg--bubbles");
   });
 
-  await delay(1000);
-  document.querySelectorAll(".slide--didyouknow-box").forEach(async (element) => {
-    element.classList.add("slide--didyouknow-animate");
-    await delay((slideLength - 1) * 1000);
-    element.classList.remove("slide--didyouknow-animate");
-    element.classList.add("slide--didyouknow-animate-again");
-    await delay(500);
-    element.classList.remove("slide--didyouknow-animate-again");
+  document.querySelectorAll(".slide--didyouknow-box").forEach((element) => {
+    //triggerClass(element, "slide--didyouknow-animate");
   });
 };
 
@@ -121,7 +118,8 @@ const loop = async () => {
     left: slideNr * screen.width,
     behavior: "smooth",
   });
-  onRenderPage();
+
+  onRenderPage(pageNames[slideNr]);
 };
 
 window.onresize = () => {
