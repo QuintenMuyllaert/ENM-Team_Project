@@ -32,7 +32,7 @@ socket.on("connect", () => {
     document.querySelector(".js-oneday").innerText = `${total.toFixed(2)}`;
 
     console.log(day, night);
-    drawChartDayNight([day, night]);
+    renderChartDayNight([day, night]);
   });
 
   socket.emit("data", 7);

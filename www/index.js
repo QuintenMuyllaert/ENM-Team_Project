@@ -28,7 +28,7 @@ const fetchJSON = async (url) => {
 };
 
 const fetchTxt = async (url) => {
-  const data = await fetch(url);
+  const data = await fetchString(url);
   return data.split("\n");
 };
 
@@ -60,7 +60,7 @@ const triggerClass = async (element, className) => {
   element.classList.add(className);
 };
 
-const showDidYouKnow = async () => {
+const renderDidYouKnow = async () => {
   await delay(1000);
   document.querySelectorAll(".slide--didyouknow-box").forEach(async (element) => {
     element.querySelector(".weetje").innerHTML = didyouknow[Math.round(Math.random() * (didyouknow.length - 1))];
@@ -74,19 +74,19 @@ const showDidYouKnow = async () => {
 };
 
 const onRenderPage = async (pagename) => {
-  drawChart();
-  drawChartDayNight([day, night]);
+  renderChartElectrical();
+  renderChartDayNight([day, night]);
   document.querySelectorAll(".piechart--container").forEach((chart) => {
     //chart <html>, title "", data [], labels []
-    drawPie(chart);
+    renderChartPie(chart);
   });
 
   document.querySelectorAll(".bubbles").forEach((element) => {
     triggerClass(element, "svg--bubbles");
   });
 
-  showDidYouKnow();
-  quiz();
+  renderDidYouKnow();
+  renderQuiz();
 };
 
 const loopHandle = async () => {
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   const tree = await fetchJSON("./tree.json");
-  didyouknow = await fetchJSON("./data/facts.csv");
+  didyouknow = await fetchTxt("./data/facts.csv");
   questions = await fetchJSON("./data/questions.json");
 
   skeletonSlide = await fetchString("./skeletonSlide.html");
