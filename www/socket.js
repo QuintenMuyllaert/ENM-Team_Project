@@ -12,8 +12,11 @@ socket.on("connect", () => {
   });
 
   socket.on("Influx", (data) => {
+    if (!data.TotaalNet) {
+      return;
+    }
+
     if (!data.TotaalNet.length) {
-      console.log("No totaalnet data received!");
       return;
     }
 
@@ -33,8 +36,11 @@ socket.on("connect", () => {
   });
 
   socket.on("Influx_week", (data) => {
+    if (!data.TotaalNet) {
+      return;
+    }
+
     if (!data.TotaalNet.length) {
-      console.log("No totaalnet data received!");
       return;
     }
 

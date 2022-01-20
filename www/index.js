@@ -81,15 +81,33 @@ const renderDayNight = () => {
   if (!loaded) {
     return;
   }
-  document.querySelector(".js-day").innerText = `Verbruik dag: ${day.toFixed(2)} kW`;
-  document.querySelector(".js-night").innerText = `Verbruik nacht: ${night.toFixed(2)} kW`;
+  const htmlDay = document.querySelector(".js-day");
+  if (htmlDay) {
+    htmlDay.innerText = `Verbruik dag: ${day.toFixed(2)} kW`;
+  }
+
+  const htmlNight = document.querySelector(".js-night");
+  if (htmlNight) {
+    htmlNight.innerText = `Verbruik nacht: ${night.toFixed(2)} kW`;
+  }
+
   const total = day + night;
-  document.querySelector(".js-oneday").innerText = `${total.toFixed(2)}`;
+  const htmlTotal = document.querySelector(".js-oneday");
+  if (htmlTotal) {
+    htmlTotal.innerText = total.toFixed(2);
+  }
+
+  const htmlDayWeek = document.querySelector(".js-dagweek");
+  if (htmlDayWeek) {
+    htmlDayWeek.innerText = day_week.toFixed(2);
+  }
+
+  const htmlNightWeek = document.querySelector(".js-nightweek");
+  if (htmlNightWeek) {
+    htmlNightWeek.innerText = night_week.toFixed(2);
+  }
 
   renderChartDayNight([day, night]);
-
-  document.querySelector(".js-dagweek").innerText = `${day_week.toFixed(2)}`;
-  document.querySelector(".js-nightweek").innerText = `${night_week.toFixed(2)}`;
 };
 
 const onRenderPage = async (pagename) => {
