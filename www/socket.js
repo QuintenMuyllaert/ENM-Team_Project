@@ -32,6 +32,16 @@ socket.on("connect", () => {
     }
     night = night / 1000;
     day = day / 1000;
+    for (key in pie) {
+      let catogorie_value = 0;
+      for (waarde of data[key]) {
+        catogorie_value += waarde._value;
+      }
+      catogorie_value = catogorie_value / 1000;
+      pie[key] = catogorie_value.toFixed(2);
+    }
+    console.log(pie);
+
     renderDayNight();
   });
 
