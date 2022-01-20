@@ -7,7 +7,7 @@ let connected = false;
 let auth = false;
 let passwordShow = false;
 
-let usernameHTML, passwordHTML, authButtonHTML, passwordToggle;
+let htmlUsername, htmlPassword, htmlButtonAuth, htmlButtonShowPassword;
 
 socket.on("connect", () => {
   connected = true;
@@ -19,21 +19,21 @@ socket.on("connect", () => {
       console.log("Authentication successfull!");
       //add green class to fields...
       auth = true;
-      usernameHTML.value = "";
-      passwordHTML.value = "";
+      htmlUsername.value = "";
+      htmlPassword.value = "";
     } else {
       console.log("Authentication failed!");
       //add error class to fields...
       auth = false;
-      usernameHTML.disabled = false;
-      passwordHTML.disabled = false;
-      authButtonHTML.disabled = false;
+      htmlUsername.disabled = false;
+      htmlPassword.disabled = false;
+      htmlPassword.disabled = false;
     }
 
-    usernameHTML.classList[!auth ? "add" : "remove"]("admin-authentication-error");
-    passwordHTML.classList[!auth ? "add" : "remove"]("admin-authentication-error");
-    usernameHTML.classList[auth ? "add" : "remove"]("admin-authentication-success");
-    passwordHTML.classList[auth ? "add" : "remove"]("admin-authentication-success");
+    htmlUsername.classList[!auth ? "add" : "remove"]("admin--authentication-error");
+    htmlPassword.classList[!auth ? "add" : "remove"]("admin--authentication-error");
+    htmlUsername.classList[auth ? "add" : "remove"]("admin--authentication-success");
+    htmlPassword.classList[auth ? "add" : "remove"]("admin--authentication-success");
 
     if (!auth) {
       return;
@@ -54,28 +54,27 @@ socket.on("connect", () => {
 });
 
 document.addEventListener("DOMContentLoaded", async () => {
-  usernameHTML = document.querySelector(".admin-authentication-login");
-  passwordHTML = document.querySelector(".admin-authentication-password");
-  authButtonHTML = document.querySelector(".admin-authentication");
-  passwordToggle = document.querySelector(".admin-fieldset-password-checkbox");
-  passwordIconShow = document.querySelector(".admin-fieldset-password-icon-show");
-  passwordIconHide = document.querySelector(".admin-fieldset-password-icon-hide");
-  passwordText = document.querySelector(".admin-authentication-password");
+  htmlUsername = document.querySelector(".admin--authentication-login");
+  htmlPassword = document.querySelector(".admin--authentication-password");
+  htmlButtonAuth = document.querySelector(".admin--authentication");
+  htmlButtonShowPassword = document.querySelector(".admin--fieldset-password-checkbox");
+  htmlIconShowPassword = document.querySelector(".admin--fieldset-password-icon-show");
+  htmlIconHidePassword = document.querySelector(".admin--fieldset-password-icon-hide");
 
-  authButtonHTML.addEventListener("click", () => {
-    const username = usernameHTML.value;
-    const password = passwordHTML.value;
-    usernameHTML.disabled = true;
-    passwordHTML.disabled = true;
-    authButtonHTML.disabled = true;
+  htmlButtonAuth.addEventListener("click", () => {
+    const username = htmlUsername.value;
+    const password = htmlPassword.value;
+    htmlUsername.disabled = true;
+    htmlPassword.disabled = true;
+    htmlButtonAuth.disabled = true;
     socket.emit("auth", { username: username, password: password });
     console.log("Auth request sent!");
   });
 
-  passwordToggle.addEventListener("change", () => {
+  htmlButtonShowPassword.addEventListener("change", () => {
     passwordShow = !passwordShow;
-    passwordIconShow.classList[passwordShow ? "add" : "remove"]("o-hide-accessible");
-    passwordIconHide.classList[!passwordShow ? "add" : "remove"]("o-hide-accessible");
-    passwordText.type = passwordShow ? "text" : "password";
+    htmlIconShowPassword.classList[passwordShow ? "add" : "remove"]("o-hide-accessible");
+    htmlIconHidePassword.classList[!passwordShow ? "add" : "remove"]("o-hide-accessible");
+    htmlPassword.type = passwordShow ? "text" : "password";
   });
 });
