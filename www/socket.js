@@ -3,15 +3,20 @@ const socket = io();
 socket.on("connect", () => {
   console.log("Connection to server made!");
 
-  socket.on("mqtt_data", (data) => {
-    console.log("MQTT Data", data);
-  });
-
   socket.on("close", () => {
     console.log("Connection to server closed!");
   });
 
-  socket.on("Influx", (data) => {
+  socket.on("mqtt", (topic, message) => {
+    console.log("raw MQTT Data", topic, message);
+  });
+
+  socket.on("mqttData", (data) => {
+    console.log("MQTT Data", data);
+  });
+
+  socket.on("influx", (data) => {
+    console.log("Influx Data", data);
     if (!data.TotaalNet) {
       return;
     }
@@ -45,7 +50,7 @@ socket.on("connect", () => {
     renderDayNight();
   });
 
-  socket.on("Influx_week", (data) => {
+  socket.on("influxWeek", (data) => {
     if (!data.TotaalNet) {
       return;
     }
