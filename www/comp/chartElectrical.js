@@ -1,4 +1,4 @@
-const drawChart = async (data = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]) => {
+const renderChartElectrical = async (data = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]) => {
   const chartHTML = document.querySelector(".js-electrical-graph");
   if (!chartHTML) {
     return;

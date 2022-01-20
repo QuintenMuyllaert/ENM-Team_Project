@@ -1,0 +1,38 @@
+.svg--bulb-footer {
+  animation-name: bulb_footer;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.svg--bulb-light {
+  animation-name: bulb_opacity;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.svg--bulb-lines {
+  animation-name: bulb_opacity;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes bulb_footer {
+  0% {
+    transform: translateY(-2%);
+  }
+}
+
+@keyframes bulb_opacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

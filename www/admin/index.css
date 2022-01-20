@@ -1,0 +1,230 @@
+/*Used by titles & headers*/
+@font-face {
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Light.ttf");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Bold.ttf");
+  font-weight: 600;
+}
+
+/*Used by main content*/
+@font-face {
+  font-family: "Roboto";
+  src: url("./font/Roboto-Light.ttf");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./font/Roboto-Medium.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./font/Roboto-Bold.ttf");
+  font-weight: 600;
+}
+
+:root {
+  /* colors */
+  --global-color-neutral: #ffffff;
+  --global-color-neutral-x-dark: #00000033;
+  --global-color-background: #dc0000;
+  --global-color-text: #000000;
+  --page1-color-text: green;
+  /* shadows */
+
+  /* border radius */
+
+  /* transitions */
+
+  /* whitespace */
+
+  /* misc */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+h1,
+h2,
+h3,
+h4 h5,
+h6 {
+  font-family: "RobotoCondensed", serif;
+  font-weight: 400;
+}
+
+p,
+a,
+li,
+span {
+  font-family: "Roboto", serif;
+  font-weight: 200;
+}
+
+p {
+  font-size: 16px;
+}
+
+body {
+  color: var(--global-color-text);
+  background-color: var(--global-color-background);
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.admin-container {
+  position: relative;
+  top: 0;
+  left: 50px;
+  align-self: center;
+  justify-self: start;
+  grid-area: 1/1/1/1;
+  height: 30%;
+  width: 20%;
+
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 4px 4px 5px #00000040;
+}
+
+.admin-container picture {
+  display: grid;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+}
+
+.admin-container picture img {
+  height: 64px;
+}
+
+.admin-content {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}
+
+.admin-fieldset-label {
+  position: relative;
+  top: 0;
+  left: 10px;
+  z-index: 10;
+  height: 1em;
+  display: block;
+  max-width: fit-content; /*zodat de width van de content bepaald wordt met de lengte ervan*/
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: white;
+}
+
+.admin-fieldset-input {
+  position: relative;
+  top: 10px;
+  left: 0;
+  padding-left: 15px;
+  outline: none; /*zorgt dat de border weg gaat die er standaard is*/
+  border-radius: 5px;
+  border: 1px solid var(--global-color-neutral-x-dark);
+}
+
+.admin-fieldset-input:active,
+.admin-fieldset-input:focus {
+  border: 2px solid var(--global-color-background);
+}
+
+.admin-fieldset-login {
+  grid-area: 1/2/2/10;
+}
+
+.admin-fieldset-password {
+  grid-area: 3/2/4/10;
+}
+
+.admin-authentication {
+  grid-area: 5/2/6/10;
+  border-radius: 8px;
+  border: 1px solid var(--global-color-neutral-x-dark);
+  background-color: var(--global-color-background);
+  color: var(--global-color-neutral);
+}
+
+.admin-picture {
+  height: 100%;
+  width: 50%;
+  justify-self: end;
+  position: relative;
+  top: 0;
+  right: 100px;
+  grid-area: 1/1/1/1;
+  margin-right: 50px;
+}
+
+.admin-picture img {
+  min-height: 90%;
+  max-height: 100%;
+}
+
+.admin-fieldset-password-icon {
+  display: block;
+  width: 20px;
+  fill: var(--global-color-neutral-x-dark);
+  grid-area: 3/9/4/10;
+  padding-top: 20px;
+  z-index: 20;
+}
+
+.o-hide-accessible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.admin-fieldset-password-checkbox {
+  grid-area: 3/9/4/10;
+  margin-top: 10px;
+  z-index: 50;
+}
+
+.admin-fieldset-password-toggle {
+  grid-area: 3/9/4/10;
+  z-index: 60;
+}
+
+@media (pointer: none), (pointer: coarse) {
+  .admin-container {
+    justify-self: center;
+    height: 40%;
+    width: 90%;
+    left: 0;
+  }
+
+  .admin-picture {
+    display: none;
+  }
+}

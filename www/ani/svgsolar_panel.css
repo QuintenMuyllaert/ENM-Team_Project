@@ -1,33 +1,27 @@
-.svg--bliksem {
-  animation-name: animation;
-  animation-duration: 0.75s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-.svg--2 {
-  animation-name: color;
+.svg--solar-panel-light {
+  animation-name: solar-light;
   animation-duration: 2s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
 
-@keyframes animation {
+.svg--solar-panel-stand {
+  animation-name: solar-stand;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes solar-light {
   0% {
-    transform: translateY(-2%);
-  }
-  100% {
-    transform: translateX(-2%);
+    opacity: 0.4;
   }
 }
 
-@keyframes color {
+@keyframes solar-stand {
   0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.4;
+    transform: translateY(-2%);
   }
 }

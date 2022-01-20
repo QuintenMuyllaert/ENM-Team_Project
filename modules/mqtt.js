@@ -17,6 +17,7 @@ if (client) {
   client.on("message", (topic, message) => {
     message = message.toString();
     let obj = {};
+    const ret = {};
     try {
       obj = JSON.parse(message);
     } catch (e) {
@@ -24,9 +25,17 @@ if (client) {
       return;
     }
 
-    console.log("MQTT message received :", topic, obj);
     if (io) {
       io.emit("mqtt", topic, obj);
+      for (let channel of obj.channelPowers) {
+        if (!ret[channel.serviceLocationId]) {
+          ret[channel.serviceLocationId] = [channel];
+        } else {
+          ret[channel.serviceLocationId].push(channel);
+        }
+      }
+
+      io.emit("mqtt_data", ret);
     } else {
       console.log("PLEASE ATTACH SOCKETIO TO MQTT!");
     }
