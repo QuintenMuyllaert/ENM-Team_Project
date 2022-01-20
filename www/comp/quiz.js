@@ -1,6 +1,6 @@
 let questions = [];
 
-const quiz = async () => {
+const renderQuiz = async () => {
   const questionHTML = document.querySelector(".js-question");
   const timerHTML = document.querySelector(".js-time");
 

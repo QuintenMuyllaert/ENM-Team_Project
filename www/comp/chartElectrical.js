@@ -1,5 +1,5 @@
-const drawChartDayNight = async (data) => {
-  const chartHTML = document.querySelector(".js-day-night");
+const renderChartElectrical = async (data = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]) => {
+  const chartHTML = document.querySelector(".js-electrical-graph");
   if (!chartHTML) {
     return;
   }
@@ -12,16 +12,15 @@ const drawChartDayNight = async (data) => {
     chartHTML.graph.update();
     return;
   }
-
   chartHTML.graph = new Chart(chart, {
     type: "bar",
     data: {
-      labels: ["dag", "nacht"],
+      labels: ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"],
       datasets: [
         {
-          label: "kW",
+          label: "kW/jaar",
           barPercentage: 0.2,
-          barThickness: 70,
+          barThickness: 30,
           maxBarThickness: 100,
           minBarLength: 1,
           data: data,
@@ -30,7 +29,6 @@ const drawChartDayNight = async (data) => {
       ],
     },
     options: {
-      indexAxis: 'y',
       maintainAspectRatio: false,
       responsive: false,
       plugins: {
@@ -39,7 +37,7 @@ const drawChartDayNight = async (data) => {
           labels: {
             color: "#dc0000",
             font: {
-              size: 200,
+              size: 16,
             },
           },
         },
@@ -47,20 +45,7 @@ const drawChartDayNight = async (data) => {
       scales: {
         y: {
           beginAtZero: true,
-          ticks: {
-            font: {
-              size: 40,
-            }
-          }
         },
-        x: {
-          beginAtZero: true,
-          ticks: {
-            font: {
-              size: 40,
-            }
-          }
-        }
       },
     },
   });

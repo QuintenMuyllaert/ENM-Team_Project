@@ -45,7 +45,7 @@ const hsv2hex = (h, s, v) => {
   return rgb2hex(...hsv2rgb(h, s, v));
 };
 
-const drawPie = async (element, title = "KW/uur", data = [50, 50, 50, 50, 80], labels = []) => {
+const renderChartPie = async (element, title = "KW/uur", data = [50, 50, 50, 50, 80], labels = []) => {
   await delay(500);
   let total = data.reduce((a, b) => a + b, 0);
   const count = data.length;
