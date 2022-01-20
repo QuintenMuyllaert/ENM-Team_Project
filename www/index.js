@@ -12,6 +12,10 @@ let didyouknow = [];
 
 let day = 0;
 let night = 0;
+let day_week = 0;
+let night_week = 0;
+
+let loaded = false;
 
 const delay = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time));
@@ -73,6 +77,21 @@ const renderDidYouKnow = async () => {
   });
 };
 
+const renderDayNight = () => {
+  if (!loaded) {
+    return;
+  }
+  document.querySelector(".js-day").innerText = `Verbruik dag: ${day.toFixed(2)} kW`;
+  document.querySelector(".js-night").innerText = `Verbruik nacht: ${night.toFixed(2)} kW`;
+  const total = day + night;
+  document.querySelector(".js-oneday").innerText = `${total.toFixed(2)}`;
+
+  renderChartDayNight([day, night]);
+
+  document.querySelector(".js-dagweek").innerText = `${day_week.toFixed(2)}`;
+  document.querySelector(".js-nightweek").innerText = `${night_week.toFixed(2)}`;
+};
+
 const onRenderPage = async (pagename) => {
   renderChartElectrical();
   renderChartDayNight([day, night]);
@@ -87,6 +106,7 @@ const onRenderPage = async (pagename) => {
 
   renderDidYouKnow();
   renderQuiz();
+  renderDayNight();
 };
 
 const loopHandle = async () => {
@@ -169,5 +189,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     html += generateSlide(page);
   });
   document.querySelector(".main-container").innerHTML = html;
-  loopHandle();
+  loaded = true;
+  await loopHandle();
 });

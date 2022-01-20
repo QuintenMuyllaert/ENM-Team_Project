@@ -30,46 +30,20 @@ if (config.topic) {
   mqtt.subscribe(config.topic);
 }
 
+get_influx.fetchPeriodically(io);
+
 app.use(express.static(path.join(__dirname, "www")));
 
 app.get("/tree.json", async (req, res) => {
   res.send(JSON.stringify(await tree(path.join(__dirname, "www")), null, 4));
 });
 
-io.on("connection", (socket) => {
+io.on("connection", async (socket) => {
   socket.auth = false;
 
   console.log(`A user connected to the server : "${socket.id}"`);
   socket.on("disconnect", () => {
     console.log(`User disconnected : ${socket.id}`);
-  });
-
-  socket.on("data", async (msg) => {
-    if (!config) {
-      console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
-      return;
-    }
-    let today = new Date(Date.now());
-    today.setHours(1, 0, 0, 0);
-    const stopdate = today.toISOString();
-    today = today.minusDays(msg);
-    const startdate = today.toISOString();
-    const querry = `from(bucket: "${bucket}") |> range(start: ${startdate}, stop: ${stopdate}) |> aggregateWindow(every: 1h, fn: last, createEmpty: false) `;
-    const data = await get_influx.run(querry);
-    const ret = {};
-    for (const thing of data) {
-      if (!ret[thing._field]) {
-        ret[thing._field] = [thing];
-      } else {
-        ret[thing._field].push(thing);
-      }
-    }
-    if (msg == 1) {
-      socket.emit("Influx", ret);
-    }
-    if (msg == 7) {
-      socket.emit("Influx_week", ret);
-    }
   });
 
   socket.on("forget", async (code) => {
@@ -119,6 +93,16 @@ io.on("connection", (socket) => {
       socket.auth = false;
     }
   });
+
+  if (!Object.keys(get_influx.lastHour).length || !Object.keys(get_influx.lastHour).length) {
+    console.log("Fetching Influx data...");
+    await get_influx.fetch(socket, 1);
+    await get_influx.fetch(socket, 7);
+  } else {
+    console.log("Sending cached Influx data...");
+    socket.emit("Influx", get_influx.lastHour);
+    socket.emit("Influx_week", get_influx.lastWeek);
+  }
 
   socket.on("error", (err) => console.error);
 });
