@@ -96,6 +96,19 @@ const triggerClass = async (element, className) => {
   element.classList.add(className);
 };
 
+const showDidYouKnow = async () => {
+  await delay(1000);
+  document.querySelectorAll(".slide--didyouknow-box").forEach(async (element) => {
+    element.querySelector(".weetje").innerHTML = didyouknow[Math.round(Math.random() * (didyouknow.length - 1))];
+    element.classList.add("slide--didyouknow-animate");
+    await delay((slideLength - 1) * 1000);
+    element.classList.remove("slide--didyouknow-animate");
+    element.classList.add("slide--didyouknow-animate-again");
+    await delay(500);
+    element.classList.remove("slide--didyouknow-animate-again");
+  });
+};
+
 const onRenderPage = async (pagename) => {
   drawChart();
   drawChartDayNight([day, night]);
@@ -108,16 +121,8 @@ const onRenderPage = async (pagename) => {
     triggerClass(element, "svg--bubbles");
   });
 
-  await delay(1000);
-  document.querySelectorAll(".slide--didyouknow-box").forEach(async (element) => {
-    element.querySelector(".weetje").innerHTML = didyouknow[Math.round(Math.random() * (didyouknow.length - 1))];
-    element.classList.add("slide--didyouknow-animate");
-    await delay((slideLength - 1) * 1000);
-    element.classList.remove("slide--didyouknow-animate");
-    element.classList.add("slide--didyouknow-animate-again");
-    await delay(500);
-    element.classList.remove("slide--didyouknow-animate-again");
-  });
+  showDidYouKnow();
+  quiz();
 };
 
 const loopHandle = async () => {
@@ -176,6 +181,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const tree = await fetchJSON("./tree.json");
   didyouknow = await fetchJSON("./data/facts.json");
+  questions = await fetchJSON("./data/questions.json");
 
   skeletonSlide = await fetchFile("./skeletonSlide.html");
   pageNames = lookupList(tree["slide"], ".html");
@@ -199,6 +205,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     html += generateSlide(page);
   });
   document.querySelector(".main-container").innerHTML = html;
-
   loopHandle();
 });
