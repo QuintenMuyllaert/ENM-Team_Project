@@ -71,7 +71,7 @@
   Placement of the items
 */
 
-.activiteiten--main-graph {
+.activiteiten--main-slideshow {
   grid-area: 3/2/10/13;
 }
 
@@ -97,6 +97,18 @@
 
 .activiteiten--data-middle-right {
   grid-area: 5/17/7/24;
+}
+
+.activiteiten--fuifzaal {
+  grid-area: 7/14/12/24;
+}
+
+.activiteiten--below {
+  grid-area: 10/2/12/13;
+}
+
+.activiteiten--above {
+  grid-area: 3/14/7/24;
 }
 
 .activiteiten--piechart {
@@ -274,6 +286,88 @@
   padding-left: 5%;
   width: 100%;
 }
+
+
+
+.activiteiten--item-slide-container {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.activiteiten--item-slide {
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.activiteiten--fuifzaal-picture {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+
+.activiteiten--fuifzaal-image {
+  height: 100%;
+  width: auto;
+  padding: 1rem;
+  position: absolute;
+}
+
+.activiteiten--fuifzaal-image-left {
+  top: 0;
+  left: 0;
+  padding-right: 10rem;
+}
+
+.activiteiten--fuifzaal-image-right {
+  top: 0;
+  left: calc(1rem + 50%);
+}
+
+.activiteiten--activiteiten {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+}
+
+.activiteiten--activiteiten-title {
+  font-size: 150%;
+  display: flex;
+  justify-content: center;
+}
+
+.activiteiten--fuifzaal-oplijsting-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.activiteiten--fuifzaal-text {
+
+  font-size: 150%;
+}
+
+.activiteiten--fuifzaal-text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1.5rem;
+}
+
+.acitiviteiten--fuifzaal-oplijsting {
+  font-size: 120%;
+  justify-content: center;
+}
+
 
   /*
   Animations
