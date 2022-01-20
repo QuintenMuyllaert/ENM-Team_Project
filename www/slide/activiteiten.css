@@ -2,7 +2,7 @@
   Section for the general styling of this specific page
 */
 
-.history {
+.activiteiten {
   display: grid;
   --horizontal-grid: 12; 
   --vertical-grid: 24
@@ -18,7 +18,7 @@
   Section for the header of the page (title, weetje, ...)
 */
 
-.history--header {
+.activiteiten--header {
   grid-area: 1/2/2/25;
   padding-top: 2%;
   text-transform: uppercase;
@@ -27,7 +27,7 @@
   text-decoration: underline;
 }
 
-.history--title {
+.activiteiten--title {
   grid-area: 1/2/2/4; /* row start, column start --> row end, column end*/
   font-size: 2em;
   font-weight: 500;
@@ -35,7 +35,7 @@
   justify-content: start;
 }
 
-.history--weetje {
+.activiteiten--weetje {
   grid-area: 1/24/2/25;
   border-radius: 100%;
   border: 1px solid gray;
@@ -49,18 +49,18 @@
   Section for the main information of the page
 */
 
-.history--item {
+.activiteiten--item {
   background-color: var(--global-background-item);
   border-radius: 5px;
 }
 
-.history--item-style-info {
+.activiteiten--item-style-info {
   display: flex;
   justify-content: space-between;
   height: 100%;
 }
 
-.history--item-style-vergelijking {
+.activiteiten--item-style-vergelijking {
   display: table;
   justify-content: center;
   height: 100%;
@@ -71,41 +71,41 @@
   Placement of the items
 */
 
-.history--main-graph {
+.activiteiten--main-graph {
   grid-area: 3/2/10/13;
 }
 
-.history--data-below-left {
+.activiteiten--data-below-left {
   grid-area: 10/2/12/7;
 }
 
-.history--data-below-middle {
+.activiteiten--data-below-middle {
   grid-area: 10/7/12/13;
 }
 
-.history--data-above-left {
+.activiteiten--data-above-left {
   grid-area: 3/14/5/17;
 }
 
-.history--data-above-right {
+.activiteiten--data-above-right {
   grid-area: 3/17/7/24;
 }
 
-.history--data-middle-left {
+.activiteiten--data-middle-left {
   grid-area: 5/14/7/17;
 }
 
-.history--data-middle-right {
+.activiteiten--data-middle-right {
   grid-area: 5/17/7/24;
 }
 
-.history--piechart {
+.activiteiten--piechart {
   grid-area: 7/14/12/24;
   display: flex;
   gap: 0px;
 }
 
-.history--piechart-title {
+.activiteiten--piechart-title {
   padding: 2% 7%;
   font-size: 200%;
   color: gray;
@@ -115,14 +115,14 @@
   Styling for the small boxes
 */
 
-.history--item-icon {
+.activiteiten--item-icon {
   justify-self: start; /*horizontaal*/
   align-self: center; /*verticaal*/
   height: 50%;
   width: 20%;
 }
 
-.history--item-icons-vergelijking {
+.activiteiten--item-icons-vergelijking {
   display: flex;
   gap: 5%;
   align-self: center;
@@ -130,14 +130,14 @@
   padding-bottom: 5%;
 }
 
-.history--item-info {
+.activiteiten--item-info {
   align-self: center;
   justify-self: center;
   width: 70%;
   margin-right: 10%;
 }
 
-.history--item-title {
+.activiteiten--item-title {
   padding-top: 10%;
   color: gray;
   display: flex;
@@ -147,7 +147,7 @@
   padding-right: 10%;
 }
 
-.history--item-title-vergelijking {
+.activiteiten--item-title-vergelijking {
   padding-bottom: 5%;
   color: gray;
   display: flex;
@@ -156,7 +156,7 @@
   font-size: 150%;
 }
 
-.history--item-big-title {
+.activiteiten--item-big-title {
   display: flex;
   justify-content: center;
   padding: 2% 5% 2% 5%;
@@ -164,39 +164,39 @@
   font-size: 200%;
 }
 
-.history--item-line {
+.activiteiten--item-line {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.history--item-line-vergelijking {
+.activiteiten--item-line-vergelijking {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 5%
 }
 
-.history--item-value {
+.activiteiten--item-value {
   padding-right: 3%;
   font-size: 200%;
   font-weight: bold;
 }
 
-.history--item-unit {
+.activiteiten--item-unit {
   font-weight: 400;
   font-size: 150%;
   padding-right: 5%;
 }
 
-.history--item-arrow {
+.activiteiten--item-arrow {
   justify-self: center;
   align-self: center;
   width: 20%;
   height: 100%;
 }
 
-.history--item-arrow-image {
+.activiteiten--item-arrow-image {
   height: 50%;
   width: 50%;
   padding-right: 10%;
@@ -208,7 +208,7 @@
   Styling for the medium boxes
 */
 
-.history--item-graph {
+.activiteiten--item-graph {
   display: flex;
   width: 90% !important;
   height: 70% !important;
@@ -217,7 +217,7 @@
   justify-content: center;
 }
 
-.history--item-big-info {
+.activiteiten--item-big-info {
   display: flex;
   width: 100%;
   justify-content:space-between;
@@ -225,7 +225,7 @@
   padding-right: 8%;
 }
 
-.history--item-big-day {
+.activiteiten--item-big-day {
   display: flex;
   gap: 2%;
   justify-content: space-between;
@@ -233,21 +233,21 @@
   height: 100%;
 }
 
-.history--item-big-day-info {
+.activiteiten--item-big-day-info {
   padding-left: 5%;
   font-size: 150%;
   font-weight: bold;
   width: 100%;
 }
 
-.history--item-big-night-info {
+.activiteiten--item-big-night-info {
   padding-left: 5%;
   font-size: 150%;
   font-weight: bold;
   width: 100%;
 }
 
-.history--item-big-day-icon {
+.activiteiten--item-big-day-icon {
   height: 100%;
   width: 100%;
   display: flex;
@@ -256,7 +256,7 @@
   align-items: center;
 }
 
-.history--item-piechart {
+.activiteiten--item-piechart {
   height: 100%;
   width: 100%;
   padding: 0 5% 0 5%;
@@ -265,12 +265,12 @@
   justify-content: center;
 }
 
-.history--item-piechart-flex {
+.activiteiten--item-piechart-flex {
   gap: 5%;
   width: 100%;
 }
 
-.history--piechart-legend {
+.activiteiten--piechart-legend {
   padding-left: 5%;
   width: 100%;
 }
@@ -279,7 +279,7 @@
   Animations
 */
 
-.history--item-arrow-up {
+.activiteiten--item-arrow-up {
   animation-name: arrow-up;
   animation-duration: 0.75s;
   animation-timing-function: ease-in-out;
@@ -287,7 +287,7 @@
   animation-direction: alternate;
 }
 
-.history--item-arrow-down {
+.activiteiten--item-arrow-down {
 animation-name: arrow-down;
 animation-duration: 0.75s;
 animation-timing-function: ease-in-out;
