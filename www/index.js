@@ -14,6 +14,14 @@ let day = 0;
 let night = 0;
 let day_week = 0;
 let night_week = 0;
+let pie = {
+  Bord_EB_Niveau1_Totaal: "",
+  Bord_HVAC_Totaal: "",
+  Bord_Waterbehandeling_Totaal: "",
+  Buitenbar_Totaal: "",
+  Compressor_Totaal: "",
+  Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal: "",
+};
 
 let loaded = false;
 
