@@ -17,7 +17,7 @@ const delay = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time));
 };
 
-const fetchFile = async (url) => {
+const fetchString = async (url) => {
   const data = await fetch(url);
   return await data.text();
 };
@@ -25,6 +25,11 @@ const fetchFile = async (url) => {
 const fetchJSON = async (url) => {
   const data = await fetch(url);
   return await data.json();
+};
+
+const fetchTxt = async (url) => {
+  const data = await fetch(url);
+  return data.split("\n");
 };
 
 const lookupList = (list, includes) => {
@@ -139,17 +144,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   const tree = await fetchJSON("./tree.json");
-  didyouknow = await fetchJSON("./data/facts.json");
+  didyouknow = await fetchJSON("./data/facts.csv");
   questions = await fetchJSON("./data/questions.json");
 
-  skeletonSlide = await fetchFile("./skeletonSlide.html");
+  skeletonSlide = await fetchString("./skeletonSlide.html");
   pageNames = lookupList(tree["slide"], ".html");
   if (staticSlideNr == -1) {
     for (const page of pageNames) {
-      pages.push(await fetchFile(`./slide/${page}`));
+      pages.push(await fetchString(`./slide/${page}`));
     }
   } else {
-    pages.push(await fetchFile(`./slide/${pageNames[staticSlideNr]}`));
+    pages.push(await fetchString(`./slide/${pageNames[staticSlideNr]}`));
   }
 
   document.querySelector(":root").style.setProperty("--pagecount", pages.length);
