@@ -246,6 +246,11 @@ body {
   font-weight: 400;
 }
 
+.slide--didyouknow-text-container span {
+  font-weight: 800;
+  text-decoration: underline;
+}
+
 @keyframes didyouanimate {
   0% {
     width: 0;
