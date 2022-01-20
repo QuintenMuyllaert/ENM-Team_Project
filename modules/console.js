@@ -32,26 +32,15 @@ let colorOrder = [colors.fgCyan, colors.fgRed, colors.fgYellow, colors.fgMagenta
 let files = [];
 
 const traceFileLine = () => {
-  let filename, line;
-
-  const _pst = Error.prepareStackTrace;
-  Error.prepareStackTrace = (err, stack) => {
-    return stack;
-  };
-  try {
-    const err = new Error();
-    const currentfile = err.stack.shift().getFileName();
-    while (err.stack.length) {
-      const stack = err.stack.shift();
-      const callerfile = stack.getFileName();
-      if (currentfile !== callerfile) {
-        filename = callerfile;
-        line = stack.getLineNumber();
-        break;
-      }
-    }
-  } catch (err) {}
-  Error.prepareStackTrace = _pst;
+  const err = new Error();
+  Error.prepareStackTrace = (_, stack) => stack;
+  const stack = err.stack;
+  Error.prepareStackTrace = undefined;
+  if (!stack[2]) {
+    return;
+  }
+  const filename = stack[2].getFileName();
+  const line = stack[2].getLineNumber();
   return [path.basename(filename, path.extname(filename)), line];
 };
 
