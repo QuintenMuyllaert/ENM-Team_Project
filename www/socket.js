@@ -25,8 +25,17 @@ socket.on("connect", () => {
       return;
     }
 
-    night = 0;
-    day = 0;
+    let night = 0;
+    let day = 0;
+    let pie = {
+      Bord_EB_Niveau1_Totaal: "",
+      Bord_HVAC_Totaal: "",
+      Bord_Waterbehandeling_Totaal: "",
+      Buitenbar_Totaal: "",
+      Compressor_Totaal: "",
+      Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal: "",
+    };
+
     for (waarde of data.TotaalNet) {
       const time = parseInt(waarde._time.split("T")[1].split(":")[0]);
       if (time >= 22 || time < 6) {
@@ -47,7 +56,11 @@ socket.on("connect", () => {
     }
     console.log(pie);
 
-    renderDayNight();
+    elementNumberDay.data = `Verbruik dag: ${day.toFixed(2)} kW`;
+    elementNumberNight.data = `Verbruik nacht: ${night.toFixed(2)} kW`;
+    const total = day + night;
+    elementNumberOneDay.data = `${total.toFixed(2)}`;
+    elementChartDayNight.data = [day, night];
   });
 
   socket.on("influxWeek", (data) => {
@@ -59,8 +72,8 @@ socket.on("connect", () => {
       return;
     }
 
-    night_week = 0;
-    day_week = 0;
+    let night_week = 0;
+    let day_week = 0;
     for (waarde of data.TotaalNet) {
       const time = parseInt(waarde._time.split("T")[1].split(":")[0]);
       if (time >= 22 || time < 6) {
@@ -69,8 +82,7 @@ socket.on("connect", () => {
         day_week += waarde._value;
       }
     }
-    night_week = night_week / 1000;
-    day_week = day_week / 1000;
-    renderDayNight();
+    elementNumberNightWeek.data = (night_week / 1000).toFixed(2);
+    elementNumberDayWeek.data = (day_week / 1000).toFixed(2);
   });
 });
