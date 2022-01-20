@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   pages.forEach((page) => {
     html += generateSlide(page);
   });
-  document.querySelector(".main-container").innerHTML = html;
+  document.querySelector(".main--container").innerHTML = html;
   loaded = true;
   await loopHandle();
 });
