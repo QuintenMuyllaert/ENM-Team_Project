@@ -13,16 +13,17 @@ const mqtt = require("./modules/mqtt.js");
 
 const config = fs.existsSync(path.join(__dirname, "config.json")) ? require("./config.json") : false;
 const { bucket } = config;
-Date.prototype.minusDays = function (days) {
-  var date = new Date(this.valueOf());
-  date.setHours(1, 0, 0, 0);
-  date.setDate(date.getDate() - days);
-  return date;
-};
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
+
+Date.prototype.minusDays = function (days) {
+  const date = new Date(this.valueOf());
+  date.setHours(1, 0, 0, 0);
+  date.setDate(date.getDate() - days);
+  return date;
+};
 
 mqtt.attachSocketIO(io);
 if (config.topic) {
@@ -36,6 +37,8 @@ app.get("/tree.json", async (req, res) => {
 });
 
 io.on("connection", (socket) => {
+  socket.auth = false;
+
   console.log(`A user connected to the server : "${socket.id}"`);
   socket.on("disconnect", () => {
     console.log(`User disconnected : ${socket.id}`);
@@ -70,7 +73,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("forget", async (code) => {
-    var verfied = speakeasy.totp.verify({
+    const verfied = speakeasy.totp.verify({
       secret: `${config.twofactor}`,
       encoding: "ascii",
       token: `${code}`,
@@ -78,7 +81,6 @@ io.on("connection", (socket) => {
     console.log(verfied);
   });
 
-  socket.auth = false;
   socket.on("auth", async (obj) => {
     if (!obj) {
       socket.emit("auth", false);
@@ -97,8 +99,9 @@ io.on("connection", (socket) => {
 
       fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
     }
+
     if (!config.twofactor) {
-      var secret = speakeasy.generateSecret({
+      const secret = speakeasy.generateSecret({
         name: "Transfo_Recovery",
       });
       config.twofactor = secret.ascii;
@@ -107,6 +110,7 @@ io.on("connection", (socket) => {
       });
       fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
     }
+
     if ((await bcrypt.compare(obj.username, config.username)) && (await bcrypt.compare(obj.password, config.password))) {
       socket.emit("auth", true);
       socket.auth = true;
@@ -115,6 +119,7 @@ io.on("connection", (socket) => {
       socket.auth = false;
     }
   });
+
   socket.on("error", (err) => console.error);
 });
 
