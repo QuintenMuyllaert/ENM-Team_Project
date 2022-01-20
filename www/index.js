@@ -115,6 +115,7 @@ const onRenderPage = async (pagename) => {
   renderDidYouKnow();
   renderQuiz();
   renderDayNight();
+  slideShow();
 };
 
 const loopHandle = async () => {
