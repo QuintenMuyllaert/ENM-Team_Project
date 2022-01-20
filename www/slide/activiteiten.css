@@ -4,11 +4,11 @@
 
 .activiteiten {
   display: grid;
-  --horizontal-grid: 12; 
-  --vertical-grid: 24
+  --horizontal-grid: 12;
+  --vertical-grid: 24;
   grid-template-columns: repeat(var(--vertical-grid), minmax(0, calc(100% / var(--vertical-grid))));
   grid-template-rows: repeat(var(--horizontal-grid), minmax(0, calc(100% / var(--horizontal-grid))));
-  gap: 10px ;
+  gap: 10px;
   height: 100%;
   width: 100%;
   --global-background-item: #f3f3f3;
@@ -186,7 +186,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5%
+  padding: 5%;
 }
 
 .activiteiten--item-value {
@@ -214,8 +214,6 @@
   padding-right: 10%;
 }
 
-
-
 /*
   Styling for the medium boxes
 */
@@ -232,7 +230,7 @@
 .activiteiten--item-big-info {
   display: flex;
   width: 100%;
-  justify-content:space-between;
+  justify-content: space-between;
   padding-left: 8%;
   padding-right: 8%;
 }
@@ -286,8 +284,6 @@
   padding-left: 5%;
   width: 100%;
 }
-
-
 
 .activiteiten--item-slide-container {
   overflow: hidden;
@@ -352,7 +348,6 @@
 }
 
 .activiteiten--fuifzaal-text {
-
   font-size: 150%;
 }
 
@@ -368,8 +363,7 @@
   justify-content: center;
 }
 
-
-  /*
+/*
   Animations
 */
 
@@ -382,11 +376,11 @@
 }
 
 .activiteiten--item-arrow-down {
-animation-name: arrow-down;
-animation-duration: 0.75s;
-animation-timing-function: ease-in-out;
-animation-iteration-count: infinite;
-animation-direction: alternate;
+  animation-name: arrow-down;
+  animation-duration: 0.75s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 @keyframes arrow-up {
