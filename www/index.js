@@ -10,20 +10,13 @@ let slideNr = -1;
 let skeletonSlide = "";
 let didyouknow = [];
 
-let day = 0;
-let night = 0;
-let day_week = 0;
-let night_week = 0;
-let pie = {
-  Bord_EB_Niveau1_Totaal: "",
-  Bord_HVAC_Totaal: "",
-  Bord_Waterbehandeling_Totaal: "",
-  Buitenbar_Totaal: "",
-  Compressor_Totaal: "",
-  Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal: "",
-};
+const elementNumberDay = new dataElement(".js-day", 0, elementDefaultsText);
+const elementNumberNight = new dataElement(".js-night", 0, elementDefaultsText);
+const elementNumberOneDay = new dataElement(".js-oneday", 0, elementDefaultsText);
+const elementNumberDayWeek = new dataElement(".js-dagweek", 0, elementDefaultsText);
+const elementNumberNightWeek = new dataElement(".js-nightweek", 0, elementDefaultsText);
 
-let loaded = false;
+const elementChartDayNight = new dataElement(".js-day-night", [0, 0], { ...elementDefaultsChart, init: chartInitDayNight });
 
 const delay = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time));
@@ -85,24 +78,11 @@ const renderDidYouKnow = async () => {
   });
 };
 
-const renderDayNight = () => {
-  if (!loaded) {
-    return;
-  }
-  document.querySelector(".js-day").innerText = `Verbruik dag: ${day.toFixed(2)} kW`;
-  document.querySelector(".js-night").innerText = `Verbruik nacht: ${night.toFixed(2)} kW`;
-  const total = day + night;
-  document.querySelector(".js-oneday").innerText = `${total.toFixed(2)}`;
-
-  renderChartDayNight([day, night]);
-
-  document.querySelector(".js-dagweek").innerText = `${day_week.toFixed(2)}`;
-  document.querySelector(".js-nightweek").innerText = `${night_week.toFixed(2)}`;
-};
-
 const onRenderPage = async (pagename) => {
-  renderChartElectrical();
-  renderChartDayNight([day, night]);
+  dataElements.forEach((e) => {
+    e.render();
+  });
+
   document.querySelectorAll(".piechart--container").forEach((chart) => {
     //chart <html>, title "", data [], labels []
     renderChartPie(chart);
@@ -114,7 +94,6 @@ const onRenderPage = async (pagename) => {
 
   renderDidYouKnow();
   renderQuiz();
-  renderDayNight();
   slideShow();
 };
 
@@ -123,6 +102,44 @@ const loopHandle = async () => {
   setTimeout(async () => {
     await loopHandle();
   }, slideLength * 1000);
+};
+
+const init = async () => {
+  if (useScalingFunction) {
+    const width = screen.width;
+    const scale = width / 1920;
+    document.querySelector("html").style.setProperty("--scalefactor", scale);
+  }
+
+  const tree = await fetchJSON("./tree.json");
+  didyouknow = await fetchTxt("./data/facts.csv");
+  questions = await fetchJSON("./data/questions.json");
+
+  skeletonSlide = await fetchString("./skeletonSlide.html");
+  pageNames = lookupList(tree["slide"], ".html");
+  if (staticSlideNr == -1) {
+    for (const page of pageNames) {
+      pages.push(await fetchString(`./slide/${page}`));
+    }
+  } else {
+    pages.push(await fetchString(`./slide/${pageNames[staticSlideNr]}`));
+  }
+
+  document.querySelector(":root").style.setProperty("--pagecount", pages.length);
+
+  window.scroll({
+    top: 0,
+    left: 0,
+  });
+
+  let html = "";
+  pages.forEach((page) => {
+    html += generateSlide(page);
+  });
+  document.querySelector(".main--container").innerHTML = html;
+  dataElements.forEach((e) => {
+    e.init();
+  });
 };
 
 const loop = async () => {
@@ -166,38 +183,6 @@ window.onresize = () => {
 
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("loaded!");
-  if (useScalingFunction) {
-    const width = screen.width;
-    const scale = width / 1920;
-    document.querySelector("html").style.setProperty("--scalefactor", scale);
-  }
-
-  const tree = await fetchJSON("./tree.json");
-  didyouknow = await fetchTxt("./data/facts.csv");
-  questions = await fetchJSON("./data/questions.json");
-
-  skeletonSlide = await fetchString("./skeletonSlide.html");
-  pageNames = lookupList(tree["slide"], ".html");
-  if (staticSlideNr == -1) {
-    for (const page of pageNames) {
-      pages.push(await fetchString(`./slide/${page}`));
-    }
-  } else {
-    pages.push(await fetchString(`./slide/${pageNames[staticSlideNr]}`));
-  }
-
-  document.querySelector(":root").style.setProperty("--pagecount", pages.length);
-
-  window.scroll({
-    top: 0,
-    left: 0,
-  });
-
-  let html = "";
-  pages.forEach((page) => {
-    html += generateSlide(page);
-  });
-  document.querySelector(".main--container").innerHTML = html;
-  loaded = true;
+  await init();
   await loopHandle();
 });
