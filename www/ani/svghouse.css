@@ -1,0 +1,28 @@
+.svg--house-roof {
+  animation-name: house_roof;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.svg--house-walls {
+    animation-name: house_walls;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes house_roof {
+  0% {
+    transform: translateY(1%);
+  }
+}
+
+@keyframes house_walls {
+    0% {
+        transform: translateY(-2%);
+    }
+  }
+

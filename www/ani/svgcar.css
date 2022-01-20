@@ -1,0 +1,44 @@
+.svg--auto-wielen #wiel_1 {
+  animation-name: animation_wielen;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.svg--auto-wielen #wiel_2 {
+  animation-name: animation_wielen;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  animation-delay: 0.3s;
+}
+
+.svg--auto-carroserie {
+  animation-name: animation_carroserie;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes animation_wielen {
+  0% {
+    transform: translateY(-2%);
+  }
+  15% {
+    transform: translateY(0%);
+  }
+  90% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-2%);
+  }
+}
+
+@keyframes animation_carroserie {
+  0% {
+    transform: translateY(-2%);
+  }
+}

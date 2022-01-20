@@ -1,10 +1,35 @@
 const staticSlideNr = -1; //DON'T COMMIT THIS LINE!
+const showEndAnimation = true;
+const useScalingFunction = true;
+const slideLength = 15;
+const endAnimationLength = 5000;
+
+const pages = [];
+let pageNames;
+let slideNr = -1;
+let skeletonSlide = "";
+let didyouknow = [];
+
+let day = 0;
+let night = 0;
+let day_week = 0;
+let night_week = 0;
+let pie = {
+  Bord_EB_Niveau1_Totaal: "",
+  Bord_HVAC_Totaal: "",
+  Bord_Waterbehandeling_Totaal: "",
+  Buitenbar_Totaal: "",
+  Compressor_Totaal: "",
+  Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal: "",
+};
+
+let loaded = false;
 
 const delay = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time));
 };
 
-const fetchFile = async (url) => {
+const fetchString = async (url) => {
   const data = await fetch(url);
   return await data.text();
 };
@@ -12,6 +37,11 @@ const fetchFile = async (url) => {
 const fetchJSON = async (url) => {
   const data = await fetch(url);
   return await data.json();
+};
+
+const fetchTxt = async (url) => {
+  const data = await fetchString(url);
+  return data.split("\n");
 };
 
 const lookupList = (list, includes) => {
@@ -26,12 +56,7 @@ const lookupList = (list, includes) => {
 };
 
 const generateSlide = (html) => {
-  return `<main class="slide-content">
-        <div class="logo--container">
-          <img src="./img/logo.png" alt="logo" />
-        </div>
-        <div class="slide-content-style">${html}</div>
-      </main>`;
+  return skeletonSlide.replace("<!--INNERHTML-->", html);
 };
 
 const addClassRemoveAfter = (element, className, time) => {
@@ -41,11 +66,63 @@ const addClassRemoveAfter = (element, className, time) => {
   }, time);
 };
 
+const triggerClass = async (element, className) => {
+  element.classList.remove(className);
+  await delay(10);
+  element.classList.add(className);
+};
+
+const renderDidYouKnow = async () => {
+  await delay(1000);
+  document.querySelectorAll(".slide--didyouknow-box").forEach(async (element) => {
+    element.querySelector(".weetje").innerHTML = didyouknow[Math.round(Math.random() * (didyouknow.length - 1))];
+    element.classList.add("slide--didyouknow-animate");
+    await delay((slideLength - 1) * 1000);
+    element.classList.remove("slide--didyouknow-animate");
+    element.classList.add("slide--didyouknow-animate-again");
+    await delay(500);
+    element.classList.remove("slide--didyouknow-animate-again");
+  });
+};
+
+const renderDayNight = () => {
+  if (!loaded) {
+    return;
+  }
+  document.querySelector(".js-day").innerText = `Verbruik dag: ${day.toFixed(2)} kW`;
+  document.querySelector(".js-night").innerText = `Verbruik nacht: ${night.toFixed(2)} kW`;
+  const total = day + night;
+  document.querySelector(".js-oneday").innerText = `${total.toFixed(2)}`;
+
+  renderChartDayNight([day, night]);
+
+  document.querySelector(".js-dagweek").innerText = `${day_week.toFixed(2)}`;
+  document.querySelector(".js-nightweek").innerText = `${night_week.toFixed(2)}`;
+};
+
+const onRenderPage = async (pagename) => {
+  renderChartElectrical();
+  renderChartDayNight([day, night]);
+  document.querySelectorAll(".piechart--container").forEach((chart) => {
+    //chart <html>, title "", data [], labels []
+    renderChartPie(chart);
+  });
+
+  document.querySelectorAll(".bubbles").forEach((element) => {
+    triggerClass(element, "svg--bubbles");
+  });
+
+  renderDidYouKnow();
+  renderQuiz();
+  renderDayNight();
+  slideShow();
+};
+
 const loopHandle = async () => {
   await loop();
   setTimeout(async () => {
     await loopHandle();
-  }, 10 * 1000);
+  }, slideLength * 1000);
 };
 
 const loop = async () => {
@@ -53,40 +130,60 @@ const loop = async () => {
   const red = document.querySelector(".animation--container");
   const logo = document.querySelector(".animation--logo-container");
 
-  if (slideNr == 0) {
-    addClassRemoveAfter(red, "animation--display", 3000);
-    addClassRemoveAfter(logo, "animation--logo-display", 3000);
-    await delay(3000);
-    addClassRemoveAfter(red, "animation--display-reverse", 3000);
-    addClassRemoveAfter(logo, "animation--logo-display-reverse", 3000);
+  if (showEndAnimation && slideNr == 0) {
+    addClassRemoveAfter(red, "animation--display", endAnimationLength);
+    addClassRemoveAfter(logo, "animation--logo-display", endAnimationLength);
+    await delay(endAnimationLength);
+    addClassRemoveAfter(red, "animation--display-reverse", endAnimationLength);
+    addClassRemoveAfter(logo, "animation--logo-display-reverse", endAnimationLength);
     window.scroll({
       top: 0,
       left: 0,
     });
-    await delay(3000);
+    await delay(1500);
   }
   window.scroll({
     top: 0,
-    left: (slideNr / pages.length) * document.body.offsetWidth,
+    left: slideNr * screen.width,
     behavior: "smooth",
   });
 
-  drawChart();
-  document.querySelectorAll(".piechart-container").forEach((chart) => {
-    //chart <html>, title "", data [], labels []
-    drawPie(chart);
+  onRenderPage(pageNames[slideNr]);
+};
+
+window.onresize = () => {
+  if (useScalingFunction) {
+    const width = screen.width;
+    const scale = width / 1920;
+    document.querySelector("html").style.setProperty("--scalefactor", scale);
+  }
+
+  window.scroll({
+    top: 0,
+    left: slideNr * screen.width,
   });
 };
 
-const pages = [];
-let slideNr = 0;
-
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("loaded!");
+  if (useScalingFunction) {
+    const width = screen.width;
+    const scale = width / 1920;
+    document.querySelector("html").style.setProperty("--scalefactor", scale);
+  }
+
   const tree = await fetchJSON("./tree.json");
-  const pageNames = lookupList(tree["slide"], ".html");
-  for (const page of pageNames) {
-    pages.push(await fetchFile(`./slide/${page}`));
+  didyouknow = await fetchTxt("./data/facts.csv");
+  questions = await fetchJSON("./data/questions.json");
+
+  skeletonSlide = await fetchString("./skeletonSlide.html");
+  pageNames = lookupList(tree["slide"], ".html");
+  if (staticSlideNr == -1) {
+    for (const page of pageNames) {
+      pages.push(await fetchString(`./slide/${page}`));
+    }
+  } else {
+    pages.push(await fetchString(`./slide/${pageNames[staticSlideNr]}`));
   }
 
   document.querySelector(":root").style.setProperty("--pagecount", pages.length);
@@ -97,23 +194,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   let html = "";
-  if (staticSlideNr == -1) {
-    pages.forEach((page) => {
-      html += generateSlide(page);
-    });
-    document.querySelector(".main-container").innerHTML = html;
-  } else {
-    document.querySelector(".main-container").innerHTML = generateSlide(pages[staticSlideNr]);
-  }
-
-  drawChart();
-  document.querySelectorAll(".piechart-container").forEach((chart) => {
-    //chart <html>, title "", data [], labels []
-    drawPie(chart);
+  pages.forEach((page) => {
+    html += generateSlide(page);
   });
-
-  if (staticSlideNr != -1) {
-    return;
-  }
-  loopHandle();
+  document.querySelector(".main-container").innerHTML = html;
+  loaded = true;
+  await loopHandle();
 });

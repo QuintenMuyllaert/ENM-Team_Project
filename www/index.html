@@ -5,26 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ENM-Team Project</title>
+    <!--Library-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <!--Connections-->
     <script src="./socket.js"></script>
-    <script src="./electricalChart.js"></script>
-    <script src="./piechart.js"></script>
+    <!--Content on page-->
+    <script src="./comp/chartElectrical.js"></script>
+    <script src="./comp/chartDayNight.js"></script>
+    <script src="./comp/chartPie.js"></script>
+    <!--Extra-->
+    <script src="./slideShow.js"></script>
+    <script src="./comp/quiz.js"></script>
+    <!--Entry point-->
     <script src="./index.js"></script>
+    <!--Manifest-->
+    <link rel="manifest" href="manifest.json" />
+    <!--Icon-->
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <!--Page stylesheets-->
+    <link rel="stylesheet" href="./normalize.css" />
     <link rel="stylesheet" href="./index.css" />
     <link rel="stylesheet" href="./slide/duiktank.css" />
-    <link rel="stylesheet" href="./slide/history.css" />
-    <link rel="stylesheet" href="./slide/page1.css" />
-    <link rel="stylesheet" href="./slide/klimzaal.css">
-    <link rel="stylesheet" href="./slide/svgbliksem.css" />
-    <link rel="stylesheet" href="./slide/svgbubbles.css" />
-    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./slide/activiteiten.css" />
+    <link rel="stylesheet" href="./slide/totaal.css" />
+    <!--SVG styles-->
+    <link rel="stylesheet" href="./ani/svgbliksem.css" />
+    <link rel="stylesheet" href="./ani/svgbubbles.css" />
+    <link rel="stylesheet" href="./ani/svgligth_bulb.css" />
+    <link rel="stylesheet" href="./ani/svghouse.css" />
+    <link rel="stylesheet" href="./ani/svgcar.css" />
+    <link rel="stylesheet" href="./ani/svgsolar_panel.css" />
   </head>
-  <body>
-    <main class="main-container"></main>
+  <body class="notch debug center">
+    <main class="main-container center"></main>
     <div class="animation--container">
       <div class="animation--redpart"></div>
-      <div class="animation--logo-container"><img class="animation--logo" src="./img/logo-big.png" alt="logo" /></div>
+      <div class="animation--logo-container center"><img class="animation--logo" src="./img/logo-big.png" alt="logo" /></div>
     </div>
   </body>
 </html>

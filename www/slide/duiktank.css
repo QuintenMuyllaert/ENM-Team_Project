@@ -4,89 +4,307 @@
 
 .duiktank {
     display: grid;
-    grid-template-rows: 50fr 40fr 40fr 350fr 50fr auto 40fr;
-    grid-template-columns: repeat(10, 1fr);
+    --horizontal-grid: 12; 
+    --vertical-grid: 24
+    grid-template-columns: repeat(var(--vertical-grid), minmax(0, calc(100% / var(--vertical-grid))));
+    grid-template-rows: repeat(var(--horizontal-grid), minmax(0, calc(100% / var(--horizontal-grid))));
+    gap: 10px ;
     height: 100%;
     width: 100%;
+    --global-background-item: #f3f3f3;
   }
   
   /*
-    Section for the title and the info of this specific page
+    Section for the header of the page (title, weetje, ...)
   */
   
+  .duiktank--header {
+    grid-area: 1/2/2/25;
+    padding-top: 2%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 130%;
+    text-decoration: underline;
+  }
+
   .duiktank--title {
-    grid-area: 1/1/2/3; /* row start, column start --> row end, column end*/
+    grid-area: 1/2/2/4; /* row start, column start --> row end, column end*/
+    font-size: 2em;
+    font-weight: 500;
+    display: flex;
+    justify-content: start;
   }
-  
-  .duiktank--sub {
-    grid-area: 2/1/3/8; /* verticaal horizontaal verticaal horizontaal */
-  }
-  
-  .duiktank--sub-activities {
-    grid-area: 4/1/5/8;
-    padding-left: 50px;
-    padding-top: 290px;
-  }
-  
-  /*
-    Section for the picture
-  */
-  
-  .duiktank--picture {
-    padding-left: 50px;
-    padding-top: 10px;
-    grid-area: 3/1/8/4;
-    border-radius: 8px;
-    height: 100%;
-  }
-  
-  .duiktank--image {
-    max-width: 80%;
-    max-height: auto;
-    height: 60%;
-    width: 80%;
-    border-radius: 8px;
-  }
-  
-  /*
-    Section for the "did you know"
-  */
   
   .duiktank--weetje {
-    /* grid-area: 7/8/8/11; */
-    padding: 10px;
-    background-color: var(--global-color-background);
-    color: var(--global-color-neutral);
-    border: 1px solid var(--global-color-background);
-    border-radius: 10px;
-    box-shadow: 2px 4px 5px #00000080;
+    grid-area: 1/24/2/25;
+    border-radius: 100%;
+    border: 1px solid gray;
+    height: 100%;
     display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr;
     justify-items: center;
     align-items: center;
   }
-  
-  
-  .duiktank--weetje-links {
-    grid-area: 7/1/8/4;
+
+  /*
+    Section for the main information of the page
+  */
+
+  .duiktank--item {
+    background-color: var(--global-background-item);
+    border-radius: 5px;
   }
-  
-  .duiktank--weetje-rechts {
-    grid-area: 7/8/8/11;
+
+  .duiktank--item-style-info {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .duiktank--item-style-vergelijking {
+    display: table;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
   }
 
   /*
-    Section for info about the electrical stuff
+    Placement of the items
   */
 
-  .duiktank--info-case {
-    grid-area: 3/5/4/8;
-    border: 1px solid var(--global-color-background);
-    border-radius: 8px;
-    background-color: var(--global-color-neutral-x-dark);
+  .duiktank--main-graph {
+    grid-area: 3/2/10/13;
   }
 
-  .duiktank--info {
-      font-weight: bold;
+  .duiktank--data-below-left {
+    grid-area: 10/2/12/7;
+  }
+
+  .duiktank--data-below-middle {
+    grid-area: 10/7/12/13;
+  }
+
+  .duiktank--data-above-left {
+    grid-area: 3/14/5/17;
+  }
+
+  .duiktank--data-above-right {
+    grid-area: 3/17/7/24;
+  }
+
+  .duiktank--data-middle-left {
+    grid-area: 5/14/7/17;
+  }
+
+  .duiktank--data-middle-right {
+    grid-area: 5/17/7/24;
+  }
+
+  .duiktank--piechart {
+    grid-area: 7/14/12/24;
+    display: flex;
+    gap: 0px;
+  }
+
+  .duiktank--piechart-title {
+    padding: 2% 7%;
+    font-size: 200%;
+    color: gray;
+  }
+
+  /*
+    Styling for the small boxes
+  */
+
+  .duiktank--item-icon {
+    justify-self: start; /*horizontaal*/
+    align-self: center; /*verticaal*/
+    height: 50%;
+    width: 20%;
+  }
+
+  .duiktank--item-icons-vergelijking {
+    display: flex;
+    gap: 5%;
+    align-self: center;
+    justify-content: center;
+    padding-bottom: 5%;
+    padding-right: 2%;
+    padding-left: 2%;
+  }
+
+  .duiktank--item-info {
+    align-self: center;
+    justify-self: center;
+    width: 70%;
+    margin-right: 10%;
+  }
+
+  .duiktank--item-title {
+    padding-top: 10%;
+    color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 135%;
+    padding-right: 10%;
+  }
+
+  .duiktank--item-title-vergelijking {
+    padding-bottom: 5%;
+    color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    font-size: 150%;
+  }
+
+  .duiktank--item-big-title {
+    display: flex;
+    justify-content: center;
+    padding: 2% 5% 2% 5%;
+    color: gray;
+    font-size: 200%;
+  }
+
+  .duiktank--item-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .duiktank--item-line-vergelijking {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5%
+  }
+
+  .duiktank--item-value {
+    padding-right: 3%;
+    font-size: 200%;
+    font-weight: bold;
+  }
+
+  .duiktank--item-unit {
+    font-weight: 400;
+    font-size: 150%;
+    padding-right: 5%;
+  }
+
+  .duiktank--item-arrow {
+    justify-self: center;
+    align-self: center;
+    width: 20%;
+    height: 100%;
+  }
+
+  .duiktank--item-arrow-image {
+    height: 50%;
+    width: 50%;
+    padding-right: 10%;
+  }
+
+
+
+  /*
+    Styling for the medium boxes
+  */
+
+  .duiktank--item-graph {
+    display: flex;
+    width: 90% !important;
+    height: 70% !important;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    justify-content: center;
+  }
+
+  .duiktank--item-big-info {
+    display: flex;
+    width: 100%;
+    justify-content:space-between;
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+
+  .duiktank--item-big-day {
+    display: flex;
+    gap: 2%;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  .duiktank--item-big-day-info {
+    padding-left: 5%;
+    font-size: 150%;
+    font-weight: bold;
+    width: 100%;
+  }
+
+  .duiktank--item-big-night-info {
+    padding-left: 5%;
+    font-size: 150%;
+    font-weight: bold;
+    width: 100%;
+  }
+
+  .duiktank--item-big-day-icon {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding-right: 5%;
+    align-items: center;
+  }
+  
+  .duiktank--item-piechart {
+    height: 100%;
+    width: 100%;
+    padding: 0 5% 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .duiktank--item-piechart-flex {
+    gap: 5%;
+    width: 100%;
+  }
+
+  .duiktank--piechart-legend {
+    padding-left: 5%;
+    width: 100%;
+  }
+
+    /*
+    Animations
+  */
+
+  .duiktank--item-arrow-up {
+    animation-name: arrow-up;
+    animation-duration: 0.75s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.duiktank--item-arrow-down {
+  animation-name: arrow-down;
+  animation-duration: 0.75s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+  @keyframes arrow-up {
+    0% {
+      transform: translateY(10%);
+    }
+  }
+
+  @keyframes arrow-down {
+    0% {
+      transform: translateY(-10%);
+    }
   }

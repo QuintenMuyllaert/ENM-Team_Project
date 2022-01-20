@@ -45,12 +45,12 @@ const hsv2hex = (h, s, v) => {
   return rgb2hex(...hsv2rgb(h, s, v));
 };
 
-const drawPie = async (element, title = "KW/uur", data = [25, 25, 80, 50, 50, 50, 50], labels = []) => {
+const renderChartPie = async (element, title = "KW/uur", data = [50, 50, 50, 50, 80], labels = []) => {
   await delay(500);
-  const total = data.reduce((a, b) => a + b, 0);
+  let total = data.reduce((a, b) => a + b, 0);
   const count = data.length;
-  element.querySelector(".piechart-center-label").textContent = title;
-  element.querySelector(".piechart-center-value").textContent = total;
+  element.querySelector(".piechart--center-label").textContent = title;
+  element.querySelector(".piechart--center-value").textContent = total;
 
   let c = element.querySelector(".piechart").querySelectorAll(".js-pie");
 
@@ -61,16 +61,26 @@ const drawPie = async (element, title = "KW/uur", data = [25, 25, 80, 50, 50, 50
   const legend = element.parentNode.querySelector(".js-legend");
   legend.innerHTML = "";
   let colors = [];
+  let cleanedData = [];
+
+  const per = 0.5;
+  const onePercent = total / 100;
+  total = total + onePercent * per * data.length;
+
   for (let i = 0; i < data.length; i++) {
     const col = hsv2hex((i * 360) / count, 100, (i % 2) * 25 + 75);
     legend.innerHTML += `<li class="piechart--info-legend-item">
         <div class="piechart--info-legend-item-color" style="background-color:${col};"></div>
         <p class="piechart--info-legend-item-text">${labels[i] ? labels[i] : "no label"}</p>
       </li>`;
-    data[i] = Math.round((100 * data[i]) / total);
+
+    cleanedData.push((100 * data[i]) / total);
+    cleanedData.push(per);
+
     colors.unshift(col);
+    colors.unshift("#ffffff");
   }
-  data = data.reverse();
+  data = cleanedData.reverse();
 
   const piechart = element.querySelector(".piechart");
   for (let i in data) {
@@ -93,7 +103,8 @@ const drawPie = async (element, title = "KW/uur", data = [25, 25, 80, 50, 50, 50
     const piece = children[i];
     duiktank = 100 - points[i];
 
-    piece.style.stroke = colors[i];
+    piece.style.stroke = i % 2 == 0 ? "#FFFFFF" : colors[i];
+    piece.style["stroke-width"] = i % 2 == 0 ? 12 : 10;
     percentage = (duiktank / 100) * 283.14; //283.140 is de top en zorgt voor niks van percentage (100%)
     piece.style["stroke-dashoffset"] = percentage;
   }
