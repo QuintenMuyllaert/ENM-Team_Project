@@ -54,31 +54,43 @@ const chartPieRender = async function () {
   if (!this.element) {
     return;
   }
+  this.update(true);
   await delay(500);
-  let title = this.data.title;
+  this.update(false);
+};
+
+const chartPieUpdate = function (clear = false) {
+  if (!this.element) {
+    return;
+  }
+  const title = this.data.title;
   let data = this.data.data;
-  let labels = this.data.labels;
-  console.log(this.data, labels);
+  const labels = this.data.labels;
+
   let total = data.reduce((a, b) => a + b, 0);
   const count = data.length;
   this.element.querySelector(".piechart--center-label").textContent = title;
   this.element.querySelector(".piechart--center-value").textContent = Math.round(total * 100) / 100;
 
-  let c = this.element.querySelector(".piechart").querySelectorAll(".js-pie");
+  const piechart = this.element.querySelector(".piechart");
+  const legend = this.element.parentNode.querySelector(".js-legend");
 
-  for (let e of c) {
-    e.remove();
+  const c = piechart.querySelectorAll(".js-pie");
+  console.log(data.length, c.length);
+  const same = data.length == c.length / 2;
+  if (!same || clear) {
+    for (let e of c) {
+      e.remove();
+    }
   }
 
-  const legend = this.element.parentNode.querySelector(".js-legend");
   legend.innerHTML = "";
   let colors = [];
   let cleanedData = [];
 
-  const per = 0.5;
+  const per = 1;
   const onePercent = total / 100;
   total = total + onePercent * per * data.length;
-  console.log(labels);
   for (let i = 0; i < data.length; i++) {
     const col = hsv2hex((i * 360) / count, 100, (i % 2) * 25 + 75);
     legend.innerHTML += `<li class="piechart--info-legend-item">
@@ -94,9 +106,10 @@ const chartPieRender = async function () {
   }
   data = cleanedData.reverse();
 
-  const piechart = this.element.querySelector(".piechart");
-  for (let i in data) {
-    piechart.innerHTML += `<circle class="piechart--circle js-pie"></circle>`;
+  if (!same || clear) {
+    for (let i in data) {
+      piechart.innerHTML += `<circle class="piechart--circle js-pie"></circle>`;
+    }
   }
 
   let sum = 0;
