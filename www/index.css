@@ -1,4 +1,8 @@
 @media screen and (orientation: portrait) {
+  :root {
+    --view-width: 100vh;
+    --view-height: 100vw;
+  }
   body {
     transform: rotate(-90deg);
     transform-origin: left top;
