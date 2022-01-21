@@ -62,13 +62,6 @@
   --view-height: 100vh;
 }
 
-@media screen and (orientation: portrait) {
-  :root {
-    --view-width: 100vh;
-    --view-height: 100vw;
-  }
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
