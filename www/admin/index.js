@@ -1,7 +1,3 @@
-const delay = (time) => {
-  return new Promise((resolve) => setTimeout(resolve, time));
-};
-
 const socket = io();
 let connected = false;
 let auth = false;
@@ -39,8 +35,7 @@ socket.on("connect", () => {
       return;
     }
 
-    await delay(2000);
-    document.querySelector("body").innerHTML = `<h1>Auth successfull!</h1>`;
+    document.querySelector("body").innerHTML = await fetchString("./control/index.html");
   });
 
   socket.on("admin", (data) => {
