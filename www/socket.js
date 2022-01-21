@@ -27,14 +27,8 @@ socket.on("connect", () => {
 
     let night = 0;
     let day = 0;
-    let pie = {
-      Bord_EB_Niveau1_Totaal: "",
-      Bord_HVAC_Totaal: "",
-      Bord_Waterbehandeling_Totaal: "",
-      Buitenbar_Totaal: "",
-      Compressor_Totaal: "",
-      Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal: "",
-    };
+    const pie = ["Bord_EB_Niveau1_Totaal", "Bord_HVAC_Totaal", "Bord_Waterbehandeling_Totaal", "Buitenbar_Totaal", "Compressor_Totaal", "Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal"];
+    let waardes_pie = [];
 
     for (waarde of data.TotaalNet) {
       const time = parseInt(waarde._time.split("T")[1].split(":")[0]);
@@ -46,16 +40,16 @@ socket.on("connect", () => {
     }
     night = night / 1000;
     day = day / 1000;
-    for (key in pie) {
+    for (key of pie) {
       let catogorie_value = 0;
       for (waarde of data[key]) {
         catogorie_value += waarde._value;
       }
       catogorie_value = catogorie_value / 1000;
-      pie[key] = catogorie_value.toFixed(2);
+      waardes_pie.push(catogorie_value);
     }
-    console.log(pie);
-
+    pie[5] = "Cafetaria_Totaal";
+    elementChartPie.data = { ...elementChartPie.data, data: waardes_pie, labels: pie };
     elementNumberDay.data = `Verbruik dag: ${day.toFixed(2)} kW`;
     elementNumberNight.data = `Verbruik nacht: ${night.toFixed(2)} kW`;
     const total = day + night;
