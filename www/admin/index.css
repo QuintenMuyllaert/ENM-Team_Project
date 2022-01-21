@@ -18,7 +18,7 @@ body {
   align-self: center;
   justify-self: start;
   grid-area: 1/1/1/1;
-  height: 30%;
+  min-height: 30%;
   width: 20%;
 
   background-color: white;
