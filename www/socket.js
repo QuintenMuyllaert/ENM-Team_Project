@@ -27,7 +27,7 @@ socket.on("connect", () => {
 
     let night = 0;
     let day = 0;
-    const pie = ["Bord_EB_Niveau1_Totaal", "Bord_HVAC_Totaal", "Bord_Waterbehandeling_Totaal", "Buitenbar_Totaal", "Compressor_Totaal", "Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal"];
+    const pie = ["Buitenbar_Totaal", "Compressor_Totaal", "Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal", "Bord_EB_Niveau1_Totaal", "Bord_HVAC_Totaal", "Bord_Waterbehandeling_Totaal"];
     let waardes_pie = [];
 
     for (waarde of data.TotaalNet) {

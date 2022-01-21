@@ -31,6 +31,7 @@ if (config.topic) {
   mqtt.subscribe(config.topic);
 }
 
+influx.connect();
 influx.fetchPeriodically(io);
 
 app.use(express.static(path.join(__dirname, "www")));

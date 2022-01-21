@@ -6,18 +6,25 @@ const config = fs.existsSync(path.join(__dirname, "../config.json")) ? require("
 module.exports = {
   lastHour: {},
   lastWeek: {},
+  queryApi: false,
+  connect: () => {
+    const { url, token, org } = config;
+    if (!url) {
+      console.log("NO URL PROVIDED FOR INFLUXDB!");
+      return;
+    }
+    console.log("Connecting.");
+    module.exports.queryApi = new InfluxDB({ url, token }).getQueryApi(org);
+  },
   run: async (querry) => {
-    try {
-      const { url, token, org } = config;
-      if (!url) {
-        console.log("NO URL PROVIDED FOR INFLUXDB!");
-        return;
-      }
+    if (!module.exports.queryApi) {
+      console.log("Not connected to the database!");
+      return false;
+    }
 
-      console.log("Connecting.");
-      const queryApi = new InfluxDB({ url, token }).getQueryApi(org);
+    try {
       console.log("Executing  querry.");
-      const data = await queryApi.collectRows(querry);
+      const data = await module.exports.queryApi.collectRows(querry);
       console.log("Received data!");
       return data;
     } catch (err) {
@@ -72,6 +79,6 @@ module.exports = {
       console.log("Periodical fetch of the data.");
       await module.exports.fetch(io, 1);
       await module.exports.fetch(io, 7);
-    }, 10 * 60 * 1000);
+    }, 5000);
   },
 };
