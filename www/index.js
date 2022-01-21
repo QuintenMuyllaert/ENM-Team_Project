@@ -1,5 +1,5 @@
-const staticSlideNr = 1; //DON'T COMMIT THIS LINE!
-const showEndAnimation = false;
+const staticSlideNr = -1; //DON'T COMMIT THIS LINE!
+const showEndAnimation = true;
 const useScalingFunction = true;
 const slideLength = 15;
 const endAnimationLength = 5000;
