@@ -15,6 +15,9 @@ const mqtt = require("./modules/mqtt.js");
 const config = fs.existsSync(path.join(__dirname, "config.json")) ? require("./config.json") : false;
 console.log("Starting ENM-G2 Team_Project!\nMade possible by :\n - Quinten Muyllaert\n - Toby Bostoen\n - Jorrit Verfaillie\n - Florian Milleville\n");
 
+const configer = require("./modules/configer.js");
+configer.generateFrontend();
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
