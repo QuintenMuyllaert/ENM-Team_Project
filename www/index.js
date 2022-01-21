@@ -1,5 +1,5 @@
-const staticSlideNr = -1; //DON'T COMMIT THIS LINE!
-const showEndAnimation = true;
+const staticSlideNr = 1; //DON'T COMMIT THIS LINE!
+const showEndAnimation = false;
 const useScalingFunction = true;
 const slideLength = 15;
 const endAnimationLength = 5000;
@@ -17,6 +17,11 @@ const elementNumberDayWeek = new dataElement(".js-dagweek", 0, elementDefaultsTe
 const elementNumberNightWeek = new dataElement(".js-nightweek", 0, elementDefaultsText);
 
 const elementChartDayNight = new dataElement(".js-day-night", [0, 0], { ...elementDefaultsChart, init: chartInitDayNight });
+const elementChartPie = new dataElement(".duiktank--item-piechart", { title: "kW/h", data: [1, 2, 3, 4], labels: ["label 1", "label 2", "label 3", "label 4"] }, { init: chartPieInit, render: chartPieRender, update: chartPieRender });
+
+setInterval(() => {
+  elementChartPie.data = { ...elementChartPie.data, data: [Math.random(), Math.random(), Math.random(), Math.random(), Math.random()] };
+}, 2000);
 
 const generateSlide = (html) => {
   return skeletonSlide.replace("<!--INNERHTML-->", html);
@@ -38,11 +43,6 @@ const renderDidYouKnow = async () => {
 const onRenderPage = async (pagename) => {
   dataElements.forEach((e) => {
     e.render();
-  });
-
-  document.querySelectorAll(".piechart--container").forEach((chart) => {
-    //chart <html>, title "", data [], labels []
-    renderChartPie(chart);
   });
 
   document.querySelectorAll(".bubbles").forEach((element) => {

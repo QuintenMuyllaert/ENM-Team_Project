@@ -45,20 +45,32 @@ const hsv2hex = (h, s, v) => {
   return rgb2hex(...hsv2rgb(h, s, v));
 };
 
-const renderChartPie = async (element, title = "KW/uur", data = [50, 50, 50, 50, 80], labels = []) => {
+const chartPieInit = function () {
+  this.data = { ...{ title: "", labels: [], data: [] }, ...this.data };
+  this.element = document.querySelector(this.query);
+};
+
+const chartPieRender = async function () {
+  if (!this.element) {
+    return;
+  }
   await delay(500);
+  let title = this.data.title;
+  let data = this.data.data;
+  let labels = this.data.labels;
+  console.log(this.data, labels);
   let total = data.reduce((a, b) => a + b, 0);
   const count = data.length;
-  element.querySelector(".piechart--center-label").textContent = title;
-  element.querySelector(".piechart--center-value").textContent = total;
+  this.element.querySelector(".piechart--center-label").textContent = title;
+  this.element.querySelector(".piechart--center-value").textContent = Math.round(total * 100) / 100;
 
-  let c = element.querySelector(".piechart").querySelectorAll(".js-pie");
+  let c = this.element.querySelector(".piechart").querySelectorAll(".js-pie");
 
   for (let e of c) {
     e.remove();
   }
 
-  const legend = element.parentNode.querySelector(".js-legend");
+  const legend = this.element.parentNode.querySelector(".js-legend");
   legend.innerHTML = "";
   let colors = [];
   let cleanedData = [];
@@ -66,7 +78,7 @@ const renderChartPie = async (element, title = "KW/uur", data = [50, 50, 50, 50,
   const per = 0.5;
   const onePercent = total / 100;
   total = total + onePercent * per * data.length;
-
+  console.log(labels);
   for (let i = 0; i < data.length; i++) {
     const col = hsv2hex((i * 360) / count, 100, (i % 2) * 25 + 75);
     legend.innerHTML += `<li class="piechart--info-legend-item">
@@ -82,7 +94,7 @@ const renderChartPie = async (element, title = "KW/uur", data = [50, 50, 50, 50,
   }
   data = cleanedData.reverse();
 
-  const piechart = element.querySelector(".piechart");
+  const piechart = this.element.querySelector(".piechart");
   for (let i in data) {
     piechart.innerHTML += `<circle class="piechart--circle js-pie"></circle>`;
   }
