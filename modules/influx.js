@@ -13,6 +13,7 @@ module.exports = {
       console.log("NO URL PROVIDED FOR INFLUXDB!");
       return;
     }
+    console.log("Connecting.");
     module.exports.queryApi = new InfluxDB({ url, token }).getQueryApi(org);
   },
   run: async (querry) => {
@@ -22,7 +23,6 @@ module.exports = {
     }
 
     try {
-      console.log("Connecting.");
       console.log("Executing  querry.");
       const data = await module.exports.queryApi.collectRows(querry);
       console.log("Received data!");
@@ -79,6 +79,6 @@ module.exports = {
       console.log("Periodical fetch of the data.");
       await module.exports.fetch(io, 1);
       await module.exports.fetch(io, 7);
-    }, 10 * 60 * 1000);
+    }, 5000);
   },
 };
