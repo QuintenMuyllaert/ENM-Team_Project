@@ -312,7 +312,7 @@
 
 .activiteiten--fuifzaal-image {
   height: 100%;
-  width: auto;
+  width: 75%;
   padding: 1rem;
   position: absolute;
 }
@@ -324,6 +324,8 @@
 }
 
 .activiteiten--fuifzaal-image-right {
+  height: 100%;
+  width: 48%;
   top: 0;
   left: calc(1rem + 50%);
 }
@@ -344,7 +346,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  width: 90%;
   padding-top: 1rem;
+}
+
+.activiteiten--activiteiten-oplijsting-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .activiteiten--fuifzaal-text {
@@ -355,12 +367,44 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 1.5rem;
+  padding-top: 1.2rem;
+  gap: 5%;
 }
 
-.acitiviteiten--fuifzaal-oplijsting {
+.acitiviteiten--activiteiten-oplijsting {
   font-size: 120%;
   justify-content: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 30%;
+  row-gap: 20%;
+  padding-top: 5%;
+  padding-bottom: 10%;
+} 
+
+.activiteiten--activiteiten-oplijsting-item {
+  display: flex;
+  gap: 10px;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.activiteiten--activiteiten-oplijsting-item-picture {
+  width: 70px;
+  height: 70px;
+  /* border: 1px solid red; */
+  border-radius: 100%;
+}
+
+.activiteiten--activiteiten-oplijsting-item-text {
+  font-size: 120%;
+}
+
+.activiteiten--fuifzaal-icon {
+  height: 10%;
+  width: 10%;
 }
 
 /*
