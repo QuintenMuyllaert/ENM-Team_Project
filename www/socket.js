@@ -27,7 +27,7 @@ socket.on("connect", () => {
 
     let night = 0;
     let day = 0;
-    const pie = ["Bord_EB_Niveau1_Totaal", "Bord_HVAC_Totaal", "Bord_Waterbehandeling_Totaal", "Buitenbar_Totaal", "Compressor_Totaal", "Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal"];
+    const pie = ["Bord_Waterbehandeling_Totaal", "Bord_HVAC_Totaal", "Bord_EB_Niveau1_Totaal", "Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal", "Compressor_Totaal", "Buitenbar_Totaal"];
     let waardes_pie = [];
 
     for (waarde of data.TotaalNet) {
@@ -48,7 +48,7 @@ socket.on("connect", () => {
       catogorie_value = catogorie_value / 1000;
       waardes_pie.push(catogorie_value);
     }
-    pie[5] = "Cafetaria_Totaal";
+    pie[3] = "Cafetaria_Totaal";
     elementChartPie.data = { ...elementChartPie.data, data: waardes_pie, labels: pie };
     elementNumberDay.data = `Verbruik dag: ${day.toFixed(2)} kW`;
     elementNumberNight.data = `Verbruik nacht: ${night.toFixed(2)} kW`;
