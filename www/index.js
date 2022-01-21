@@ -1,9 +1,3 @@
-const staticSlideNr = 1; //DON'T COMMIT THIS LINE!
-const showEndAnimation = false;
-const useScalingFunction = true;
-const slideLength = 15;
-const endAnimationLength = 5000;
-
 const pages = [];
 let pageNames;
 let slideNr = -1;
@@ -58,6 +52,13 @@ const loopHandle = async () => {
 };
 
 const init = async () => {
+  const config = await fetchJSON("./config.json");
+  staticSlideNr = config.staticSlideNr;
+  showEndAnimation = config.showEndAnimation;
+  slideLength = config.slideLength;
+  endAnimationLength = config.endAnimationLength;
+  useScalingFunction = config.useScalingFunction;
+
   if (useScalingFunction) {
     const width = screen.width;
     const scale = width / 1920;
