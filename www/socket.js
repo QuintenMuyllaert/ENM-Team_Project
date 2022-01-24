@@ -27,8 +27,9 @@ socket.on("connect", () => {
 
     let night = 0;
     let day = 0;
-    const pie = ["Bord_Waterbehandeling_Totaal", "Bord_HVAC_Totaal", "Bord_EB_Niveau1_Totaal", "Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal", "Compressor_Totaal", "Buitenbar_Totaal"];
+    const pie = ["Bord_Waterbehandeling_Totaal", "Bord_HVAC_Totaal", "Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal", "Bord_EB_Niveau1_Totaal", "Compressor_Totaal", "Buitenbar_Totaal"];
     let waardes_pie = [];
+    let values = [];
 
     for (waarde of data.TotaalNet) {
       const time = parseInt(waarde._time.split("T")[1].split(":")[0]);
@@ -48,8 +49,15 @@ socket.on("connect", () => {
       catogorie_value = catogorie_value / 1000;
       waardes_pie.push(catogorie_value);
     }
-    pie[3] = "Cafetaria_Totaal";
-    elementChartPie.data = { ...elementChartPie.data, data: waardes_pie, labels: pie };
+    values.push(waardes_pie[pie.indexOf("Bord_Waterbehandeling_Totaal")] + waardes_pie[pie.indexOf("Compressor_Totaal")]);
+    values.push(waardes_pie[pie.indexOf("Bord_HVAC_Totaal")]);
+    values.push(waardes_pie[pie.indexOf("Buitenbar_Totaal")] + waardes_pie[pie.indexOf("Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal")]);
+    values.push(waardes_pie[pie.indexOf("Bord_EB_Niveau1_Totaal")]);
+    pie[pie.indexOf("Bord_Waterbehandeling_Totaal")] = "Waterbehandeling";
+    pie[pie.indexOf("Bord_HVAC_Totaal")] = "Airco";
+    pie[pie.indexOf("Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal")] = "Gelegenheid ";
+    pie[pie.indexOf("Bord_EB_Niveau1_Totaal")] = "Andere";
+    elementChartPie.data = { ...elementChartPie.data, data: values, labels: pie };
     elementNumberDay.data = `Verbruik dag: ${day.toFixed(2)} kW`;
     elementNumberNight.data = `Verbruik nacht: ${night.toFixed(2)} kW`;
     const total = day + night;
