@@ -59,6 +59,24 @@ const elementDefaultsText = {
   },
 };
 
+const elementDefaultsInnerHTML = {
+  init: function () {
+    this.element = document.querySelector(this.query);
+  },
+  render: function () {
+    if (!this.element) {
+      return;
+    }
+    this.element.innerHTML = this.data;
+  },
+  update: function () {
+    if (!this.element) {
+      return;
+    }
+    this.element.innerHTML = this.data;
+  },
+};
+
 const elementDefaultsChart = {
   render: async function () {
     if (!this.element) {
