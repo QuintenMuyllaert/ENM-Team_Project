@@ -281,6 +281,7 @@
   height: 100%;
   width: 100%;
   display: flex;
+  padding-top: 41%;
   align-items: center;
   overflow: hidden;
 }
