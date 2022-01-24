@@ -107,6 +107,22 @@ io.on("connection", async (socket) => {
     }
   });
 
+  socket.on("slide", (data) => {
+    console.log("Got slide command from external source.");
+    if (!socket.auth) {
+      console.log("Source is not authorized to execute slide command.");
+      return;
+    }
+
+    if (!tamper.structure({}, data)) {
+      console.log("Slide command is not wrong structure.");
+      return;
+    }
+
+    console.log("Sending slide command to frontend!");
+    io.emit("slide", data);
+  });
+
   if (!Object.keys(influx.lastHour).length || !Object.keys(influx.lastHour).length) {
     console.log("Fetching Influx data...");
     await influx.fetch(socket, 1);
