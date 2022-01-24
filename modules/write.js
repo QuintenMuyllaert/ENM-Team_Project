@@ -2,8 +2,6 @@ const token = "tU7mUt5ZDXUro0pL9P1Z72CZPJSBbqP9kxzUBQPvwI8QfjZECGsp4qCZNp2WMIX3M
 const org = "enm";
 const bucket = "Transfosite groep 2";
 const { InfluxDB, Point, HttpError } = require("@influxdata/influxdb-client");
-const { DeleteAPI } = require("@influxdata/influxdb-client-apis");
-const { hostname } = require("os");
 let writeApi;
 let influxclient;
 module.exports = {
