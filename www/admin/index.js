@@ -1,9 +1,26 @@
 const socket = io();
+const pages = [];
 let connected = false;
 let auth = false;
 let passwordShow = false;
 
 let htmlUsername, htmlPassword, htmlButtonAuth, htmlButtonShowPassword;
+
+const pageRender = async () => {
+  htmlControlWeetjes = document.querySelector(".js-weetjes");
+
+  htmlControlWeetjes.addEventListener("click", () => {
+    let html = "<h1>test</h1>";
+    // pages.forEach((page) => {
+    //   html += generateSlide(page);
+    // });
+    // document.querySelector(".control--page").innerHTML = html;
+    // dataElements.forEach((e) => {
+    //   e.init();
+    // });
+    document.querySelector(".control--page").innerHTML = html;
+  });
+};
 
 socket.on("connect", () => {
   connected = true;
@@ -36,6 +53,7 @@ socket.on("connect", () => {
     }
 
     document.querySelector("body").innerHTML = await fetchString("./control/index.html");
+    pageRender();
   });
 
   socket.on("admin", (data) => {
