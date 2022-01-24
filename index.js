@@ -37,7 +37,6 @@ mqtt.attachSocketIO(io);
 if (config.topic) {
   mqtt.subscribe(config.topic);
 }
-writer.attachSocketIO(io);
 
 influx.connect();
 writer.connect();

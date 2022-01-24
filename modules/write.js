@@ -4,12 +4,7 @@ const bucket = "Transfosite groep 2";
 const { InfluxDB, Point, HttpError } = require("@influxdata/influxdb-client");
 const { hostname } = require("os");
 let writeApi;
-let io = false;
 module.exports = {
-  attachSocketIO: (socketio) => {
-    console.log("Attaching Socket.IO object.");
-    io = socketio;
-  },
   connect: () => {
     writeApi = new InfluxDB({ url: "http://172.23.176.6:8086", token }).getWriteApi(org, bucket, "ns");
   },
