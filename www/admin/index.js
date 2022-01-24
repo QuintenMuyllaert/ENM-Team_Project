@@ -4,20 +4,26 @@ let connected = false;
 let auth = false;
 let passwordShow = false;
 
-let htmlUsername, htmlPassword, htmlButtonAuth, htmlButtonShowPassword;
+let htmlUsername, htmlPassword, htmlButtonAuth, htmlButtonShowPassword, htmlControlDidYouKnow;
+let skeletonSlide = "";
+const generateSlide = (html) => {
+  return skeletonSlide.replace("<!--INNERHTML-->", html);
+};
 
 const pageRender = async () => {
-  htmlControlWeetjes = document.querySelector(".js-weetjes");
+  htmlControlDidYouKnow = document.querySelector(".js-slide-weetjes");
 
-  htmlControlWeetjes.addEventListener("click", () => {
-    let html = "<h1>test</h1>";
-    // pages.forEach((page) => {
-    //   html += generateSlide(page);
-    // });
-    // document.querySelector(".control--page").innerHTML = html;
-    // dataElements.forEach((e) => {
-    //   e.init();
-    // });
+  htmlControlDidYouKnow.addEventListener("click", async () => {
+    skeletonSlide = await fetchString("../skeletonSlide.html");
+
+    let html = generateSlide(await fetchString("../slide/duiktank.html"));
+    /*pages.forEach((page) => {
+      html += generateSlide(page);
+    });
+    document.querySelector(".control--page").innerHTML = html;
+    dataElements.forEach((e) => {
+      e.init();
+    });*/
     document.querySelector(".control--page").innerHTML = html;
   });
 };

@@ -228,6 +228,9 @@ socket.on("connect", () => {
         case "reinit":
           await init();
           break;
+        case "refresh":
+          document.location.href = document.location.href;
+          break;
       }
     }
     await loop();
