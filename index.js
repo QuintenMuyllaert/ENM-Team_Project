@@ -96,6 +96,11 @@ io.on("connection", async (socket) => {
       fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
     }
 
+    if (!tamper.structure({ username: "", password: "" }, obj)) {
+      console.log("Login wrong structure.");
+      return;
+    }
+
     if ((await bcrypt.compare(obj.username, config.username)) && (await bcrypt.compare(obj.password, config.password))) {
       console.log("Authentication successfull!");
       socket.emit("auth", true);
