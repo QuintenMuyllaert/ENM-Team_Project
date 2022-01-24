@@ -202,7 +202,7 @@ socket.on("connect", () => {
 
     console.log(waardes_pie);
     elementNumberDiveTitle.data = `Waterbehandeling in de duiktank verbruikt momenteel <span>${dat.toFixed(2)} kW</span>!`;
-    elementNumberDiveText.data = `Dat is evenveel als ${num} ${rngThing}!`;
+    elementNumberDiveText.data = `Dat is evenveel als <span>${num}</span> ${rngThing}!`;
   });
 
   socket.on("influxWeek", (data) => {
