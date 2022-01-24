@@ -25,10 +25,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const htmlButtonQuestions = document.querySelector("button#questions");
   const htmlButtonInit = document.querySelector("button#reinit");
   const htmlButtonShowEndAnimation = document.querySelector("button#endanimation");
+  const htmlAuto = document.querySelector("input#auto");
+  const htmlRefresh = document.querySelector("button#refresh");
 
   htmlUsername = document.querySelector("input#username");
   htmlPassword = document.querySelector("input#password");
   htmlButtonAuth = document.querySelector("button#login");
+
+  let toggleAuto = false;
 
   htmlButtonAuth.addEventListener("click", () => {
     const username = htmlUsername.value;
@@ -55,5 +59,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   htmlButtonShowEndAnimation.addEventListener("click", () => {
     socket.emit("slide", { event: "showEndAnimation" });
+  });
+  htmlRefresh.addEventListener("click", () => {
+    socket.emit("slide", { event: "refresh" });
+  });
+  htmlAuto.addEventListener("change", () => {
+    toggleAuto = !toggleAuto;
+    console.log("Auto", toggleAuto);
+    socket.emit("control", toggleAuto);
   });
 });

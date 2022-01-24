@@ -12,7 +12,7 @@ socket.on("connect", () => {
   });
 
   socket.on("mqttData", (data) => {
-    console.log("MQTT Data", data);
+    console.log("MQTT Data", data["70997"]);
   });
 
   socket.on("influx", (data) => {
@@ -220,6 +220,9 @@ socket.on("connect", () => {
           break;
         case "reinit":
           await init();
+          break;
+        case "refresh":
+          document.location.href = document.location.href;
           break;
       }
     }
