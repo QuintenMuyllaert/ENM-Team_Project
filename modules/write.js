@@ -1,3 +1,5 @@
+const fs = require("fs");
+const path = require("path");
 const config = fs.existsSync(path.join(__dirname, "../config.json")) ? require("../config.json") : false;
 const { tokenwrite } = config;
 const org = "enm";
@@ -7,7 +9,7 @@ let writeApi;
 let influxclient;
 module.exports = {
   connect: () => {
-    influxclient = new InfluxDB({ url: "http://172.23.176.6:8086", tokenwrite });
+    influxclient = new InfluxDB({ url: "http://172.23.176.6:8086", token: tokenwrite });
   },
   write: async (data) => {
     writeApi = influxclient.getWriteApi(org, bucket, "ns");
