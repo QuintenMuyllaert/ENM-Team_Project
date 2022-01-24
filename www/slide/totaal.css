@@ -311,9 +311,12 @@
   height: calc(4*var(--global-font-size));
   border: 1px solid var(--global-color-title);
   border-radius: 100%;
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
+}
+.totaal--quiz-timer * {
+  text-align: center;
 }
 
 .totaal--quiz-answers {
@@ -335,9 +338,19 @@
   grid-area: 1/7/1/9;
 }
 
+.totaal--quiz-answer-all {
+  grid-area: 1/1/1/9;
+}
+
 .totaal--quiz-answer-container {
   height: 100%;
   width: 100%;
+}
+
+.totaal--quiz-answer-correct {
+  border: 1rem solid green;
+  color:green;
+  text-decoration: underline;
 }
 
 .totaal--quiz-answer {
