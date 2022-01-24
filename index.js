@@ -12,6 +12,7 @@ const influx = require("./modules/influx.js");
 const tree = require("./modules/tree.js");
 const mqtt = require("./modules/mqtt.js");
 const tamper = require("./modules/tamper.js");
+const slider = require("./modules/slider.js");
 
 const config = fs.existsSync(path.join(__dirname, "config.json")) ? require("./config.json") : false;
 console.log("Starting ENM-G2 Team_Project!\nMade possible by :\n - Quinten Muyllaert\n - Toby Bostoen\n - Jorrit Verfaillie\n - Florian Milleville\n");
@@ -22,6 +23,7 @@ configer.generateFrontend();
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
+slider.init(io);
 
 Date.prototype.minusDays = function (days) {
   const date = new Date(this.valueOf());
@@ -126,6 +128,19 @@ io.on("connection", async (socket) => {
 
     console.log("Sending slide command to frontend!");
     io.emit("slide", data);
+  });
+
+  socket.on("control", (data) => {
+    if (!socket.auth) {
+      console.log("Source is not authorized to change control.");
+      return;
+    }
+    if (!tamper.structure(true, data)) {
+      console.log("Source sent non-boolean as control source.");
+      return;
+    }
+    slide.control = data;
+    console.log(slide.control ? "Server has control of the slideshow." : "Client has control of the slideshow.");
   });
 
   if (!Object.keys(influx.lastHour).length || !Object.keys(influx.lastHour).length) {
