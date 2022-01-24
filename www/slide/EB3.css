@@ -24,15 +24,22 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 130%;
-    text-decoration: underline;
   }
   
+  .blok3-header-title-container {
+    grid-area: 1/2/2/4;
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+  }
+
   .blok3--title {
-    grid-area: 1/2/2/4; /* row start, column start --> row end, column end*/
+    grid-area: 1/1/1/2;
     font-size: 2em;
     font-weight: 500;
     display: flex;
     justify-content: start;
+    padding-bottom: 2px;
+    border-bottom: 5px solid black;
   }
   
   .blok3--weetje {

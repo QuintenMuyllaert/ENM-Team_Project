@@ -13,6 +13,13 @@ socket.on("connect", () => {
 
   socket.on("mqttData", (data) => {
     console.log("MQTT Data", data["70997"]);
+    let day = 0;
+    for (value of data["70997"]) {
+      day += value.apparentPower;
+    }
+    day = day / 1000;
+    console.log(day);
+    elementNumberDayblok1.data = `Verbruik dag: ${day.toFixed(2)} kW`;
   });
 
   socket.on("influx", (data) => {
