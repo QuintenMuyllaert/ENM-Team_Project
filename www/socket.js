@@ -71,10 +71,8 @@ socket.on("connect", () => {
     elementNumberOneDay.data = `${total.toFixed(2)}`;
     elementChartDayNight.data = [day, night];
     const houses = document.querySelector(".js-vergelijking");
-    if (!houses) {
-      return;
-    }
-    houses.innerHTML = `<svg class="svg--house" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 126.27 116.13">
+    if (houses) {
+      houses.innerHTML = `<svg class="svg--house" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 126.27 116.13">
       <defs>
         <style>
           .cls-1 {
@@ -185,6 +183,26 @@ socket.on("connect", () => {
       </g>
     </svg>
     `;
+    }
+    console.log(pie, waardes_pie);
+    let dat = waardes_pie[pie.indexOf("Waterbehandeling")];
+    let things = {
+      "desktop computers": 1.4,
+      "elektrische ovens": 3,
+      wasmachines: 2.7,
+      drogers: 2.87,
+      "airco's": 8,
+      "elektrische verwarmingen": 21.8,
+      grasmaaiers: 0.9,
+      lifen: 20,
+      "keer dit scherm": 2.5,
+    };
+    let rngThing = Object.keys(things)[Math.round(Math.random() * (Object.keys(things).length - 1))];
+    let num = Math.round(dat / things[rngThing]);
+
+    console.log(waardes_pie);
+    elementNumberDiveTitle.data = `Waterbehandeling in de duiktank verbruikt momenteel <span>${dat.toFixed(2)} kW</span>!`;
+    elementNumberDiveText.data = `Dat is evenveel als ${num} ${rngThing}!`;
   });
 
   socket.on("influxWeek", (data) => {
