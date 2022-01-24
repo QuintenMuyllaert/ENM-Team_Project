@@ -14,17 +14,17 @@ const pageRender = async () => {
   htmlControlDidYouKnow = document.querySelector(".js-slide-weetjes");
 
   htmlControlDidYouKnow.addEventListener("click", async () => {
-    skeletonSlide = await fetchString("../skeletonSlide.html");
-
-    let html = generateSlide(await fetchString("../slide/duiktank.html"));
-    /*pages.forEach((page) => {
-      html += generateSlide(page);
+    skeletonSlide = await fetchString("./control/didyouknow.html");
+    let html = generateSlide(await fetchString("./control/didyouknow.html"));    
+    document.querySelector(".control--page").innerHTML = html;
+    htmlControlDidYouKnowText = document.querySelector(".js-dyk-text")
+    didyouknows = await fetchTxt("../data/facts.csv")
+    console.log(didyouknows)
+    html = ""
+    didyouknows.forEach(element => {
+      html += `<h1 class"dyk--text-element">${element}</h1>`
     });
-    document.querySelector(".control--page").innerHTML = html;
-    dataElements.forEach((e) => {
-      e.init();
-    });*/
-    document.querySelector(".control--page").innerHTML = html;
+    htmlControlDidYouKnowText.innerHTML = html
   });
 };
 
