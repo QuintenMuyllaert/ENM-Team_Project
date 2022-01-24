@@ -382,7 +382,7 @@
   row-gap: 20%;
   padding-top: 5%;
   padding-bottom: 10%;
-} 
+}
 
 .activiteiten--activiteiten-oplijsting-item {
   display: flex;
@@ -396,6 +396,10 @@
   height: 70px;
   /* border: 1px solid red; */
   border-radius: 100%;
+}
+
+.activiteiten--activiteiten-oplijsting-item-image path {
+  fill: var(--global-color-neutral);
 }
 
 .activiteiten--activiteiten-oplijsting-item-text {
