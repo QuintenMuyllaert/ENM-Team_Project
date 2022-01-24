@@ -202,4 +202,27 @@ socket.on("connect", () => {
     elementNumberNightWeek.data = (night_week / 1000).toFixed(2);
     elementNumberDayWeek.data = (day_week / 1000).toFixed(2);
   });
+
+  socket.on("slide", async (data) => {
+    console.log("Received slide event!");
+    config = { ...config, ...data };
+    if (data.event) {
+      console.log("Got fetch event!");
+      switch (data.event) {
+        case "fetchFacts":
+          didyouknow = await fetchTxt("./data/facts.csv");
+          break;
+        case "fetchQuestions":
+          questions = await fetchJSON("./data/questions.json");
+          break;
+        case "showEndAnimation":
+          await showEndAnimation();
+          break;
+        case "reinit":
+          await init();
+          break;
+      }
+    }
+    await loop();
+  });
 });

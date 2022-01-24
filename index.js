@@ -96,6 +96,11 @@ io.on("connection", async (socket) => {
       fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
     }
 
+    if (!tamper.structure({ username: "", password: "" }, obj)) {
+      console.log("Login wrong structure.");
+      return;
+    }
+
     if ((await bcrypt.compare(obj.username, config.username)) && (await bcrypt.compare(obj.password, config.password))) {
       console.log("Authentication successfull!");
       socket.emit("auth", true);
@@ -105,6 +110,22 @@ io.on("connection", async (socket) => {
       socket.emit("auth", false);
       socket.auth = false;
     }
+  });
+
+  socket.on("slide", (data) => {
+    console.log("Got slide command from external source.");
+    if (!socket.auth) {
+      console.log("Source is not authorized to execute slide command.");
+      return;
+    }
+
+    if (!tamper.structure({}, data)) {
+      console.log("Slide command is not wrong structure.");
+      return;
+    }
+
+    console.log("Sending slide command to frontend!");
+    io.emit("slide", data);
   });
 
   if (!Object.keys(influx.lastHour).length || !Object.keys(influx.lastHour).length) {
