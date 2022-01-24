@@ -90,7 +90,7 @@
 
 .control--page {
   grid-area: 2 / 3 / span 10 / span 8;
-  background-color: #f3f3f3;
+  /* background-color: #f3f3f3; */
   margin: 2%;
   border-radius: 5px;
 }

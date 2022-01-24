@@ -1,0 +1,18 @@
+<main class="slide">
+    <div class="slide--title-container">
+        <p class="slide--title">
+            SlideShow config
+        </p>
+    </div>
+    <div class="slide--number-set-container">
+        <p class="slide--number-set-text">Tijd tussen slides (seconden):</p>
+        <input class="slide--number-set-input" type="number" min="10" step="1">
+    </div>
+    <div class="slide--set-slides-container">
+        <picture class="slide--set-slides-available-picture">
+            <img id="drag1" draggable="true" ondragstart="drag(event)" class="slide--set-slides-available-image" src="../control/img/logo.png" alt="">
+        </picture>
+
+        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" class="example"></div>
+    </div>
+</main>
