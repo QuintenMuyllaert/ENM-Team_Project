@@ -1,6 +1,6 @@
 const pages = [];
+let config;
 let pageNames;
-let slideNr = -1;
 let skeletonSlide = "";
 let didyouknow = [];
 
@@ -44,17 +44,31 @@ const onRenderPage = async (pagename) => {
   slideShow();
 };
 
-const loopHandle = async () => {
-  await loop();
-  setTimeout(async () => {
-    await loopHandle();
-  }, slideLength * 1000);
+const showEndAnimation = async () => {
+  const red = document.querySelector(".animation--container");
+  const logo = document.querySelector(".animation--logo-container");
+
+  addClassRemoveAfter(red, "animation--display", endAnimationLength);
+  addClassRemoveAfter(logo, "animation--logo-display", endAnimationLength);
+  await delay(endAnimationLength);
+  addClassRemoveAfter(red, "animation--display-reverse", endAnimationLength);
+  addClassRemoveAfter(logo, "animation--logo-display-reverse", endAnimationLength);
+  window.scroll({
+    top: 0,
+    left: 0,
+  });
+  await delay(1500);
+
+  window.scroll({
+    top: 0,
+    left: config.slideNr * screen.width,
+    behavior: "smooth",
+  });
 };
 
 const init = async () => {
-  const config = await fetchJSON("./config.json");
+  config = await fetchJSON("./config.json");
   staticSlideNr = config.staticSlideNr;
-  showEndAnimation = config.showEndAnimation;
   slideLength = config.slideLength;
   endAnimationLength = config.endAnimationLength;
   useScalingFunction = config.useScalingFunction;
@@ -97,29 +111,12 @@ const init = async () => {
 };
 
 const loop = async () => {
-  slideNr = (slideNr + 1) % pages.length;
-  const red = document.querySelector(".animation--container");
-  const logo = document.querySelector(".animation--logo-container");
-
-  if (showEndAnimation && slideNr == 0) {
-    addClassRemoveAfter(red, "animation--display", endAnimationLength);
-    addClassRemoveAfter(logo, "animation--logo-display", endAnimationLength);
-    await delay(endAnimationLength);
-    addClassRemoveAfter(red, "animation--display-reverse", endAnimationLength);
-    addClassRemoveAfter(logo, "animation--logo-display-reverse", endAnimationLength);
-    window.scroll({
-      top: 0,
-      left: 0,
-    });
-    await delay(1500);
-  }
   window.scroll({
     top: 0,
-    left: slideNr * screen.width,
+    left: config.slideNr * screen.width,
     behavior: "smooth",
   });
-
-  onRenderPage(pageNames[slideNr]);
+  onRenderPage(pageNames[config.slideNr]);
 };
 
 window.onresize = () => {
@@ -131,12 +128,11 @@ window.onresize = () => {
 
   window.scroll({
     top: 0,
-    left: slideNr * screen.width,
+    left: config.slideNr * screen.width,
   });
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("loaded!");
   await init();
-  await loopHandle();
 });
