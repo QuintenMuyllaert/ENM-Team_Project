@@ -76,7 +76,6 @@ const chartPieUpdate = function (clear = false) {
   const legend = this.element.parentNode.querySelector(".js-legend");
 
   const c = piechart.querySelectorAll(".js-pie");
-  console.log(data.length, c.length);
   const same = data.length == c.length / 2;
   if (!same || clear) {
     for (let e of c) {
