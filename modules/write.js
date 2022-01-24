@@ -9,9 +9,15 @@ let writeApi;
 let influxclient;
 module.exports = {
   connect: () => {
+    if (!tokenwrite) {
+      return;
+    }
     influxclient = new InfluxDB({ url: "http://172.23.176.6:8086", token: tokenwrite });
   },
   write: async (data) => {
+    if (!tokenwrite) {
+      return;
+    }
     writeApi = influxclient.getWriteApi(org, bucket, "ns");
     for (let key of data["70997"]) {
       writeApi.useDefaultTags({ location: "70997" });
