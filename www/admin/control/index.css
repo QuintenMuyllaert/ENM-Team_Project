@@ -10,14 +10,87 @@
 
 .control--top-bar {
   display: grid;
+  grid-template-columns: auto auto;
   grid-area: 1/3/1 / span 10;
-  background-color: red;
-  height: 100%;
-  justify-content: end;
-  align-items: end;
+  background-color: #dc0000;
+  /* height: 100%; */
+  align-items: center;
+  overflow: hidden;
+}
+
+.control--top-bar-title {
+  justify-self: end;
+}
+
+.control--top-bar-title-name {
+  padding: 0;
+  margin: 0;
+  color: white;
 }
 
 .control--top-bar-profile {
-  display: block;
-  width: fit-content;
+  margin-right: 0;
+  padding-right: 0;
+  align-items: center;
+  justify-self: end;
+}
+
+.control--top-bar-profile-name {
+  margin: 0;
+  margin-right: 10px;
+  font-size: 24px;
+  color: white;
+}
+
+.control--top-bar-profile-name:hover {
+  text-decoration: underline;
+}
+
+.control--logo {
+  display: flex;
+  grid-area: 1/1/1/ span 2;
+  justify-content: center;
+  align-items: center;
+}
+
+.control--logo-img {
+  max-height: 100%;
+  width: auto;
+}
+
+.control--sidebar {
+  grid-area: 2/ 1/ span 10/ span 2;
+  background-color: var(--global-color-background);
+}
+
+.control--sidebar-list {
+  margin-top: 10%;
+  list-style-type: none;
+  --control-border-list-item: white;
+}
+
+.control--sidebar-list-item {
+  background-color: white;
+  margin-right: 5%;
+  margin-bottom: 5%;
+  padding: 5%;
+  border-radius: 3px;
+  border: 2px solid var(--control-border-list-item);
+}
+
+.control--sidebar-list-item:hover {
+  --control-border-list-item:#e74c4c  ;
+}
+
+.control--sidebar-list-item:active,
+.control--sidebar-list-item:focus {
+  background-color:#d16c6c ;
+}
+
+
+.control--page {
+  grid-area: 2 / 3 / span 10 / span 8;
+  background-color: #f3f3f3;
+  margin: 2%;
+  border-radius: 5px;
 }

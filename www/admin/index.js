@@ -1,4 +1,5 @@
 const socket = io();
+const pages = [];
 let connected = false;
 let auth = false;
 let passwordShow = false;
@@ -56,6 +57,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   htmlIconShowPassword = document.querySelector(".admin--fieldset-password-icon-show");
   htmlIconHidePassword = document.querySelector(".admin--fieldset-password-icon-hide");
 
+
   htmlButtonAuth.addEventListener("click", () => {
     const username = htmlUsername.value;
     const password = htmlPassword.value;
@@ -71,5 +73,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     htmlIconShowPassword.classList[passwordShow ? "add" : "remove"]("o-hide-accessible");
     htmlIconHidePassword.classList[!passwordShow ? "add" : "remove"]("o-hide-accessible");
     htmlPassword.type = passwordShow ? "text" : "password";
+  });
+
+  htmlControlWeetjes = document.querySelector(".js-weetjes");
+
+  htmlControlWeetjes.addEventListener("click", () => {
+    let html = "";
+    pages.forEach((page) => {
+      html += generateSlide(page);
+    });
+    document.querySelector(".control--page").innerHTML = html;
+    dataElements.forEach((e) => {
+      e.init();
+    });
   });
 });
