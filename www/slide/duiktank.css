@@ -275,6 +275,32 @@
   width: 100%;
 }
 
+.duiktank--main-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 16.5%;
+}
+
+.duiktank--main-picture {
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+}
+
+.duiktank--main-image-first {
+  padding: 2.5%;
+  height: 100%;
+  width: 100%;
+}
+
+.duiktank--main-image-second {
+  padding: 2.5%;
+  height: auto;
+  width: 50%;
+}
+
 /*
     Animations
   */
