@@ -8,22 +8,21 @@ socket.on("connect", () => {
   });
 
   socket.on("mqtt", (topic, message) => {
-    console.log("raw MQTT Data", topic, message);
+    console.log("Got MQTT data!");
   });
 
   socket.on("mqttData", (data) => {
-    console.log("MQTT Data", data["70997"]);
+    console.log("Got processed MQTT data!");
     let day = 0;
     for (value of data["70997"]) {
       day += value.apparentPower;
     }
     day = day / 1000;
-    console.log(day);
     elementNumberDayblok1.data = `Verbruik dag: ${day.toFixed(2)} kW`;
   });
 
   socket.on("influx", (data) => {
-    console.log("Influx Data", data);
+    console.log("Got Influx data!");
     if (!data.TotaalNet) {
       return;
     }
@@ -184,7 +183,6 @@ socket.on("connect", () => {
     </svg>
     `;
     }
-    console.log(pie, waardes_pie);
     let dat = waardes_pie[pie.indexOf("Waterbehandeling")];
     let things = {
       "desktop computers": 1.4,
@@ -200,12 +198,12 @@ socket.on("connect", () => {
     let rngThing = Object.keys(things)[Math.round(Math.random() * (Object.keys(things).length - 1))];
     let num = Math.round(dat / things[rngThing]);
 
-    console.log(waardes_pie);
     elementNumberDiveTitle.data = `Waterbehandeling in de duiktank verbruikt momenteel <span>${dat.toFixed(2)} kW</span>!`;
     elementNumberDiveText.data = `Dat is evenveel als <span>${num}</span> ${rngThing}!`;
   });
 
   socket.on("influxWeek", (data) => {
+    console.log("Got Influx Week data!");
     if (!data.TotaalNet) {
       return;
     }

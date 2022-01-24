@@ -136,6 +136,6 @@ window.onresize = () => {
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
-  console.log("loaded!");
+  console.log("Loaded!");
   await init();
 });

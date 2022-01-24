@@ -5,7 +5,6 @@ let htmlPassword;
 let htmlButtonAuth;
 
 socket.on("auth", async (success) => {
-  console.log("auth", success);
   if (success) {
     console.log("Authentication successfull!");
     htmlUsername.value = "";
@@ -65,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   htmlAuto.addEventListener("change", () => {
     toggleAuto = !toggleAuto;
-    console.log("Auto", toggleAuto);
     socket.emit("control", toggleAuto);
   });
 });

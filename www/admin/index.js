@@ -15,16 +15,15 @@ const pageRender = async () => {
 
   htmlControlDidYouKnow.addEventListener("click", async () => {
     skeletonSlide = await fetchString("./control/didyouknow.html");
-    let html = generateSlide(await fetchString("./control/didyouknow.html"));    
+    let html = generateSlide(await fetchString("./control/didyouknow.html"));
     document.querySelector(".control--page").innerHTML = html;
-    htmlControlDidYouKnowText = document.querySelector(".js-dyk-text")
-    didyouknows = await fetchTxt("../data/facts.csv")
-    console.log(didyouknows)
-    html = ""
-    didyouknows.forEach(element => {
-      html += `<h1 class"dyk--text-element">${element}</h1>`
+    htmlControlDidYouKnowText = document.querySelector(".js-dyk-text");
+    didyouknows = await fetchTxt("../data/facts.csv");
+    html = "";
+    didyouknows.forEach((element) => {
+      html += `<h1 class"dyk--text-element">${element}</h1>`;
     });
-    htmlControlDidYouKnowText.innerHTML = html
+    htmlControlDidYouKnowText.innerHTML = html;
   });
 };
 
@@ -33,7 +32,6 @@ socket.on("connect", () => {
   console.log("Connection to server made!");
 
   socket.on("auth", async (success) => {
-    console.log("auth", success);
     if (success) {
       console.log("Authentication successfull!");
       //add green class to fields...
