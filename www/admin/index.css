@@ -19,7 +19,7 @@ body {
   justify-self: start;
   grid-area: 1/1/1/1;
   min-height: 30%;
-  width: 20%;
+  width: max(20%, 24rem);
 
   background-color: white;
   border-radius: 8px;
@@ -103,6 +103,7 @@ body {
   right: 100px;
   grid-area: 1/1/1/1;
   margin-right: 50px;
+  z-index: -1;
 }
 
 .admin--picture img {
