@@ -1,0 +1,14 @@
+.press--title {
+  font-weight: 600;
+}
+
+.press--slide-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background-color: var(--global-color-container);
+}
+
+.press--slide-container p {
+  max-width: 20rem;
+}
