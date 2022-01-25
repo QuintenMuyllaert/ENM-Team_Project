@@ -1,68 +1,3 @@
-/*Used by titles & headers*/
-@font-face {
-  font-family: "RobotoCondensed";
-  src: url("./font/RobotoCondensed-Light.ttf");
-  font-weight: 200;
-}
-
-@font-face {
-  font-family: "RobotoCondensed";
-  src: url("./font/RobotoCondensed-Regular.ttf");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "RobotoCondensed";
-  src: url("./font/RobotoCondensed-Bold.ttf");
-  font-weight: 600;
-}
-
-/*Used by main content*/
-@font-face {
-  font-family: "Roboto";
-  src: url("./font/Roboto-Light.ttf");
-  font-weight: 200;
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: url("./font/Roboto-Medium.ttf");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: url("./font/Roboto-Bold.ttf");
-  font-weight: 600;
-}
-
-:root {
-  /* colors */
-  --global-color-neutral: #ffffff;
-  --global-color-neutral-x-dark: #00000033;
-  --global-color-background: #dc0000;
-  --global-color-text: #000000;
-  --page1-color-text: green;
-  --global-color-title:#808080;
-
-  /* border radius */
-
-  /* transitions */
-  --svg-bubbles-delay: 0s;
-
-  /* whitespace */
-
-  /* misc */
-  --global-font-size: 1rem;
-  --scalefactor: 1;
-  --slide-height: 85%;
-  --slide-width: 95%;
-  --logo-height: 6rem;
-
-  --view-width: 100vw;
-  --view-height: 100vh;
-}
-
 @media screen and (orientation: portrait) {
   :root {
     --view-width: 100vh;
@@ -77,49 +12,6 @@
   }
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-
-  font-family: "Roboto", serif;
-  font-weight: 200;
-}
-
-html {
-  font-size: 100%;
-  overflow: hidden;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "RobotoCondensed", serif;
-  font-weight: 400;
-}
-
-p,
-a,
-li,
-span {
-  font-family: "Roboto", serif;
-  font-weight: 200;
-}
-
-p {
-  font-size: 1rem;
-}
-
-body {
-  color: var(--global-color-text);
-  background-color: var(--global-color-background);
-  min-width: calc(var(--pagecount) * var(--view-width));
-  min-height: var(--view-height);
-  overflow: hidden;
-}
-
 .center {
   display: grid;
   grid-template-rows: 100%;
@@ -128,7 +20,12 @@ body {
   justify-items: center;
 }
 
-.main-container {
+.fillcontainer {
+  width: 100%;
+  height: 100%;
+}
+
+.main--container {
   min-width: calc(100% / var(--scalefactor));
   min-height: calc(100% / var(--scalefactor));
   transform: scale(var(--scalefactor), var(--scalefactor));
@@ -161,13 +58,12 @@ body {
 
 .slide--header {
   grid-area: 1/1/1/1;
-  justify-self: start;
+  justify-self: center;
   align-self: start;
   display: grid;
   justify-items: center;
   align-items: start;
   z-index: 10;
-  width: 100%;
   transform: translateY(calc(var(--logo-height) - 1em));
 }
 
@@ -189,31 +85,25 @@ body {
   height: var(--logo-height);
 }
 
-.slide--didyouknow {
-  grid-area: 1/1/1/1;
-  width: var(--slide-width);
-  height: var(--slide-height);
-  z-index: 100;
-  display: grid;
-
-  align-items: start;
-  justify-items: end;
-}
-
 .slide--didyouknow-box {
   width: 25rem;
   height: 7rem;
   display: grid;
   grid-template-columns: auto auto;
   overflow: hidden;
-  margin: 1rem;
-  margin-right: 2rem;
+  margin: 1.5rem;
   padding: 0 1rem;
   gap: 0.5rem;
   background-color: var(--global-color-background);
   border-radius: 1.5rem;
   align-items: center;
   opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  align-self: start;
+  justify-self: end;
 }
 
 .slide--didyouknow-animate {
@@ -409,6 +299,7 @@ body {
   width: 1.5rem;
   align-self: center;
 }
+
 .piechart--root-circle,
 .piechart--circle {
   r: var(--donut__circle-radius);

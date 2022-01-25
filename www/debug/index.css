@@ -1,0 +1,21 @@
+div {
+  margin-top: 1rem;
+}
+
+.input--container {
+  display: grid;
+  grid-template-areas: "a a" "b c";
+  width: 15rem;
+}
+
+.input--container label {
+  grid-area: a;
+}
+
+.input--container input {
+  grid-area: b;
+}
+
+.input--container button {
+  grid-area: c;
+}

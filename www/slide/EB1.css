@@ -1,0 +1,338 @@
+/*
+  Section for the general styling of this specific page
+*/
+
+.blok1 {
+  display: grid;
+  --horizontal-grid: 12;
+  --vertical-grid: 24;
+  grid-template-columns: repeat(var(--vertical-grid), minmax(0, calc(100% / var(--vertical-grid))));
+  grid-template-rows: repeat(var(--horizontal-grid), minmax(0, calc(100% / var(--horizontal-grid))));
+  gap: 10px;
+  height: 100%;
+  width: 100%;
+  --global-background-item: #f3f3f3;
+}
+
+/*
+    Section for the header of the page (title, weetje, ...)
+  */
+
+.blok1--header {
+  grid-area: 1/2/2/25;
+  padding-top: 2%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 130%;
+}
+
+.blok1-header-title-container {
+  grid-area: 1/2/2/4;
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+}
+
+.blok1--title {
+  grid-area: 1/1/1/2;
+  font-size: 2em;
+  font-weight: 500;
+  display: flex;
+  justify-content: start;
+  padding-bottom: 2px;
+  border-bottom: 5px solid black;
+}
+
+.blok1--weetje {
+  grid-area: 1/24/2/25;
+  border-radius: 100%;
+  border: 1px solid gray;
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+/*
+    Section for the main information of the page
+  */
+
+.blok1--item {
+  background-color: var(--global-background-item);
+  border-radius: 5px;
+}
+
+.blok1--item-style-info {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.blok1--item-style-vergelijking {
+  display: table;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+/*
+    Placement of the items
+  */
+
+.blok1--main-graph {
+  grid-area: 3/2/10/13;
+  width: 100%;
+  height: 100%;
+}
+
+.blok1--data-below-left {
+  grid-area: 10/2/12/7;
+}
+
+.blok1--data-below-middle {
+  grid-area: 10/7/12/13;
+}
+
+.blok1--data-above-left {
+  grid-area: 3/14/5/17;
+}
+
+.blok1--data-above-right {
+  grid-area: 3/17/7/24;
+}
+
+.blok1--data-middle-left {
+  grid-area: 5/14/7/17;
+}
+
+.blok1--data-middle-right {
+  grid-area: 5/17/7/24;
+}
+
+.blok1--piechart {
+  grid-area: 7/14/12/24;
+  display: flex;
+  gap: 0px;
+}
+
+.blok1--piechart-title {
+  padding: 2% 7%;
+  font-size: 200%;
+  color: gray;
+}
+
+/*
+    Styling for the small boxes
+  */
+
+.blok1--item-icon {
+  justify-self: start; /*horizontaal*/
+  align-self: center; /*verticaal*/
+  height: 50%;
+  width: 20%;
+}
+
+.blok1--item-icons-vergelijking {
+  display: flex;
+  gap: 5%;
+  align-self: center;
+  justify-content: center;
+  padding-bottom: 5%;
+  padding-right: 2%;
+  padding-left: 2%;
+}
+
+.blok1--item-info {
+  align-self: center;
+  justify-self: center;
+  width: 70%;
+  margin-right: 10%;
+}
+
+.blok1--item-title {
+  padding-top: 10%;
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 135%;
+  padding-right: 10%;
+}
+
+.blok1--item-title-vergelijking {
+  padding-bottom: 5%;
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  font-size: 150%;
+}
+
+.blok1--item-big-title {
+  display: flex;
+  justify-content: center;
+  padding: 2% 5% 2% 5%;
+  color: gray;
+  font-size: 200%;
+}
+
+.blok1--item-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blok1--item-line-vergelijking {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5%;
+}
+
+.blok1--item-value {
+  padding-right: 3%;
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.blok1--item-unit {
+  font-weight: 400;
+  font-size: 150%;
+  padding-right: 5%;
+}
+
+.blok1--item-arrow {
+  justify-self: center;
+  align-self: center;
+  width: 20%;
+  height: 100%;
+}
+
+.blok1--item-arrow-image {
+  height: 50%;
+  width: 50%;
+  padding-right: 10%;
+}
+
+/*
+    Styling for the medium boxes
+  */
+
+.blok1--item-graph {
+  display: flex;
+  width: 90% !important;
+  height: 70% !important;
+  padding-bottom: 5%;
+  padding-left: 5%;
+  justify-content: center;
+}
+
+.blok1--item-big-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+.blok1--item-big-day {
+  display: flex;
+  gap: 2%;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.blok1--item-big-day-info {
+  padding-left: 5%;
+  font-size: 150%;
+  font-weight: bold;
+  width: 100%;
+}
+
+.blok1--item-big-night-info {
+  padding-left: 5%;
+  font-size: 150%;
+  font-weight: bold;
+  width: 100%;
+}
+
+.blok1--item-big-day-icon {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding-right: 5%;
+  align-items: center;
+}
+
+.blok1--item-piechart {
+  height: 100%;
+  width: 100%;
+  padding: 0 5% 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blok1--item-piechart-flex {
+  gap: 5%;
+  width: 100%;
+}
+
+.blok1--piechart-legend {
+  padding-left: 5%;
+  width: 100%;
+}
+
+.blok1--main-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  padding-top: 41%;
+  align-items: center;
+  overflow: hidden;
+}
+
+.blok1--main-picture {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.blok1--main-image {
+  height: 100%;
+  width: auto;
+}
+
+/*
+    Animations
+  */
+
+.blok1--item-arrow-up {
+  animation-name: arrow-up;
+  animation-duration: 0.75s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.blok1--item-arrow-down {
+  animation-name: arrow-down;
+  animation-duration: 0.75s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes arrow-up {
+  0% {
+    transform: translateY(10%);
+  }
+}
+
+@keyframes arrow-down {
+  0% {
+    transform: translateY(-10%);
+  }
+}

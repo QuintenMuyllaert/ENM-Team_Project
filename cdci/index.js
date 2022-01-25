@@ -12,6 +12,13 @@ const cmdline = (cmd, cb = () => {}) => {
   });
 };
 
+const changesToRepo = (branch) => {
+  console.log("Changes made to repo!");
+  cmdline(`sudo pm2 restart "${branch}"`, () => {
+    console.log(`Restarted "${branch}"`);
+  });
+};
+
 const tick = () => {
   const root = path.join(__dirname, "../");
   console.log(`Pulling repo from Github`);
@@ -24,12 +31,11 @@ const tick = () => {
         return;
       }
 
-      //changes to repo
-      console.log("Changes made to repo!");
-
-      cmdline(`sudo pm2 restart "${branch}"`, () => {
-        console.log(`Restarted "${branch}"`);
+      cmdline(`cd "${path.join(root, branch, projectName)}" && sudo git reset --hard && sudo git pull`, (stdout) => {
+        //changes to repo
+        changesToRepo(branch);
       });
+      changesToRepo(branch);
     });
   }
 };
@@ -37,4 +43,4 @@ const tick = () => {
 tick();
 setInterval(() => {
   tick();
-}, 10 * 1000);
+}, 60 * 1000);

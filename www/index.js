@@ -1,75 +1,23 @@
-const staticSlideNr = -1; //DON'T COMMIT THIS LINE!
-const showEndAnimation = true;
-const useScalingFunction = true;
-const slideLength = 15;
-const endAnimationLength = 5000;
-
 const pages = [];
+let config;
 let pageNames;
-let slideNr = -1;
 let skeletonSlide = "";
 let didyouknow = [];
 
-let day = 0;
-let night = 0;
-let day_week = 0;
-let night_week = 0;
-let pie = {
-  Bord_EB_Niveau1_Totaal: "",
-  Bord_HVAC_Totaal: "",
-  Bord_Waterbehandeling_Totaal: "",
-  Buitenbar_Totaal: "",
-  Compressor_Totaal: "",
-  Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal: "",
-};
+const elementNumberDay = new dataElement(".js-day", 0, elementDefaultsText);
+const elementNumberNight = new dataElement(".js-night", 0, elementDefaultsText);
+const elementNumberOneDay = new dataElement(".js-oneday", 0, elementDefaultsText);
+const elementNumberDayWeek = new dataElement(".js-dagweek", 0, elementDefaultsText);
+const elementNumberNightWeek = new dataElement(".js-nightweek", 0, elementDefaultsText);
+const elementNumberDayblok1 = new dataElement(".js-day-blok1", 0, elementDefaultsText);
+const elementNumberDiveTitle = new dataElement(".dive-title", 0, elementDefaultsInnerHTML);
+const elementNumberDiveText = new dataElement(".dive-text", 0, elementDefaultsInnerHTML);
 
-let loaded = false;
-
-const delay = (time) => {
-  return new Promise((resolve) => setTimeout(resolve, time));
-};
-
-const fetchString = async (url) => {
-  const data = await fetch(url);
-  return await data.text();
-};
-
-const fetchJSON = async (url) => {
-  const data = await fetch(url);
-  return await data.json();
-};
-
-const fetchTxt = async (url) => {
-  const data = await fetchString(url);
-  return data.split("\n");
-};
-
-const lookupList = (list, includes) => {
-  const results = [];
-  list = Object.keys(list);
-  for (const item of list) {
-    if (item.includes(includes)) {
-      results.push(item);
-    }
-  }
-  return results;
-};
+const elementChartDayNight = new dataElement(".js-day-night", [0, 0], { ...elementDefaultsChart, init: chartInitDayNight });
+const elementChartPie = new dataElement(".duiktank--item-piechart", { title: "kW/h", data: [1, 2, 3, 4], labels: ["label 1", "label 2", "label 3", "label 4"] }, { init: chartPieInit, render: chartPieRender, update: chartPieUpdate });
 
 const generateSlide = (html) => {
   return skeletonSlide.replace("<!--INNERHTML-->", html);
-};
-
-const addClassRemoveAfter = (element, className, time) => {
-  element.classList.add(className);
-  setTimeout(() => {
-    element.classList.remove(className);
-  }, time);
-};
-
-const triggerClass = async (element, className) => {
-  element.classList.remove(className);
-  await delay(10);
-  element.classList.add(className);
 };
 
 const renderDidYouKnow = async () => {
@@ -85,27 +33,9 @@ const renderDidYouKnow = async () => {
   });
 };
 
-const renderDayNight = () => {
-  if (!loaded) {
-    return;
-  }
-  document.querySelector(".js-day").innerText = `Verbruik dag: ${day.toFixed(2)} kW`;
-  document.querySelector(".js-night").innerText = `Verbruik nacht: ${night.toFixed(2)} kW`;
-  const total = day + night;
-  document.querySelector(".js-oneday").innerText = `${total.toFixed(2)}`;
-
-  renderChartDayNight([day, night]);
-
-  document.querySelector(".js-dagweek").innerText = `${day_week.toFixed(2)}`;
-  document.querySelector(".js-nightweek").innerText = `${night_week.toFixed(2)}`;
-};
-
 const onRenderPage = async (pagename) => {
-  renderChartElectrical();
-  renderChartDayNight([day, night]);
-  document.querySelectorAll(".piechart--container").forEach((chart) => {
-    //chart <html>, title "", data [], labels []
-    renderChartPie(chart);
+  dataElements.forEach((e) => {
+    e.render();
   });
 
   document.querySelectorAll(".bubbles").forEach((element) => {
@@ -114,58 +44,38 @@ const onRenderPage = async (pagename) => {
 
   renderDidYouKnow();
   renderQuiz();
-  renderDayNight();
   slideShow();
 };
 
-const loopHandle = async () => {
-  await loop();
-  setTimeout(async () => {
-    await loopHandle();
-  }, slideLength * 1000);
-};
-
-const loop = async () => {
-  slideNr = (slideNr + 1) % pages.length;
+const showEndAnimation = async () => {
   const red = document.querySelector(".animation--container");
   const logo = document.querySelector(".animation--logo-container");
 
-  if (showEndAnimation && slideNr == 0) {
-    addClassRemoveAfter(red, "animation--display", endAnimationLength);
-    addClassRemoveAfter(logo, "animation--logo-display", endAnimationLength);
-    await delay(endAnimationLength);
-    addClassRemoveAfter(red, "animation--display-reverse", endAnimationLength);
-    addClassRemoveAfter(logo, "animation--logo-display-reverse", endAnimationLength);
-    window.scroll({
-      top: 0,
-      left: 0,
-    });
-    await delay(1500);
-  }
+  addClassRemoveAfter(red, "animation--display", endAnimationLength);
+  addClassRemoveAfter(logo, "animation--logo-display", endAnimationLength);
+  await delay(endAnimationLength);
+  addClassRemoveAfter(red, "animation--display-reverse", endAnimationLength);
+  addClassRemoveAfter(logo, "animation--logo-display-reverse", endAnimationLength);
   window.scroll({
     top: 0,
-    left: slideNr * screen.width,
+    left: 0,
+  });
+  await delay(1500);
+
+  window.scroll({
+    top: 0,
+    left: config.slideNr * screen.width,
     behavior: "smooth",
   });
-
-  onRenderPage(pageNames[slideNr]);
 };
 
-window.onresize = () => {
-  if (useScalingFunction) {
-    const width = screen.width;
-    const scale = width / 1920;
-    document.querySelector("html").style.setProperty("--scalefactor", scale);
-  }
+const init = async () => {
+  config = await fetchJSON("./config.json");
+  staticSlideNr = config.staticSlideNr;
+  slideLength = config.slideLength;
+  endAnimationLength = config.endAnimationLength;
+  useScalingFunction = config.useScalingFunction;
 
-  window.scroll({
-    top: 0,
-    left: slideNr * screen.width,
-  });
-};
-
-document.addEventListener("DOMContentLoaded", async () => {
-  console.log("loaded!");
   if (useScalingFunction) {
     const width = screen.width;
     const scale = width / 1920;
@@ -197,7 +107,35 @@ document.addEventListener("DOMContentLoaded", async () => {
   pages.forEach((page) => {
     html += generateSlide(page);
   });
-  document.querySelector(".main-container").innerHTML = html;
-  loaded = true;
-  await loopHandle();
+  document.querySelector(".main--container").innerHTML = html;
+  dataElements.forEach((e) => {
+    e.init();
+  });
+};
+
+const loop = async () => {
+  window.scroll({
+    top: 0,
+    left: config.slideNr * screen.width,
+    behavior: "smooth",
+  });
+  onRenderPage(pageNames[config.slideNr]);
+};
+
+window.onresize = () => {
+  if (useScalingFunction) {
+    const width = screen.width;
+    const scale = width / 1920;
+    document.querySelector("html").style.setProperty("--scalefactor", scale);
+  }
+
+  window.scroll({
+    top: 0,
+    left: config.slideNr * screen.width,
+  });
+};
+
+document.addEventListener("DOMContentLoaded", async () => {
+  console.log("Loaded!");
+  await init();
 });

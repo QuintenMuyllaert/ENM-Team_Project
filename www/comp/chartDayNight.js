@@ -1,19 +1,11 @@
-const renderChartDayNight = async (data) => {
-  const chartHTML = document.querySelector(".js-day-night");
-  if (!chartHTML) {
-    return;
-  }
-  const chart = chartHTML.getContext("2d");
-  if (chartHTML.graph) {
-    chartHTML.graph.data.datasets[0].data = [];
-    chartHTML.graph.update();
-    await delay(500);
-    chartHTML.graph.data.datasets[0].data = data;
-    chartHTML.graph.update();
+const chartInitDayNight = function () {
+  this.element = document.querySelector(this.query);
+  if (!this.element) {
     return;
   }
 
-  chartHTML.graph = new Chart(chart, {
+  const chart = this.element.getContext("2d");
+  this.element.graph = new Chart(chart, {
     type: "bar",
     data: {
       labels: ["dag", "nacht"],
@@ -24,7 +16,7 @@ const renderChartDayNight = async (data) => {
           barThickness: 70,
           maxBarThickness: 100,
           minBarLength: 1,
-          data: data,
+          data: this.data,
           backgroundColor: ["red", "gray"],
         },
       ],

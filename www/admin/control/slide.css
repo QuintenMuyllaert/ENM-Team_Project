@@ -1,0 +1,120 @@
+.slide {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  --global-item-background-color: #f3f3f3;
+  --global-background-color: #dc0000;
+  --global-border-hover-color: #a70303;
+  --global-border-color: #d16c6c;
+}
+
+/*
+    Section for the title of the page
+*/
+
+.slide--title-container {
+  padding: 5%;
+  grid-area: 1/1/2/4;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.slide--title {
+  font-size: 150%;
+  font-weight: 800;
+}
+
+/*
+    Section for the background of each item
+*/
+
+.slide--item {
+  background-color: var(--global-item-background-color);
+  border-radius: 5px;
+}
+
+/*
+    Section for the part where you can set the number of slides
+*/
+
+.slide--number-set-container {
+  grid-area: 3/1/5/15;
+  padding-left: 1%;
+}
+
+.slide--number-set-text {
+  font-size: 120%;
+  padding-bottom: 0.5%;
+}
+
+.slide--number-set-input {
+  outline: none;
+  padding: 0.5%;
+  border: 1px solid var(--global-item-background-color);
+  background-color: var(--global-item-background-color);
+  border-radius: 5px;
+  font-size: 120%;
+  width: 10%;
+}
+
+/*
+    Section for the slideshow drag and drop part
+*/
+
+.slide--set-slides-container {
+  padding-left: 1%;
+  grid-area: 5/1/13/20;
+  background-color: var(--global-item-background-color);
+}
+
+.slide--set-slide-available-title {
+  display: flex;
+  font-size: 120%;
+  font-weight: bold;
+  justify-content: center;
+}
+
+.slide--set-slides-available-picture {
+  display: flex;
+  gap: 5%;
+  height: 38%;
+  width: 99%;
+  border: 1px solid black;
+  padding: 0.5%;
+  margin-top: 0.5%;
+}
+
+.slide--set-slides-available-image {
+  height: 100%;
+  width: 300px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.slide--set-slides-slideshow-container {
+  width: 99%;
+  height: 40%;
+  border: 1px solid black;
+  display: flex;
+  gap: 5%;
+  margin-top: 4%;
+}
+
+.slide--submit-changes {
+  grid-area: 14/9/15/12;
+  width: 100%;
+  height: 100%;
+  background-color: var(--global-background-color);
+  border: 2px solid var(--global-border-color);
+  border-radius: 5px;
+  color: white;
+}
+
+.slide--submit-changes:hover {
+    border: 2px solid var(--global-border-hover-color);
+    background-color: var(--global-border-color);
+    color: black;
+}
