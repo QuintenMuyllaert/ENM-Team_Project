@@ -22,6 +22,11 @@
   justify-self: end;
 }
 
+.control--top-bar-title:hover {
+  text-decoration: underline;
+  color: white;
+}
+
 .control--top-bar-title-name {
   padding: 0;
   margin: 0;
