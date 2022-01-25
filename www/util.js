@@ -47,3 +47,11 @@ const triggerClass = async (element, className) => {
   await delay(10);
   element.classList.add(className);
 };
+
+const sumKey = (data, key) => {
+  let sum = 0;
+  for (const dat of data) {
+    sum += dat[key];
+  }
+  return sum;
+};
