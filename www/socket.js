@@ -18,7 +18,7 @@ socket.on("connect", () => {
       day += value.apparentPower;
     }
     day = day / 1000;
-    elementNumberDayblok1.data = `Verbruik dag: ${day.toFixed(2)} kW`;
+    elementNumberDayblok1.data = `${day.toFixed(2)}`;
   });
 
   socket.on("influx", (data) => {
@@ -64,8 +64,8 @@ socket.on("connect", () => {
     pie[pie.indexOf("Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal")] = "Gelegenheid ";
     pie[pie.indexOf("Bord_EB_Niveau1_Totaal")] = "Andere";
     elementChartPie.data = { ...elementChartPie.data, data: values, labels: pie };
-    elementNumberDay.data = `Verbruik dag: ${day.toFixed(2)} kW`;
-    elementNumberNight.data = `Verbruik nacht: ${night.toFixed(2)} kW`;
+    elementNumberDay.data = `${day.toFixed(2)}`;
+    elementNumberNight.data = `${night.toFixed(2)}`;
     const total = day + night;
     elementNumberOneDay.data = `${total.toFixed(2)}`;
     elementChartDayNight.data = [day, night];
