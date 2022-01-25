@@ -4,7 +4,7 @@ let connected = false;
 let auth = false;
 let passwordShow = false;
 
-let htmlUsername, htmlPassword, htmlButtonAuth, htmlButtonShowPassword, htmlControlDidYouKnow,htmlControlHomeSlideLength, htmlControlHomeStaticSlide, htmlControlHome;;
+let htmlUsername, htmlPassword, htmlButtonAuth, htmlButtonShowPassword, htmlControlDidYouKnow,htmlControlHomeSlideLength, htmlControlHomeStaticSlide, htmlControlHome;
 let skeletonSlide = "";
 const generateSlide = (html) => {
   return skeletonSlide.replace("<!--INNERHTML-->", html);
@@ -22,21 +22,43 @@ const loadHomePage = async () => {
   config = await fetchJSON("../config.json");
   staticSlideNr = config.staticSlideNr;
   slideLength = config.slideLength;
-  endAnimationLength = config.endAnimationLength;
-  useScalingFunction = config.useScalingFunction;
+  // endAnimationLength = config.endAnimationLength;
+  // useScalingFunction = config.useScalingFunction;
   htmlControlHomeSlideLength.value = slideLength;
   htmlControlHomeStaticSlide.value = staticSlideNr;
-};
 
+  htmlControlHomeSubmit = document.querySelector(".js-control-home-submit");
+
+  htmlControlHomeSubmit.addEventListener("click", async () => {
+    staticSlideNr = htmlControlHomeSlideLength.value;
+    slideLength = htmlControlHomeStaticSlide.value;
+  });
+};
 
 const pageRender = async () => {
   htmlControlDidYouKnow = document.querySelector(".js-slide-weetjes");
+  hmtlControlSlides = document.querySelector(".js-control-slides")
   htmlControlHome = document.querySelector(".js-control-home");
 
-  loadHomePage();
+  await loadHomePage();
 
   htmlControlHome.addEventListener("click", async () => {
     loadHomePage();
+  });
+
+  htmlControlDidYouKnow.addEventListener("click", async () => {
+    skeletonSlide = await fetchString("./control/didyouknow.html");
+    let html = generateSlide(await fetchString("./control/didyouknow.html"));
+    document.querySelector(".control--page").innerHTML = html;
+    htmlControlDidYouKnowText = document.querySelector(".js-dyk-text");
+
+    didyouknows = await fetchTxt("../data/facts.csv");
+
+    html = "";
+    didyouknows.forEach((element) => {
+      html += `<h1 class"dyk--text-element">${element}</h1>`;
+    });
+    htmlControlDidYouKnowText.innerHTML = html;
   });
 
   htmlControlDidYouKnow.addEventListener("click", async () => {
