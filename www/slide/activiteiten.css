@@ -58,7 +58,7 @@
 
 .activiteiten--item {
   background-color: var(--global-background-item);
-  border-radius: 5px;
+  border-radius: 0.75rem;
 }
 
 .activiteiten--item-style-info {
