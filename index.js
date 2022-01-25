@@ -14,6 +14,7 @@ const mqtt = require("./modules/mqtt.js");
 const tamper = require("./modules/tamper.js");
 const slider = require("./modules/slider.js");
 const writer = require("./modules/write.js");
+const deleter = require("./modules/deleteinflux.js");
 
 const config = fs.existsSync(path.join(__dirname, "config.json")) ? require("./config.json") : false;
 console.log("Starting ENM-G2 Team_Project!\nMade possible by :\n - Quinten Muyllaert\n - Toby Bostoen\n - Jorrit Verfaillie\n - Florian Milleville\n");
@@ -40,7 +41,7 @@ if (config.topic) {
 
 influx.connect();
 writer.connect();
-
+// deleter.delete();
 influx.fetchPeriodically(io);
 
 app.use(express.static(path.join(__dirname, "www")));
