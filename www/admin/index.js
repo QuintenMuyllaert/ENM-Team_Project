@@ -4,7 +4,7 @@ let connected = false;
 let auth = false;
 let passwordShow = false;
 
-let htmlUsername, htmlPassword, htmlButtonAuth, htmlButtonShowPassword, htmlControlDidYouKnow, htmlControlHomeSlideLength, htmlControlHomeStaticSlide, htmlControlHome;
+let htmlUsername, htmlPassword, htmlButtonAuth, htmlButtonShowPassword, htmlControlDidYouKnow,htmlControlHomeSlideLength, htmlControlHomeStaticSlide, htmlControlHome;
 let skeletonSlide = "";
 const generateSlide = (html) => {
   return skeletonSlide.replace("<!--INNERHTML-->", html);
