@@ -1,0 +1,106 @@
+/*Used by titles & headers*/
+@font-face {
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Light.ttf");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "RobotoCondensed";
+  src: url("./font/RobotoCondensed-Bold.ttf");
+  font-weight: 600;
+}
+
+/*Used by main content*/
+@font-face {
+  font-family: "Roboto";
+  src: url("./font/Roboto-Light.ttf");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./font/Roboto-Medium.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./font/Roboto-Bold.ttf");
+  font-weight: 600;
+}
+
+:root {
+  /* colors */
+  --global-color-neutral: #ffffff;
+  --global-color-neutral-x-dark: #00000033;
+  --global-color-background: #dc0000;
+  --global-color-text: #000000;
+  --global-color-title: #808080;
+
+  /* border radius */
+
+  /* transitions */
+  --svg-bubbles-delay: 0s;
+
+  /* whitespace */
+
+  /* misc */
+  --global-font-size: 1rem;
+  --scalefactor: 1;
+  --slide-height: 85%;
+  --slide-width: 95%;
+  --logo-height: 6rem;
+
+  --view-width: 100vw;
+  --view-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+
+  font-family: "Roboto", serif;
+  font-weight: 200;
+}
+
+html {
+  font-size: 100%;
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "RobotoCondensed", serif;
+  font-weight: 400;
+}
+
+p,
+a,
+li,
+span {
+  font-family: "Roboto", serif;
+  font-weight: 200;
+}
+
+p {
+  font-size: 1rem;
+}
+
+body {
+  color: var(--global-color-text);
+  background-color: var(--global-color-background);
+  min-width: calc(var(--pagecount) * var(--view-width));
+  min-height: var(--view-height);
+  overflow: hidden;
+}

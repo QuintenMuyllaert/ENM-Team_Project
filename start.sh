@@ -1,1 +1,1 @@
-npm i && npm i -g nodemon && nodemon index.js
+npm i && npm i -g nodemon && nodemon index.js --ignore www/

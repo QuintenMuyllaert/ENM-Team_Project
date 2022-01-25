@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debug</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./index.js"></script>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div>
+      <label for="username">Username</label>
+      <input id="username" type="text" placeholder="admin" />
+      <label for="password">password</label>
+      <input id="password" type="password" placeholder="password" />
+      <button id="login">Login</button>
+    </div>
+
+    <div class="input--container">
+      <label for="slide">slideNr</label>
+      <input id="slide" type="text" />
+      <button id="slide">Emit</button>
+    </div>
+
+    <div>
+      <label for="endanimation">Show end animation</label>
+      <button id="endanimation">Emit</button>
+    </div>
+
+    <div>
+      <label for="facts">Fetch "facts.csv"</label>
+      <button id="facts">Emit</button>
+    </div>
+
+    <div>
+      <label for="questions">Fetch "questions.json"</label>
+      <button id="questions">Emit</button>
+    </div>
+
+    <div>
+      <label for="reinit">Reinit</label>
+      <button id="reinit">Emit</button>
+    </div>
+
+<div>
+      <label for="refresh">Hard refresh</label>
+      <button id="refresh">Emit</button>
+    </div>
+
+    <div>
+      <label for="auto">Automatic</label>
+      <input type="checkbox" id="auto"></input>
+    </div>
+  </body>
+</html>

@@ -4,11 +4,11 @@
 
 .activiteiten {
   display: grid;
-  --horizontal-grid: 12; 
-  --vertical-grid: 24
+  --horizontal-grid: 12;
+  --vertical-grid: 24;
   grid-template-columns: repeat(var(--vertical-grid), minmax(0, calc(100% / var(--vertical-grid))));
   grid-template-rows: repeat(var(--horizontal-grid), minmax(0, calc(100% / var(--horizontal-grid))));
-  gap: 10px ;
+  gap: 10px;
   height: 100%;
   width: 100%;
   --global-background-item: #f3f3f3;
@@ -24,15 +24,22 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 130%;
-  text-decoration: underline;
+}
+
+.activiteiten-header-title-container {
+  grid-area: 1/2/2/4;
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
 }
 
 .activiteiten--title {
-  grid-area: 1/2/2/4; /* row start, column start --> row end, column end*/
+  grid-area: 1/1/1/2;
   font-size: 2em;
   font-weight: 500;
   display: flex;
   justify-content: start;
+  padding-bottom: 2px;
+  border-bottom: 5px solid black;
 }
 
 .activiteiten--weetje {
@@ -186,7 +193,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5%
+  padding: 5%;
 }
 
 .activiteiten--item-value {
@@ -214,8 +221,6 @@
   padding-right: 10%;
 }
 
-
-
 /*
   Styling for the medium boxes
 */
@@ -232,7 +237,7 @@
 .activiteiten--item-big-info {
   display: flex;
   width: 100%;
-  justify-content:space-between;
+  justify-content: space-between;
   padding-left: 8%;
   padding-right: 8%;
 }
@@ -287,8 +292,6 @@
   width: 100%;
 }
 
-
-
 .activiteiten--item-slide-container {
   overflow: hidden;
   width: 100%;
@@ -316,7 +319,7 @@
 
 .activiteiten--fuifzaal-image {
   height: 100%;
-  width: auto;
+  width: 75%;
   padding: 1rem;
   position: absolute;
 }
@@ -328,6 +331,8 @@
 }
 
 .activiteiten--fuifzaal-image-right {
+  height: 100%;
+  width: 48%;
   top: 0;
   left: calc(1rem + 50%);
 }
@@ -348,11 +353,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  width: 90%;
   padding-top: 1rem;
 }
 
-.activiteiten--fuifzaal-text {
+.activiteiten--activiteiten-oplijsting-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.activiteiten--fuifzaal-text {
   font-size: 150%;
 }
 
@@ -360,16 +374,51 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 1.5rem;
+  padding-top: 1.2rem;
+  gap: 5%;
 }
 
-.acitiviteiten--fuifzaal-oplijsting {
+.acitiviteiten--activiteiten-oplijsting {
   font-size: 120%;
   justify-content: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 30%;
+  row-gap: 20%;
+  padding-top: 5%;
+  padding-bottom: 10%;
 }
 
+.activiteiten--activiteiten-oplijsting-item {
+  display: flex;
+  gap: 10px;
+  /* justify-content: center; */
+  align-items: center;
+}
 
-  /*
+.activiteiten--activiteiten-oplijsting-item-picture {
+  width: 70px;
+  height: 70px;
+  /* border: 1px solid red; */
+  border-radius: 100%;
+}
+
+.activiteiten--activiteiten-oplijsting-item-image path {
+  fill: var(--global-color-neutral);
+}
+
+.activiteiten--activiteiten-oplijsting-item-text {
+  font-size: 120%;
+}
+
+.activiteiten--fuifzaal-icon {
+  height: 10%;
+  width: 10%;
+}
+
+/*
   Animations
 */
 
@@ -382,11 +431,11 @@
 }
 
 .activiteiten--item-arrow-down {
-animation-name: arrow-down;
-animation-duration: 0.75s;
-animation-timing-function: ease-in-out;
-animation-iteration-count: infinite;
-animation-direction: alternate;
+  animation-name: arrow-down;
+  animation-duration: 0.75s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 @keyframes arrow-up {
