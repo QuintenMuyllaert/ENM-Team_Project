@@ -4,8 +4,6 @@
   display: grid;
   grid-template-columns: repeat(20, 1fr);
   grid-template-rows: repeat(20, 1fr);
-  --global-item-background-color: #f3f3f3;
-  --global-background-color: #dc0000;
   --global-border-hover-color: #a70303;
   --global-border-color: #d16c6c;
 }
@@ -32,7 +30,7 @@
 */
 
 .slide--item {
-  background-color: var(--global-item-background-color);
+  background-color: var(--global-color-container);
   border-radius: 5px;
 }
 
@@ -53,8 +51,8 @@
 .slide--number-set-input {
   outline: none;
   padding: 0.5%;
-  border: 1px solid var(--global-item-background-color);
-  background-color: var(--global-item-background-color);
+  border: 1px solid var(--global-color-container);
+  background-color: var(--global-color-container);
   border-radius: 5px;
   font-size: 120%;
   width: 10%;
@@ -67,7 +65,7 @@
 .slide--set-slides-container {
   padding-left: 1%;
   grid-area: 5/1/13/20;
-  background-color: var(--global-item-background-color);
+  background-color: var(--global-color-container);
 }
 
 .slide--set-slide-available-title {
@@ -107,14 +105,14 @@
   grid-area: 14/9/15/12;
   width: 100%;
   height: 100%;
-  background-color: var(--global-background-color);
+  background-color: var(--global-color-detail);
   border: 2px solid var(--global-border-color);
   border-radius: 5px;
   color: white;
 }
 
 .slide--submit-changes:hover {
-    border: 2px solid var(--global-border-hover-color);
-    background-color: var(--global-border-color);
-    color: black;
+  border: 2px solid var(--global-border-hover-color);
+  background-color: var(--global-border-color);
+  color: black;
 }
