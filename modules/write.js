@@ -42,7 +42,7 @@ module.exports = {
     let i = 0;
     writeApi = influxclient.getWriteApi(org, bucket, "ns", writeOptions);
     for (let key of data["70997"]) {
-      const point1 = new Point("power").tag("location", "70997").floatField("value", key.apparentPower);
+      const point1 = new Point("power").tag("formula", key.formula).floatField("value", key.apparentPower);
       writeApi.writePoint(point1);
 
       if ((i + 1) % flushBatchSize === 0) {
