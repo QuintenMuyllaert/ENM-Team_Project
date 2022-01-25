@@ -26,13 +26,13 @@
   font-size: 130%;
 }
 
-.header-title-container {
+.header--title-container {
   grid-area: 1/2/2/4;
   display: grid;
   grid-template-columns: repeat(15, 1fr);
 }
 
-.header-title {
+.header--title {
   grid-area: 1/1/1/2;
   font-size: 2em;
   font-weight: 500;
@@ -46,25 +46,25 @@
     This is the section for the general style of items in a page 
 */
 
-.item-style {
+.item--style {
   background-color: var(--global-background-item);
   border-radius: 0.75rem;
 }
 
-.item-style-small-info {
+.item--style-small-info {
   display: flex;
   justify-content: space-between;
   height: 100%;
 }
 
-.item-style-medium-compare {
+.item--style-medium-compare {
   display: table;
   justify-content: center;
   height: 100%;
   width: 100%;
 }
 
-.item-style-piechart-container {
+.item--style-piechart-container {
   display: flex;
   gap: 0px;
 }
@@ -73,14 +73,14 @@
     Section for the information inside a card
 */
 
-.item-title {
+.item--title {
   justify-self: start;
   align-self: center;
   height: 50%;
   width: 20%;
 }
 
-.item-icons-compare {
+.item--icons-compare {
   display: flex;
   gap: 5%;
   align-self: center;
@@ -88,7 +88,7 @@
   padding: 0 2% 5% 2%;
 }
 
-.item-container {
+.item--container {
   align-self: center;
   justify-self: center;
 }
@@ -97,7 +97,7 @@
     Section specific for the small boxes
 */
 
-.item-small-text {
+.item--small-text {
   padding-top: 10%;
   color: gray;
   justify-content: center;
@@ -106,7 +106,7 @@
   width: 150%;
 }
 
-.item-small-value-container {
+.item--small-value-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -116,7 +116,7 @@
     Section specific for the medium compare boxes
 */
 
-.item-medium-compare-text {
+.item--medium-compare-text {
   padding-bottom: 5%;
   color: gray;
   display: flex;
@@ -125,7 +125,7 @@
   font-size: 150%;
 }
 
-.item-medium-compare-value-container {
+.item--medium-compare-value-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -136,7 +136,7 @@
     Section specific for the medium data boxes
 */
 
-.item-medium-container {
+.item--medium-container {
   display: flex;
   gap: 2%;
   justify-content: space-between;
@@ -144,19 +144,19 @@
   height: 100%;
 }
 
-.item-medium-value-text-container {
+.item--medium-value-text-container {
   padding-left: 5%;
   font-size: 150%;
   font-weight: bold;
   width: 100%;
 }
 
-.item-medium-value-container {
+.item--medium-value-container {
   display: flex;
   padding-bottom: 5%;
 }
 
-.item-medium-text {
+.item--medium-text {
   font-size: 100%;
   color: gray;
 }
@@ -165,21 +165,21 @@
     Section specific for the big image boxes
 */
 
-.item-big-container {
+.item--big-container {
   height: 100%;
   width: 100%;
   display: flex;
   gap: 16.5%;
 }
 
-.item-big-picture {
+.item--big-picture {
   height: auto;
   width: 100%;
   overflow: hidden;
   display: grid;
 }
 
-.item-big-image {
+.item--big-image {
   padding: 2.5%;
   height: 100%;
   width: 100%;
@@ -189,13 +189,13 @@
     Section specific for the data shown in the small and medium compare boxes
 */
 
-.item-value {
+.item--value {
   padding-right: 3%;
   font-size: 200%;
   font-weight: bold;
 }
 
-.item-unit {
+.item--unit {
   font-weight: 400;
   font-size: 125%;
   padding-right: 5%;
@@ -206,12 +206,12 @@
     Section specific for the data shown in the medium data boxes
 */
 
-.item-medium-value {
+.item--medium-value {
   font-weight: bold;
   font-size: 150%;
 }
 
-.item-medium-unit {
+.item--medium-unit {
   font-size: 90%;
   padding-left: 5%;
   font-weight: 400;
@@ -222,7 +222,7 @@
     Section specific for the sun and moon icon
 */
 
-.item-medium-icon-container {
+.item--medium-icon-container {
   height: 100%;
   width: 100%;
   display: flex;
@@ -235,16 +235,52 @@
     Section specific for the piechart
 */
 
-.piechart-card-style {
+.piechart--card-style {
   display: flex;
   gap: 0px;
 }
 
-.piechart-container {
+.piechart--container-big {
   height: 100%;
   width: 100%;
   padding: 0 5% 0 5%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/*
+    Section for the placement of cards
+*/
+
+.item--big-left {
+  grid-area: 3/2/10/13;
+}
+
+.item--small-below-left {
+  grid-area: 10/2/12/7;
+}
+
+.item--small-below-middle {
+  grid-area: 10/7/12/13;
+}
+
+.item--small-above-left {
+  grid-area: 3/14/5/17;
+  display: flex;
+  justify-content: center;
+}
+
+.item--small-middle-left {
+  grid-area: 5/14/7/17;
+  display: flex;
+  justify-content: center;
+}
+
+.item--medium-compare-above-right {
+  grid-area: 3/17/7/24;
+}
+
+.item--medium-piechart-right {
+  grid-area: 7/14/12/24;
 }
