@@ -78,7 +78,7 @@
     Placement of the items
   */
 
-.duiktank--main-graph {
+.duiktank--big-box {
   grid-area: 3/2/10/13;
 }
 
@@ -112,8 +112,6 @@
 
 .duiktank--piechart {
   grid-area: 7/14/12/24;
-  display: flex;
-  gap: 0px;
 }
 
 .duiktank--piechart-title {
@@ -149,6 +147,7 @@
   /* width: 70%; */
   /* margin-right: 10%; */
 }
+/*container*/
 
 .duiktank--item-title {
   padding-top: 10%;
@@ -160,6 +159,7 @@
   /* padding-right: 10%; */
   width: 150%;
 }
+/*small text*/
 
 .duiktank--item-title-vergelijking {
   padding-bottom: 5%;
@@ -169,20 +169,14 @@
   align-items: end;
   font-size: 150%;
 }
-
-.duiktank--item-big-title {
-  display: flex;
-  justify-content: center;
-  padding: 2% 5% 2% 5%;
-  color: gray;
-  font-size: 200%;
-}
+/*medium compare text*/
 
 .duiktank--item-line {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+/*value container*/
 
 .duiktank--item-line-vergelijking {
   display: flex;
@@ -204,39 +198,10 @@
   align-self: flex-end;
 }
 
-.duiktank--item-arrow {
-  justify-self: center;
-  align-self: center;
-  width: 20%;
-  height: 100%;
-}
-
-.duiktank--item-arrow-image {
-  height: 50%;
-  width: 50%;
-  padding-right: 10%;
-}
-
 /*
     Styling for the medium boxes
   */
 
-.duiktank--item-graph {
-  display: flex;
-  width: 90% !important;
-  height: 70% !important;
-  padding-bottom: 5%;
-  padding-left: 5%;
-  justify-content: center;
-}
-
-.duiktank--item-big-info {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  padding-left: 8%;
-  padding-right: 8%;
-}
 
 .duiktank--item-big-day {
   display: flex;
@@ -252,6 +217,7 @@
   font-weight: bold;
   width: 100%;
 }
+/*medium text container*/
 
 .duiktank--item-big-night-info {
   padding-left: 5%;
@@ -290,6 +256,7 @@
   padding-right: 5%;
   align-items: center;
 }
+/*medium icon container*/
 
 .duiktank--item-piechart {
   height: 100%;
@@ -298,16 +265,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.duiktank--item-piechart-flex {
-  gap: 5%;
-  width: 100%;
-}
-
-.duiktank--piechart-legend {
-  padding-left: 5%;
-  width: 100%;
 }
 
 .duiktank--main-container {
@@ -328,12 +285,6 @@
   padding: 2.5%;
   height: 100%;
   width: 100%;
-}
-
-.duiktank--main-image-second {
-  padding: 2.5%;
-  height: auto;
-  width: 50%;
 }
 
 /*

@@ -248,6 +248,8 @@
   grid-template-columns: var(--piechart-size) auto;
   height: var(--piechart-size);
   position: relative;
+  gap: 5%;
+  width: 100%;
 }
 
 .piechart--icon {
@@ -267,6 +269,8 @@
 
 .piechart--legend {
   align-self: center;
+  padding-left: 5%;
+  width: 100%;
 }
 
 .piechart--box {
