@@ -4,21 +4,49 @@ let connected = false;
 let auth = false;
 let passwordShow = false;
 
-let htmlUsername, htmlPassword, htmlButtonAuth, htmlButtonShowPassword, htmlControlDidYouKnow;
+let htmlUsername, htmlPassword, htmlButtonAuth, htmlButtonShowPassword, htmlControlDidYouKnow,htmlControlHomeSlideLength, htmlControlHomeStaticSlide, htmlControlHome;;
 let skeletonSlide = "";
 const generateSlide = (html) => {
   return skeletonSlide.replace("<!--INNERHTML-->", html);
 };
 
+const loadHomePage = async () => {
+  skeletonSlide = await fetchString("./control/home.html");
+  let html = generateSlide(await fetchString("./control/home.html"));
+
+  document.querySelector(".control--page").innerHTML = html;
+
+  htmlControlHomeSlideLength = document.querySelector(".js-home-slide-length");
+  htmlControlHomeStaticSlide = document.querySelector(".js-home-static-slide");
+
+  config = await fetchJSON("../config.json");
+  staticSlideNr = config.staticSlideNr;
+  slideLength = config.slideLength;
+  endAnimationLength = config.endAnimationLength;
+  useScalingFunction = config.useScalingFunction;
+  htmlControlHomeSlideLength.value = slideLength;
+  htmlControlHomeStaticSlide.value = staticSlideNr;
+};
+
+
 const pageRender = async () => {
   htmlControlDidYouKnow = document.querySelector(".js-slide-weetjes");
+  htmlControlHome = document.querySelector(".js-control-home");
+
+  loadHomePage();
+
+  htmlControlHome.addEventListener("click", async () => {
+    loadHomePage();
+  });
 
   htmlControlDidYouKnow.addEventListener("click", async () => {
     skeletonSlide = await fetchString("./control/didyouknow.html");
     let html = generateSlide(await fetchString("./control/didyouknow.html"));
     document.querySelector(".control--page").innerHTML = html;
     htmlControlDidYouKnowText = document.querySelector(".js-dyk-text");
+
     didyouknows = await fetchTxt("../data/facts.csv");
+
     html = "";
     didyouknows.forEach((element) => {
       html += `<h1 class"dyk--text-element">${element}</h1>`;
