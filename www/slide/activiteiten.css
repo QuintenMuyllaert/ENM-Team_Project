@@ -42,16 +42,6 @@
   border-bottom: 5px solid black;
 }
 
-.activiteiten--weetje {
-  grid-area: 1/24/2/25;
-  border-radius: 100%;
-  border: 1px solid gray;
-  height: 100%;
-  display: grid;
-  justify-items: center;
-  align-items: center;
-}
-
 /*
   Section for the main information of the page
 */
