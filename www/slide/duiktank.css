@@ -92,6 +92,8 @@
 
 .duiktank--data-above-left {
   grid-area: 3/14/5/17;
+  display: flex;
+  justify-content: center;
 }
 
 .duiktank--data-above-right {
@@ -100,6 +102,8 @@
 
 .duiktank--data-middle-left {
   grid-area: 5/14/7/17;
+  display: flex;
+  justify-content: center;
 }
 
 .duiktank--data-middle-right {
@@ -142,18 +146,19 @@
 .duiktank--item-info {
   align-self: center;
   justify-self: center;
-  width: 70%;
-  margin-right: 10%;
+  /* width: 70%; */
+  /* margin-right: 10%; */
 }
 
 .duiktank--item-title {
   padding-top: 10%;
   color: gray;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   font-size: 135%;
-  padding-right: 10%;
+  /* padding-right: 10%; */
+  width: 150%;
 }
 
 .duiktank--item-title-vergelijking {
@@ -194,8 +199,9 @@
 
 .duiktank--item-unit {
   font-weight: 400;
-  font-size: 150%;
+  font-size: 125%;
   padding-right: 5%;
+  align-self: flex-end;
 }
 
 .duiktank--item-arrow {
@@ -252,6 +258,28 @@
   font-size: 150%;
   font-weight: bold;
   width: 100%;
+}
+
+.duiktank--item-big-night-data {
+  display: flex;
+  padding-bottom: 5%;
+}
+
+.duiktank--item-big-night-data-number {
+  font-weight: bold;
+  font-size: 150%;
+}
+
+.duiktank--item-big-night-data-unit {
+  font-size: 90%;
+  padding-left: 5%;
+  font-weight: 400;
+  align-self: flex-end;
+}
+
+.duiktank--item-big-day-info-text {
+  font-size: 100%;
+  color: gray;
 }
 
 .duiktank--item-big-day-icon {
