@@ -255,17 +255,20 @@
 
 .piechart--icon {
   align-self: end;
+  margin-top: 15%;
 }
 
 .piechart--center-value {
   font-weight: 400;
   font-size: 3rem;
-  align-self: end;
+  align-self: start;
+  margin-top: 5%;
 }
 .piechart--center-label {
   font-weight: 200;
   font-size: 1.5rem;
-  align-self: start;
+  align-self: stretch;
+  margin-bottom: 30%;
 }
 
 .piechart--legend {
