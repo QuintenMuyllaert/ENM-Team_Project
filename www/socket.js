@@ -54,7 +54,7 @@ socket.on("connect", () => {
     values.push(waardes_pie[pie.indexOf("Bord_EB_Niveau1_Totaal")]);
     pie[pie.indexOf("Bord_Waterbehandeling_Totaal")] = "Waterbehandeling";
     pie[pie.indexOf("Bord_HVAC_Totaal")] = "Airco";
-    pie[pie.indexOf("Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal")] = "Drankgelegenheid ";
+    pie[pie.indexOf("Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal")] = "horeca";
     pie[pie.indexOf("Bord_EB_Niveau1_Totaal")] = "Andere";
     elementChartPie.data = { ...elementChartPie.data, data: values, labels: pie };
     elementNumberDay.data = `${day.toFixed(2)}`;

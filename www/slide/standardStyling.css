@@ -14,6 +14,10 @@
   --global-background-item: #f3f3f3;
 }
 
+.title {
+  color: var(--global-color-title);
+}
+
 /*
     This is the section for the header and the title of the slides
 */
@@ -40,6 +44,7 @@
   justify-content: start;
   padding-bottom: 2px;
   border-bottom: 5px solid black;
+  color: var(--global-color-title);
 }
 
 /*
@@ -49,6 +54,7 @@
 .item--style {
   background-color: var(--global-background-item);
   border-radius: 0.75rem;
+  overflow: hidden;
 }
 
 .item--style-small-info {
@@ -99,7 +105,7 @@
 
 .item--small-text {
   padding-top: 10%;
-  color: gray;
+  color: var(--global-color-text);
   justify-content: center;
   align-items: center;
   font-size: 135%;
@@ -116,20 +122,62 @@
     Section specific for the medium compare boxes
 */
 
-.item--medium-compare-text {
-  padding-bottom: 5%;
-  color: gray;
-  display: flex;
+.item--style-medium-compare {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  height: 100%;
+  width: 100%;
   justify-content: center;
-  align-items: end;
-  font-size: 150%;
 }
 
-.item--medium-compare-value-container {
-  display: flex;
+.item--style-medium-compare-text-container {
+  grid-area: 1/1/1/5;
+  display: grid;
   justify-content: center;
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.item--style-medium-compare-value-container {
+  padding-top: 45%;
+  grid-area: 1/1/2/1;
+  display: flex;
+  gap: 1%;
   align-items: center;
-  padding: 5%;
+  justify-content: center;
+  padding-bottom: 5%;
+}
+
+.item--style-medium-compare-value {
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.item--style-medium-compare-unit {
+  font-size: 125%;
+  padding-top: 5%;
+  padding-left: 1%;
+  font-weight: 400;
+}
+
+.item--style-medium-compare-text {
+  grid-area: 2/1/3/1;
+  font-size: 120%;
+  color: var(--global-color-text);
+}
+
+
+.item--style-medium-compare-line {
+  grid-area: 1/5/1/6;
+}
+
+.item--style-medium-compare-icons {
+  padding-top: 5%;
+  padding-left: 2%;
+  padding-right: 2%;
+  grid-area: 1/6/1/11;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
 /*
@@ -158,7 +206,7 @@
 
 .item--medium-text {
   font-size: 100%;
-  color: gray;
+  color: var(--global-color-text);
 }
 
 /*
