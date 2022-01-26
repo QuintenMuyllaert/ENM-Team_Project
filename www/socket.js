@@ -191,7 +191,7 @@ socket.on("connect", () => {
     let rngThing = Object.keys(things)[Math.round(Math.random() * (Object.keys(things).length - 1))];
     let num = Math.round(dat / things[rngThing]);
 
-    elementNumberDiveTitle.data = `Waterbehandeling in de duiktank verbruikt momenteel <span>${dat.toFixed(2)} kW</span>!`;
+    elementNumberDiveTitle.data = `Waterbehandeling in de duiktank verbruikt momenteel <span>${dat.toFixed(2)} kW/dag</span>!`;
     elementNumberDiveText.data = `Dat is evenveel als <span>${num}</span> ${rngThing}!`;
     day = 0;
     night = 0;
