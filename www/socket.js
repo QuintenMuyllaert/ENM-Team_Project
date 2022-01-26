@@ -26,7 +26,7 @@ socket.on("connect", () => {
 
     let night = 0;
     let day = 0;
-    const pie = ["Bord_Waterbehandeling_Totaal", "Bord_HVAC_Totaal", "Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal", "Bord_EB_Niveau1_Totaal", "Compressor_Totaal", "Buitenbar_Totaal"];
+    let pie = ["Bord_Waterbehandeling_Totaal", "Bord_HVAC_Totaal", "Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal", "Bord_EB_Niveau1_Totaal", "Compressor_Totaal", "Buitenbar_Totaal"];
     let waardes_pie = [];
     let values = [];
 
@@ -54,7 +54,7 @@ socket.on("connect", () => {
     values.push(waardes_pie[pie.indexOf("Bord_EB_Niveau1_Totaal")]);
     pie[pie.indexOf("Bord_Waterbehandeling_Totaal")] = "Waterbehandeling";
     pie[pie.indexOf("Bord_HVAC_Totaal")] = "Airco";
-    pie[pie.indexOf("Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal")] = "Gelegenheid ";
+    pie[pie.indexOf("Stopcontacten_Circuit_Niveau0_Cafetaria_Totaal")] = "horeca";
     pie[pie.indexOf("Bord_EB_Niveau1_Totaal")] = "Andere";
     elementChartPie.data = { ...elementChartPie.data, data: values, labels: pie };
     elementNumberDay.data = `${day.toFixed(2)}`;
@@ -209,6 +209,32 @@ socket.on("connect", () => {
     elementNumberDayblok2.data = `${day.toFixed(2)}`;
     elementNumberNightblok2.data = `${night.toFixed(2)}`;
     elementNumberOneDayblok2.data = `${total.toFixed(2)}`;
+    pie = ["Aansluiting_Conciergewoning_EB2", "Aansluiting_Mechaniekersgebouw_EB2", "Stopcontact32A_EB2_C", "Aansluiting_Directeurswoning_EB2", "Aansluiting_Elektriciens_EB2", "Aansluiting_Opzichterswoning_En_Kantoorgebouwen_EB2", "Stopcontact63A_EB2_A", "Stopcontact63A_EB2_B"];
+    waardes_pie = [];
+    values = [];
+    for (key of pie) {
+      let catogorie_value = 0;
+      for (waarde of data[key]) {
+        catogorie_value += waarde._value;
+      }
+      catogorie_value = catogorie_value / 1000;
+      waardes_pie.push(catogorie_value);
+    }
+    values.push(waardes_pie[pie.indexOf("Aansluiting_Conciergewoning_EB2")]);
+    values.push(waardes_pie[pie.indexOf("Aansluiting_Mechaniekersgebouw_EB2")]);
+    values.push(waardes_pie[pie.indexOf("Stopcontact32A_EB2_C")] + waardes_pie[pie.indexOf("Stopcontact63A_EB2_A")] + waardes_pie[pie.indexOf("Stopcontact63A_EB2_B")]);
+    values.push(waardes_pie[pie.indexOf("Aansluiting_Directeurswoning_EB2")]);
+    values.push(waardes_pie[pie.indexOf("Aansluiting_Elektriciens_EB2")]);
+
+    values.push(waardes_pie[pie.indexOf("Aansluiting_Opzichterswoning_En_Kantoorgebouwen_EB2")]);
+
+    pie[pie.indexOf("Aansluiting_Conciergewoning_EB2")] = "Conciergewoning";
+    pie[pie.indexOf("Aansluiting_Directeurswoning_EB2")] = "Directeurswoning";
+    pie[pie.indexOf("Aansluiting_Elektriciens_EB2")] = "Elektriciens ";
+    pie[pie.indexOf("Aansluiting_Mechaniekersgebouw_EB2")] = "Mechaniekersgebouw";
+    pie[pie.indexOf("Aansluiting_Opzichterswoning_En_Kantoorgebouwen_EB2")] = "Opzichterswoning_En_Kantoorgebouwen";
+    pie[pie.indexOf("Stopcontact32A_EB2_C")] = "Stopcontacten";
+    elementChartPieBlok2.data = { ...elementChartPieBlok2.data, data: values, labels: pie };
   });
 
   socket.on("influxWeek", (data) => {
