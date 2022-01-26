@@ -4,7 +4,7 @@ const renderQuiz = async () => {
   const questionHTML = document.querySelector(".js-question");
   const timerHTML = document.querySelector(".js-time");
 
-  const htmlContainerAnwsers = document.querySelector(".totaal--quiz-answers");
+  const htmlContainerAnwsers = document.querySelector(".item--medium-quiz-answers-container");
 
   if (!questions || !questionHTML || !timerHTML || !htmlContainerAnwsers) {
     return;
@@ -17,11 +17,11 @@ const renderQuiz = async () => {
 
   let html = "";
 
-  let pos = answers.length == 3 ? ["left", "middle", "right"] : ["left", "right"];
+  let pos = answers.length == 3 ? ["left", "middle", "right"] : ["left-middle", "right-middle"];
 
   for (let i in answers) {
-    html += `<div class="js-answers-${pos[i]} totaal--item totaal--quiz-answer-${pos[i]} totaal--quiz-answer-container">
-      <p class="totaal--quiz-answer">${answers[i]}</p>
+    html += `<div class="js-answers-${pos[i]} item--style item--medium-quiz-answers-${pos[i]} item--medium-quiz-answers-container-seperate">
+      <p class="item--medium-quiz-answer-text">${answers[i]}</p>
     </div>`;
   }
   htmlContainerAnwsers.innerHTML = html;
@@ -33,7 +33,7 @@ const renderQuiz = async () => {
   }
 
   timerHTML.textContent = "Time's up!";
-  htmlContainerAnwsers.innerHTML = `<div class="js-answers-all totaal--item totaal--quiz-answer-all totaal--quiz-answer-container totaal--quiz-answer-correct">
-      <p class="totaal--quiz-answer">${correctAnswer}</p>
+  htmlContainerAnwsers.innerHTML = `<div class="js-answers-all item--style item--medium-quiz-answers-correct item--medium-quiz-answers-container-seperate item--medium-quiz-answer-correct-style">
+      <p class="item--medium-quiz-answer-text">${correctAnswer}</p>
     </div>`;
 };

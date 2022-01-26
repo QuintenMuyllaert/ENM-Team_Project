@@ -1,53 +1,67 @@
-<main class="totaal">
-  <header class="totaal--header">
-    <div class="totaal-header-title-container"><p class="totaal--title">totaal</p></div>
+<main class="main">
+  <header class="header">
+    <div class="header--title-container">
+      <p class="header--title">totaal</p>
+    </div>
   </header>
 
-  <div class="totaal--item totaal--item-big totaal--main-graph">
-    <p class="totaal--item-big-title">Grafiek energie opbrengst dag/nacht</p>
-    <div class="totaal--item-graph-container"><canvas class="totaal--item-graph js-day-night"></canvas></div>
+  <div class="item--style item--big-left">
+    <p class="item--big-title">Grafiek energie opbrengst dag/nacht</p>
+    <div class="item--big-graph-container"><canvas class="item--big-graph-canvas js-day-night"></canvas></div>
   </div>
-  <div class="totaal--item totaal--data-below-left">
-    <div class="totaal--item-big-day">
-      <p class="totaal--item-big-day-info">Opbrengst dag: 1234 kW</p>
-      <picture class="totaal--item-big-day-icon">
-        <img class="totaal--item-big-day-sun" src="../img/sun.png" alt="" />
+  <div class="item--style item--small-below-left">
+    <div class="item--medium-container">
+      <div class="item--medium-value-text-container">
+        <div class="item--medium-value-container">
+          <p class="js-day item--medium-value">1234</p>
+          <p class="item--medium-unit">kw</p>
+        </div>
+        <p class="item--medium-text">Opbrengst dag</p>
+      </div>
+      <picture class="item--medium-icon-container">
+        <img src="../img/sun.png" alt="" />
       </picture>
     </div>
   </div>
-  <div class="totaal--item totaal--data-below-middle">
-    <div class="totaal--item-big-day">
-      <p class="totaal--item-big-night-info">Opbrengst dag: 1234 kW</p>
-      <picture class="totaal--item-big-day-icon">
-        <img class="totaal--item-big-day-night" src="../img/moon.png" alt="" />
+  <div class="item--style item--small-below-middle">
+    <div class="item--medium-container">
+      <div class="item--medium-value-text-container">
+        <div class="item--medium-value-container">
+          <p class="js-night item--medium-value">1234</p>
+          <p class="item--medium-unit">kw</p>
+        </div>
+        <p class="item--medium-text">Opbrengst nacht</p>
+      </div>
+      <picture class="item--medium-icon-container">
+        <img src="../img/moon.png" alt="" />
       </picture>
     </div>
   </div>
 
-  <div class="totaal--item totaal--data-above">
-    <div class="totaal--quiz">
-      <p class="totaal--quiz-question js-question">Dit is een testvraag</p>
-      <div class="totaal--quiz-timer">
+  <div class="item--style item--medium-quiz-above">
+    <div class="item--medium-quiz-container">
+      <p class="item--medium-quiz-question js-question">Dit is een testvraag</p>
+      <div class="item--medium-quiz-timer">
         <p class="js-time"></p>
       </div>
     </div>
   </div>
 
-  <div class="totaal--quiz-answers">
-    <div class="js-answers-left totaal--item totaal--quiz-answer-left totaal--quiz-answer-container">
-      <p class="totaal--quiz-answer">Antwoord 1</p>
+  <div class="item--medium-quiz-answers-above item--medium-quiz-answers-container">
+    <div class="js-answers-left item--style item--medium-quiz-answers-left item--medium-quiz-answers-container-seperate">
+      <p class="item--medium-quiz-answer-text">Antwoord 1</p>
     </div>
-    <div class="js-answers-middle totaal--item totaal--quiz-answer-middle totaal--quiz-answer-container">
-      <p class="totaal--quiz-answer">Antwoord 2</p>
+    <div class="js-answers-middle item--style item--medium-quiz-answers-middle item--medium-quiz-answers-container-seperate">
+      <p class="item--medium-quiz-answer-text">Antwoord 2</p>
     </div>
-    <div class="js-answers-right totaal--item totaal--quiz-answer-right totaal--quiz-answer-container">
-      <p class="totaal--quiz-answer">Antwoord 3</p>
+    <div class="js-answers-right item--style item--medium-quiz-answers-right item--medium-quiz-answers-container-seperate">
+      <p class="item--medium-quiz-answer-text">Antwoord 3</p>
     </div>
   </div>
 
-  <div class="totaal--item totaal--piechart">
-    <div class="duiktank--item-piechart">
-      <div class="piechart--container duiktank--item-piechart-flex">
+  <div class="item--style piechart--card-style item--medium-piechart-right">
+    <div class="piechart--container-big piechart--data-duiktank">
+      <div class="piechart--container">
         <div class="piechart--circle center">
           <div class="center piechart--box">
             <svg class="piechart--icon svg--bliksem" height="70" width="70" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50.44 100.83">
