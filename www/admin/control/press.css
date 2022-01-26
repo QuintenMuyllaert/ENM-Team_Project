@@ -1,4 +1,11 @@
+.press--container {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: min-content auto;
+}
+
 .press--title {
+  padding: 1rem 0;
   font-weight: 600;
 }
 
