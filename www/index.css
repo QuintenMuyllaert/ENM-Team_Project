@@ -250,6 +250,7 @@
   position: relative;
   gap: 5%;
   width: 100%;
+  left: 10%;
 }
 
 .piechart--icon {
@@ -304,6 +305,10 @@
   height: 0.75rem;
   width: 1.5rem;
   align-self: center;
+}
+
+.piechart--info-legend-item-text {
+  font-size: 135%;
 }
 
 .piechart--root-circle,
