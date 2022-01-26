@@ -21,9 +21,9 @@ const elementNumberOneDayblok2 = new dataElement(".js-oneday-blok2", 0, elementD
 const elementNumberDayWeekblok2 = new dataElement(".js-dagweek-blok2", 0, elementDefaultsText);
 const elementNumberNightWeekblok2 = new dataElement(".js-nightweek-blok2", 0, elementDefaultsText);
 
-
 const elementChartDayNight = new dataElement(".js-day-night", [0, 0], { ...elementDefaultsChart, init: chartInitDayNight });
 const elementChartPie = new dataElement(".piechart--data-duiktank", { title: "kW/h", data: [1, 2, 3, 4], labels: ["label 1", "label 2", "label 3", "label 4"] }, { init: chartPieInit, render: chartPieRender, update: chartPieUpdate });
+const elementChartPieBlok2 = new dataElement(".piechart--data-blok2", { title: "kW/h", data: [1, 2, 3, 4], labels: ["label 1", "label 2", "label 3", "label 4"] }, { init: chartPieInit, render: chartPieRender, update: chartPieUpdate });
 
 const generateSlide = (html) => {
   return skeletonSlide.replace("<!--INNERHTML-->", html);
