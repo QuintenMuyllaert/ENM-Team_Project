@@ -85,16 +85,17 @@ const pageRender = async () => {
 
 const loadPageContent = async (e) => {
   const htmlFile = e.getAttribute("htmlFile");
-  if (pageFunction[htmlFile]) {
-    pageFunction[htmlFile]();
-  } else {
-    console.log(`No function associated with "${htmlFile}".`);
-  }
+
   htmlNavlist.querySelectorAll(".selected").forEach((e) => {
     e.classList.remove("selected");
   });
   e.classList.add("selected");
   document.querySelector(".admin--page-container").innerHTML = await fetchString(htmlFile);
+  if (pageFunction[htmlFile]) {
+    pageFunction[htmlFile]();
+  } else {
+    console.log(`No function associated with "${htmlFile}".`);
+  }
 };
 
 //Gets called as soon as client has logged in and the page is loaded.
