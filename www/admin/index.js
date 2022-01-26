@@ -18,6 +18,15 @@ const generateSlide = (html) => {
   return skeletonSlide.replace("<!--INNERHTML-->", html);
 };
 
+pageFunction["./control/press.html"] = async () => {
+  skeletonSlide = await fetchString("../skeletonSlide.html");
+  document.querySelector(".press--slide-viewport").innerHTML = generateSlide(await fetchString("../slide/duiktank.html")).replace(/\.\//g, "../");
+  const height = document.querySelector(".press--slide-container").offsetHeight;
+
+  const scalefactor = height / 1080;
+  document.querySelector(".press--slide-scale").style.transform = `scale(${scalefactor},${scalefactor})`;
+};
+
 pageFunction["./control/home.html"] = async () => {
   skeletonSlide = await fetchString("./control/home.html");
   let html = generateSlide(await fetchString("./control/home.html"));
