@@ -10,15 +10,8 @@ socket.on("connect", () => {
   socket.on("mqtt", (topic, message) => {
     console.log("Got MQTT data!");
   });
-
   socket.on("mqttData", (data) => {
     console.log("Got processed MQTT data!");
-    let day = 0;
-    for (value of data["70997"]) {
-      day += value.apparentPower;
-    }
-    day = day / 1000;
-    elementNumberDayblok1.data = `${day.toFixed(2)}`;
   });
 
   socket.on("influx", (data) => {
@@ -66,7 +59,7 @@ socket.on("connect", () => {
     elementChartPie.data = { ...elementChartPie.data, data: values, labels: pie };
     elementNumberDay.data = `${day.toFixed(2)}`;
     elementNumberNight.data = `${night.toFixed(2)}`;
-    const total = day + night;
+    let total = day + night;
     elementNumberOneDay.data = `${total.toFixed(2)}`;
     elementChartDayNight.data = [day, night];
     const houses = document.querySelector(".js-vergelijking");
@@ -200,6 +193,22 @@ socket.on("connect", () => {
 
     elementNumberDiveTitle.data = `Waterbehandeling in de duiktank verbruikt momenteel <span>${dat.toFixed(2)} kW</span>!`;
     elementNumberDiveText.data = `Dat is evenveel als <span>${num}</span> ${rngThing}!`;
+    day = 0;
+    night = 0;
+    for (waarde of data.Totaal_EB2) {
+      const time = parseInt(waarde._time.split("T")[1].split(":")[0]);
+      if (time >= 22 || time < 6) {
+        night += waarde._value;
+      } else {
+        day += waarde._value;
+      }
+    }
+    day = day / 1000;
+    night = night / 1000;
+    total = day + night;
+    elementNumberDayblok2.data = `${day.toFixed(2)}`;
+    elementNumberNightblok2.data = `${night.toFixed(2)}`;
+    elementNumberOneDayblok2.data = `${total.toFixed(2)}`;
   });
 
   socket.on("influxWeek", (data) => {
@@ -224,6 +233,18 @@ socket.on("connect", () => {
     }
     elementNumberNightWeek.data = (night_week / 1000).toFixed(2);
     elementNumberDayWeek.data = (day_week / 1000).toFixed(2);
+    night_week = 0;
+    day_week = 0;
+    for (waarde of data.Totaal_EB2) {
+      const time = parseInt(waarde._time.split("T")[1].split(":")[0]);
+      if (time >= 22 || time < 6) {
+        night_week += waarde._value;
+      } else {
+        day_week += waarde._value;
+      }
+    }
+    elementNumberDayWeekblok2.data = (day_week / 1000).toFixed(2);
+    elementNumberNightWeekblok2.data = (night_week / 1000).toFixed(2);
   });
 
   socket.on("slide", async (data) => {

@@ -162,6 +162,90 @@
 }
 
 /*
+  Section specific for the midium quiz boxes
+*/
+
+.item--medium-quiz-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1% 2%;
+  gap: 7%;
+  height: 100%;
+}
+
+.item--medium-quiz-question {
+  font-size: 130%;
+  color: var(--global-color-title);
+  width: 15rem;
+}
+
+.item--medium-quiz-timer {
+  width: calc(4 * var(--global-font-size));
+  height: calc(4 * var(--global-font-size));
+  border: 1px solid var(--global-color-title);
+  border-radius: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.item--medium-quiz-timer * {
+  text-align: center;
+}
+
+.item--medium-quiz-answers-container {
+  display: grid;
+  gap: 5%;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.item--medium-quiz-answers-container-seperate {
+  height: 100%;
+  width: 100%;
+}
+
+.item--medium-quiz-answers-left {
+  grid-area: 1/1/1/5;
+}
+
+.item--medium-quiz-answers-middle {
+  grid-area: 1/5/1/9;
+}
+
+.item--medium-quiz-answers-right {
+  grid-area: 1/9/1/13;
+}
+
+.item--medium-quiz-answers-left-middle {
+  grid-area: 1/1/1/7;
+}
+
+.item--medium-quiz-answers-right-middle {
+  grid-area: 1/7/1/13;
+}
+
+.item--medium-quiz-answers-correct {
+  grid-area: 1/1/1/13;
+}
+
+.item--medium-quiz-answer-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 120%;
+  height: 100%;
+  width: 100%;
+}
+
+.item--medium-quiz-answer-correct-style {
+  border: 1rem solid green;
+  color: green;
+  text-decoration: underline;
+}
+/*
     Section specific for the big image boxes
 */
 
@@ -183,6 +267,31 @@
   padding: 2.5%;
   height: 100%;
   width: 100%;
+}
+
+.item--big-title {
+  display: flex;
+  justify-content: center;
+  padding: 2% 5% 2% 5%;
+  color: var(--global-color-title);
+  font-size: 200%;
+}
+
+.item--big-graph-container {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item--big-graph-canvas {
+  display: flex;
+  width: 100% !important;
+  height: 100% !important;
+  padding-bottom: 5%;
+  padding-left: 5%;
+  justify-content: center;
 }
 
 /*
@@ -283,4 +392,79 @@
 
 .item--medium-piechart-right {
   grid-area: 7/14/12/24;
+}
+
+.item--medium-quiz-above {
+  grid-area: 3/14/5/24;
+}
+
+.item--medium-quiz-answers-above {
+  grid-area: 5/14/7/24;
+}
+
+/*
+  Section specific for the focus page 
+*/
+
+.focus--main {
+  width: 100%;
+  height: 100%;
+}
+
+.focus--main * {
+  grid-area: 1/1/1/1;
+}
+
+.focus--main picture {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+
+.focus--main picture img {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.focus--text-container {
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+  align-self: end;
+  background-color: var(--global-color-neutral);
+  z-index: 10;
+}
+
+.focus--text-container * {
+  text-align: center;
+}
+
+.focus--text-container * span {
+  color: var(--global-color-background);
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+.focus--bubble-container {
+  grid-template-columns: repeat(4, 1fr);
+  display: grid;
+  align-items: end;
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.focus--bubble-container * {
+  grid-area: auto;
+  opacity: 0.95;
+  width: 150%;
+  height: 150%;
+}
+
+.focus--bubble-special {
+  width: 100%;
+  height: 100%;
 }
