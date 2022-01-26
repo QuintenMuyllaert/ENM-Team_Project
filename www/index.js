@@ -20,8 +20,6 @@ const elementNumberOneDayblok2 = new dataElement(".js-oneday-blok2", 0, elementD
 
 const elementNumberDayWeekblok2 = new dataElement(".js-dagweek-blok2", 0, elementDefaultsText);
 const elementNumberNightWeekblok2 = new dataElement(".js-nightweek-blok2", 0, elementDefaultsText);
-const elementNumberDiveTitle = new dataElement(".dive-title", 0, elementDefaultsInnerHTML);
-const elementNumberDiveText = new dataElement(".dive-text", 0, elementDefaultsInnerHTML);
 
 
 const elementChartDayNight = new dataElement(".js-day-night", [0, 0], { ...elementDefaultsChart, init: chartInitDayNight });
