@@ -1,0 +1,26 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59.76 112.71">
+  <defs>
+    <style>
+      .cls-1-bat {
+        fill: #fff;
+      }
+
+      .cls-2-bat {
+        fill: #eb6d1e;
+      }
+
+      .cls-3-bat {
+        fill: #ed1c24;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1-bat" x="6.09" y="11.15" width="48" height="97.28"/>
+  <g id="bat">
+    <path id="bat1" class="cls-2-bat" d="M83.55,153.14V138.92h39.38v14.22Z" transform="translate(-73.38 -50.96)"/>
+    <path id="bat2" class="cls-2-bat" d="M123,121v14.22H83.6V121Z" transform="translate(-73.38 -50.96)"/>
+    <path id="bat3" class="cls-2-bat" d="M123,103.12v14.15H83.58V103.12Z" transform="translate(-73.38 -50.96)"/>
+    <path id="bat4" class="cls-2-bat" d="M83.55,99.43V85.21h39.37V99.43Z" transform="translate(-73.38 -50.96)"/>
+    <path id="bat5" class="cls-2-bat" d="M122.91,81.54H83.6V67.27h39.31Z" transform="translate(-73.38 -50.96)"/>
+  </g>
+  <path class="cls-3-bat" d="M133.12,68.62q0-1.61-.12-3.21a9.62,9.62,0,0,0-8.77-8.68c-2.76-.15-5.54-.08-8.31-.11h-.83V54a3,3,0,0,0-3-3H94.45a3,3,0,0,0-3,3v2.63H83.82a10.27,10.27,0,0,0-6.53,2c-2.87,2.22-3.91,5.23-3.91,8.75q0,32,0,64c0,7.25,0,14.49,0,21.74,0,6.15,4.12,10.46,10.07,10.48q19.8.06,39.61,0a9.83,9.83,0,0,0,6.1-2c2.92-2.23,4-5.27,4-8.84Q133.11,110.72,133.12,68.62ZM126.56,153c0,2.87-1.16,4.05-4,4.05H83.94c-2.8,0-4-1.2-4-4q0-21.47,0-42.92t0-42.92c0-2.94,1.16-4.11,4.07-4.11h38.49c2.85,0,4,1.19,4,4Z" transform="translate(-73.38 -50.96)"/>
+</svg>
