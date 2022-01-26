@@ -33,6 +33,10 @@ body {
   justify-items: center;
 }
 
+.admin--profile-name {
+  color: var(--admin-color-text);
+}
+
 .admin--container picture img {
   height: 64px;
 }
@@ -54,7 +58,7 @@ body {
   max-width: fit-content; /*zodat de width van de content bepaald wordt met de lengte ervan*/
   padding-left: 10px;
   padding-right: 10px;
-  color: var(--global-color-background);
+  color: var(--admin-color-background);
   background-color: white;
 }
 
@@ -65,13 +69,13 @@ body {
   padding-left: 15px;
   outline: none; /*zorgt dat de border weg gaat die er standaard is*/
   border-radius: 5px;
-  border: 1px solid var(--global-color-neutral-x-dark);
+  border: 1px solid var(--admin-color-text);
   height: 3rem;
 }
 
 .admin--fieldset-input:active,
 .admin--fieldset-input:focus {
-  border: 2px solid var(--global-color-background);
+  border: 2px solid var(--admin-color-background);
 }
 
 .admin--fieldset-login {
@@ -90,8 +94,8 @@ body {
   grid-area: 5/2/6/10;
   border-radius: 8px;
   border: 0;
-  background-color: var(--global-color-detail);
-  color: var(--global-color-neutral);
+  background-color: var(--admin-color-detail);
+  color: white;
 }
 
 .admin--picture {
@@ -114,7 +118,7 @@ body {
 .admin--fieldset-password-icon {
   display: block;
   width: 20px;
-  fill: var(--global-color-neutral-x-dark);
+  fill: var(--admin-color-text);
   grid-area: 3/9/4/10;
   padding-top: 20px;
   z-index: 20;

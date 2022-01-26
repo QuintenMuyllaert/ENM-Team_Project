@@ -9,7 +9,7 @@
 
 .home--input {
   grid-area: 1 / 1 / span 8 / span 5;
-  background-color: var(--global-color-container);
+  background-color: var(--admin-color-container);
   padding: 10px;
   border-radius: 5px;
 }
@@ -17,10 +17,10 @@
 .home--input-element {
   display: flex;
   margin-bottom: 16px;
-  background-color: var(--global-color-detail);
+  background-color: var(--admin-color-detail);
   padding: 5px;
   border-radius: 5px;
-  color: var(--global-color-accent);
+  color: var(--admin-color-accent);
   flex-direction: column;
 }
 
@@ -36,10 +36,10 @@
   width: 100px;
   padding: 5px;
   border-radius: 5px;
-  border: 2px solid var(--global-color-detail);
-  background-color: var(--global-color-container);
+  border: 2px solid var(--admin-color-detail);
+  background-color: var(--admin-color-container);
 }
 
 .home--input-submit:hover {
-  background-color: var(--global-color-text);
+  background-color: var(--admin-color-text);
 }
