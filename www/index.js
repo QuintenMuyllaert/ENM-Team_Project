@@ -9,9 +9,16 @@ const elementNumberNight = new dataElement(".js-night", 0, elementDefaultsText);
 const elementNumberOneDay = new dataElement(".js-oneday", 0, elementDefaultsText);
 const elementNumberDayWeek = new dataElement(".js-dagweek", 0, elementDefaultsText);
 const elementNumberNightWeek = new dataElement(".js-nightweek", 0, elementDefaultsText);
+
 const elementNumberDayblok1 = new dataElement(".js-day-blok1", 0, elementDefaultsText);
 const elementNumberDiveTitle = new dataElement("#dive--title", 0, elementDefaultsInnerHTML);
 const elementNumberDiveText = new dataElement("#dive--text", 0, elementDefaultsInnerHTML);
+
+const elementNumberDayblok2 = new dataElement(".js-day-blok2", 0, elementDefaultsText);
+const elementNumberNightblok2 = new dataElement(".js-night-blok2", 0, elementDefaultsText);
+const elementNumberOneDayblok2 = new dataElement(".js-oneday-blok2", 0, elementDefaultsText);
+
+
 
 const elementChartDayNight = new dataElement(".js-day-night", [0, 0], { ...elementDefaultsChart, init: chartInitDayNight });
 const elementChartPie = new dataElement(".piechart--data-duiktank", { title: "kW/h", data: [1, 2, 3, 4], labels: ["label 1", "label 2", "label 3", "label 4"] }, { init: chartPieInit, render: chartPieRender, update: chartPieUpdate });
