@@ -233,6 +233,18 @@ socket.on("connect", () => {
     }
     elementNumberNightWeek.data = (night_week / 1000).toFixed(2);
     elementNumberDayWeek.data = (day_week / 1000).toFixed(2);
+    night_week = 0;
+    day_week = 0;
+    for (waarde of data.Totaal_EB2) {
+      const time = parseInt(waarde._time.split("T")[1].split(":")[0]);
+      if (time >= 22 || time < 6) {
+        night_week += waarde._value;
+      } else {
+        day_week += waarde._value;
+      }
+    }
+    elementNumberDayWeekblok2.data = (day_week / 1000).toFixed(2);
+    elementNumberNightWeekblok2.data = (night_week / 1000).toFixed(2);
   });
 
   socket.on("slide", async (data) => {
