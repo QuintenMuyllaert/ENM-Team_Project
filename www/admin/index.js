@@ -25,6 +25,24 @@ pageFunction["./control/press.html"] = async () => {
 
   const scalefactor = height / 1080;
   document.querySelector(".press--slide-scale").style.transform = `scale(${scalefactor},${scalefactor})`;
+
+  const htmlSlide = document.querySelector(".press--slide-scale").querySelector(".main");
+
+  setInterval(() => {
+    document.querySelector(".press--outline").textContent = document.querySelector(".press-selected-item").value;
+  }, 50);
+  htmlSlide.addEventListener("click", (event) => {
+    console.log(event.target);
+    let textTags = ["P", "H1", "H2", "H3", "H4", "H5", "A", "SPAN", "BUTTON"];
+
+    if (textTags.includes(event.target.tagName)) {
+      document.querySelectorAll(".press--outline").forEach((e) => e.classList.remove("press--outline"));
+      event.target.classList.add("press--outline");
+      document.querySelector(".press-selected-item").value = event.target.textContent;
+    } else {
+      console.log("not text");
+    }
+  });
 };
 
 pageFunction["./control/home.html"] = async () => {
