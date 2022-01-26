@@ -79,3 +79,46 @@
 .press--slide-nav input {
   width: 5rem;
 }
+
+.press--outline {
+  border: 1px solid var(--admin-color-detail);
+}
+
+.press--toolbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  resize: both;
+  width: 16rem;
+  height: 100%;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  overflow: auto;
+  background-color: var(--admin-color-container);
+}
+
+.press--toolbox * {
+  color: var(--admin-color-background-slide);
+}
+
+.press--toolbox input,
+.press--toolbox textarea {
+  background-color: var(--admin-color-background);
+  border: 0;
+  padding: 1rem;
+  height: 5rem;
+  max-height: 5rem;
+  resize: none;
+}
+
+.press--toolbox > div {
+  padding: 1rem 0;
+  border-top: 0.1rem solid var(--admin-color-detail);
+}
+
+.press--sidebyside {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
