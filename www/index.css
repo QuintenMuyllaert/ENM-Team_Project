@@ -331,6 +331,10 @@
   transition: stroke-dashoffset 0.6s ease;
 }
 
+.hide {
+  display: none;
+}
+
 @keyframes create-circle {
   from {
     stroke-dashoffset: 283.14; /*Toby's magic number*/
