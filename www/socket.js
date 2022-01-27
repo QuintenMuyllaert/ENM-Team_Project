@@ -12,6 +12,7 @@ socket.on("connect", () => {
   });
   socket.on("mqttData", (data) => {
     console.log("Got processed MQTT data!");
+    mqtt = data;
   });
 
   socket.on("influx", (data) => {
@@ -23,6 +24,8 @@ socket.on("connect", () => {
     if (!data.TotaalNet.length) {
       return;
     }
+
+    influx = data;
 
     let night = 0;
     let day = 0;
