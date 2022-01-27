@@ -18,29 +18,32 @@ const generateSlide = (html) => {
   return skeletonSlide.replace("<!--INNERHTML-->", html);
 };
 
-pageFunction["./control/press.html"] = async () => {
+pageFunction["./control/press.html"] = async (file) => {
+  const fileName = "../slide/duiktank.html";
   skeletonSlide = await fetchString("../skeletonSlide.html");
-  document.querySelector(".press--slide-viewport").innerHTML = generateSlide(await fetchString("../slide/duiktank.html")).replace(/\.\//g, "../");
+  document.querySelector(".press--slide-viewport").innerHTML = generateSlide(await fetchString(fileName)).replace(/\.\//g, "../");
   const height = document.querySelector(".press--slide-container").offsetHeight;
 
   const scalefactor = height / 1080;
   document.querySelector(".press--slide-scale").style.transform = `scale(${scalefactor},${scalefactor})`;
 
   const htmlSlide = document.querySelector(".press--slide-scale").querySelector(".main");
+  const textTags = ["P", "H1", "H2", "H3", "H4", "H5", "A", "SPAN", "BUTTON"];
 
   setInterval(() => {
     if (!document.querySelector(".press--outline")) {
+      return;
+    }
+    if (!textTags.includes(document.querySelector(".press--outline").tagName)) {
       return;
     }
     document.querySelector(".press--outline").textContent = document.querySelector(".press-selected-item").value;
   }, 50);
   htmlSlide.addEventListener("click", (event) => {
     console.log(event.target);
-    let textTags = ["P", "H1", "H2", "H3", "H4", "H5", "A", "SPAN", "BUTTON"];
-
+    document.querySelectorAll(".press--outline").forEach((e) => e.classList.remove("press--outline"));
+    event.target.classList.add("press--outline");
     if (textTags.includes(event.target.tagName)) {
-      document.querySelectorAll(".press--outline").forEach((e) => e.classList.remove("press--outline"));
-      event.target.classList.add("press--outline");
       document.querySelector(".press-selected-item").value = event.target.textContent;
     } else {
       console.log("not text");
@@ -52,6 +55,21 @@ pageFunction["./control/press.html"] = async () => {
   uploader.addEventListener("complete", (e) => {
     console.log(e);
     document.querySelector(".item--big-image").src = "../upload/" + e.file.name;
+  });
+
+  document.querySelector(".press--undo").addEventListener("click", async () => {
+    console.log("Undo-ing changes.");
+    document.querySelector(".admin--page-container").innerHTML = await fetchString("./control/press.html");
+    pageFunction["./control/press.html"](file);
+  });
+  document.querySelector(".press--save").addEventListener("click", async () => {
+    console.log("Saving changes.");
+    const htmlPage = document.querySelector(".press--slide-viewport").querySelector(".slide--root");
+
+    htmlPage.querySelectorAll(".press--outline").forEach((e) => e.classList.remove("press--outline"));
+    const newHtml = htmlPage.innerHTML.replace(/\.\.\//g, "./");
+
+    socket.emit("save", fileName.split("/").pop(), newHtml);
   });
 };
 
@@ -129,7 +147,7 @@ const loadPageContent = async (e) => {
   e.classList.add("selected");
   document.querySelector(".admin--page-container").innerHTML = await fetchString(htmlFile);
   if (pageFunction[htmlFile]) {
-    pageFunction[htmlFile]();
+    pageFunction[htmlFile](htmlFile);
   } else {
     console.log(`No function associated with "${htmlFile}".`);
   }
