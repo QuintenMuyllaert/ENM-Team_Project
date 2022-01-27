@@ -6,7 +6,7 @@ const slideShow = async () => {
 
   for (let j = 0; j < times; j++) {
     for (let slideIndex = 0; slideIndex < slides.length; slideIndex++) {
-      const slideShowPlaceholder = document.querySelector(".activiteiten--main-slideshow");
+      const slideShowPlaceholder = document.querySelector(".item--big-slide-container");
       if (!slideShowPlaceholder) {
         return;
       }
