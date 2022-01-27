@@ -62,3 +62,21 @@ const avgKey = (data, key, deci = false) => {
   const avg = sum / len;
   return deci === false ? avg : avg.toFixed(deci);
 };
+
+const kW = (number) => {
+  return (number / 1000).toFixed(2) + " kW";
+};
+
+const sum = (data) => {
+  let s = 0;
+  for (const d of data) {
+    s += d;
+  }
+  return s;
+};
+
+const gem = (data) => {
+  const s = sum(data);
+  const l = data.length;
+  return s / l;
+};
