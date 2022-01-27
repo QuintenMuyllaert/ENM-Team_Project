@@ -217,6 +217,34 @@
 }
 
 /*
+    Section specific for the medium data boxes in the green energy slides
+*/
+
+.item--medium-energy-container {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-rows: repeat(2, 50%);
+}
+
+.item--medium-energy-text-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.item--medium-energy-value {
+  font-weight: bold;
+  color: var(--global-color-title);
+  font-size: 150%;
+}
+
+.item--medium-energy-unit {
+  font-weight: bold;
+  color: var(--global-color-title);
+  font-size: 90%;
+}
+
+/*
   Section specific for the midium quiz boxes
 */
 
@@ -320,7 +348,7 @@
 
 .item--big-image {
   padding: 2.5%;
-  height: 100%;
+  height: 93.5%;
   width: 100%;
 }
 
