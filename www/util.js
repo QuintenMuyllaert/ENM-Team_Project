@@ -48,10 +48,17 @@ const triggerClass = async (element, className) => {
   element.classList.add(className);
 };
 
-const sumKey = (data, key) => {
+const sumKey = (data, key, deci = false) => {
   let sum = 0;
   for (const dat of data) {
     sum += dat[key];
   }
-  return sum;
+  return deci === false ? sum : sum.toFixed(deci);
+};
+
+const avgKey = (data, key, deci = false) => {
+  const sum = sumKey(data, key);
+  const len = data.length;
+  const avg = sum / len;
+  return deci === false ? avg : avg.toFixed(deci);
 };
