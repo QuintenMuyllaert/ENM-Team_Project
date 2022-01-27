@@ -88,50 +88,50 @@ socket.on("connect", () => {
     let rngThing = Object.keys(things)[Math.round(Math.random() * (Object.keys(things).length - 1))];
     let num = Math.round(dat / things[rngThing]);
 
-    elementNumberDiveTitle.data = `Waterbehandeling in de duiktank verbruikt momenteel <span>${dat.toFixed(2)} kW/dag</span>!`;
-    elementNumberDiveText.data = `Dat is evenveel als <span>${num}</span> ${rngThing}!`;
-    day = 0;
-    night = 0;
-    for (waarde of data.Totaal_EB2) {
-      const time = parseInt(waarde._time.split("T")[1].split(":")[0]);
-      if (time >= 22 || time < 6) {
-        night += waarde._value;
-      } else {
-        day += waarde._value;
-      }
-    }
-    day = day / 1000;
-    night = night / 1000;
-    total = day + night;
-    elementNumberDayblok2.data = `${day.toFixed(2)}`;
-    elementNumberNightblok2.data = `${night.toFixed(2)}`;
-    elementNumberOneDayblok2.data = `${total.toFixed(2)}`;
-    pie = ["Aansluiting_Conciergewoning_EB2", "Aansluiting_Mechaniekersgebouw_EB2", "Stopcontact32A_EB2_C", "Aansluiting_Directeurswoning_EB2", "Aansluiting_Elektriciens_EB2", "Aansluiting_Opzichterswoning_En_Kantoorgebouwen_EB2", "Stopcontact63A_EB2_A", "Stopcontact63A_EB2_B"];
-    waardes_pie = [];
-    values = [];
-    for (key of pie) {
-      let catogorie_value = 0;
-      for (waarde of data[key]) {
-        catogorie_value += waarde._value;
-      }
-      catogorie_value = catogorie_value / 1000;
-      waardes_pie.push(catogorie_value);
-    }
-    values.push(waardes_pie[pie.indexOf("Aansluiting_Conciergewoning_EB2")]);
-    values.push(waardes_pie[pie.indexOf("Aansluiting_Mechaniekersgebouw_EB2")]);
-    values.push(waardes_pie[pie.indexOf("Stopcontact32A_EB2_C")] + waardes_pie[pie.indexOf("Stopcontact63A_EB2_A")] + waardes_pie[pie.indexOf("Stopcontact63A_EB2_B")]);
-    values.push(waardes_pie[pie.indexOf("Aansluiting_Directeurswoning_EB2")]);
-    values.push(waardes_pie[pie.indexOf("Aansluiting_Elektriciens_EB2")]);
+    // elementNumberDiveTitle.data = `Waterbehandeling in de duiktank verbruikt momenteel <span>${dat.toFixed(2)} kW/dag</span>!`;
+    // elementNumberDiveText.data = `Dat is evenveel als <span>${num}</span> ${rngThing}!`;
+    // day = 0;
+    // night = 0;
+    // for (waarde of data.Totaal_EB2) {
+    //   const time = parseInt(waarde._time.split("T")[1].split(":")[0]);
+    //   if (time >= 22 || time < 6) {
+    //     night += waarde._value;
+    //   } else {
+    //     day += waarde._value;
+    //   }
+    // }
+    // day = day / 1000;
+    // night = night / 1000;
+    // total = day + night;
+    // elementNumberDayblok2.data = `${day.toFixed(2)}`;
+    // elementNumberNightblok2.data = `${night.toFixed(2)}`;
+    // elementNumberOneDayblok2.data = `${total.toFixed(2)}`;
+    // pie = ["Aansluiting_Conciergewoning_EB2", "Aansluiting_Mechaniekersgebouw_EB2", "Stopcontact32A_EB2_C", "Aansluiting_Directeurswoning_EB2", "Aansluiting_Elektriciens_EB2", "Aansluiting_Opzichterswoning_En_Kantoorgebouwen_EB2", "Stopcontact63A_EB2_A", "Stopcontact63A_EB2_B"];
+    // waardes_pie = [];
+    // values = [];
+    // for (key of pie) {
+    //   let catogorie_value = 0;
+    //   for (waarde of data[key]) {
+    //     catogorie_value += waarde._value;
+    //   }
+    //   catogorie_value = catogorie_value / 1000;
+    //   waardes_pie.push(catogorie_value);
+    // }
+    // values.push(waardes_pie[pie.indexOf("Aansluiting_Conciergewoning_EB2")]);
+    // values.push(waardes_pie[pie.indexOf("Aansluiting_Mechaniekersgebouw_EB2")]);
+    // values.push(waardes_pie[pie.indexOf("Stopcontact32A_EB2_C")] + waardes_pie[pie.indexOf("Stopcontact63A_EB2_A")] + waardes_pie[pie.indexOf("Stopcontact63A_EB2_B")]);
+    // values.push(waardes_pie[pie.indexOf("Aansluiting_Directeurswoning_EB2")]);
+    // values.push(waardes_pie[pie.indexOf("Aansluiting_Elektriciens_EB2")]);
 
-    values.push(waardes_pie[pie.indexOf("Aansluiting_Opzichterswoning_En_Kantoorgebouwen_EB2")]);
+    // values.push(waardes_pie[pie.indexOf("Aansluiting_Opzichterswoning_En_Kantoorgebouwen_EB2")]);
 
-    pie[pie.indexOf("Aansluiting_Conciergewoning_EB2")] = "Conciergewoning";
-    pie[pie.indexOf("Aansluiting_Directeurswoning_EB2")] = "Directeurswoning";
-    pie[pie.indexOf("Aansluiting_Elektriciens_EB2")] = "Elektriciens ";
-    pie[pie.indexOf("Aansluiting_Mechaniekersgebouw_EB2")] = "Mechaniekersgebouw";
-    pie[pie.indexOf("Aansluiting_Opzichterswoning_En_Kantoorgebouwen_EB2")] = "Opzichterswoning_En_Kantoorgebouwen";
-    pie[pie.indexOf("Stopcontact32A_EB2_C")] = "Stopcontacten";
-    elementChartPieBlok2.data = { ...elementChartPieBlok2.data, data: values, labels: pie };
+    // pie[pie.indexOf("Aansluiting_Conciergewoning_EB2")] = "Conciergewoning";
+    // pie[pie.indexOf("Aansluiting_Directeurswoning_EB2")] = "Directeurswoning";
+    // pie[pie.indexOf("Aansluiting_Elektriciens_EB2")] = "Elektriciens ";
+    // pie[pie.indexOf("Aansluiting_Mechaniekersgebouw_EB2")] = "Mechaniekersgebouw";
+    // pie[pie.indexOf("Aansluiting_Opzichterswoning_En_Kantoorgebouwen_EB2")] = "Opzichterswoning_En_Kantoorgebouwen";
+    // pie[pie.indexOf("Stopcontact32A_EB2_C")] = "Stopcontacten";
+    // elementChartPieBlok2.data = { ...elementChartPieBlok2.data, data: values, labels: pie };
   });
 
   socket.on("influxWeek", (data) => {

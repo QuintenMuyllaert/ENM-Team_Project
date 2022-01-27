@@ -55,9 +55,9 @@ module.exports = {
     const ret = {};
     for (const thing of data) {
       if (!ret[thing._field]) {
-        ret[thing._field] = [thing];
+        ret[thing._field] = [thing._value];
       } else {
-        ret[thing._field].push(thing);
+        ret[thing._field].push(thing._value);
       }
     }
     if (days == 1) {
