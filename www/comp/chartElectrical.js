@@ -1,9 +1,4 @@
 const chartInitElectrical = function () {
-  this.element = document.querySelector(this.query);
-  if (!this.element) {
-    return;
-  }
-
   const chart = this.element.getContext("2d");
   this.element.graph = new Chart(chart, {
     type: "bar",
