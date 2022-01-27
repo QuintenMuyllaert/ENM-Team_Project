@@ -29,6 +29,9 @@ pageFunction["./control/press.html"] = async () => {
   const htmlSlide = document.querySelector(".press--slide-scale").querySelector(".main");
 
   setInterval(() => {
+    if (!document.querySelector(".press--outline")) {
+      return;
+    }
     document.querySelector(".press--outline").textContent = document.querySelector(".press-selected-item").value;
   }, 50);
   htmlSlide.addEventListener("click", (event) => {
@@ -42,6 +45,13 @@ pageFunction["./control/press.html"] = async () => {
     } else {
       console.log("not text");
     }
+  });
+
+  const uploader = new SocketIOFileUpload(socket);
+  uploader.listenOnInput(document.getElementById("siofu_input"));
+  uploader.addEventListener("complete", (e) => {
+    console.log(e);
+    document.querySelector(".item--big-image").src = "../upload/" + e.file.name;
   });
 };
 

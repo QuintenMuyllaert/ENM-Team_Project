@@ -6,6 +6,7 @@ const express = require("express");
 const { Server } = require("socket.io");
 const speakeasy = require("speakeasy");
 const qrcode = require("qrcode");
+const siofu = require("socketio-file-upload");
 
 const console = require("./modules/console.js");
 const influx = require("./modules/influx.js");
@@ -45,6 +46,7 @@ writer.connect();
 influx.fetchPeriodically(io);
 
 app.use(express.static(path.join(__dirname, "www")));
+app.use(siofu.router);
 
 app.get("/tree.json", async (req, res) => {
   console.log("Client requested ./www filetree.");
@@ -110,6 +112,11 @@ io.on("connection", async (socket) => {
     if ((await bcrypt.compare(obj.username, config.username)) && (await bcrypt.compare(obj.password, config.password))) {
       console.log("Authentication successfull!");
       socket.emit("auth", true);
+
+      const uploader = new siofu();
+      uploader.dir = path.join(__dirname, "www", "upload");
+      uploader.listen(socket);
+
       socket.auth = true;
     } else {
       console.log("Authentication failed, wrong credentials.");
