@@ -28,7 +28,7 @@ module.exports = {
     module.exports.io.emit("slide", data);
   },
   loop: async () => {
-    if (module.exports.slideNr == 0) {
+    if (module.exports.slideNr == 0 && module.exports.config.showEndAnimation) {
       module.exports.send({ event: "showEndAnimation" });
       await module.exports.delay(module.exports.config.endAnimationLength);
     }
@@ -41,5 +41,11 @@ module.exports = {
     setTimeout(async () => {
       await module.exports.loopHandler();
     }, 1000 * module.exports.config.slideLength);
+  },
+  onConnect: (socket) => {
+    if (module.exports.config.showEndAnimation) {
+      socket.emit("slide", { event: "showEndAnimation" });
+    }
+    socket.emit("slide", { slideNr: module.exports.slideNr });
   },
 };
