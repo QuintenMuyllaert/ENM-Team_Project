@@ -80,3 +80,13 @@ const gem = (data) => {
   const l = data.length;
   return s / l;
 };
+
+const rngPair = (data) => {
+  const k = Object.keys(data);
+  const l = k.length;
+  const r = Math.round(Math.random() * (l - 1));
+  return {
+    key: k[r],
+    value: data[k[r]],
+  };
+};
