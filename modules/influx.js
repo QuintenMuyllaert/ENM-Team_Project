@@ -63,14 +63,52 @@ module.exports = {
         ret[thing._field] = number;
       }
     }
+    const listdag = {};
+    const listnacht = {};
+    for (const thing of data) {
+      const time = parseInt(thing._time.split("T")[1].split(":")[0]);
+      if (!listdag[thing._field]) {
+        number = 0;
+        if (time < 22 && time >= 6) {
+          listdag[thing._field] = thing._value;
+          number += thing._value;
+        }
+      } else {
+        if (time < 22 && time >= 6) {
+          number += thing._value;
+          listdag[thing._field] = number;
+        }
+      }
+    }
+    for (const thing of data) {
+      const time = parseInt(thing._time.split("T")[1].split(":")[0]);
+      if (!listnacht[thing._field]) {
+        number = 0;
+        if (time >= 22 || time < 6) {
+          listnacht[thing._field] = thing._value;
+          number += thing._value;
+        }
+      } else {
+        if (time >= 22 || time < 6) {
+          number += thing._value;
+          listnacht[thing._field] = number;
+        }
+      }
+    }
     if (days == 1) {
-      module.exports.lastHour = ret;
-      io.emit("influxtotalDay", module.exports.lastHour);
+      module.exports.lastdaytotal = ret;
+      module.exports.lastday_day = listdag;
+      module.exports.lastday_night = listnacht;
+      io.emit("influxtotalDay", module.exports.lastdaytotal);
+      io.emit("influxDay", module.exports.lastday_day, module.exports.lastday_night);
       console.log(`Pushed data to Socket.IO on topic "influx"!`);
     }
     if (days == 7) {
-      module.exports.lastWeek = ret;
-      io.emit("influxtotalWeek", module.exports.lastWeek);
+      module.exports.lastWeektotal = ret;
+      module.exports.lastweek_day = listdag;
+      module.exports.lastweek_night = listnacht;
+      io.emit("influxtotalWeek", module.exports.lastWeektotal);
+      io.emit("influxWeek", module.exports.lastweek_day, module.exports.lastweek_night);
       console.log(`Pushed data to Socket.IO on topic "influxWeek"!`);
     }
   },
