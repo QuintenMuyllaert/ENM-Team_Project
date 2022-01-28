@@ -176,7 +176,6 @@
   color: var(--global-color-text);
 }
 
-
 .item--style-medium-compare-line {
   grid-area: 1/5/1/6;
 }
@@ -354,21 +353,32 @@
   gap: 16.5%;
 }
 
-.item--big-picture {
-  height: auto;
+.item--big-picture-container {
+  height: 100%;
   width: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item--big-picture {
   display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: inherit;
+  padding-top: 200px;
 }
 
 .item--big-image {
+  grid-area: 1/1/1/1;
   padding: 2.5%;
-  height: 93.5%;
+  /* height: 93.5%; */
+  height: auto;
   width: 100%;
-}
-
-.item--big-image-special {
-  
 }
 
 .item--big-title {
@@ -533,7 +543,7 @@
     Section specific for the medium box with explanation about the flywheel and turbine chimney
 */
 
-.item--medium-explanation-beneath-container{
+.item--medium-explanation-beneath-container {
   width: 100%;
   height: 100%;
   display: flex;
@@ -622,7 +632,7 @@
   font-weight: bold;
   color: var(--global-color-title);
 }
- 
+
 /*
     Section specific for the medium box with the explanation summary
 */
@@ -674,7 +684,6 @@
 .item--medium-explanation-summary-item-picture-padding {
   padding-right: 20%;
 }
-
 
 .item--medium-explanation-summary-item-icon {
   height: 70px;
