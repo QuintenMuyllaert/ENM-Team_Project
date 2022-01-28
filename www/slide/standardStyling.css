@@ -642,6 +642,7 @@
   height: 100%;
   display: grid;
   grid-template-rows: repeat(3, 33%);
+  padding: 1rem;
 }
 
 .item--medium-explanation-style {
@@ -704,26 +705,29 @@
   width: 100%;
   padding: 0 5% 0 5%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 50%);
   grid-template-rows: repeat(3, 33%);
   align-items: center;
+  gap: 0 1rem;
 }
 
 .item--medium-explanation-summary-item-style {
-  display: flex;
+  display: grid;
   gap: 1.5rem;
+  grid-template-columns: auto max-content;
   align-items: center;
-  justify-content: start;
+  justify-items: center;
 }
 
 .item--medium-explanation-summary-item-text {
   font-size: 1.5rem;
+  justify-self: start;
 }
 
 .item--medium-explanation-summary-item-picture {
   width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: center;
 }
 
 .item--medium-explanation-summary-item-picture-padding {
@@ -732,7 +736,7 @@
 
 .item--medium-explanation-summary-item-icon {
   height: 70px;
-  width: 70px;
+  width: auto;
   justify-content: end;
 }
 
