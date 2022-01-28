@@ -26,6 +26,10 @@ socket.on("connect", () => {
     });
   });
 
+  socket.on("influxDay", async (dag, nacht) => {
+    console.log(dag);
+    console.log(nacht);
+  });
   socket.on("slide", async (data) => {
     console.log("Received slide event!");
     if (data.event) {
