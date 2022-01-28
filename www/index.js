@@ -91,6 +91,7 @@ const init = async () => {
   const tree = await fetchJSON("./tree.json");
   didyouknow = await fetchTxt("./data/facts.csv");
   questions = await fetchJSON("./data/questions.json");
+  comparisons = await fetchJSON("./data/comparisons.json");
 
   skeletonSlide = await fetchString("./skeletonSlide.html");
   pageNames = lookupList(tree["slide"], ".html");
