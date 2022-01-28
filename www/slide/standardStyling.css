@@ -54,6 +54,10 @@
   grid-area: 1/1/1/4;
 }
 
+.header--title-x-long {
+  grid-area: 1/1/1/6;
+}
+
 /*
     This is the section for the general style of items in a page 
 */
@@ -363,6 +367,10 @@
   width: 100%;
 }
 
+.item--big-image-special {
+  
+}
+
 .item--big-title {
   display: flex;
   justify-content: center;
@@ -519,6 +527,22 @@
 
 .item--medium-activities-summary-text {
   font-size: 120%;
+}
+
+/*
+    Section specific for the medium box with explanation about the flywheel and turbine chimney
+*/
+
+.item--medium-explanation-beneath-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item--medium-explanation-beneath-text {
+  font-size: 1.5rem;
 }
 
 /*
@@ -789,6 +813,14 @@
   grid-area: 3/2/12/13;
 }
 
+.item--big-left-big {
+  grid-area: 3/2/11/13;
+}
+
+.item--big-right-big {
+  grid-area: 3/13/11/24;
+}
+
 .item--small-below-left {
   grid-area: 10/2/12/7;
 }
@@ -845,6 +877,13 @@
   grid-area: 3/14/7/24;
 }
 
+.item--medium-explanation-below-left {
+  grid-area: 11/2/13/13;
+}
+
+.item--medium-explanation-below-right {
+  grid-area: 11/13/13/24;
+}
 /*
   Section specific for the focus page 
 */
