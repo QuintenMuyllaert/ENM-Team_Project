@@ -5,6 +5,11 @@
   overflow: hidden;
 }
 
+.press--container .hide {
+  opacity: 0.5;
+  border-style: dashed !important;
+}
+
 .press--title {
   padding: 1rem 0;
   font-weight: 600;

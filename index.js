@@ -192,6 +192,8 @@ io.on("connection", async (socket) => {
     console.log(slide.control ? "Server has control of the slideshow." : "Client has control of the slideshow.");
   });
 
+  slider.onConnect(socket);
+
   if (!Object.keys(influx.lastHour).length || !Object.keys(influx.lastHour).length) {
     console.log("Fetching Influx data...");
     await influx.fetch(socket, 1);
