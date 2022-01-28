@@ -29,18 +29,18 @@ setInterval(async () => {
       typevar = elementDefaultsInnerHTML;
     }
 
-    if (!value) {
-      console.error("No value");
+    let valuevar;
+    try {
+      valuevar = eval(`(() => {return ${value}})()`);
+    } catch (e) {
+      console.log("Value does not exist.");
       return;
     }
 
-    let text = "N/A";
-    try {
-      text = eval(value);
-    } catch (e) {
-      console.error("Something went wrong.");
+    if (typevar == null || typevar == undefined || typevar == "") {
+      valuevar = "N/A";
     }
 
-    new dataElement(e, text, typevar);
+    new dataElement(e, valuevar, typevar);
   }
 }, 50);

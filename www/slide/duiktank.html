@@ -16,10 +16,10 @@
     <div class="item--medium-container">
       <div class="item--medium-value-text-container">
         <div class="item--medium-value-container">
-          <p class="js-day item--medium-value title">1234</p>
-          <p class="item--medium-unit">kw</p>
+          <p dataElement dataValue="k(influx.Totaal.dag.overdag.gemiddeld)" class="item--medium-value title">N/A</p>
+          <p class="item--medium-unit">kW/h</p>
         </div>
-        <p class="item--medium-text">Dag verbruik</p>
+        <p class="item--medium-text">Gemiddeld dag verbruik</p>
       </div>
       <picture class="item--medium-icon-container">
         <img src="./img/sun.png" alt="" />
@@ -30,10 +30,10 @@
     <div class="item--medium-container">
       <div class="item--medium-value-text-container">
         <div class="item--medium-value-container title">
-          <p class="js-night item--medium-value">1234</p>
-          <p class="item--medium-unit">kw</p>
+          <p dataElement dataValue="k(influx.Totaal.dag.snachts.gemiddeld)" class="item--medium-value">N/A</p>
+          <p class="item--medium-unit">kW/h</p>
         </div>
-        <p class="item--medium-text">Nacht verbruik</p>
+        <p class="item--medium-text">Gemiddeld nacht verbruik</p>
       </div>
       <picture class="item--medium-icon-container">
         <img src="./img/moon.png" alt="" />
@@ -45,10 +45,10 @@
    </picture>
       <div class="item--container">
         <div class="item--small-value-container title">
-          <p class="item--value js-dagweek">1234</p>
-          <p class="item--unit">kW</p>
+          <p dataElement dataValue="k(influx.Totaal.week.overdag.gemiddeld)" class="item--value">N/A</p>
+          <p class="item--unit">kW/h</p>
         </div>
-        <p class="item--small-text">Dag verbruik/week</p>
+        <p class="item--small-text">Gemiddeld dag verbruik per week</p>
       </div>
     </div>
   </div>
@@ -56,10 +56,10 @@
     <div class="item--style-medium-compare">
       <div class="item--style-medium-compare-text-container title">
         <div class="item--style-medium-compare-value-container">
-          <p class="item--style-medium-compare-value">1234</p>
-          <p class="item--style-medium-compare-unit">kW</p>
+          <p dataElement dataValue="k(influx.Totaal.dag.totaal)" class="item--style-medium-compare-value">N/A</p>
+          <p class="item--style-medium-compare-unit">kW/dag</p>
         </div>
-        <p class="item--style-medium-compare-text">Verbruikte energie/dag</p>
+        <p class="item--style-medium-compare-text">Verbruikte energie vandaag</p>
       </div>
       <div class="item--style-medium-compare-line">
         <img src="../img/compare-section.png" alt="">
@@ -433,15 +433,15 @@
     <div class="item--style-small-info">
       <div class="item--container">
         <div class="item--small-value-container title">
-          <p class="item--value js-nightweek">1234</p>
-          <p class="item--unit">kW</p>
+          <p dataElement dataValue="k(influx.Totaal.week.snachts.gemiddeld)" class="item--value">N/A</p>
+          <p class="item--unit">kW/h</p>
         </div>
-        <p class="item--small-text">Nacht verbruik/week</p>
+        <p class="item--small-text">Gemiddeld nacht verbruik per week</p>
       </div>
     </div>
   </div>
   <div class="item--style piechart--card-style item--medium-piechart-right">
-    <div class="piechart--container-big piechart--data-duiktank">
+    <div dataElement dataType="elementDefaultsPie" dataValue='{ title: "kW/h", data: [kN(influx.Bord_Waterbehandeling_Totaal.minuut.gemiddeld), kN(influx.Bord_HVAC_Totaal.minuut.gemiddeld), kN(influx.Compressor_Totaal.minuut.gemiddeld) , kN(influx.Buitenbar_Totaal.minuut.gemiddeld)], labels: ["Waterbehandeling", "Airconditioning", "Compressor", "Bar"] }' class="piechart--container-big piechart--data-duiktank">
       <div class="piechart--container">
         <div class="piechart--circle center">
           <div class="center piechart--box">

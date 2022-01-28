@@ -76,7 +76,7 @@ const dataElement = class {
 
     let newData = this.data;
     try {
-      newData = eval(value);
+      newData = eval(`(() => {return ${value}})()`);
     } catch (e) {
       console.error("Something went wrong.");
     }

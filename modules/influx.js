@@ -81,7 +81,7 @@ module.exports = {
     };
   },
   sanitize: async (io) => {
-    const timelabels = ["minuit", "uur", "dag", "week", "maand", "jaar"];
+    const timelabels = ["minuut", "uur", "dag", "week", "maand", "jaar"];
     const basisy = [module.exports.oneMinute, module.exports.oneHour, module.exports.oneHour, module.exports.oneHour, module.exports.oneDay, module.exports.oneMonth];
     const amt = [1 / 24 / 60, 1 / 24, 1, 8, 31, 357];
 
