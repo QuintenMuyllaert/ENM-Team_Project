@@ -29,6 +29,12 @@ const io = new Server(server);
 slider.init(io);
 
 Date.prototype.minusDays = function (days) {
+  const today = Number(this);
+  const minus = Number(1000 * 60 * 60 * 24 * days);
+  const result = new Date(today - minus);
+  return result;
+
+  //old
   const date = new Date(this.valueOf());
   date.setHours(1, 0, 0, 0);
   date.setDate(date.getDate() - days);
@@ -192,18 +198,16 @@ io.on("connection", async (socket) => {
     console.log(slide.control ? "Server has control of the slideshow." : "Client has control of the slideshow.");
   });
 
+  socket.on("influx", () => {
+    socket.emit("influxData", influx.data);
+  });
+
   slider.onConnect(socket);
 
-  if (!Object.keys(influx.lastHour).length || !Object.keys(influx.lastHour).length) {
-    console.log("Fetching Influx data...");
-    await influx.fetch(socket, 1);
-    await influx.fetch(socket, 7);
-  } else {
-    console.log("Sending cached Influx data...");
-    socket.emit("influx", influx.lastHour);
-    socket.emit("influxWeek", influx.lastWeek);
+  console.log("Sending Influx data...");
+  if (influx.data) {
+    socket.emit("influxData", influx.data);
   }
-
   socket.on("error", (err) => console.error);
 });
 

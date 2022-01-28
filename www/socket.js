@@ -2,13 +2,14 @@ const socket = io();
 
 socket.on("connect", () => {
   console.log("Connection to server made!");
+  socket.emit("influx");
 
   socket.on("close", () => {
     console.log("Connection to server closed!");
   });
 
   socket.on("mqtt", (topic, message) => {
-    console.log("Got MQTT data!");
+    console.log("Got raw MQTT data!");
   });
 
   socket.on("mqttData", (data) => {
@@ -16,20 +17,31 @@ socket.on("connect", () => {
     mqtt = data;
   });
 
-  socket.on("influxtotalDay", async (data) => {
-    console.log("Got Influx data!");
+  socket.on("influx", (data) => {
+    console.log("Got raw influx data!");
+  });
 
+  socket.on("influxData", (data) => {
+    console.log("Got processed influx data!");
+    //influx variable is a global variable that stores the latest influx data point.
     influx = data;
+
+    //Update all dataElements elements
     console.log(influx);
     dataElements.forEach(async (e) => {
       e.tick();
     });
   });
 
+  socket.on("influxtotalDay", async (data) => {
+    console.log("Got Influx data!");
+  });
+
   socket.on("influxDay", async (dag, nacht) => {
     console.log(dag);
     console.log(nacht);
   });
+
   socket.on("slide", async (data) => {
     console.log("Received slide event!");
     if (data.event) {
