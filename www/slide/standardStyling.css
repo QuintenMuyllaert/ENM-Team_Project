@@ -221,27 +221,38 @@
 */
 
 .item--medium-energy-container {
-  display: grid;
   height: 100%;
   width: 100%;
-  grid-template-rows: repeat(2, 50%);
+  display: flex;
+  justify-content: center;
+}
+
+.item--medium-energy-info-container {
+  align-self: center;
 }
 
 .item--medium-energy-text-container {
   display: flex;
-  gap: 1rem;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
 }
 
 .item--medium-energy-value {
   font-weight: bold;
   color: var(--global-color-title);
-  font-size: 150%;
+  font-size: 2.25rem;
 }
 
 .item--medium-energy-unit {
-  font-weight: bold;
+  font-weight: 400;
   color: var(--global-color-title);
-  font-size: 90%;
+  font-size: 1.5rem;
+  padding-top: 8px;
+}
+
+.item--medium-energy-text {
+  font-size: 1.5rem;
 }
 
 /*
@@ -665,6 +676,70 @@
 
 .item--medium-explanation-summary-item-right-middle {
   grid-area: 2/2/3/3;
+}
+
+/*
+    Section specific for the medium box with the explanation for each individual power source
+*/
+
+.item--medium-explanation-individual-container {
+  width: 100%;
+  height: 100%;
+}
+
+.item--medium-explanation-individual-title {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.item--medium-explanation-individual-info-container {
+  height: 80%;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  justify-content: space-between;
+}
+
+.item--medium-explanation-individual-info-text {
+  padding-bottom: 2.5rem;
+  font-size: 1.5rem;
+}
+
+.item--medium-explanation-individual-info-text-comparison {
+  font-size: 1.5rem;
+}
+
+.item--medium-explanation-individual-info-picture {
+  height: 100%;
+  width: auto;
+}
+
+.item--medium-explanation-individual-info-image {
+  height: 80%;
+  margin-top: 10%;
+  margin-right: 2rem;
+}
+
+/*
+    Section specific for the medium box with the comparison for each individual power source
+*/
+
+.item--medium-explanation-comparison-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item--medium-explanation-comparison-graph {
+  height: 100% !important;
+  width: 100% !important;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 /*
