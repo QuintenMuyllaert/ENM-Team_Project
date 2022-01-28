@@ -52,6 +52,14 @@ module.exports = {
       return;
     }
     let number = 0;
+    const raw = {};
+    for (const thing of data) {
+      if (!raw[thing._field]) {
+        raw[thing._field] = [thing._value];
+      } else {
+        raw[thing._field].push(thing._value);
+      }
+    }
     const ret = {};
     for (const thing of data) {
       if (!ret[thing._field]) {
@@ -95,6 +103,8 @@ module.exports = {
         }
       }
     }
+    module.exports.raw = raw;
+    io.emit("influxraw", module.exports.raw);
     if (days == 1) {
       module.exports.lastdaytotal = ret;
       module.exports.lastday_day = listdag;
