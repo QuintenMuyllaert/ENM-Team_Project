@@ -51,13 +51,16 @@ module.exports = {
       console.log("Something went wrong while fetching data!\nGot empty data object, possibly because the database is offline.");
       return;
     }
-
+    let number = 0;
     const ret = {};
     for (const thing of data) {
       if (!ret[thing._field]) {
-        ret[thing._field] = [thing._value];
+        number = 0;
+        ret[thing._field] = thing._value;
+        number += thing._value;
       } else {
-        ret[thing._field].push(thing._value);
+        number += thing._value;
+        ret[thing._field] = number;
       }
     }
     if (days == 1) {
