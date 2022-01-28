@@ -1,9 +1,9 @@
 const pages = [];
-let config;
 let pageNames;
 let skeletonSlide = "";
 let didyouknow = [];
 
+let slideNr, slideLength, endAnimationLength;
 /*
 const elementNumberDay = new dataElement(".js-day", 0, elementDefaultsText);
 const elementNumberNight = new dataElement(".js-night", 0, elementDefaultsText);
@@ -44,7 +44,7 @@ const renderDidYouKnow = async () => {
   });
 };
 
-const onRenderPage = async (pagename) => {
+const onRenderPage = async () => {
   dataElements.forEach(async (e) => {
     if (!e.hasInit) {
       await e.init();
@@ -78,23 +78,15 @@ const showEndAnimation = async () => {
 
   window.scroll({
     top: 0,
-    left: config.slideNr * screen.width,
+    left: slideNr * screen.width,
     behavior: "smooth",
   });
 };
 
 const init = async () => {
-  config = await fetchJSON("./config.json");
-  staticSlideNr = config.staticSlideNr;
-  slideLength = config.slideLength;
-  endAnimationLength = config.endAnimationLength;
-  useScalingFunction = config.useScalingFunction;
-
-  if (useScalingFunction) {
-    const width = screen.width;
-    const scale = width / 1920;
-    document.querySelector("html").style.setProperty("--scalefactor", scale);
-  }
+  const width = screen.width;
+  const scale = width / 1920;
+  document.querySelector("html").style.setProperty("--scalefactor", scale);
 
   const tree = await fetchJSON("./tree.json");
   didyouknow = await fetchTxt("./data/facts.csv");
@@ -102,12 +94,8 @@ const init = async () => {
 
   skeletonSlide = await fetchString("./skeletonSlide.html");
   pageNames = lookupList(tree["slide"], ".html");
-  if (staticSlideNr == -1) {
-    for (const page of pageNames) {
-      pages.push(await fetchString(`./slide/${page}`));
-    }
-  } else {
-    pages.push(await fetchString(`./slide/${pageNames[staticSlideNr]}`));
+  for (const page of pageNames) {
+    pages.push(await fetchString(`./slide/${page}`));
   }
 
   document.querySelector(":root").style.setProperty("--pagecount", pages.length);
@@ -127,27 +115,33 @@ const init = async () => {
       e.init();
     }
   });
+
+  document.querySelectorAll("body *").forEach((element) => {
+    if (element.classList.value.includes("js-")) {
+      console.log(element.classList.value);
+      element.style.backgroundColor = "hotpink";
+    }
+  });
+  await loop();
 };
 
 const loop = async () => {
   window.scroll({
     top: 0,
-    left: config.slideNr * screen.width,
+    left: slideNr * screen.width,
     behavior: "smooth",
   });
-  onRenderPage(pageNames[config.slideNr]);
+  onRenderPage();
 };
 
 window.onresize = () => {
-  if (useScalingFunction) {
-    const width = screen.width;
-    const scale = width / 1920;
-    document.querySelector("html").style.setProperty("--scalefactor", scale);
-  }
+  const width = screen.width;
+  const scale = width / 1920;
+  document.querySelector("html").style.setProperty("--scalefactor", scale);
 
   window.scroll({
     top: 0,
-    left: config.slideNr * screen.width,
+    left: slideNr * screen.width,
   });
 };
 
