@@ -350,7 +350,7 @@
   height: 100%;
   width: 100%;
   display: flex;
-  gap: 16.5%;
+  gap: 5%;
 }
 
 .item--big-picture-container {
@@ -404,6 +404,27 @@
   padding-bottom: 5%;
   padding-left: 5%;
   justify-content: center;
+}
+
+.item--big-image-legend-title {
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  padding-bottom: 2rem;
+}
+
+
+.item--big-image-legend {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  padding-right: 5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.item--big-image-legend-item {
+  font-size: 1.5rem;
 }
 
 /*
