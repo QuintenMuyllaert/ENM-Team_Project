@@ -17,13 +17,13 @@ socket.on("connect", () => {
 
   socket.on("influx", (data) => {
     console.log("Got Influx data!");
-    if (!data.TotaalNet) {
-      return;
-    }
+    // if (!data.TotaalNet) {
+    //   return;
+    // }
 
-    if (!data.TotaalNet.length) {
-      return;
-    }
+    // if (!data.TotaalNet.length) {
+    //   return;
+    // }
 
     influx = data;
     console.log(influx);
@@ -241,7 +241,7 @@ socket.on("connect", () => {
     // elementChartPieBlok2.data = { ...elementChartPieBlok2.data, data: values, labels: pie };
   });
 
-  socket.on("influxWeek", (data) => {
+  socket.on("influxWeekk", (data) => {
     console.log("Got Influx Week data!");
     if (!data.TotaalNet) {
       return;
