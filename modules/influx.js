@@ -52,7 +52,23 @@ module.exports = {
       return;
     }
     let number = 0;
+    const raw = {};
+    for (const thing of data) {
+      if (!raw[thing._field]) {
+        raw[thing._field] = [thing._value];
+      } else {
+        raw[thing._field].push(thing._value);
+      }
+    }
     const ret = {};
+
+    //hours (server time) we see as morning / evening
+    //morning <= time < evening = day
+    //!day = night
+    const morning = 6;
+    const evening = 22;
+
+    //totaal dag+nacht ( 24 waardes - subject to change make dynamic )
     for (const thing of data) {
       if (!ret[thing._field]) {
         number = 0;
@@ -63,38 +79,46 @@ module.exports = {
         ret[thing._field] = number;
       }
     }
+
+    //totaal dag ( 16 waardes - subject to change make dynamic )
     const listdag = {};
     const listnacht = {};
     for (const thing of data) {
       const time = parseInt(thing._time.split("T")[1].split(":")[0]);
       if (!listdag[thing._field]) {
         number = 0;
-        if (time < 22 && time >= 6) {
+        if (time < evening && time >= morning) {
           listdag[thing._field] = thing._value;
           number += thing._value;
         }
       } else {
-        if (time < 22 && time >= 6) {
+        if (time < evening && time >= morning) {
           number += thing._value;
           listdag[thing._field] = number;
         }
       }
     }
+
+    //totaal nacht ( 8 waardes - subject to change make dynamic )
     for (const thing of data) {
       const time = parseInt(thing._time.split("T")[1].split(":")[0]);
       if (!listnacht[thing._field]) {
         number = 0;
-        if (time >= 22 || time < 6) {
+        if (time >= evening || time < morning) {
           listnacht[thing._field] = thing._value;
           number += thing._value;
         }
       } else {
-        if (time >= 22 || time < 6) {
+        if (time >= evening || time < morning) {
           number += thing._value;
           listnacht[thing._field] = number;
         }
       }
     }
+    //rawdata
+    module.exports.raw = raw;
+    io.emit("influxraw", module.exports.raw);
+    //dag
     if (days == 1) {
       module.exports.lastdaytotal = ret;
       module.exports.lastday_day = listdag;
@@ -103,6 +127,8 @@ module.exports = {
       io.emit("influxDay", module.exports.lastday_day, module.exports.lastday_night);
       console.log(`Pushed data to Socket.IO on topic "influx"!`);
     }
+
+    //week
     if (days == 7) {
       module.exports.lastWeektotal = ret;
       module.exports.lastweek_day = listdag;
