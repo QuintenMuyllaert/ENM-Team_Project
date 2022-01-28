@@ -351,6 +351,7 @@
   width: 100%;
   display: flex;
   gap: 5%;
+  padding: 1rem;
 }
 
 .item--big-picture-container {
