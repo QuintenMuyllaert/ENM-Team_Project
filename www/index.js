@@ -116,12 +116,15 @@ const init = async () => {
     }
   });
 
-  document.querySelectorAll("body *").forEach((element) => {
-    if (element.classList.value.includes("js-")) {
-      console.log(element.classList.value);
-      element.style.backgroundColor = "hotpink";
-    }
-  });
+  if (false) {
+    //highlights all items still using a ".js-" class.
+    document.querySelectorAll("body *").forEach((element) => {
+      if (element.classList.value.includes("js-")) {
+        console.log(element.classList.value);
+        element.style.backgroundColor = "hotpink";
+      }
+    });
+  }
   await loop();
 };
 
