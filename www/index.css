@@ -143,6 +143,10 @@
   font-weight: 800;
 }
 
+.slides {
+  transition: opacity ease-in-out 0.5s;
+}
+
 @keyframes didyouanimate {
   0% {
     width: 0;
@@ -333,6 +337,16 @@
 
 .hide {
   opacity: 0;
+}
+
+.fillvertical {
+  height: 100%;
+  width: auto;
+}
+
+.fillhorizontal {
+  height: auto;
+  width: 100%;
 }
 
 @keyframes create-circle {
