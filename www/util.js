@@ -63,8 +63,16 @@ const avgKey = (data, key, deci = false) => {
   return deci === false ? avg : avg.toFixed(deci);
 };
 
+const kN = (number) => {
+  return number / 1000;
+};
+
+const k = (number) => {
+  return kN(number).toFixed(2);
+};
+
 const kW = (number) => {
-  return (number / 1000).toFixed(2) + " kW";
+  return k(number) + " kW";
 };
 
 const kWh = (number) => {
