@@ -16,17 +16,11 @@ socket.on("connect", () => {
     mqtt = data;
   });
 
-  socket.on("influx", async (data) => {
+  socket.on("influxtotalDay", async (data) => {
     console.log("Got Influx data!");
-    // if (!data.TotaalNet) {
-    //   return;
-    // }
-
-    // if (!data.TotaalNet.length) {
-    //   return;
-    // }
 
     influx = data;
+    console.log(influx);
     dataElements.forEach(async (e) => {
       e.tick();
     });

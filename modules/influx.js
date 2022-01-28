@@ -65,12 +65,12 @@ module.exports = {
     }
     if (days == 1) {
       module.exports.lastHour = ret;
-      io.emit("influx", module.exports.lastHour);
+      io.emit("influxtotalDay", module.exports.lastHour);
       console.log(`Pushed data to Socket.IO on topic "influx"!`);
     }
     if (days == 7) {
       module.exports.lastWeek = ret;
-      io.emit("influxWeek", module.exports.lastWeek);
+      io.emit("influxtotalWeek", module.exports.lastWeek);
       console.log(`Pushed data to Socket.IO on topic "influxWeek"!`);
     }
   },
