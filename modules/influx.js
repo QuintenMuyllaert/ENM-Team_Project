@@ -115,7 +115,9 @@ module.exports = {
         }
       }
     }
-
+    //rawdata
+    module.exports.raw = raw;
+    io.emit("influxraw", module.exports.raw);
     //dag
     if (days == 1) {
       module.exports.lastdaytotal = ret;
