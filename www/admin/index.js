@@ -18,6 +18,12 @@ const generateSlide = (html) => {
   return skeletonSlide.replace("<!--INNERHTML-->", html);
 };
 
+setInterval(() => {
+  dataElements.forEach(async (e) => {
+    e.render();
+  });
+}, 1000);
+
 pageFunction["./control/press.html"] = async (file) => {
   const fileName = "../slide/duiktank.html";
   skeletonSlide = await fetchString("../skeletonSlide.html");
@@ -203,6 +209,18 @@ socket.on("connect", () => {
     //replace entire body with main dashboard.
     document.querySelector("body").innerHTML = await fetchString("./control/index.html");
     init();
+  });
+
+  socket.on("influxData", (data) => {
+    console.log("Got processed influx data!");
+    //influx variable is a global variable that stores the latest influx data point.
+    influx = data;
+
+    //Update all dataElements elements
+    console.log(influx);
+    dataElements.forEach(async (e) => {
+      e.tick();
+    });
   });
 
   socket.on("admin", (data) => {
