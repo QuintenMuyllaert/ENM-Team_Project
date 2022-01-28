@@ -33,7 +33,7 @@
 .header--title-container {
   grid-area: 1/2/2/6;
   display: grid;
-  grid-template-columns: repeat(15, 1fr);
+  grid-template-columns: 100%;
 }
 
 .header--title {
@@ -44,8 +44,10 @@
   padding-bottom: 2px;
   border-bottom: 5px solid black;
   color: var(--global-color-title);
+  width: max-content;
 }
 
+/*Unneeded size modifiers?*/
 .header--title-short {
   grid-area: 1/1/1/2;
 }
