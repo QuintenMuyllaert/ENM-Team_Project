@@ -67,6 +67,10 @@ const kW = (number) => {
   return (number / 1000).toFixed(2) + " kW";
 };
 
+const kWh = (number) => {
+  return kW(number) + "/h";
+};
+
 const sum = (data) => {
   let s = 0;
   for (const d of data) {

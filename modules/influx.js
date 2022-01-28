@@ -71,11 +71,11 @@ module.exports = {
 
     return {
       day: {
-        total: (listdag / lenDag) * (basis / module.exports.oneHour),
+        total: (listdag / lenDag) * basis,
         avg: listdag / lenDag,
       },
       night: {
-        total: (listnacht / lenNacht) * (basis / module.exports.oneHour),
+        total: (listnacht / lenNacht) * basis,
         avg: listnacht / lenNacht,
       },
     };
@@ -84,6 +84,8 @@ module.exports = {
     const timelabels = ["minuit", "uur", "dag", "week", "maand", "jaar"];
     const basisy = [module.exports.oneMinute, module.exports.oneHour, module.exports.oneHour, module.exports.oneHour, module.exports.oneDay, module.exports.oneMonth];
     const amt = [1 / 24 / 60, 1 / 24, 1, 8, 31, 357];
+
+    const basisyTotal = [1 / 60, 1, 24, 7 * 24, 30.4368499 * 24, 365.242199 * 24];
 
     const dataByMeter = {};
     for (const i in timelabels) {
@@ -114,11 +116,11 @@ module.exports = {
           sum += point.val;
         }
         const avg = sum / len; // = W
-        const tot = avg * (basis / module.exports.oneHour); // = W/basis
+        const tot = avg * basisyTotal[i]; // = W/basis
         dataByMeter[meter][label].gemiddeld = avg;
         dataByMeter[meter][label].totaal = tot;
         if (basis == module.exports.oneHour) {
-          const dayNight = module.exports.calculateDayNight(dataByMeter[meter][label].data, basisy);
+          const dayNight = module.exports.calculateDayNight(dataByMeter[meter][label].data, basisyTotal[i]);
           dataByMeter[meter][label].overdag = {
             gemiddeld: dayNight.night.avg,
             totaal: dayNight.night.total,
