@@ -53,6 +53,9 @@ socket.on("connect", () => {
         case "fetchQuestions":
           questions = await fetchJSON("./data/questions.json");
           break;
+        case "fetchCompare":
+          comparisons = await fetchJSON("./data/comparisons.json");
+          break;
         case "showEndAnimation":
           await showEndAnimation();
           break;

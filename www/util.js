@@ -94,3 +94,12 @@ const rngPair = (data) => {
     value: data[k[r]],
   };
 };
+
+const compare = (num) => {
+  const pair = rngPair(comparisons);
+  const amt = Math.round(num / 1000 / pair.value);
+  if (amt == 0) {
+    return compare(num);
+  }
+  return `${amt} ${pair.key}`;
+};
