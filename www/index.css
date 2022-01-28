@@ -335,6 +335,16 @@
   opacity: 0;
 }
 
+.fillvertical {
+  height: 100%;
+  width: auto;
+}
+
+.fillhorizontal {
+  height: auto;
+  width: 100%;
+}
+
 @keyframes create-circle {
   from {
     stroke-dashoffset: 283.14; /*Toby's magic number*/
