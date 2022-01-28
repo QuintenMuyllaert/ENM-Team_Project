@@ -11,14 +11,27 @@
           <img class="item--big-image center" src="./img/tranfo-map.png" alt="" />
           <img class="item--big-image center" src="./img/blok2-rework.png" alt="">
         </picture>
+        <div class="item--big-image-legend">
+          <div>
+            <p class="item--big-image-legend-title title">Oplijsting blok 2:</p>
+            <ul class="item--big-image-legend-style">
+              <p class="item--big-image-legend-item">Conciërgewoning</p>
+              <p class="item--big-image-legend-item">Mechaniekersgebouw</p>
+              <p class="item--big-image-legend-item">Directeurswoning</p>
+              <p class="item--big-image-legend-item">Opzichterswoning</p>
+              <p class="item--big-image-legend-item">Werkhuis elektriekers</p>
+              <p class="item--big-image-legend-item">Kantoorgebouw</p>
+            </ul>
+          </div>
+        </div>
     </div>
   </div>
   <div class="item--style item--small-below-left">
     <div class="item--medium-container">
       <div class="item--medium-value-text-container">
-        <div class="item--medium-value-container">
-          <p class="js-day-blok2 item--medium-value">1234</p>
-          <p class="item--medium-unit">kw</p>
+        <div class="item--medium-value-container title">
+          <p dataElement dataValue="k(influx.Aansluiting_Conciergewoning_EB2.dag.overdag.gemiddeld + influx.Aansluiting_Directeurswoning_EB2.dag.overdag.gemiddeld + influx.Aansluiting_Mechaniekersgebouw_EB2.dag.overdag.gemiddeld + influx.Aansluiting_Opzichterswoning_En_Kantoorgebouwen_EB2.dag.overdag.gemiddeld + influx.Stopcontact32A_EB2_C.dag.overdag.gemiddeld + influx.Stopcontact63A_EB2_A.dag.overdag.gemiddeld + influx.Stopcontact63A_EB2_B.dag.overdag.gemiddeld)" class="js-day-blok2 item--medium-value">1234</p>
+          <p class="item--medium-unit">kW/h</p>
         </div>
         <p class="item--medium-text">Dag verbruik</p>
       </div>
@@ -30,9 +43,9 @@
   <div class="item--style item--small-below-middle">
     <div class="item--medium-container">
       <div class="item--medium-value-text-container">
-        <div class="item--medium-value-container">
-          <p class="js-night-blok2 item--medium-value">1234</p>
-          <p class="item--medium-unit">kw</p>
+        <div class="item--medium-value-container title">
+          <p dataElement dataValue="k(influx.Aansluiting_Conciergewoning_EB2.dag.snachts.gemiddeld + influx.Aansluiting_Directeurswoning_EB2.dag.snachts.gemiddeld + influx.Aansluiting_Mechaniekersgebouw_EB2.dag.snachts.gemiddeld + influx.Aansluiting_Opzichterswoning_En_Kantoorgebouwen_EB2.dag.snachts.gemiddeld + influx.Stopcontact32A_EB2_C.dag.snachts.gemiddeld + influx.Stopcontact63A_EB2_A.dag.snachts.gemiddeld + influx.Stopcontact63A_EB2_B.dag.snachts.gemiddeld)" class="js-night-blok2 item--medium-value">1234</p>
+          <p class="item--medium-unit">kW/h</p>
         </div>
         <p class="item--medium-text">Nacht verbruik</p>
       </div>
@@ -45,9 +58,9 @@
     <div class="item--style-small-info">
    </picture>
       <div class="item--container">
-        <div class="item--small-value-container">
-          <p class="item--value js-dagweek-blok2">1234</p>
-          <p class="item--unit">kW</p>
+        <div class="item--small-value-container title">
+          <p dataElement dataValue="k(influx.Aansluiting_Conciergewoning_EB2.week.overdag.gemiddeld + influx.Aansluiting_Directeurswoning_EB2.week.overdag.gemiddeld + influx.Aansluiting_Mechaniekersgebouw_EB2.week.overdag.gemiddeld + influx.Aansluiting_Opzichterswoning_En_Kantoorgebouwen_EB2.week.overdag.gemiddeld + influx.Stopcontact32A_EB2_C.week.overdag.gemiddeld + influx.Stopcontact63A_EB2_A.week.overdag.gemiddeld + influx.Stopcontact63A_EB2_B.week.overdag.gemiddeld)" class="item--value js-dagweek-blok2">1234</p>
+          <p class="item--unit">kW/h</p>
         </div>
         <p class="item--small-text">Dag verbruik/week</p>
       </div>
@@ -55,148 +68,394 @@
   </div>
   <div class="item--style item--medium-compare-above-right">
     <div class="item--style-medium-compare">
-      <div class="item--medium-compare-value-container">
-        <p class="item--value js-oneday-blok2">1234</p>
-        <p class="item--unit">kW</p>
+      <div class="item--style-medium-compare-text-container title">
+        <div class="item--style-medium-compare-value-container">
+          <p dataElement dataValue="k(influx.Aansluiting_Conciergewoning_EB2.dag.totaal + influx.Aansluiting_Directeurswoning_EB2.dag.totaal + influx.Aansluiting_Mechaniekersgebouw_EB2.dag.totaal + influx.Aansluiting_Opzichterswoning_En_Kantoorgebouwen_EB2.dag.totaal + influx.Stopcontact32A_EB2_C.dag.totaal + influx.Stopcontact63A_EB2_A.dag.totaal + influx.Stopcontact63A_EB2_B.dag.totaal)" class="item--style-medium-compare-value">N/A</p>
+          <p class="item--style-medium-compare-unit">kW/dag</p>
+        </div>
+        <p class="item--style-medium-compare-text">Verbruikte energie vandaag</p>
       </div>
-      <div class="item--icons-compare js-vergelijking-blok2">
-        <svg id="auto" class="svg--auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.44 72.32">
-          <defs>
-            <style>
-              .cls-carroserie {
-                fill: red;
-              }
-
-              .cls-wielen {
-                fill: #cf1c24;
-              }
-
-              .cls-raam {
-                fill: white;
-              }
-
-              .cls-prieze {
-                fill: none;
-                stroke: #000;
-                stroke-miterlimit: 10;
-              }
-            </style>
-          </defs>
-          <g class="svg--auto-carroserie">
-            <path id="carroserie" class="cls-carroserie" d="M150.07,74.79c-3.42-.68-7.54-.87-13.08-1.62-.49-.07-1.58-.21-3-.54a37.6,37.6,0,0,1-4-1.21c-7.48-2.65-11-6.73-24.64-10.21-.65-.16-1.86-.48-3.54-.86A84.93,84.93,0,0,0,90,58.58a58.44,58.44,0,0,0-15.57.47c-6.82,1.27-12.47,4.85-23.76,12a54.35,54.35,0,0,0-12,10.07c-.26.3-.4.46-.54.64-4,5.07-2.86,13.58-.42,17.34,1.36,2.08,3.39,3.1,7.07,3.57a12.94,12.94,0,0,1-.14-1.77,13.14,13.14,0,1,1,26.28,0,13.53,13.53,0,0,1-.14,1.81h.75c12.57-.18,25.14,0,37.71,0,7.09,0,11.82,0,15,0a13.38,13.38,0,0,1-.14-1.8,13.14,13.14,0,1,1,26.28,0c0,.23,0,.47,0,.7a13.43,13.43,0,0,0,13.36-8.36c2.15-5.67-.48-11.53-3.7-14.36C157.15,76.35,153.91,75.57,150.07,74.79Z" transform="translate(-20.07 -38.7)" />
-            <path id="raam" class="cls-raam" d="M62.84,76.19c0-7.47,10.51-13.52,23.49-13.52s23.49,6,23.49,13.52" transform="translate(-20.07 -38.7)" />
-          </g>
-
-          <g class="svg--auto-wielen" id="wielen">
-            <circle id="wiel_1" data-name="wiel 1" class="cls-wielen" cx="116.98" cy="62.2" r="10.12" />
-            <circle id="wiel_2" data-name="wiel 2" class="cls-wielen" cx="37.36" cy="62.01" r="10.12" />
-          </g>
-
-          <g id="prieze">
-            <g>
-              <path class="cls-prieze" d="M20.57,75.47a14.93,14.93,0,0,0,14.92,15" transform="translate(-20.07 -38.7)" />
-              <path class="cls-prieze" d="M20.57,75.47c0-15.78,22.12-28.56,49.45-28.56" transform="translate(-20.07 -38.7)" />
-            </g>
-            <path d="M83.79,49.51H78V43.72h5.78a1.45,1.45,0,0,0,0-2.89H78V38.7a8,8,0,1,0,0,16V52.4h5.78a1.45,1.45,0,0,0,0-2.89Z" transform="translate(-20.07 -38.7)" />
-          </g>
-        </svg>
-        <svg id="auto" class="svg--auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.44 72.32">
-          <defs>
-            <style>
-              .cls-carroserie {
-                fill: red;
-              }
-
-              .cls-wielen {
-                fill: #cf1c24;
-              }
-
-              .cls-raam {
-                fill: white;
-              }
-
-              .cls-prieze {
-                fill: none;
-                stroke: #000;
-                stroke-miterlimit: 10;
-              }
-            </style>
-          </defs>
-          <g class="svg--auto-carroserie">
-            <path id="carroserie" class="cls-carroserie" d="M150.07,74.79c-3.42-.68-7.54-.87-13.08-1.62-.49-.07-1.58-.21-3-.54a37.6,37.6,0,0,1-4-1.21c-7.48-2.65-11-6.73-24.64-10.21-.65-.16-1.86-.48-3.54-.86A84.93,84.93,0,0,0,90,58.58a58.44,58.44,0,0,0-15.57.47c-6.82,1.27-12.47,4.85-23.76,12a54.35,54.35,0,0,0-12,10.07c-.26.3-.4.46-.54.64-4,5.07-2.86,13.58-.42,17.34,1.36,2.08,3.39,3.1,7.07,3.57a12.94,12.94,0,0,1-.14-1.77,13.14,13.14,0,1,1,26.28,0,13.53,13.53,0,0,1-.14,1.81h.75c12.57-.18,25.14,0,37.71,0,7.09,0,11.82,0,15,0a13.38,13.38,0,0,1-.14-1.8,13.14,13.14,0,1,1,26.28,0c0,.23,0,.47,0,.7a13.43,13.43,0,0,0,13.36-8.36c2.15-5.67-.48-11.53-3.7-14.36C157.15,76.35,153.91,75.57,150.07,74.79Z" transform="translate(-20.07 -38.7)" />
-            <path id="raam" class="cls-raam" d="M62.84,76.19c0-7.47,10.51-13.52,23.49-13.52s23.49,6,23.49,13.52" transform="translate(-20.07 -38.7)" />
-          </g>
-
-          <g class="svg--auto-wielen" id="wielen">
-            <circle id="wiel_1" data-name="wiel 1" class="cls-wielen" cx="116.98" cy="62.2" r="10.12" />
-            <circle id="wiel_2" data-name="wiel 2" class="cls-wielen" cx="37.36" cy="62.01" r="10.12" />
-          </g>
-
-          <g id="prieze">
-            <g>
-              <path class="cls-prieze" d="M20.57,75.47a14.93,14.93,0,0,0,14.92,15" transform="translate(-20.07 -38.7)" />
-              <path class="cls-prieze" d="M20.57,75.47c0-15.78,22.12-28.56,49.45-28.56" transform="translate(-20.07 -38.7)" />
-            </g>
-            <path d="M83.79,49.51H78V43.72h5.78a1.45,1.45,0,0,0,0-2.89H78V38.7a8,8,0,1,0,0,16V52.4h5.78a1.45,1.45,0,0,0,0-2.89Z" transform="translate(-20.07 -38.7)" />
-          </g>
-        </svg>
-        <svg id="auto" class="svg--auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.44 72.32">
-          <defs>
-            <style>
-              .cls-carroserie {
-                fill: red;
-              }
-
-              .cls-wielen {
-                fill: #cf1c24;
-              }
-
-              .cls-raam {
-                fill: white;
-              }
-
-              .cls-prieze {
-                fill: none;
-                stroke: #000;
-                stroke-miterlimit: 10;
-              }
-            </style>
-          </defs>
-          <g class="svg--auto-carroserie">
-            <path id="carroserie" class="cls-carroserie" d="M150.07,74.79c-3.42-.68-7.54-.87-13.08-1.62-.49-.07-1.58-.21-3-.54a37.6,37.6,0,0,1-4-1.21c-7.48-2.65-11-6.73-24.64-10.21-.65-.16-1.86-.48-3.54-.86A84.93,84.93,0,0,0,90,58.58a58.44,58.44,0,0,0-15.57.47c-6.82,1.27-12.47,4.85-23.76,12a54.35,54.35,0,0,0-12,10.07c-.26.3-.4.46-.54.64-4,5.07-2.86,13.58-.42,17.34,1.36,2.08,3.39,3.1,7.07,3.57a12.94,12.94,0,0,1-.14-1.77,13.14,13.14,0,1,1,26.28,0,13.53,13.53,0,0,1-.14,1.81h.75c12.57-.18,25.14,0,37.71,0,7.09,0,11.82,0,15,0a13.38,13.38,0,0,1-.14-1.8,13.14,13.14,0,1,1,26.28,0c0,.23,0,.47,0,.7a13.43,13.43,0,0,0,13.36-8.36c2.15-5.67-.48-11.53-3.7-14.36C157.15,76.35,153.91,75.57,150.07,74.79Z" transform="translate(-20.07 -38.7)" />
-            <path id="raam" class="cls-raam" d="M62.84,76.19c0-7.47,10.51-13.52,23.49-13.52s23.49,6,23.49,13.52" transform="translate(-20.07 -38.7)" />
-          </g>
-
-          <g class="svg--auto-wielen" id="wielen">
-            <circle id="wiel_1" data-name="wiel 1" class="cls-wielen" cx="116.98" cy="62.2" r="10.12" />
-            <circle id="wiel_2" data-name="wiel 2" class="cls-wielen" cx="37.36" cy="62.01" r="10.12" />
-          </g>
-
-          <g id="prieze">
-            <g>
-              <path class="cls-prieze" d="M20.57,75.47a14.93,14.93,0,0,0,14.92,15" transform="translate(-20.07 -38.7)" />
-              <path class="cls-prieze" d="M20.57,75.47c0-15.78,22.12-28.56,49.45-28.56" transform="translate(-20.07 -38.7)" />
-            </g>
-            <path d="M83.79,49.51H78V43.72h5.78a1.45,1.45,0,0,0,0-2.89H78V38.7a8,8,0,1,0,0,16V52.4h5.78a1.45,1.45,0,0,0,0-2.89Z" transform="translate(-20.07 -38.7)" />
-          </g>
-        </svg>
+      <div class="item--style-medium-compare-line">
+        <img src="../img/compare-section.png" alt="">
       </div>
-      <p class="item--medium-compare-text">Vergelijking elektrische verbruik gezin\week</p>
+      <div class="item--style-medium-compare-icons">
+        <svg id="auto" class="svg--auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.44 72.32">
+          <defs>
+            <style>
+              .cls-carroserie {
+                fill: red;
+              }
+
+              .cls-wielen {
+                fill: #cf1c24;
+              }
+
+              .cls-raam {
+                fill: white;
+              }
+
+              .cls-prieze {
+                fill: none;
+                stroke: #000;
+                stroke-miterlimit: 10;
+              }
+            </style>
+          </defs>
+          <g class="svg--auto-carroserie">
+            <path id="carroserie" class="cls-carroserie" d="M150.07,74.79c-3.42-.68-7.54-.87-13.08-1.62-.49-.07-1.58-.21-3-.54a37.6,37.6,0,0,1-4-1.21c-7.48-2.65-11-6.73-24.64-10.21-.65-.16-1.86-.48-3.54-.86A84.93,84.93,0,0,0,90,58.58a58.44,58.44,0,0,0-15.57.47c-6.82,1.27-12.47,4.85-23.76,12a54.35,54.35,0,0,0-12,10.07c-.26.3-.4.46-.54.64-4,5.07-2.86,13.58-.42,17.34,1.36,2.08,3.39,3.1,7.07,3.57a12.94,12.94,0,0,1-.14-1.77,13.14,13.14,0,1,1,26.28,0,13.53,13.53,0,0,1-.14,1.81h.75c12.57-.18,25.14,0,37.71,0,7.09,0,11.82,0,15,0a13.38,13.38,0,0,1-.14-1.8,13.14,13.14,0,1,1,26.28,0c0,.23,0,.47,0,.7a13.43,13.43,0,0,0,13.36-8.36c2.15-5.67-.48-11.53-3.7-14.36C157.15,76.35,153.91,75.57,150.07,74.79Z" transform="translate(-20.07 -38.7)" />
+            <path id="raam" class="cls-raam" d="M62.84,76.19c0-7.47,10.51-13.52,23.49-13.52s23.49,6,23.49,13.52" transform="translate(-20.07 -38.7)" />
+          </g>
+
+          <g class="svg--auto-wielen" id="wielen">
+            <circle id="wiel_1" data-name="wiel 1" class="cls-wielen" cx="116.98" cy="62.2" r="10.12" />
+            <circle id="wiel_2" data-name="wiel 2" class="cls-wielen" cx="37.36" cy="62.01" r="10.12" />
+          </g>
+
+          <g id="prieze">
+            <g>
+              <path class="cls-prieze" d="M20.57,75.47a14.93,14.93,0,0,0,14.92,15" transform="translate(-20.07 -38.7)" />
+              <path class="cls-prieze" d="M20.57,75.47c0-15.78,22.12-28.56,49.45-28.56" transform="translate(-20.07 -38.7)" />
+            </g>
+            <path d="M83.79,49.51H78V43.72h5.78a1.45,1.45,0,0,0,0-2.89H78V38.7a8,8,0,1,0,0,16V52.4h5.78a1.45,1.45,0,0,0,0-2.89Z" transform="translate(-20.07 -38.7)" />
+          </g>
+        </svg>   
+        <svg id="auto" class="svg--auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.44 72.32">
+          <defs>
+            <style>
+              .cls-carroserie {
+                fill: red;
+              }
+
+              .cls-wielen {
+                fill: #cf1c24;
+              }
+
+              .cls-raam {
+                fill: white;
+              }
+
+              .cls-prieze {
+                fill: none;
+                stroke: #000;
+                stroke-miterlimit: 10;
+              }
+            </style>
+          </defs>
+          <g class="svg--auto-carroserie">
+            <path id="carroserie" class="cls-carroserie" d="M150.07,74.79c-3.42-.68-7.54-.87-13.08-1.62-.49-.07-1.58-.21-3-.54a37.6,37.6,0,0,1-4-1.21c-7.48-2.65-11-6.73-24.64-10.21-.65-.16-1.86-.48-3.54-.86A84.93,84.93,0,0,0,90,58.58a58.44,58.44,0,0,0-15.57.47c-6.82,1.27-12.47,4.85-23.76,12a54.35,54.35,0,0,0-12,10.07c-.26.3-.4.46-.54.64-4,5.07-2.86,13.58-.42,17.34,1.36,2.08,3.39,3.1,7.07,3.57a12.94,12.94,0,0,1-.14-1.77,13.14,13.14,0,1,1,26.28,0,13.53,13.53,0,0,1-.14,1.81h.75c12.57-.18,25.14,0,37.71,0,7.09,0,11.82,0,15,0a13.38,13.38,0,0,1-.14-1.8,13.14,13.14,0,1,1,26.28,0c0,.23,0,.47,0,.7a13.43,13.43,0,0,0,13.36-8.36c2.15-5.67-.48-11.53-3.7-14.36C157.15,76.35,153.91,75.57,150.07,74.79Z" transform="translate(-20.07 -38.7)" />
+            <path id="raam" class="cls-raam" d="M62.84,76.19c0-7.47,10.51-13.52,23.49-13.52s23.49,6,23.49,13.52" transform="translate(-20.07 -38.7)" />
+          </g>
+
+          <g class="svg--auto-wielen" id="wielen">
+            <circle id="wiel_1" data-name="wiel 1" class="cls-wielen" cx="116.98" cy="62.2" r="10.12" />
+            <circle id="wiel_2" data-name="wiel 2" class="cls-wielen" cx="37.36" cy="62.01" r="10.12" />
+          </g>
+
+          <g id="prieze">
+            <g>
+              <path class="cls-prieze" d="M20.57,75.47a14.93,14.93,0,0,0,14.92,15" transform="translate(-20.07 -38.7)" />
+              <path class="cls-prieze" d="M20.57,75.47c0-15.78,22.12-28.56,49.45-28.56" transform="translate(-20.07 -38.7)" />
+            </g>
+            <path d="M83.79,49.51H78V43.72h5.78a1.45,1.45,0,0,0,0-2.89H78V38.7a8,8,0,1,0,0,16V52.4h5.78a1.45,1.45,0,0,0,0-2.89Z" transform="translate(-20.07 -38.7)" />
+          </g>
+        </svg>
+        <svg id="auto" class="svg--auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.44 72.32">
+          <defs>
+            <style>
+              .cls-carroserie {
+                fill: red;
+              }
+
+              .cls-wielen {
+                fill: #cf1c24;
+              }
+
+              .cls-raam {
+                fill: white;
+              }
+
+              .cls-prieze {
+                fill: none;
+                stroke: #000;
+                stroke-miterlimit: 10;
+              }
+            </style>
+          </defs>
+          <g class="svg--auto-carroserie">
+            <path id="carroserie" class="cls-carroserie" d="M150.07,74.79c-3.42-.68-7.54-.87-13.08-1.62-.49-.07-1.58-.21-3-.54a37.6,37.6,0,0,1-4-1.21c-7.48-2.65-11-6.73-24.64-10.21-.65-.16-1.86-.48-3.54-.86A84.93,84.93,0,0,0,90,58.58a58.44,58.44,0,0,0-15.57.47c-6.82,1.27-12.47,4.85-23.76,12a54.35,54.35,0,0,0-12,10.07c-.26.3-.4.46-.54.64-4,5.07-2.86,13.58-.42,17.34,1.36,2.08,3.39,3.1,7.07,3.57a12.94,12.94,0,0,1-.14-1.77,13.14,13.14,0,1,1,26.28,0,13.53,13.53,0,0,1-.14,1.81h.75c12.57-.18,25.14,0,37.71,0,7.09,0,11.82,0,15,0a13.38,13.38,0,0,1-.14-1.8,13.14,13.14,0,1,1,26.28,0c0,.23,0,.47,0,.7a13.43,13.43,0,0,0,13.36-8.36c2.15-5.67-.48-11.53-3.7-14.36C157.15,76.35,153.91,75.57,150.07,74.79Z" transform="translate(-20.07 -38.7)" />
+            <path id="raam" class="cls-raam" d="M62.84,76.19c0-7.47,10.51-13.52,23.49-13.52s23.49,6,23.49,13.52" transform="translate(-20.07 -38.7)" />
+          </g>
+
+          <g class="svg--auto-wielen" id="wielen">
+            <circle id="wiel_1" data-name="wiel 1" class="cls-wielen" cx="116.98" cy="62.2" r="10.12" />
+            <circle id="wiel_2" data-name="wiel 2" class="cls-wielen" cx="37.36" cy="62.01" r="10.12" />
+          </g>
+
+          <g id="prieze">
+            <g>
+              <path class="cls-prieze" d="M20.57,75.47a14.93,14.93,0,0,0,14.92,15" transform="translate(-20.07 -38.7)" />
+              <path class="cls-prieze" d="M20.57,75.47c0-15.78,22.12-28.56,49.45-28.56" transform="translate(-20.07 -38.7)" />
+            </g>
+            <path d="M83.79,49.51H78V43.72h5.78a1.45,1.45,0,0,0,0-2.89H78V38.7a8,8,0,1,0,0,16V52.4h5.78a1.45,1.45,0,0,0,0-2.89Z" transform="translate(-20.07 -38.7)" />
+          </g>
+        </svg>   
+        <svg id="auto" class="svg--auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.44 72.32">
+          <defs>
+            <style>
+              .cls-carroserie {
+                fill: red;
+              }
+
+              .cls-wielen {
+                fill: #cf1c24;
+              }
+
+              .cls-raam {
+                fill: white;
+              }
+
+              .cls-prieze {
+                fill: none;
+                stroke: #000;
+                stroke-miterlimit: 10;
+              }
+            </style>
+          </defs>
+          <g class="svg--auto-carroserie">
+            <path id="carroserie" class="cls-carroserie" d="M150.07,74.79c-3.42-.68-7.54-.87-13.08-1.62-.49-.07-1.58-.21-3-.54a37.6,37.6,0,0,1-4-1.21c-7.48-2.65-11-6.73-24.64-10.21-.65-.16-1.86-.48-3.54-.86A84.93,84.93,0,0,0,90,58.58a58.44,58.44,0,0,0-15.57.47c-6.82,1.27-12.47,4.85-23.76,12a54.35,54.35,0,0,0-12,10.07c-.26.3-.4.46-.54.64-4,5.07-2.86,13.58-.42,17.34,1.36,2.08,3.39,3.1,7.07,3.57a12.94,12.94,0,0,1-.14-1.77,13.14,13.14,0,1,1,26.28,0,13.53,13.53,0,0,1-.14,1.81h.75c12.57-.18,25.14,0,37.71,0,7.09,0,11.82,0,15,0a13.38,13.38,0,0,1-.14-1.8,13.14,13.14,0,1,1,26.28,0c0,.23,0,.47,0,.7a13.43,13.43,0,0,0,13.36-8.36c2.15-5.67-.48-11.53-3.7-14.36C157.15,76.35,153.91,75.57,150.07,74.79Z" transform="translate(-20.07 -38.7)" />
+            <path id="raam" class="cls-raam" d="M62.84,76.19c0-7.47,10.51-13.52,23.49-13.52s23.49,6,23.49,13.52" transform="translate(-20.07 -38.7)" />
+          </g>
+
+          <g class="svg--auto-wielen" id="wielen">
+            <circle id="wiel_1" data-name="wiel 1" class="cls-wielen" cx="116.98" cy="62.2" r="10.12" />
+            <circle id="wiel_2" data-name="wiel 2" class="cls-wielen" cx="37.36" cy="62.01" r="10.12" />
+          </g>
+
+          <g id="prieze">
+            <g>
+              <path class="cls-prieze" d="M20.57,75.47a14.93,14.93,0,0,0,14.92,15" transform="translate(-20.07 -38.7)" />
+              <path class="cls-prieze" d="M20.57,75.47c0-15.78,22.12-28.56,49.45-28.56" transform="translate(-20.07 -38.7)" />
+            </g>
+            <path d="M83.79,49.51H78V43.72h5.78a1.45,1.45,0,0,0,0-2.89H78V38.7a8,8,0,1,0,0,16V52.4h5.78a1.45,1.45,0,0,0,0-2.89Z" transform="translate(-20.07 -38.7)" />
+          </g>
+        </svg>   
+        <svg id="auto" class="svg--auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.44 72.32">
+          <defs>
+            <style>
+              .cls-carroserie {
+                fill: red;
+              }
+
+              .cls-wielen {
+                fill: #cf1c24;
+              }
+
+              .cls-raam {
+                fill: white;
+              }
+
+              .cls-prieze {
+                fill: none;
+                stroke: #000;
+                stroke-miterlimit: 10;
+              }
+            </style>
+          </defs>
+          <g class="svg--auto-carroserie">
+            <path id="carroserie" class="cls-carroserie" d="M150.07,74.79c-3.42-.68-7.54-.87-13.08-1.62-.49-.07-1.58-.21-3-.54a37.6,37.6,0,0,1-4-1.21c-7.48-2.65-11-6.73-24.64-10.21-.65-.16-1.86-.48-3.54-.86A84.93,84.93,0,0,0,90,58.58a58.44,58.44,0,0,0-15.57.47c-6.82,1.27-12.47,4.85-23.76,12a54.35,54.35,0,0,0-12,10.07c-.26.3-.4.46-.54.64-4,5.07-2.86,13.58-.42,17.34,1.36,2.08,3.39,3.1,7.07,3.57a12.94,12.94,0,0,1-.14-1.77,13.14,13.14,0,1,1,26.28,0,13.53,13.53,0,0,1-.14,1.81h.75c12.57-.18,25.14,0,37.71,0,7.09,0,11.82,0,15,0a13.38,13.38,0,0,1-.14-1.8,13.14,13.14,0,1,1,26.28,0c0,.23,0,.47,0,.7a13.43,13.43,0,0,0,13.36-8.36c2.15-5.67-.48-11.53-3.7-14.36C157.15,76.35,153.91,75.57,150.07,74.79Z" transform="translate(-20.07 -38.7)" />
+            <path id="raam" class="cls-raam" d="M62.84,76.19c0-7.47,10.51-13.52,23.49-13.52s23.49,6,23.49,13.52" transform="translate(-20.07 -38.7)" />
+          </g>
+
+          <g class="svg--auto-wielen" id="wielen">
+            <circle id="wiel_1" data-name="wiel 1" class="cls-wielen" cx="116.98" cy="62.2" r="10.12" />
+            <circle id="wiel_2" data-name="wiel 2" class="cls-wielen" cx="37.36" cy="62.01" r="10.12" />
+          </g>
+
+          <g id="prieze">
+            <g>
+              <path class="cls-prieze" d="M20.57,75.47a14.93,14.93,0,0,0,14.92,15" transform="translate(-20.07 -38.7)" />
+              <path class="cls-prieze" d="M20.57,75.47c0-15.78,22.12-28.56,49.45-28.56" transform="translate(-20.07 -38.7)" />
+            </g>
+            <path d="M83.79,49.51H78V43.72h5.78a1.45,1.45,0,0,0,0-2.89H78V38.7a8,8,0,1,0,0,16V52.4h5.78a1.45,1.45,0,0,0,0-2.89Z" transform="translate(-20.07 -38.7)" />
+          </g>
+        </svg>   
+        <svg id="auto" class="svg--auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.44 72.32">
+          <defs>
+            <style>
+              .cls-carroserie {
+                fill: red;
+              }
+
+              .cls-wielen {
+                fill: #cf1c24;
+              }
+
+              .cls-raam {
+                fill: white;
+              }
+
+              .cls-prieze {
+                fill: none;
+                stroke: #000;
+                stroke-miterlimit: 10;
+              }
+            </style>
+          </defs>
+          <g class="svg--auto-carroserie">
+            <path id="carroserie" class="cls-carroserie" d="M150.07,74.79c-3.42-.68-7.54-.87-13.08-1.62-.49-.07-1.58-.21-3-.54a37.6,37.6,0,0,1-4-1.21c-7.48-2.65-11-6.73-24.64-10.21-.65-.16-1.86-.48-3.54-.86A84.93,84.93,0,0,0,90,58.58a58.44,58.44,0,0,0-15.57.47c-6.82,1.27-12.47,4.85-23.76,12a54.35,54.35,0,0,0-12,10.07c-.26.3-.4.46-.54.64-4,5.07-2.86,13.58-.42,17.34,1.36,2.08,3.39,3.1,7.07,3.57a12.94,12.94,0,0,1-.14-1.77,13.14,13.14,0,1,1,26.28,0,13.53,13.53,0,0,1-.14,1.81h.75c12.57-.18,25.14,0,37.71,0,7.09,0,11.82,0,15,0a13.38,13.38,0,0,1-.14-1.8,13.14,13.14,0,1,1,26.28,0c0,.23,0,.47,0,.7a13.43,13.43,0,0,0,13.36-8.36c2.15-5.67-.48-11.53-3.7-14.36C157.15,76.35,153.91,75.57,150.07,74.79Z" transform="translate(-20.07 -38.7)" />
+            <path id="raam" class="cls-raam" d="M62.84,76.19c0-7.47,10.51-13.52,23.49-13.52s23.49,6,23.49,13.52" transform="translate(-20.07 -38.7)" />
+          </g>
+
+          <g class="svg--auto-wielen" id="wielen">
+            <circle id="wiel_1" data-name="wiel 1" class="cls-wielen" cx="116.98" cy="62.2" r="10.12" />
+            <circle id="wiel_2" data-name="wiel 2" class="cls-wielen" cx="37.36" cy="62.01" r="10.12" />
+          </g>
+
+          <g id="prieze">
+            <g>
+              <path class="cls-prieze" d="M20.57,75.47a14.93,14.93,0,0,0,14.92,15" transform="translate(-20.07 -38.7)" />
+              <path class="cls-prieze" d="M20.57,75.47c0-15.78,22.12-28.56,49.45-28.56" transform="translate(-20.07 -38.7)" />
+            </g>
+            <path d="M83.79,49.51H78V43.72h5.78a1.45,1.45,0,0,0,0-2.89H78V38.7a8,8,0,1,0,0,16V52.4h5.78a1.45,1.45,0,0,0,0-2.89Z" transform="translate(-20.07 -38.7)" />
+          </g>
+        </svg>   
+        <svg id="auto" class="svg--auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.44 72.32">
+          <defs>
+            <style>
+              .cls-carroserie {
+                fill: red;
+              }
+
+              .cls-wielen {
+                fill: #cf1c24;
+              }
+
+              .cls-raam {
+                fill: white;
+              }
+
+              .cls-prieze {
+                fill: none;
+                stroke: #000;
+                stroke-miterlimit: 10;
+              }
+            </style>
+          </defs>
+          <g class="svg--auto-carroserie">
+            <path id="carroserie" class="cls-carroserie" d="M150.07,74.79c-3.42-.68-7.54-.87-13.08-1.62-.49-.07-1.58-.21-3-.54a37.6,37.6,0,0,1-4-1.21c-7.48-2.65-11-6.73-24.64-10.21-.65-.16-1.86-.48-3.54-.86A84.93,84.93,0,0,0,90,58.58a58.44,58.44,0,0,0-15.57.47c-6.82,1.27-12.47,4.85-23.76,12a54.35,54.35,0,0,0-12,10.07c-.26.3-.4.46-.54.64-4,5.07-2.86,13.58-.42,17.34,1.36,2.08,3.39,3.1,7.07,3.57a12.94,12.94,0,0,1-.14-1.77,13.14,13.14,0,1,1,26.28,0,13.53,13.53,0,0,1-.14,1.81h.75c12.57-.18,25.14,0,37.71,0,7.09,0,11.82,0,15,0a13.38,13.38,0,0,1-.14-1.8,13.14,13.14,0,1,1,26.28,0c0,.23,0,.47,0,.7a13.43,13.43,0,0,0,13.36-8.36c2.15-5.67-.48-11.53-3.7-14.36C157.15,76.35,153.91,75.57,150.07,74.79Z" transform="translate(-20.07 -38.7)" />
+            <path id="raam" class="cls-raam" d="M62.84,76.19c0-7.47,10.51-13.52,23.49-13.52s23.49,6,23.49,13.52" transform="translate(-20.07 -38.7)" />
+          </g>
+
+          <g class="svg--auto-wielen" id="wielen">
+            <circle id="wiel_1" data-name="wiel 1" class="cls-wielen" cx="116.98" cy="62.2" r="10.12" />
+            <circle id="wiel_2" data-name="wiel 2" class="cls-wielen" cx="37.36" cy="62.01" r="10.12" />
+          </g>
+
+          <g id="prieze">
+            <g>
+              <path class="cls-prieze" d="M20.57,75.47a14.93,14.93,0,0,0,14.92,15" transform="translate(-20.07 -38.7)" />
+              <path class="cls-prieze" d="M20.57,75.47c0-15.78,22.12-28.56,49.45-28.56" transform="translate(-20.07 -38.7)" />
+            </g>
+            <path d="M83.79,49.51H78V43.72h5.78a1.45,1.45,0,0,0,0-2.89H78V38.7a8,8,0,1,0,0,16V52.4h5.78a1.45,1.45,0,0,0,0-2.89Z" transform="translate(-20.07 -38.7)" />
+          </g>
+        </svg>   
+        <svg id="auto" class="svg--auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.44 72.32">
+          <defs>
+            <style>
+              .cls-carroserie {
+                fill: red;
+              }
+
+              .cls-wielen {
+                fill: #cf1c24;
+              }
+
+              .cls-raam {
+                fill: white;
+              }
+
+              .cls-prieze {
+                fill: none;
+                stroke: #000;
+                stroke-miterlimit: 10;
+              }
+            </style>
+          </defs>
+          <g class="svg--auto-carroserie">
+            <path id="carroserie" class="cls-carroserie" d="M150.07,74.79c-3.42-.68-7.54-.87-13.08-1.62-.49-.07-1.58-.21-3-.54a37.6,37.6,0,0,1-4-1.21c-7.48-2.65-11-6.73-24.64-10.21-.65-.16-1.86-.48-3.54-.86A84.93,84.93,0,0,0,90,58.58a58.44,58.44,0,0,0-15.57.47c-6.82,1.27-12.47,4.85-23.76,12a54.35,54.35,0,0,0-12,10.07c-.26.3-.4.46-.54.64-4,5.07-2.86,13.58-.42,17.34,1.36,2.08,3.39,3.1,7.07,3.57a12.94,12.94,0,0,1-.14-1.77,13.14,13.14,0,1,1,26.28,0,13.53,13.53,0,0,1-.14,1.81h.75c12.57-.18,25.14,0,37.71,0,7.09,0,11.82,0,15,0a13.38,13.38,0,0,1-.14-1.8,13.14,13.14,0,1,1,26.28,0c0,.23,0,.47,0,.7a13.43,13.43,0,0,0,13.36-8.36c2.15-5.67-.48-11.53-3.7-14.36C157.15,76.35,153.91,75.57,150.07,74.79Z" transform="translate(-20.07 -38.7)" />
+            <path id="raam" class="cls-raam" d="M62.84,76.19c0-7.47,10.51-13.52,23.49-13.52s23.49,6,23.49,13.52" transform="translate(-20.07 -38.7)" />
+          </g>
+
+          <g class="svg--auto-wielen" id="wielen">
+            <circle id="wiel_1" data-name="wiel 1" class="cls-wielen" cx="116.98" cy="62.2" r="10.12" />
+            <circle id="wiel_2" data-name="wiel 2" class="cls-wielen" cx="37.36" cy="62.01" r="10.12" />
+          </g>
+
+          <g id="prieze">
+            <g>
+              <path class="cls-prieze" d="M20.57,75.47a14.93,14.93,0,0,0,14.92,15" transform="translate(-20.07 -38.7)" />
+              <path class="cls-prieze" d="M20.57,75.47c0-15.78,22.12-28.56,49.45-28.56" transform="translate(-20.07 -38.7)" />
+            </g>
+            <path d="M83.79,49.51H78V43.72h5.78a1.45,1.45,0,0,0,0-2.89H78V38.7a8,8,0,1,0,0,16V52.4h5.78a1.45,1.45,0,0,0,0-2.89Z" transform="translate(-20.07 -38.7)" />
+          </g>
+        </svg>
+        <svg id="auto" class="svg--auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.44 72.32">
+          <defs>
+            <style>
+              .cls-carroserie {
+                fill: red;
+              }
+
+              .cls-wielen {
+                fill: #cf1c24;
+              }
+
+              .cls-raam {
+                fill: white;
+              }
+
+              .cls-prieze {
+                fill: none;
+                stroke: #000;
+                stroke-miterlimit: 10;
+              }
+            </style>
+          </defs>
+          <g class="svg--auto-carroserie">
+            <path id="carroserie" class="cls-carroserie" d="M150.07,74.79c-3.42-.68-7.54-.87-13.08-1.62-.49-.07-1.58-.21-3-.54a37.6,37.6,0,0,1-4-1.21c-7.48-2.65-11-6.73-24.64-10.21-.65-.16-1.86-.48-3.54-.86A84.93,84.93,0,0,0,90,58.58a58.44,58.44,0,0,0-15.57.47c-6.82,1.27-12.47,4.85-23.76,12a54.35,54.35,0,0,0-12,10.07c-.26.3-.4.46-.54.64-4,5.07-2.86,13.58-.42,17.34,1.36,2.08,3.39,3.1,7.07,3.57a12.94,12.94,0,0,1-.14-1.77,13.14,13.14,0,1,1,26.28,0,13.53,13.53,0,0,1-.14,1.81h.75c12.57-.18,25.14,0,37.71,0,7.09,0,11.82,0,15,0a13.38,13.38,0,0,1-.14-1.8,13.14,13.14,0,1,1,26.28,0c0,.23,0,.47,0,.7a13.43,13.43,0,0,0,13.36-8.36c2.15-5.67-.48-11.53-3.7-14.36C157.15,76.35,153.91,75.57,150.07,74.79Z" transform="translate(-20.07 -38.7)" />
+            <path id="raam" class="cls-raam" d="M62.84,76.19c0-7.47,10.51-13.52,23.49-13.52s23.49,6,23.49,13.52" transform="translate(-20.07 -38.7)" />
+          </g>
+
+          <g class="svg--auto-wielen" id="wielen">
+            <circle id="wiel_1" data-name="wiel 1" class="cls-wielen" cx="116.98" cy="62.2" r="10.12" />
+            <circle id="wiel_2" data-name="wiel 2" class="cls-wielen" cx="37.36" cy="62.01" r="10.12" />
+          </g>
+
+          <g id="prieze">
+            <g>
+              <path class="cls-prieze" d="M20.57,75.47a14.93,14.93,0,0,0,14.92,15" transform="translate(-20.07 -38.7)" />
+              <path class="cls-prieze" d="M20.57,75.47c0-15.78,22.12-28.56,49.45-28.56" transform="translate(-20.07 -38.7)" />
+            </g>
+            <path d="M83.79,49.51H78V43.72h5.78a1.45,1.45,0,0,0,0-2.89H78V38.7a8,8,0,1,0,0,16V52.4h5.78a1.45,1.45,0,0,0,0-2.89Z" transform="translate(-20.07 -38.7)" />
+          </g>
+        </svg>   
+        
+      </div>
     </div>
   </div>
   <div class="item--style item--small-middle-left">
     <div class="item--style-small-info">
       <div class="item--container">
-        <div class="item--small-value-container">
-          <p class="item--value js-nightweek-blok2">1234</p>
-          <p class="item--unit">kW</p>
+        <div class="item--small-value-container title">
+          <p dataElement dataValue="k(influx.Aansluiting_Conciergewoning_EB2.week.snachts.gemiddeld + influx.Aansluiting_Directeurswoning_EB2.week.snachts.gemiddeld + influx.Aansluiting_Mechaniekersgebouw_EB2.week.snachts.gemiddeld + influx.Aansluiting_Opzichterswoning_En_Kantoorgebouwen_EB2.week.snachts.gemiddeld + influx.Stopcontact32A_EB2_C.week.snachts.gemiddeld + influx.Stopcontact63A_EB2_A.week.snachts.gemiddeld + influx.Stopcontact63A_EB2_B.week.snachts.gemiddeld)"  class="item--value js-nightweek-blok2">1234</p>
+          <p class="item--unit">kW/h</p>
         </div>
         <p class="item--small-text">Nacht verbruik/week</p>
       </div>
     </div>
   </div>
   <div class="item--style piechart--card-style item--medium-piechart-right">
-    <div class="piechart--container-big piechart--data-blok2">
+    <div dataElement dataType="elementDefaultsPie" dataValue='{ title: "kW/h", data: [kN(influx.Aansluiting_Conciergewoning_EB2.minuut.gemiddeld), kN(influx.Aansluiting_Directeurswoning_EB2.minuut.gemiddeld), kN(influx.Aansluiting_Mechaniekersgebouw_EB2.minuut.gemiddeld) , kN(influx.Aansluiting_Opzichterswoning_En_Kantoorgebouwen_EB2.minuut.gemiddeld), kN(influx.Stopcontact32A_EB2_C.minuut.gemiddeld + influx.Stopcontact63A_EB2_A.minuut.gemiddeld + influx.Stopcontact63A_EB2_B.minuut.gemiddeld)], labels: ["Conciërgewoning", "Directeurswoning", "Mechaniekersgebouw", "Opzichterswoning en kantoorgebouwen", "Stopcontacten"] }' class="piechart--container-big piechart--data-blok2">
       <div class="piechart--container">
         <div class="piechart--circle center">
           <div class="center piechart--box">
@@ -224,8 +483,8 @@
         </div>
         <ul class="piechart--legend blok2--piechart-legend js-legend">
           <li class="piechart--legend-label">
-            <div class="piechart--legend-color"></div>
-            <p class="piechart--legend-text">No label</p>
+            <div class="piechart--legend-color title"></div>
+            <p class="piechart--legend-text title">No label</p>
           </li>
         </ul>
       </div>
