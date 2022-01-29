@@ -6,6 +6,7 @@
   grid-template-rows: repeat(20, 1fr);
   --global-border-hover-color: #a70303;
   --global-border-color: #d16c6c;
+  color: white;
 }
 
 /*
@@ -24,15 +25,6 @@
   font-size: 150%;
   font-weight: 800;
   color: var(--admin-color-text);
-}
-
-/*
-    Section for the background of each item
-*/
-
-.slide--item {
-  background-color: var(--admin-color-container);
-  border-radius: 5px;
 }
 
 /*
@@ -57,53 +49,52 @@
   border-radius: 5px;
   font-size: 120%;
   width: 10%;
+  background-color: white;
 }
 
 /*
     Section for the slideshow drag and drop part
 */
 
-.slide--set-slides-container {
-  padding-left: 1%;
-  grid-area: 5/1/13/20;
-  background-color: var(--admin-color-container);
+.slide--slideshow-available-container {
+  grid-area: 5/1/14/4;
+  background-color: gray;
+  height: 100%;
+  width: 100%;
 }
 
-.slide--set-slide-available-title {
+.slide--slideshow-chosen-container {
+  grid-area: 7/5/12/20;
+  background-color: gray;
+  height: 100%;
+  width: 100%;
+}
+
+.slide--slideshow-available-slide {
+  width: 100%;
+  height: auto;
+  padding-bottom: 10px;
+}
+
+.slide--slideshow-chosen-slide {
+  height: 100%;
+  width: auto;
+  padding-right: 10px;
+}
+
+.slide--slideshow-title {
+  grid-area: 6/5/6/20;
+  font-size: 1.5rem;
   display: flex;
-  font-size: 120%;
-  font-weight: bold;
   justify-content: center;
 }
 
-.slide--set-slides-available-picture {
-  display: flex;
-  gap: 5%;
-  height: 38%;
-  width: 99%;
-  border: 1px solid black;
-  padding: 0.5%;
-  margin-top: 0.5%;
-}
-
-.slide--set-slides-available-image {
-  height: 100%;
-  width: 300px;
-  border: 1px solid black;
-  border-radius: 5px;
-}
-
-.slide--set-slides-slideshow-container {
-  width: 99%;
-  height: 40%;
-  border: 1px solid black;
-  display: flex;
-  gap: 5%;
-  margin-top: 4%;
-}
+/*
+    Section for the button to submit the changes
+*/
 
 .slide--submit-changes {
-  grid-area: 14/9/15/12;
+  grid-area: 14/10/15/13;
   width: 100%;
   height: 100%;
   background-color: var(--admin-color-detail);
