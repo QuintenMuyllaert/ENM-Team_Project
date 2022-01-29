@@ -23,6 +23,7 @@
 .slide--title {
   font-size: 150%;
   font-weight: 800;
+  color: var(--admin-color-text);
 }
 
 /*
