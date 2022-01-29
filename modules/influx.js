@@ -166,7 +166,7 @@ module.exports = {
 
     if (!data) {
       console.log("Something went wrong while fetching data!\nGot empty data object, possibly because the database is offline.");
-      return;
+      return [];
     }
 
     return data;
