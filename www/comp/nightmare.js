@@ -10,37 +10,44 @@ let influx = {};
 setInterval(async () => {
   const elements = document.querySelectorAll("[dataElement]");
   for (const e of elements) {
-    if (e.dataElementLinked) {
-      return;
-    }
+    const checkElement = (e) => {
+      if (false) {
+        //highlights all data elements
+        e.style.backgroundColor = "hotpink";
+      }
+      if (e.dataElementLinked) {
+        return;
+      }
 
-    const type = e.getAttribute("dataType");
-    const value = e.getAttribute("dataValue");
+      const type = e.getAttribute("dataType");
+      const value = e.getAttribute("dataValue");
 
-    let typevar;
-    try {
-      typevar = eval(`(() => {return ${type}})()`);
-    } catch (e) {
-      console.log("Type does not exist.");
-      return;
-    }
+      let typevar;
+      try {
+        typevar = eval(`(() => {return ${type}})()`);
+      } catch (e) {
+        console.log("Type does not exist.", type);
+        return;
+      }
 
-    if (typevar == null || typevar == undefined || typevar == "") {
-      typevar = elementDefaultsInnerHTML;
-    }
+      if (typevar == null || typevar == undefined || typevar == "") {
+        typevar = elementDefaultsInnerHTML;
+      }
 
-    let valuevar;
-    try {
-      valuevar = eval(`(() => {return ${value}})()`);
-    } catch (e) {
-      console.log("Value does not exist.");
-      return;
-    }
+      let valuevar;
+      try {
+        valuevar = eval(`(() => {return ${value}})()`);
+      } catch (e) {
+        console.log("Value does not exist.", value);
+        return;
+      }
 
-    if (typevar == null || typevar == undefined || typevar == "") {
-      valuevar = "N/A";
-    }
+      if (typevar == null || typevar == undefined || typevar == "") {
+        valuevar = "N/A";
+      }
 
-    new dataElement(e, valuevar, typevar);
+      new dataElement(e, valuevar, typevar);
+    };
+    checkElement(e);
   }
 }, 50);
