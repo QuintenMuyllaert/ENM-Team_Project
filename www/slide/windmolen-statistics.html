@@ -3,32 +3,26 @@
     <div class="header--title-container">
       <p class="header--title">windmolen</p>
     </div>
-  </header>
-
-  <div class="item--style item--big-left">
-    <div class="item--big-container">
-      <picture class="item--big-picture">
-        <img class="item--big-image center" src="./img/windmill-slide.png" alt="" />
-      </picture>
-    </div>
-  </div>
-  <div class="item--style item--small-below-left">
-    <div class="item--medium-energy-container">
-      <div class="item--medium-energy-info-container">
-        <div class="item--medium-energy-text-container title">
-          <p dataElement dataValue="[influx.Windspeed.dag.gemiddeld.toFixed(2)]" class="item--medium-energy-value">1234</p>
-          <p class="item--medium-energy-unit">km/h</p>
+    <div class="item--style item--small-below-left">
+      <div class="item--medium-energy-container">
+        <div class="item--medium-energy-info-container">
+          <div class="item--medium-energy-text-container title">
+              <p dataElement dataValue="k(influx.Windspeed.dag.gemiddeld * 1000)" class="item--medium-energy-value">1234</p>
+              <p class="item--medium-energy-unit">km/h</p>
+          </div>
+          <p class="item--medium-energy-text">Windsnelheid</p>
         </div>
         <p class="item--medium-energy-text">Windsnelheid</p>
       </div>
     </div>
-  </div>
-  <div class="item--style item--small-below-middle">
-    <div class="item--medium-energy-container">
-      <div class="item--medium-energy-info-container">
-        <div class="item--medium-energy-text-container title">
-          <p class="item--medium-energy-value">95</p>
-          <p class="item--medium-energy-unit">kW</p>
+    <div class="item--style item--small-below-middle">
+      <div class="item--medium-energy-container">
+        <div class="item--medium-energy-info-container">
+          <div class="item--medium-energy-text-container title">
+              <p dataElement dataValue="0" class="item--medium-energy-value">0</p>
+              <p class="item--medium-energy-unit">kW</p>
+          </div>
+          <p class="item--medium-energy-text">Opgewekte energie/uur</p>
         </div>
         <p class="item--medium-energy-text">Opgewekte energie/uur</p>
       </div>
