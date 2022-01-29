@@ -1,4 +1,8 @@
 const chartInitDayNight = function () {
+  if (this.element.graph) {
+    return;
+  }
+
   const chart = this.element.getContext("2d");
   this.element.graph = new Chart(chart, {
     type: "bar",

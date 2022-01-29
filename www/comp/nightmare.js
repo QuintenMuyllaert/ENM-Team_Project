@@ -19,7 +19,7 @@ setInterval(async () => {
 
     let typevar;
     try {
-      typevar = eval(type);
+      typevar = eval(`(() => {return ${type}})()`);
     } catch (e) {
       console.log("Type does not exist.");
       return;

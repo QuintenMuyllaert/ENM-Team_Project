@@ -1,4 +1,8 @@
 const chartInitElectrical = function () {
+  if (this.element.graph) {
+    return;
+  }
+
   const chart = this.element.getContext("2d");
   this.element.graph = new Chart(chart, {
     type: "bar",
@@ -11,7 +15,7 @@ const chartInitElectrical = function () {
           barThickness: 30,
           maxBarThickness: 100,
           minBarLength: 1,
-          data: data,
+          data: this.data,
           backgroundColor: ["red", "gray"],
         },
       ],
