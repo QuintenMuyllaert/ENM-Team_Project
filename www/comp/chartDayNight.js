@@ -30,7 +30,7 @@ const chartInitDayNight = function () {
           labels: {
             color: "#dc0000",
             font: {
-              size: 200,
+              size: 20,
             },
           },
         },
@@ -40,7 +40,7 @@ const chartInitDayNight = function () {
           beginAtZero: true,
           ticks: {
             font: {
-              size: 40,
+              size: 20,
             },
           },
         },
@@ -48,7 +48,7 @@ const chartInitDayNight = function () {
           beginAtZero: true,
           ticks: {
             font: {
-              size: 40,
+              size: 20,
             },
           },
         },

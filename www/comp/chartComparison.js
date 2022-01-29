@@ -7,7 +7,7 @@ const chartInitComparison = function () {
   this.element.graph = new Chart(chart, {
     type: "bar",
     data: {
-      labels: ["zonder windmolen", "met windmolen"],
+      labels: ["windmolen", "met windmolen"],
       datasets: [
         {
           label: "kW",
@@ -36,22 +36,13 @@ const chartInitComparison = function () {
         },
       },
       scales: {
-        yAxes: [{
-          beginAtZero: true,
-          ticks: {
-            minor: {
-              fontSize: 2,
+        yAxes: [
+          {
+            ticks: {
+              fontSize: 10,
             },
           },
-        }],
-        xAxes: [{
-          beginAtZero: true,
-          ticks: {
-            minor: {
-              fontSize: 2,
-            },
-          },
-        }],
+        ],
       },
     },
   });

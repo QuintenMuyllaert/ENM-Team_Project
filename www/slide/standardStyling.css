@@ -822,11 +822,19 @@
 */
 
 .item--medium-explanation-comparison-container {
-  height: 100%;
+  height: 80%;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.item--medium-explanation-comparison-title {
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
 }
 
 .item--medium-explanation-comparison-graph {
