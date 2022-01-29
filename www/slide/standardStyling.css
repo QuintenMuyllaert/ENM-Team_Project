@@ -903,6 +903,10 @@
   grid-area: 3/17/7/24;
 }
 
+.item--medium-compare-above-right-wide {
+  grid-area: 3/14/7/24;
+}
+
 .item--medium-explanation-above-right {
   grid-area: 3/14/7/24;
 }
