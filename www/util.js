@@ -103,11 +103,17 @@ const rngPair = (data) => {
   };
 };
 
-const compare = (num) => {
+const compare = (num, times = 0) => {
+  if (comparisons.length == 0) {
+    return `1 ding`;
+  }
   const pair = rngPair(comparisons);
   const amt = Math.round(num / 1000 / pair.value);
+  if (times >= 10) {
+    return `${amt} ${pair.key}`;
+  }
   if (amt == 0) {
-    return compare(num);
+    return compare(num, times + 1);
   }
   return `${amt} ${pair.key}`;
 };
