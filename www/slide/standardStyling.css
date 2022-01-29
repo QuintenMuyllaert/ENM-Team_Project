@@ -152,7 +152,7 @@
 }
 
 .item--style-medium-compare-value-container {
-  padding-top: 45%;
+  padding-top: 30%;
   grid-area: 1/1/2/1;
   display: flex;
   gap: 1%;
@@ -171,6 +171,8 @@
   padding-top: 5%;
   padding-left: 1%;
   font-weight: 400;
+  display: flex;
+  justify-self: end;
 }
 
 .item--style-medium-compare-text {
@@ -179,6 +181,8 @@
   font-size: 1.5rem;
   color: var(--global-color-text);
   white-space: nowrap;
+  display: flex;
+  justify-self: start;
 }
 
 .item--style-medium-compare-line {
