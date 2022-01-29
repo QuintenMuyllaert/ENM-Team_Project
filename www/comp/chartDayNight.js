@@ -7,7 +7,7 @@ const chartInitDayNight = function () {
   this.element.graph = new Chart(chart, {
     type: "bar",
     data: {
-      labels: ["dag", "nacht"],
+      labels: this.data.labels,
       datasets: [
         {
           label: "kW",
@@ -15,7 +15,7 @@ const chartInitDayNight = function () {
           barThickness: 70,
           maxBarThickness: 100,
           minBarLength: 1,
-          data: this.data,
+          data: this.data.data,
           backgroundColor: ["red", "gray"],
         },
       ],
