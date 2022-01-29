@@ -6,5 +6,13 @@
     <p class="slide--number-set-text">Tijd tussen slides (seconden):</p>
     <input class="slide--number-set-input" type="number" min="10" max="60" step="1" value="15" />
   </div>
+
+  <div class="slide--slideshow-available-container">
+    <img id="drag1" draggable="true" ondragstrart="drag(event)" class="slide--slideshow-available-slide" src="../img/screenshot-activities.png"></img>
+  </div>
+  <p class="slide--slideshow-title">Stel uw eigen slideshow samen</p>
+  <div class="slide--slideshow-chosen-container">
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" class="slide--slideshow-chosen-slide"></div>
+  </div>
   <button type="button" class="slide--submit-changes">Submit changes</button>
 </main>
