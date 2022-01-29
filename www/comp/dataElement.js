@@ -5,7 +5,6 @@ const dataElement = class {
   }
   set data(value) {
     this._data = value;
-    console.log(value);
     this.update();
   }
   constructor(element, initialData, override) {
