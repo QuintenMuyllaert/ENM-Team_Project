@@ -6,10 +6,46 @@
   grid-template-columns: repeat(12, 1fr);
 }
 
-.dyk--text {
-  grid-area: 1 / 1 / span 8 / span 12;
+.dyk--container {
+  grid-area: 2/1/10/13;
+  background-color: var(--admin-color-accent);
+  overflow-y: auto;
+  height: 80%;
 }
 
-.dyk--text-element {
-  font-size: 16px;
+.dyk--item {
+  padding: 1rem 0 0 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
 }
+
+.dyk--item-text {
+  background-color: var(--admin-color-accent);
+  border-color: var(--admin-color-detail);
+  border-radius: 2px;
+  height: 3rem;
+  width: 80%;
+  color: var(--admin-color-text);
+}
+
+.dyk--item-delete {
+  height: 40px;
+  width: 40px;
+}
+
+.dyk--item-add {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.dyk--item-add-svg {
+  height: 40px;
+  width: 40px;
+}
+
