@@ -1,57 +1,56 @@
 <main class="main">
-    <header class="header">
-      <div class="header--title-container">
-        <p class="header--title ">windmolen</p>
+  <header class="header">
+    <div class="header--title-container">
+      <p class="header--title">windmolen</p>
+    </div>
+  </header>
+
+  <div class="item--style item--big-left">
+    <div class="item--big-container">
+      <picture class="item--big-picture">
+        <img class="item--big-image center" src="./img/windmill-slide.png" alt="" />
+      </picture>
+    </div>
+  </div>
+  <div class="item--style item--small-below-left">
+    <div class="item--medium-energy-container">
+      <div class="item--medium-energy-info-container">
+        <div class="item--medium-energy-text-container title">
+          <p dataElement dataValue="1" class="item--medium-energy-value">1234</p>
+          <p class="item--medium-energy-unit">km/h</p>
+        </div>
+        <p class="item--medium-energy-text">Windsnelheid</p>
       </div>
-    </header>
-  
-    <div class="item--style item--big-left">
-      <div class="item--big-container">
-        <picture class="item--big-picture">
-          <img class="item--big-image center" src="./img/windmill-slide.png" alt="" />
+    </div>
+  </div>
+  <div class="item--style item--small-below-middle">
+    <div class="item--medium-energy-container">
+      <div class="item--medium-energy-info-container">
+        <div class="item--medium-energy-text-container title">
+          <p dataElement dataValue="1" class="item--medium-energy-value">0</p>
+          <p class="item--medium-energy-unit">kW</p>
+        </div>
+        <p class="item--medium-energy-text">Opgewekte energie/uur</p>
+      </div>
+    </div>
+  </div>
+  <div class="item--style item--medium-explanation-above-right">
+    <div class="item--medium-explanation-individual-container">
+      <p class="item--medium-explanation-individual-title title">Opbrengst</p>
+      <div class="item--medium-explanation-individual-info-container">
+        <div>
+          <p class="item--medium-explanation-individual-info-text">Een windturbine kan tot 95kW opwekken</p>
+          <p class="item--medium-explanation-individual-info-text-comparison">Hiermee kan je een Tesla wagen opladen</p>
+        </div>
+        <picture class="item--medium-explanation-individual-info-picture">
+          <img class="item--medium-explanation-individual-info-image" src="./img/windmill-icon.png" alt="" />
         </picture>
       </div>
     </div>
-    <div class="item--style item--small-below-left">
-      <div class="item--medium-energy-container">
-        <div class="item--medium-energy-info-container">
-          <div class="item--medium-energy-text-container title">
-              <p dataElement dataValue="()" class="item--medium-energy-value">1234</p>
-              <p class="item--medium-energy-unit">km/h</p>
-          </div>
-          <p class="item--medium-energy-text">Windsnelheid</p>
-        </div>
-      </div>
+  </div>
+  <div class="item--style item--medium-explanation-summary-right">
+    <div class="item--medium-explanation-comparison-container">
+      <canvas dataElement dataValue='{ title: "kW/h", data :[kN(influx.Totaal.dag.totaal),kN(influx.Totaal.dag.totaal - 95000)],labels: ["Waterbehandeling","Airconditioning"]}' dataType="{...elementDefaultsChart,init:chartInitDayNight}" class="item--medium-explanation-comparison-graph js-comparison-chart"></canvas>
     </div>
-    <div class="item--style item--small-below-middle">
-      <div class="item--medium-energy-container">
-        <div class="item--medium-energy-info-container">
-          <div class="item--medium-energy-text-container title">
-              <p dataElement dataValue="k()" class="item--medium-energy-value">0</p>
-              <p class="item--medium-energy-unit">kW</p>
-          </div>
-          <p class="item--medium-energy-text">Opgewekte energie/uur</p>
-        </div>
-      </div>
-    </div>
-    <div class="item--style item--medium-explanation-above-right">
-      <div class="item--medium-explanation-individual-container">
-        <p class="item--medium-explanation-individual-title title">Opbrengst</p>
-        <div class="item--medium-explanation-individual-info-container">
-          <div>
-            <p class="item--medium-explanation-individual-info-text">Een windturbine kan tot 95kW opwekken</p>
-            <p class="item--medium-explanation-individual-info-text-comparison">Hiermee kan je een Tesla wagen opladen</p>
-          </div>
-          <picture class="item--medium-explanation-individual-info-picture">
-            <img class="item--medium-explanation-individual-info-image" src="./img/windmill-icon.png" alt="">
-          </picture>
-        </div>
-      </div>
-    </div>
-    <div class="item--style item--medium-explanation-summary-right">
-      <div class="item--medium-explanation-comparison-container">
-        <canvas class="item--medium-explanation-comparison-graph js-comparison-chart"></canvas>
-      </div>
-    </div>
-  </main>
-  
+  </div>
+</main>

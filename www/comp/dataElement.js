@@ -120,14 +120,15 @@ const elementDefaultsChart = {
     this.element.graph.data.datasets[0].data = [];
     this.element.graph.update();
     await delay(500);
-    this.element.graph.data.datasets[0].data = this.data;
+    this.element.graph.data.datasets[0].data = this.data.data;
     this.element.graph.update();
   },
   update: function () {
     if (!this.element.graph) {
       return;
     }
-    this.element.graph.data.datasets[0].data = this.data;
+    this.element.graph.data.datasets[0].data = this.data.data;
+    this.element.graph.data.labels = this.data.labels;
     this.element.graph.update();
   },
 };
