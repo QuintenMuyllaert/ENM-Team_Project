@@ -30,28 +30,28 @@ const chartInitComparison = function () {
           labels: {
             color: "#dc0000",
             font: {
-              size: 32,
+              size: 2,
             },
           },
         },
       },
       scales: {
-        y: {
+        yAxes: [{
           beginAtZero: true,
           ticks: {
-            font: {
-              size: 24,
+            minor: {
+              fontSize: 2,
             },
           },
-        },
-        x: {
+        }],
+        xAxes: [{
           beginAtZero: true,
           ticks: {
-            font: {
-              size: 24,
+            minor: {
+              fontSize: 2,
             },
           },
-        },
+        }],
       },
     },
   });
