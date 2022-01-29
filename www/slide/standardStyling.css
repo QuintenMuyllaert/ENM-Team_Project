@@ -121,8 +121,9 @@
   color: var(--global-color-text);
   justify-content: center;
   align-items: center;
-  font-size: 135%;
+  font-size: 1.5rem;
   width: 150%;
+  white-space: nowrap;
 }
 
 .item--small-value-container {
@@ -174,8 +175,10 @@
 
 .item--style-medium-compare-text {
   grid-area: 2/1/3/1;
-  font-size: 120%;
+  height: 30%;
+  font-size: 1.5rem;
   color: var(--global-color-text);
+  white-space: nowrap;
 }
 
 .item--style-medium-compare-line {
@@ -219,6 +222,8 @@
 .item--medium-text {
   font-size: 100%;
   color: var(--global-color-text);
+  white-space: nowrap;
+  
 }
 
 /*
@@ -489,6 +494,7 @@
 .item--medium-unit {
   font-size: 90%;
   padding-left: 5%;
+  padding-bottom: 1px;
   font-weight: 400;
   align-self: flex-end;
 }
