@@ -62,7 +62,7 @@ pageFunction["./control/press.html"] = async () => {
     if (selected.getAttribute("dataElement") != null) {
       return;
     }
-    selected.textContent = document.querySelector(".press-selected-item").value;
+    selected.innerHTML = document.querySelector(".press-selected-item").value;
   }, 50);
 
   setInterval(() => {
@@ -85,7 +85,7 @@ pageFunction["./control/press.html"] = async () => {
   htmlSlide.addEventListener("click", (event) => {
     document.querySelectorAll(".press--outline").forEach((e) => e.classList.remove("press--outline"));
     if (textTags.includes(event.target.tagName)) {
-      document.querySelector(".press-selected-item").value = event.target.textContent;
+      document.querySelector(".press-selected-item").value = event.target.innerHTML;
       event.target.classList.add("press--outline");
       selected = event.target;
     } else {
