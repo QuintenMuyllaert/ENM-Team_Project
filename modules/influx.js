@@ -87,11 +87,12 @@ module.exports = {
 
     const basisyTotal = [1 / 60, 1, 24, 7 * 24, 30.4368499 * 24, 365.242199 * 24];
 
-    const dataByMeter = {};
+    let dataByMeter = {};
+    let moreDataByMeter = {};
     for (const i in timelabels) {
       const basis = basisy[i];
       const label = timelabels[i];
-      const data = await module.exports.fetch(amt[i], basis);
+      const [data, data2] = await module.exports.fetch(amt[i], basis);
 
       for (const thing of data) {
         const obj = {
@@ -107,6 +108,26 @@ module.exports = {
           dataByMeter[thing._field][label].data.unshift(obj);
         }
       }
+
+      //some value's can't get "meaned"
+      for (const thing of data2) {
+        const obj = {
+          val: thing._value,
+          time: thing._time,
+        };
+        if (!dataByMeter[thing._field]) {
+          moreDataByMeter[thing._field] = {};
+        }
+        if (!moreDataByMeter[thing._field]) {
+          //nothing to do
+        } else if (!moreDataByMeter[thing._field][label]) {
+          moreDataByMeter[thing._field][label] = { data: [obj], basis: label };
+        } else {
+          moreDataByMeter[thing._field][label].data.unshift(obj);
+        }
+      }
+
+      dataByMeter = { ...dataByMeter, ...moreDataByMeter };
 
       const meters = Object.keys(dataByMeter);
       for (const meter of meters) {
@@ -155,7 +176,6 @@ module.exports = {
       return;
     }
     console.log("Attempting to fetch data from InfluxDB.");
-    console.log(days);
     let today = new Date(Date.now());
     today.setHours(1, 0, 0, 0);
     const stopdate = today.toISOString();
@@ -164,12 +184,15 @@ module.exports = {
     const querry = `from(bucket: "${config.bucket}") |> range(start: ${startdate}, stop: ${stopdate}) |> aggregateWindow(every: ${Math.round(basis)}s, fn: mean, createEmpty: false) `;
     const data = await module.exports.run(querry);
 
-    if (!data) {
+    const querry2 = `from(bucket: "${config.bucket}") |> range(start: ${startdate}, stop: ${stopdate}) |> aggregateWindow(every: ${Math.round(basis)}s, fn: last, createEmpty: false) `;
+    const data2 = await module.exports.run(querry2);
+
+    if (!data || !data2) {
       console.log("Something went wrong while fetching data!\nGot empty data object, possibly because the database is offline.");
-      return [];
+      return [[], []];
     }
 
-    return data;
+    return [data, data2];
   },
   fetchPeriodically: async (io) => {
     console.log("First periodical fetch of the data.");
