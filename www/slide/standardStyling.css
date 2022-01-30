@@ -52,19 +52,6 @@
   width: max-content;
 }
 
-/*Unneeded size modifiers?*/
-.header--title-short {
-  grid-area: 1/1/1/2;
-}
-
-.header--title-long {
-  grid-area: 1/1/1/4;
-}
-
-.header--title-x-long {
-  grid-area: 1/1/1/6;
-}
-
 /*
     This is the section for the general style of items in a page 
 */
@@ -232,7 +219,6 @@
   font-size: 100%;
   color: var(--global-color-text);
   white-space: nowrap;
-  
 }
 
 /*
@@ -538,6 +524,8 @@
   height: 100%;
   width: 100%;
   padding: 1rem;
+  display: grid;
+  grid-template-rows: fit-content auto;
 }
 
 .item--medium-activities-title {
@@ -550,14 +538,16 @@
 .item--medium-activities-summary-container {
   height: 100%;
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
   align-items: center;
   justify-content: center;
 }
 
 .item--medium-activities-summary {
   font-size: 120%;
-  justify-content: center;
+  justify-items: center;
   align-items: center;
   display: grid;
   grid-template-columns: repeat(2, auto);
@@ -569,9 +559,19 @@
 }
 
 .item--medium-activities-summary-item {
-  display: flex;
+  display: grid;
   gap: 10px;
   align-items: center;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  margin: auto;
+}
+
+.item--medium-activities-summary-picture {
+  justify-self: end;
+}
+.item--medium-activities-summary-text {
+  justify-self: start;
 }
 
 .item--medium-activities-summary-picture {
