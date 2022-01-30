@@ -182,6 +182,7 @@
   font-size: 2rem;
   color: var(--admin-color-text);
   text-align: center;
+  margin-left: 1rem;
 }
 
 .press--trash:hover,
