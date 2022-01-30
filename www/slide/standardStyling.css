@@ -268,18 +268,16 @@
 */
 
 .item--medium-quiz-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1% 2%;
+  display: grid;
+  grid-template-columns: auto max-content;
+  padding: 1rem;
   height: 100%;
 }
 
 .item--medium-quiz-question {
   font-size: 1.5rem;
   color: var(--global-color-title);
-  width: 15rem;
-  white-space: nowrap;
+  width: 100%;
 }
 
 .item--medium-quiz-timer {
@@ -361,7 +359,7 @@
 */
 
 .item--big-container {
-  height: 100%;
+  height: fit-content;
   width: 100%;
   display: flex;
   gap: 2rem;
@@ -455,6 +453,14 @@
 .item--big-right-big {
   overflow: hidden;
   padding: 1rem;
+}
+
+.item--big-left-full {
+  height: max-content;
+}
+
+.item--medium-quiz-above {
+  height: max-content;
 }
 
 /*
@@ -992,7 +998,7 @@
 }
 
 .item--medium-quiz-answers-above-place {
-  grid-area: 6/14/13/24;
+  grid-area: 5/14/12/24;
 }
 
 .item--medium-activity-below {
