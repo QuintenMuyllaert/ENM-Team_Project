@@ -185,6 +185,45 @@ io.on("connection", async (socket) => {
     socket.emit("save", true);
   });
 
+  socket.on("remove", (file) => {
+    console.log("Got save command from external source.");
+    if (!socket.auth) {
+      console.log("Source is not authorized to execute save command.");
+      socket.emit("remove", false);
+      return;
+    }
+
+    if (!tamper.structure(file, "")) {
+      console.log("Remove command is wrong structure.");
+      socket.emit("remove", false);
+      return;
+    }
+
+    if (file.includes("/") || file.includes("\\") || file.includes("./") || file.includes("../") || file.includes("..\\") || file.includes(".\\")) {
+      console.log("Manipulation attempt of file path!");
+      console.log("Logging them out as punishment.");
+      socket.emit("auth", false);
+      socket.auth = false;
+      return;
+    }
+
+    if (file.split(".").length > 2) {
+      console.log("Manipulation attempt double extension!");
+      //not severe we ingore this.
+    }
+
+    const fullpath = path.join(__dirname, "www", "slide", file);
+    if (!fullpath.includes(path.join(__dirname, "www", "slide"))) {
+      console.log("All previous tamper checks failed, luckily this one caught it report to devs :\n", JSON.stringify({ file: file, data: data }, null, 4));
+    }
+
+    console.log(`Bye bye, ${fullpath}! You will / won't be missed...?`);
+    fs.unlinkSync(fullpath);
+
+    console.log("Sending remove success to frontend!");
+    socket.emit("remove", true);
+  });
+
   socket.on("control", (data) => {
     if (!socket.auth) {
       console.log("Source is not authorized to change control.");
