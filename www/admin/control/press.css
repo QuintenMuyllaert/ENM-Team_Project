@@ -163,3 +163,28 @@
 .press--toolbox .fileUpload input.upload {
   display: inline-block;
 }
+
+.press--corner {
+  position: absolute;
+  z-index: 30;
+  bottom: 0;
+  right: 0;
+  margin: 1rem;
+}
+
+.press--trash,
+.press--addslide {
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--admin-color-accent);
+  border: 0;
+  font-size: 2rem;
+  color: var(--admin-color-text);
+  text-align: center;
+}
+
+.press--trash:hover,
+.press--addslide:hover {
+  cursor: pointer;
+}
