@@ -18,6 +18,11 @@
   color: var(--global-color-title);
 }
 
+.placeholder-image {
+  height: 100%;
+  width: 100%;
+}
+
 /*
     This is the section for the header and the title of the slides
 */
@@ -511,8 +516,8 @@
 }
 
 .item--medium-slide-icon {
-  height: 10%;
-  width: 10%;
+  height: 70px;
+  width: 70px;
 }
 
 .item--medium-activities-container {
