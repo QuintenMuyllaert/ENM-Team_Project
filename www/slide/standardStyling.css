@@ -426,7 +426,7 @@
   font-size: 2rem;
   font-weight: bold;
   display: flex;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 
 .item--big-image-legend {
@@ -447,6 +447,7 @@
 
 .item--big-image-legend-item {
   font-size: 1.5rem;
+  padding-bottom: 1rem;
 }
 
 /*
