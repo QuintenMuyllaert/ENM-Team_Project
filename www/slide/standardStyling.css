@@ -603,20 +603,27 @@
     Section specific for the medium box with images
 */
 
+.item--medium-images-right {
+  padding: 1rem;
+  height: max-content;
+  align-self: end;
+}
+
 .item--medium-images-picture {
   overflow: hidden;
   height: 100%;
   width: 100%;
-  display: flex;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
   position: relative;
 }
 
 .item--medium-images-image {
-  height: 100%;
-  width: 75%;
-  padding: 1rem;
-  position: absolute;
+  width: 100%;
+  height: auto;
 }
 
 .item--medium-images-image-left {
