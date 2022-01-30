@@ -1,5 +1,12 @@
 let folder = "slide";
 
+const showPrompt = async () => {
+  await delay(500);
+  document.querySelector(".press--prompt").classList.remove("prompt-down");
+  await delay(2000);
+  document.querySelector(".press--prompt").classList.add("prompt-down");
+};
+
 pageFunction["./control/press.html"] = async () => {
   tree = await fetchJSON("../tree.json");
   if (lookupList(tree[folder], ".html")[pageNrToEdit] == undefined) {
@@ -120,6 +127,7 @@ pageFunction["./control/press.html"] = async () => {
   document.querySelector(".press--undo").addEventListener("click", async () => {
     console.log("Undo-ing changes.");
     document.querySelector(".admin--page-container").innerHTML = await fetchString("./control/press.html");
+    showPrompt();
     await pageFunction["./control/press.html"]();
   });
 
@@ -150,6 +158,7 @@ pageFunction["./control/press.html"] = async () => {
     folder = "slide";
     pageNrToEdit = 0;
     document.querySelector(".admin--page-container").innerHTML = await fetchString("./control/press.html");
+    showPrompt();
     await pageFunction["./control/press.html"]();
   });
 
@@ -163,6 +172,7 @@ pageFunction["./control/press.html"] = async () => {
     }
     pageNrToEdit = 0;
     document.querySelector(".admin--page-container").innerHTML = await fetchString("./control/press.html");
+    showPrompt();
     await pageFunction["./control/press.html"]();
   });
 };
