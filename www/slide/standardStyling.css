@@ -388,6 +388,7 @@
   grid-template-rows: 100%;
   justify-items: center;
   align-items: center;
+  overflow: hidden;
   /*padding-top: 200px;*/ /*Why?*/
 }
 
@@ -448,6 +449,12 @@
 .item--big-image-legend-item {
   font-size: 1.5rem;
   padding-bottom: 1rem;
+}
+
+.item--big-left-big,
+.item--big-right-big {
+  overflow: hidden;
+  padding: 1rem;
 }
 
 /*
@@ -608,6 +615,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 }
 
 .item--medium-explanation-beneath-text {
