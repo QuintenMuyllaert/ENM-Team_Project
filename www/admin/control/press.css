@@ -163,3 +163,45 @@
 .press--toolbox .fileUpload input.upload {
   display: inline-block;
 }
+
+.press--corner {
+  position: absolute;
+  z-index: 30;
+  bottom: 0;
+  right: 0;
+  margin: 1rem;
+}
+
+.press--trash,
+.press--addslide {
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--admin-color-accent);
+  border: 0;
+  font-size: 2rem;
+  color: var(--admin-color-text);
+  text-align: center;
+  margin-left: 1rem;
+}
+
+.press--trash:hover,
+.press--addslide:hover {
+  cursor: pointer;
+}
+
+.press--prompt {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--admin-color-container);
+  padding: 2rem;
+  border-radius: 1rem;
+  color: var(--admin-color-text);
+  transition: top ease 1s;
+}
+
+.prompt-down {
+  top: 200vh;
+}
