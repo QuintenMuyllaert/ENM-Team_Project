@@ -18,12 +18,10 @@ pageFunction["./control/didyouknow.html"] = async () => {
   factsPlaceholder.innerHTML = factsString;
 
   submit.addEventListener("click", () => {
-    const senddata = document.querySelectorAll(".dyk--item-text");
     let newData = [];
     for (item of document.querySelectorAll(".dyk--item-text")) {
       newData.push(item.value);
     }
-    console.log(newData);
     socket.emit("updatefacts", newData);
   });
   for (item of document.querySelectorAll(".dyk--item-delete")) {
