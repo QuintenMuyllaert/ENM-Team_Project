@@ -1,10 +1,12 @@
+const { Socket } = require("socket.io");
+
 pageFunction["./control/quiz.html"] = async () => {
   console.log("Loaded quiz page.");
   const question = await fetch("../data/questions.json");
   const question_text = await question.json();
   const questions = document.querySelector(".quiz--questions-container");
   const submit = document.querySelector(".js-submit");
-
+  let selected = 0;
   let new_html = `<p class="quiz--title">Quizvragen:</p>`;
 
   for (item of question_text) {
@@ -23,8 +25,10 @@ pageFunction["./control/quiz.html"] = async () => {
       const facts = item.srcElement;
       const question = await fetch("../data/questions.json");
       const question_text = await question.json();
+      let i = 0;
       for (item of question_text) {
         if (item.question == facts.innerText) {
+          selected = i;
           document.querySelector(".quiz--answer-input").value = item.question;
           let idnum = 1;
 
@@ -39,11 +43,12 @@ pageFunction["./control/quiz.html"] = async () => {
             document.getElementById(`Antwoord${idnum}`).value = "";
           }
         }
+        i++;
       }
     });
   }
 
-  submit.addEventListener("click", () => {
+  submit.addEventListener("click", async () => {
     const and1 = document.getElementById(`Antwoord1`).value;
     const and2 = document.getElementById(`Antwoord2`).value;
     const and3 = document.getElementById(`Antwoord3`).value;
@@ -68,6 +73,10 @@ pageFunction["./control/quiz.html"] = async () => {
         correct: correct,
       };
     }
-    console.log(object);
+    const question = await fetch("../data/questions.json");
+    let question_text = await question.json();
+    question_text[selected] = object;
+    console.log(question_text);
+    Socket.emit("questions", question_text);
   });
 };
