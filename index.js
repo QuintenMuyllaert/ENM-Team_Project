@@ -67,9 +67,8 @@ io.on("connection", async (socket) => {
     console.log(`User disconnected : "${socket.id}".`);
   });
   socket.on("updatefacts", async (facts) => {
-    console.log(facts);
     const writeStream = fs.createWriteStream("./www/data/facts.csv");
-    facts.forEach((value) => writeStream.write(`${value}`));
+    facts.forEach((value) => writeStream.write(`${value}\n`));
   });
   socket.on("forget", async (code) => {
     console.log("Client sent a forgot password request.");
