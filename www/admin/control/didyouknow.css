@@ -34,7 +34,9 @@
   height: 40px;
   width: 40px;
 }
-
+.dyk--item--delete {
+  pointer-events: none;
+}
 .dyk--item-add {
   width: 100%;
   display: flex;
