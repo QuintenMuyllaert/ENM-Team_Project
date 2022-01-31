@@ -198,6 +198,24 @@ io.on("connection", async (socket) => {
     io.emit("slide", data);
   });
 
+  socket.on("config", (data) => {
+    console.log("Got config command from external source.");
+    if (!socket.auth) {
+      console.log("Source is not authorized to execute config command.");
+      return;
+    }
+
+    if (!tamper.structure({}, data)) {
+      console.log("Config command is wrong structure.");
+      return;
+    }
+
+    console.log("Sending config command to frontend!");
+    fs.writeFileSync(path.join(__dirname, "www", "config.json"), JSON.stringify({ ...config, ...data }, null, 4));
+    //refresh frontend
+    io.emit("slide", { event: "refresh" });
+  });
+
   socket.on("order", (data) => {
     console.log("Got order command from external source.");
     if (!socket.auth) {
