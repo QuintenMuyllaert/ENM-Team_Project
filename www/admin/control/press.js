@@ -1,4 +1,5 @@
 let folder = "slide";
+let order = [];
 
 const showPrompt = async () => {
   await delay(500);
@@ -9,6 +10,14 @@ const showPrompt = async () => {
 
 pageFunction["./control/press.html"] = async () => {
   tree = await fetchJSON("../tree.json");
+  let slideInCorrectFormat = {};
+  let order = await fetchJSON("../slideorder.json");
+  for (const o of order) {
+    slideInCorrectFormat[o] = 1;
+  }
+
+  tree["slide"] = slideInCorrectFormat;
+
   if (lookupList(tree[folder], ".html")[pageNrToEdit] == undefined) {
     console.log("out of bounds");
     if (pageNrToEdit < 0) {
