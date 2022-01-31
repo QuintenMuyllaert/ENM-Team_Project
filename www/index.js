@@ -123,7 +123,15 @@ const init = async () => {
   const scale = width / 1920;
   document.querySelector("html").style.setProperty("--scalefactor", scale);
 
-  const tree = await fetchJSON("./tree.json");
+  let tree = await fetchJSON("./tree.json");
+  let slideInCorrectFormat = {};
+  let order = await fetchJSON("../slideorder.json");
+  for (const o of order) {
+    slideInCorrectFormat[o] = 1;
+  }
+
+  tree["slide"] = slideInCorrectFormat;
+
   didyouknow = await fetchTxt("./data/facts.csv");
   questions = await fetchJSON("./data/questions.json");
   comparisons = await fetchJSON("./data/comparisons.json");
