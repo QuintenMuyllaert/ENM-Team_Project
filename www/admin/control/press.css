@@ -205,3 +205,16 @@
 .prompt-down {
   top: 200vh;
 }
+
+.press--button {
+  border: 0;
+  background-color: var(--admin-color-png);
+  color: var(--admin-color-text);
+  font-weight: 400;
+  font-size: 2rem;
+  text-align: center;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  cursor: pointer;
+}

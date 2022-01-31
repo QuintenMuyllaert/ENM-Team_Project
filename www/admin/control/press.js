@@ -46,6 +46,7 @@ pageFunction["./control/press.html"] = async () => {
   });
 
   document.querySelector(".press--number").textContent = pageNrToEdit;
+  document.querySelector(".press--newpagenr").textContent = pageNrToEdit;
 
   skeletonSlide = await fetchString("../skeletonSlide.html");
   document.querySelector(".press--slide-viewport").innerHTML = generateSlide(await fetchString(fileName)).replace(/\.\//g, "../");
@@ -154,6 +155,24 @@ pageFunction["./control/press.html"] = async () => {
 
   document.querySelector(".press--goback").addEventListener("click", async () => {
     pageNrToEdit--;
+    document.querySelector(".admin--page-container").innerHTML = await fetchString("./control/press.html");
+    await pageFunction["./control/press.html"]();
+  });
+
+  document.querySelector(".press--movepageright").addEventListener("click", async () => {
+    order = swap(order, pageNrToEdit, pageNrToEdit + 1);
+    pageNrToEdit++;
+    socket.emit("order", order);
+
+    document.querySelector(".admin--page-container").innerHTML = await fetchString("./control/press.html");
+    await pageFunction["./control/press.html"]();
+  });
+
+  document.querySelector(".press--movepageleft").addEventListener("click", async () => {
+    order = swap(order, pageNrToEdit, pageNrToEdit - 1);
+    pageNrToEdit--;
+    socket.emit("order", order);
+
     document.querySelector(".admin--page-container").innerHTML = await fetchString("./control/press.html");
     await pageFunction["./control/press.html"]();
   });

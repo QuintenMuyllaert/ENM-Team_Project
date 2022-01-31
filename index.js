@@ -191,6 +191,22 @@ io.on("connection", async (socket) => {
     io.emit("slide", data);
   });
 
+  socket.on("order", (data) => {
+    console.log("Got order command from external source.");
+    if (!socket.auth) {
+      console.log("Source is not authorized to execute order command.");
+      return;
+    }
+
+    if (!tamper.structure([""], data)) {
+      console.log("Order command is wrong structure.");
+      return;
+    }
+
+    const slideorderPath = path.join(__dirname, "www", "data", "slideorder.json");
+    fs.writeFileSync(slideorderPath, JSON.stringify(data, null, 4));
+  });
+
   socket.on("save", (file, data) => {
     console.log("Got save command from external source.");
     if (!socket.auth) {
