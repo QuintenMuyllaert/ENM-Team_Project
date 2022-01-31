@@ -3,6 +3,7 @@ pageFunction["./control/didyouknow.html"] = async () => {
   const factsPreview = document.querySelector(".weetje");
   const factsPlaceholder = document.querySelector(".dyk--container-items");
   const newfact = document.querySelector(".dyk--item-add");
+  const submit = document.querySelector(".js-send");
   let factsString = "";
   let i = 0;
   for (let fact of facts) {
@@ -16,6 +17,13 @@ pageFunction["./control/didyouknow.html"] = async () => {
   }
   factsPlaceholder.innerHTML = factsString;
 
+  submit.addEventListener("click", () => {
+    const senddata = document.querySelectorAll(".dyk--item-text");
+    socket.emit("updatefacts", senddata);
+    // for (item of document.querySelectorAll(".dyk--item-text")) {
+    //   console.log(item.defaultValue);
+    // }
+  });
   for (item of document.querySelectorAll(".dyk--item-delete")) {
     item.addEventListener("click", (item) => {
       console.log("click");
@@ -55,9 +63,6 @@ pageFunction["./control/didyouknow.html"] = async () => {
     }
   });
 
-  for (item of document.querySelectorAll(".dyk--item-text")) {
-    console.log(item.defaultValue);
-  }
   const factsHTML = document.querySelectorAll(".dyk--item-text");
   for (let fact of factsHTML) {
     fact.addEventListener("click", () => {
