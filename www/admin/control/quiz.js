@@ -3,11 +3,11 @@ pageFunction["./control/quiz.html"] = async () => {
   const question = await fetch("../data/questions.json");
   const question_text = await question.json();
   const questions = document.querySelector(".quiz--questions-container");
+  const submit = document.querySelector(".js-submit");
 
   let new_html = `<p class="quiz--title">Quizvragen:</p>`;
 
   for (item of question_text) {
-    console.log(item.question);
     new_html += `<div class="quiz--question-item">
     <p class="quiz--question-text">${item.question}</p>
     <svg class="quiz--question-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
@@ -42,4 +42,32 @@ pageFunction["./control/quiz.html"] = async () => {
       }
     });
   }
+
+  submit.addEventListener("click", () => {
+    const and1 = document.getElementById(`Antwoord1`).value;
+    const and2 = document.getElementById(`Antwoord2`).value;
+    const and3 = document.getElementById(`Antwoord3`).value;
+    const vraag = document.querySelector(".quiz--answer-input").value;
+    let correct = "";
+    for (let i = 1; i < 4; i++) {
+      if (document.getElementById(`radio${i}`).checked == true) {
+        correct = document.getElementById(`Antwoord${i}`).value;
+      }
+    }
+    let object = {};
+    if (and3 == "") {
+      object = {
+        question: vraag,
+        answers: [and1, and2],
+        correct: correct,
+      };
+    } else {
+      object = {
+        question: vraag,
+        answers: [and1, and2, and3],
+        correct: correct,
+      };
+    }
+    console.log(object);
+  });
 };
