@@ -1,5 +1,3 @@
-const { Socket } = require("socket.io");
-
 pageFunction["./control/quiz.html"] = async () => {
   console.log("Loaded quiz page.");
   const question = await fetch("../data/questions.json");
@@ -77,6 +75,6 @@ pageFunction["./control/quiz.html"] = async () => {
     let question_text = await question.json();
     question_text[selected] = object;
     console.log(question_text);
-    Socket.emit("questions", question_text);
+    socket.emit("questions", question_text);
   });
 };
