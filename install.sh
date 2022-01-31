@@ -1,0 +1,1 @@
+sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get install node -y && sudo apt-get install npm -y && npm i && npm i -g nodemon && sudo apt-get install pm2 -y && sudo pm2 start "sudo bash start.sh" --name "ENMG2" && sudo pm2 save && sudo pm2 startup
