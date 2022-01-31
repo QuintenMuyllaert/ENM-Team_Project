@@ -19,14 +19,22 @@ pageFunction["./control/quiz.html"] = async () => {
   questions.innerHTML = new_html;
   const detail = document.querySelectorAll(".quiz--question-item");
   for (quest of detail) {
-    console.log(quest);
-    quest.addEventListener("click", (item) => {
-      console.log("click");
+    quest.addEventListener("click", async (item) => {
       const facts = item.srcElement;
+      const question = await fetch("../data/questions.json");
+      const question_text = await question.json();
+      for (item of question_text) {
+        if (item.question == facts.innerText) {
+          document.querySelector(".quiz--answer-input").value = item.question;
+          let idnum = 1;
 
-      for (item of document.querySelectorAll(".quiz--question-item")) {
-        if (item.innerText == facts.innerText) {
-          console.log("t");
+          for (aswer of item.answers) {
+            document.getElementById(`Antwoord${idnum}`).value = aswer;
+            idnum++;
+          }
+          if (idnum == 3) {
+            document.getElementById(`Antwoord${idnum}`).value = "";
+          }
         }
       }
     });
