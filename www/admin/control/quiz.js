@@ -3,7 +3,9 @@ pageFunction["./control/quiz.html"] = async () => {
   const question = await fetch("../data/questions.json");
   const question_text = await question.json();
   const questions = document.querySelector(".quiz--questions-container");
+
   let new_html = `<p class="quiz--title">Quizvragen:</p>`;
+
   for (item of question_text) {
     console.log(item.question);
     new_html += `<div class="quiz--question-item">
@@ -15,4 +17,18 @@ pageFunction["./control/quiz.html"] = async () => {
   </div>`;
   }
   questions.innerHTML = new_html;
+  const detail = document.querySelectorAll(".quiz--question-item");
+  for (quest of detail) {
+    console.log(quest);
+    quest.addEventListener("click", (item) => {
+      console.log("click");
+      const facts = item.srcElement;
+
+      for (item of document.querySelectorAll(".quiz--question-item")) {
+        if (item.innerText == facts.innerText) {
+          console.log("t");
+        }
+      }
+    });
+  }
 };
