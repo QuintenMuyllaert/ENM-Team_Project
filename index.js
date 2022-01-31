@@ -71,8 +71,9 @@ io.on("connection", async (socket) => {
     facts.forEach((value) => writeStream.write(`${value}\n`));
   });
   socket.on("questions", async (question) => {
-    const writeStream = fs.createWriteStream("./www/data/questions.json");
-    writeStream.write(question);
+    console.log(question);
+    let data = JSON.stringify(question);
+    fs.writeFileSync("./www/data/questions.json", data);
   });
   socket.on("forget", async (code) => {
     console.log("Client sent a forgot password request.");
