@@ -59,6 +59,25 @@ app.get("/tree.json", async (req, res) => {
   res.send(JSON.stringify(await tree(path.join(__dirname, "www")), null, 4));
 });
 
+app.get("/slideorder.json", async (req, res) => {
+  console.log("Client requested ./www slideorder.json");
+  const slideorderPath = path.join(__dirname, "www", "data", "slideorder.json");
+  const slideOrder = JSON.parse(fs.readFileSync(slideorderPath));
+  const allSlides = Object.keys(await tree(path.join(__dirname, "www", "slide")));
+
+  let order = [];
+  let duped = slideOrder.concat(allSlides);
+  for (const slide of duped) {
+    if (!order.includes(slide)) {
+      order.push(slide);
+    }
+  }
+
+  fs.writeFileSync(slideorderPath, JSON.stringify(order, null, 4));
+
+  res.send(JSON.stringify(order, null, 4));
+});
+
 io.on("connection", async (socket) => {
   socket.auth = false;
 
