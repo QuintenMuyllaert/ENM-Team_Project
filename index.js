@@ -85,6 +85,7 @@ io.on("connection", async (socket) => {
   socket.on("disconnect", () => {
     console.log(`User disconnected : "${socket.id}".`);
   });
+
   socket.on("updatefacts", async (facts) => {
     if (!socket.auth) {
       return;
@@ -95,7 +96,10 @@ io.on("connection", async (socket) => {
     }
 
     fs.writeFileSync(path.join(__dirname, "www", "data", "facts.csv"), facts.join("\n"));
+    //refresh frontend
+    io.emit("slide", { event: "refresh" });
   });
+
   socket.on("questions", async (question) => {
     if (!socket.auth) {
       return;
@@ -110,7 +114,10 @@ io.on("connection", async (socket) => {
 
     const data = JSON.stringify(question, null, 4);
     fs.writeFileSync(path.join(__dirname, "www", "data", "questions.json"), data);
+    //refresh frontend
+    io.emit("slide", { event: "refresh" });
   });
+
   socket.on("forget", async (code) => {
     console.log("Client sent a forgot password request.");
     const verfied = speakeasy.totp.verify({
@@ -205,6 +212,8 @@ io.on("connection", async (socket) => {
 
     const slideorderPath = path.join(__dirname, "www", "data", "slideorder.json");
     fs.writeFileSync(slideorderPath, JSON.stringify(data, null, 4));
+    //refresh frontend
+    io.emit("slide", { event: "refresh" });
   });
 
   socket.on("save", (file, data) => {
@@ -243,6 +252,8 @@ io.on("connection", async (socket) => {
 
     console.log("Sending save success to frontend!");
     socket.emit("save", true);
+    //refresh frontend
+    io.emit("slide", { event: "refresh" });
   });
 
   socket.on("remove", (file) => {
@@ -282,6 +293,8 @@ io.on("connection", async (socket) => {
 
     console.log("Sending remove success to frontend!");
     socket.emit("remove", true);
+    //refresh frontend
+    io.emit("slide", { event: "refresh" });
   });
 
   socket.on("control", (data) => {
