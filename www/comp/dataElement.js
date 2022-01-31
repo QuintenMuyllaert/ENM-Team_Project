@@ -34,6 +34,9 @@ const dataElement = class {
     if (!this._init) {
       return;
     }
+    if (!this.element.getAttribute("dataElement")) {
+      return;
+    }
     return this._init();
   }
   render() {
@@ -41,6 +44,9 @@ const dataElement = class {
       return;
     }
     if (!this._render) {
+      return;
+    }
+    if (!this.element.getAttribute("dataElement")) {
       return;
     }
     return this._render();
@@ -52,6 +58,9 @@ const dataElement = class {
     if (!this._unrender) {
       return;
     }
+    if (!this.element.getAttribute("dataElement")) {
+      return;
+    }
     return this._unrender();
   }
   update() {
@@ -61,10 +70,16 @@ const dataElement = class {
     if (!this._update) {
       return;
     }
+    if (!this.element.getAttribute("dataElement")) {
+      return;
+    }
     return this._update();
   }
   tick(data) {
     if (!this.element) {
+      return;
+    }
+    if (!this.element.getAttribute("dataElement")) {
       return;
     }
     const value = this.element.getAttribute("dataValue");

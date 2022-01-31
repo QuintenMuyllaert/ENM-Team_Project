@@ -66,20 +66,26 @@ pageFunction["./control/press.html"] = async () => {
     if (!selected) {
       return;
     }
-    if (selected.getAttribute("dataElement") == null) {
+
+    if (document.querySelector("#toolbox--dataValue").value == "") {
+      selected.removeAttribute("dataElement");
+      selected.removeAttribute("dataValue");
       return;
     }
+    selected.setAttribute("dataElement", null);
     selected.setAttribute("dataValue", document.querySelector("#toolbox--dataValue").value);
-    selected.setAttribute("dataType", document.querySelector("#toolbox--dataType").value);
+    if (document.querySelector("#toolbox--dataType").value) {
+      selected.setAttribute("dataType", document.querySelector("#toolbox--dataType").value);
+    } else {
+      selected.removeAttribute("dataType");
+    }
   }, 50);
 
-  let htmlCheckboxVis = document.querySelector("input#toolbox--visible");
-  htmlCheckboxVis.addEventListener("click", () => {
-    console.log(htmlCheckboxVis.checked);
-    htmlCheckboxVis.checked = true;
-  });
-
   htmlSlide.addEventListener("click", (event) => {
+    document.querySelector("#toolbox--dataType").value = "";
+    document.querySelector("#toolbox--dataValue").value = "";
+    document.querySelector("#toolbox--selected").value = "";
+
     document.querySelectorAll(".press--outline").forEach((e) => e.classList.remove("press--outline"));
     if (textTags.includes(event.target.tagName)) {
       document.querySelector(".press-selected-item").value = event.target.innerHTML;
