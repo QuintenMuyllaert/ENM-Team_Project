@@ -29,6 +29,9 @@ pageFunction["./control/quiz.html"] = async () => {
           let idnum = 1;
 
           for (aswer of item.answers) {
+            if (aswer == item.correct) {
+              document.getElementById(`radio${idnum}`).checked = true;
+            }
             document.getElementById(`Antwoord${idnum}`).value = aswer;
             idnum++;
           }
