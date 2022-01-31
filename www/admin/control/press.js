@@ -1,13 +1,40 @@
+let folder = "slide";
+
+const showPrompt = async () => {
+  await delay(500);
+  document.querySelector(".press--prompt").classList.remove("prompt-down");
+  await delay(2000);
+  document.querySelector(".press--prompt").classList.add("prompt-down");
+};
+
 pageFunction["./control/press.html"] = async () => {
-  if (lookupList(tree["slide"], ".html")[pageNrToEdit] == undefined) {
+  tree = await fetchJSON("../tree.json");
+  if (lookupList(tree[folder], ".html")[pageNrToEdit] == undefined) {
     console.log("out of bounds");
     if (pageNrToEdit < 0) {
-      pageNrToEdit = lookupList(tree["slide"], ".html").length - 1;
+      pageNrToEdit = lookupList(tree[folder], ".html").length - 1;
     } else {
       pageNrToEdit = 0;
     }
   }
-  const fileName = "../slide/" + lookupList(tree["slide"], ".html")[pageNrToEdit];
+  let fileName = "../" + folder + "/" + lookupList(tree[folder], ".html")[pageNrToEdit];
+
+  document.querySelector(".press--addslide").textContent = folder == "template" ? "-" : "+";
+  document.querySelector(".press--addslide").addEventListener("click", async function () {
+    if (folder != "template") {
+      folder = "template";
+      this.textContent = "-";
+      pageNrToEdit = 0;
+      document.querySelector(".admin--page-container").innerHTML = await fetchString("./control/press.html");
+      await pageFunction["./control/press.html"]();
+    } else {
+      folder = "slide";
+      this.textContent = "+";
+      pageNrToEdit = 0;
+      document.querySelector(".admin--page-container").innerHTML = await fetchString("./control/press.html");
+      await pageFunction["./control/press.html"]();
+    }
+  });
 
   document.querySelector(".press--number").textContent = pageNrToEdit;
 
@@ -100,6 +127,7 @@ pageFunction["./control/press.html"] = async () => {
   document.querySelector(".press--undo").addEventListener("click", async () => {
     console.log("Undo-ing changes.");
     document.querySelector(".admin--page-container").innerHTML = await fetchString("./control/press.html");
+    showPrompt();
     await pageFunction["./control/press.html"]();
   });
 
@@ -122,6 +150,29 @@ pageFunction["./control/press.html"] = async () => {
     htmlPage.querySelectorAll(".press--outline").forEach((e) => e.classList.remove("press--outline"));
     const newHtml = htmlPage.innerHTML.replace(/\.\.\//g, "./");
 
-    socket.emit("save", fileName.split("/").pop(), newHtml);
+    if (folder == "template") {
+      socket.emit("save", "generated-slide-" + Date.now().toString() + ".html", newHtml);
+    } else {
+      socket.emit("save", fileName.split("/").pop(), newHtml);
+    }
+    folder = "slide";
+    pageNrToEdit = 0;
+    document.querySelector(".admin--page-container").innerHTML = await fetchString("./control/press.html");
+    showPrompt();
+    await pageFunction["./control/press.html"]();
+  });
+
+  document.querySelector(".press--trash").addEventListener("click", async () => {
+    console.log("Get rid of it");
+    if (folder == "template") {
+      console.log("No point as it not even saved yet.");
+    } else {
+      console.log("Boom its gone.");
+      socket.emit("remove", fileName.split("/").pop());
+    }
+    pageNrToEdit = 0;
+    document.querySelector(".admin--page-container").innerHTML = await fetchString("./control/press.html");
+    showPrompt();
+    await pageFunction["./control/press.html"]();
   });
 };
