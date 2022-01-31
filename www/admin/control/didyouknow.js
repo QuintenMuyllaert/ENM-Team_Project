@@ -26,6 +26,9 @@ pageFunction["./control/didyouknow.html"] = async () => {
     if (window.getSelection) {
       text = window.getSelection().toString();
     }
+    if (text == "") {
+      return;
+    }
     for (item of document.querySelectorAll(".dyk--item-text")) {
       if (item.value.includes(text)) {
         const start = item.value;
@@ -37,6 +40,9 @@ pageFunction["./control/didyouknow.html"] = async () => {
   space.addEventListener("click", () => {
     if (window.getSelection) {
       text = window.getSelection().toString();
+    }
+    if (text == "") {
+      return;
     }
     for (item of document.querySelectorAll(".dyk--item-text")) {
       if (item.value.includes(text)) {
