@@ -70,6 +70,10 @@ io.on("connection", async (socket) => {
     const writeStream = fs.createWriteStream("./www/data/facts.csv");
     facts.forEach((value) => writeStream.write(`${value}\n`));
   });
+  socket.on("questions", async (question) => {
+    const writeStream = fs.createWriteStream("./www/data/questions.json");
+    writeStream.write(question);
+  });
   socket.on("forget", async (code) => {
     console.log("Client sent a forgot password request.");
     const verfied = speakeasy.totp.verify({
