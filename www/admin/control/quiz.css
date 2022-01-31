@@ -151,3 +151,18 @@
   .c-option--hidden:checked + .c-custom-option .c-custom-option__fake-input--radio {
     background-color: green;
   }
+
+  .quiz--answer-item-container {
+      display: flex;
+      gap: 2rem;
+      align-items: centerr;
+      justify-content: center;
+  }
+
+  .quiz--answer-item-radio {
+      padding-top: 1rem;
+  }
+
+  .quiz--answers-inner-container {
+      padding: 2rem;
+  }
