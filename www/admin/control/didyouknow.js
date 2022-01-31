@@ -117,6 +117,7 @@ pageFunction["./control/didyouknow.html"] = async () => {
   for (let fact of factsHTML) {
     fact.addEventListener("click", () => {
       factsPreview.innerHTML = fact.value;
+      activeFact = fact;
     });
   }
 };
