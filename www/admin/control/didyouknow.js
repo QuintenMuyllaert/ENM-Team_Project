@@ -1,3 +1,16 @@
+let activeFact = null;
+
+setInterval(() => {
+  if (!activeFact) {
+    return;
+  }
+  const preview = document.querySelector(".weetje");
+  if (!preview) {
+    return;
+  }
+  preview.innerHTML = activeFact.value;
+}, 50);
+
 pageFunction["./control/didyouknow.html"] = async () => {
   const facts = await fetchTxt("../data/facts.csv");
   const factsPreview = document.querySelector(".weetje");
@@ -84,6 +97,7 @@ pageFunction["./control/didyouknow.html"] = async () => {
     for (let fact of factsHTML) {
       fact.addEventListener("click", () => {
         factsPreview.innerHTML = fact.value;
+        activeFact = fact;
       });
     }
     for (item of document.querySelectorAll(".dyk--item-delete")) {
