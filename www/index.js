@@ -42,8 +42,8 @@ const onRenderPage = async () => {
   vergelijking.forEach((element) => {
     let vergelijking_data = element.innerHTML;
     console.log(vergelijking_data);
-    console.log(Math.floor(vergelijking_data / 15.1));
-    i = Math.floor(vergelijking_data / 15.1);
+    console.log(Math.floor(vergelijking_data / 35));
+    i = Math.ceil(vergelijking_data / 45);
     let html = "";
     while ((i == 1, i--)) {
       html += `<svg id="auto" class="svg--auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.44 72.32">
