@@ -4,8 +4,13 @@ pageFunction["./control/didyouknow.html"] = async () => {
   const factsPlaceholder = document.querySelector(".dyk--container-items");
   const newfact = document.querySelector(".dyk--item-add");
   const submit = document.querySelector(".js-send");
+  const space = document.querySelector(".js-space");
+  const bold = document.querySelector(".js-bold");
   let factsString = "";
+  let text = "";
+
   let i = 0;
+
   for (let fact of facts) {
     factsString += `<div class="dyk--item">
         <input id="${i}" value="${fact}" class="dyk--item-text"></>
@@ -16,6 +21,31 @@ pageFunction["./control/didyouknow.html"] = async () => {
     i++;
   }
   factsPlaceholder.innerHTML = factsString;
+
+  bold.addEventListener("click", () => {
+    if (window.getSelection) {
+      text = window.getSelection().toString();
+    }
+    for (item of document.querySelectorAll(".dyk--item-text")) {
+      if (item.value.includes(text)) {
+        const start = item.value;
+        const newtext = `${start.split(text)[0]}<span>${text}</span>${start.split(text)[1]}`;
+        item.value = newtext;
+      }
+    }
+  });
+  space.addEventListener("click", () => {
+    if (window.getSelection) {
+      text = window.getSelection().toString();
+    }
+    for (item of document.querySelectorAll(".dyk--item-text")) {
+      if (item.value.includes(text)) {
+        const start = item.value;
+        const newtext = `${start.split(text)[0]}<br>${text}${start.split(text)[1]}`;
+        item.value = newtext;
+      }
+    }
+  });
 
   submit.addEventListener("click", () => {
     let newData = [];
