@@ -117,3 +117,13 @@ const compare = (num, times = 0) => {
   }
   return `${amt} ${pair.key}`;
 };
+
+const swap = (array, index, index2) => {
+  if (index >= 0 && index < array.length && index2 >= 0 && index2 < array.length) {
+    const a = array[index];
+    array[index] = array[index2];
+    array[index2] = a;
+  }
+
+  return array;
+};
