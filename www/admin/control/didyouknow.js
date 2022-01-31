@@ -19,10 +19,12 @@ pageFunction["./control/didyouknow.html"] = async () => {
 
   submit.addEventListener("click", () => {
     const senddata = document.querySelectorAll(".dyk--item-text");
-    socket.emit("updatefacts", senddata);
-    // for (item of document.querySelectorAll(".dyk--item-text")) {
-    //   console.log(item.defaultValue);
-    // }
+    let newData = [];
+    for (item of document.querySelectorAll(".dyk--item-text")) {
+      newData.push(item.defaultValue);
+    }
+    console.log(newData);
+    socket.emit("updatefacts", newData);
   });
   for (item of document.querySelectorAll(".dyk--item-delete")) {
     item.addEventListener("click", (item) => {
