@@ -66,7 +66,11 @@ io.on("connection", async (socket) => {
   socket.on("disconnect", () => {
     console.log(`User disconnected : "${socket.id}".`);
   });
-
+  socket.on("updatefacts", async (facts) => {
+    console.log(facts);
+    const writeStream = fs.createWriteStream("./www/data/facts.csv");
+    facts.forEach((value) => writeStream.write(`${value}`));
+  });
   socket.on("forget", async (code) => {
     console.log("Client sent a forgot password request.");
     const verfied = speakeasy.totp.verify({
