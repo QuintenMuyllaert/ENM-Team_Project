@@ -1,1 +1,45 @@
-[{"question":"Wekt de transfo site meer groene energie op dan dat een gemiddeld gezin verbruikt op een dag?","answers":["ja","nee"],"correct":"ja"},{"question":"Verbruikt de duiktank meer energie dan er opgewekt wordt over de site?","answers":["ja","nee"],"correct":"nee"},{"question":"Wekt de transfo alleen maar groene energie op?","answers":["ja","nee"],"correct":"ja"},{"question":"Wat is de grootste energie verbruiker op de site?","answers":["Duiktank","Blok 1","Blok 3"],"correct":"Duiktank"},{"question":"Bij welk gebouw wordt er de meeste groene energie opgewekt?","answers":["Duiktank","Blok 1","Blok 2"],"correct":"Blok 1"}]
+[
+    {
+        "question": "Placeholder question",
+        "answers": [
+            "Placeholder answer",
+            "Placeholder answer",
+            "Placeholder answer"
+        ],
+        "correct": ""
+    },
+    {
+        "question": "Verbruikt de duiktank meer energie dan er opgewekt wordt over de site?",
+        "answers": [
+            "ja",
+            "nee"
+        ],
+        "correct": "nee"
+    },
+    {
+        "question": "Wekt de transfo alleen maar groene energie op?",
+        "answers": [
+            "ja",
+            "nee"
+        ],
+        "correct": "ja"
+    },
+    {
+        "question": "Wat is de grootste energie verbruiker op de site?",
+        "answers": [
+            "Duiktank",
+            "Blok 1",
+            "Blok 3"
+        ],
+        "correct": "Duiktank"
+    },
+    {
+        "question": "Bij welk gebouw wordt er de meeste groene energie opgewekt?",
+        "answers": [
+            "Duiktank",
+            "Blok 1",
+            "Blok 2"
+        ],
+        "correct": "Blok 1"
+    }
+]
