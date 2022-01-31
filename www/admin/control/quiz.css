@@ -87,3 +87,67 @@
     border: none;
     color: white;
 }
+
+
+
+
+.o-hide-accessible {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+  
+  .c-custom-option {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 200px;
+  }
+  
+  .c-custom-option__fake-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+    box-shadow: var(--custom-option-boxShadow, 0);
+  }
+  
+  .c-custom-option__fake-input--radio {
+    border-radius: 100%;
+    background-color: gray;
+  }
+  
+  .c-custom-option__symbol {
+    display: block;
+    fill: white;
+  }
+  
+  .c-custom-option__fake-input--radio .c-custom-option__symbol {
+    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+  }
+  
+  /* hover state */
+  
+  .c-custom-option:hover {
+    --custom-option-boxShadow: 0 0 0 3px #1ab6ff59;
+  }
+  
+  /* focused and active state */
+  
+  .c-custom-option:focus + .c-custom-option,
+  .c-custom-option:active + .c-custom-option {
+    --custom-option-boxShadow: 0 0 0 3px #1ab6ff59;
+  }
+  
+  .c-option--hidden:checked + .c-custom-option .c-custom-option__fake-input--radio {
+    background-color: green;
+  }
