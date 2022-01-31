@@ -68,7 +68,7 @@ app.get("/slideorder.json", async (req, res) => {
   let order = [];
   let duped = slideOrder.concat(allSlides);
   for (const slide of duped) {
-    if (!order.includes(slide)) {
+    if (!order.includes(slide) && allSlides.includes(slide)) {
       order.push(slide);
     }
   }
