@@ -67,13 +67,30 @@ io.on("connection", async (socket) => {
     console.log(`User disconnected : "${socket.id}".`);
   });
   socket.on("updatefacts", async (facts) => {
-    const writeStream = fs.createWriteStream("./www/data/facts.csv");
-    facts.forEach((value) => writeStream.write(`${value}\n`));
+    if (!socket.auth) {
+      return;
+    }
+
+    if (!tamper.structure(facts, ["fact"])) {
+      return;
+    }
+
+    fs.writeFileSync(path.join(__dirname, "www", "data", "facts.csv"), facts.join("\n"));
   });
   socket.on("questions", async (question) => {
-    console.log(question);
-    let data = JSON.stringify(question);
-    fs.writeFileSync("./www/data/questions.json", data);
+    if (!socket.auth) {
+      return;
+    }
+
+    const questionStructure = [{ question: "q", answers: ["a1", "a2", "a3"], correct: "a1" }];
+
+    if (!tamper.structure(questionStructure, question)) {
+      console.log("Questions is in wrong structure.");
+      return;
+    }
+
+    const data = JSON.stringify(question, null, 4);
+    fs.writeFileSync(path.join(__dirname, "www", "data", "questions.json"), data);
   });
   socket.on("forget", async (code) => {
     console.log("Client sent a forgot password request.");
