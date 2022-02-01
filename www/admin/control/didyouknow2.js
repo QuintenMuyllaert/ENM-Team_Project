@@ -3,6 +3,9 @@ pageFunction["./control/didyouknow2.html"] = async () => {
   let questions = await fetchTxt("../data/facts.csv");
   let selected = -1;
   setInterval(() => {
+    if (!document.querySelector(".quiz--questions-list")) {
+      return;
+    }
     let q = [];
     let qHtml = document.querySelector(".quiz--questions-list").querySelectorAll("textarea");
     let compiled = [];
