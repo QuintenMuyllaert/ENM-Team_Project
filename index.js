@@ -348,10 +348,15 @@ io.on("connection", async (socket) => {
   socket.on("error", (err) => console.error);
 });
 
-server.listen(config.port || 80, async () => {
-  console.log("App launched");
-  if (!config) {
-    console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
-    return;
-  }
-});
+try {
+  server.listen(config.port || 80, async () => {
+    console.log("App launched");
+    if (!config) {
+      console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
+      return;
+    }
+  });
+} catch (err) {
+  console.log(":'(");
+  process.exit(1);
+}
