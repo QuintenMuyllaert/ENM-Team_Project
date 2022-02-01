@@ -42,7 +42,7 @@ socket.on("connect", () => {
     if (data == "exist") {
       const exist = document.querySelector(".js-recovery-input");
       exist.innerHTML = `<label class="admin--fieldset-label admin--fieldset-recovery" for="recovery">Recovery</label>
-      <input class="admin--fieldset-input admin--fieldset-recovery admin--qrcode js-field--recovery" type="text" id="recovery" />`;
+      <input class="admin--fieldset-input admin--fieldset-recovery admin--qrcode js-field--recovery" type="text" placeholder="123456" id="recovery" />`;
     }
   });
 
