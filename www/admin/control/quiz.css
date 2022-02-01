@@ -1,20 +1,29 @@
 .quiz {
   width: 100%;
   height: 100%;
+  max-height: 100%;
   display: grid;
-  grid-template-rows: repeat(12, 1fr);
+  /* grid-template-rows: repeat(5, 1fr); */
+  grid-template-rows: auto repeat(4, 1fr);
   grid-template-columns: repeat(12, 1fr);
 }
 
 .quiz--questions-container {
-  grid-area: 2/1/8/6;
+  grid-area: 2/1/2/7;
   overflow-y: auto;
+  margin-right: 1rem;
   background-color: var(--admin-color-accent);
+  border-radius: 1rem;
+  overflow-y: scroll;
+  height: 80%;
 }
 
 .quiz--answers-container {
-  grid-area: 2/7/8/13;
+  grid-area: 2/7/2/13;
   background-color: var(--admin-color-accent);
+  border-radius: 1rem;
+  margin-left: 0.5rem;
+  height: 80%;
 }
 
 .quiz--title {
@@ -22,6 +31,7 @@
   justify-self: start;
   padding: 1rem;
   color: var(--admin-color-text);
+  position: sticky;
 }
 
 .quiz--question-item {
@@ -43,7 +53,14 @@
   width: 40px;
 
   pointer-events: none;
+  cursor: pointer;
 }
+
+.quiz--question-icon:last-child {
+  fill: var(--admin-color-text);
+}
+
+
 
 .quiz--answer-item-fieldset {
   width: 80%;
@@ -59,8 +76,8 @@
   border: none;
   color: var(--admin-color-text);
   margin: 7px 16px 16px 8px;
-  background-color: var(--admin-color-accent);
-  width: 100%;
+  background-color: var(--admin-color-background);
+  width: 95%;
 }
 
 .quiz--answer-item {
@@ -69,6 +86,7 @@
   border-radius: 5px;
   padding: 0 0 0 8px;
   margin: 0 0 1.5rem;
+  background-color: var(--admin-color-background);
 }
 
 .quiz--answer-label {
@@ -76,19 +94,12 @@
   color: var(--admin-color-text);
 }
 
-.quiz--answer-input {
-  border: none;
-  color: var(--admin-color-text);
-  margin: 7px 16px 16px 8px;
-  background-color: var(--admin-color-accent);
-  width: 95%;
-}
-
 .quiz--answer-input:active,
 .quiz--answer-input:focus,
 .quiz--answer-input:focus-visible {
   border: none;
   color: white;
+  outline: none;
 }
 
 .o-hide-accessible {
@@ -102,11 +113,29 @@
   border: 0;
 }
 
+.quiz--buttons-container {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  padding: 1rem 3rem 1rem 0.3rem;
+  gap: 3rem;
+}
+
 .c-custom-option {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 40px;
   width: 200px;
+}
+
+.c-custom-option-button {
+  width: 8rem;
+  height: 3rem;
+  background-color: var(--admin-color-accent);
+  border: 1px solid var(--admin-color-detail);
+  border-radius: 5px;
+  color: var(--admin-color-text);
 }
 
 .c-custom-option__fake-input {
@@ -166,3 +195,4 @@
 .quiz--answers-inner-container {
   padding: 2rem;
 }
+
