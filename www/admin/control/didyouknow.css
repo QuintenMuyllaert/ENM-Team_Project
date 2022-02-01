@@ -175,8 +175,7 @@
   background-color: var(--admin-color-detail);
   border: 1px solid var(--admin-color-detail);
   border-radius: 5px;
-  color: var(--admin-color-text);
-  grid-area: 7/10/8/13;
+  color: white;
   margin-right: 2rem;
   margin-top: 1rem;
 }
@@ -199,4 +198,11 @@
 
 .weetje {
   font-size: 1.2rem;
+}
+
+.press--sidebyside {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
 }

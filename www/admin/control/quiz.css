@@ -146,7 +146,7 @@
   background-color: var(--admin-color-detail);
   border: 1px solid var(--admin-color-detail);
   border-radius: 5px;
-  color: var(--admin-color-text);
+  color: white;
 }
 
 .c-custom-option__fake-input {
@@ -194,13 +194,12 @@
 
 .quiz--answer-item-container {
   display: flex;
-  gap: 2rem;
   align-items: center;
   justify-content: center;
 }
 
 .quiz--answer-item-radio {
-  padding-top: 1rem;
+  padding-bottom: 0.5rem;
 }
 
 .quiz--answers-inner-container {
