@@ -26,7 +26,7 @@
 .slide--setting {
   width: 8rem;
   height: 3rem;
-  background-color: var(--admin-color-accent);
+  background-color: var(--admin-color-detail);
   border: 1px solid var(--admin-color-detail);
   cursor: pointer;
   color: var(--admin-color-text);
@@ -54,12 +54,13 @@
 }
 
 .dyk--item-text {
-  background-color: var(--admin-color-accent);
+  background-color: var(--admin-color-background);
   border-color: var(--admin-color-detail);
   border-radius: 2px;
   height: 3rem;
   width: 80%;
   color: var(--admin-color-text);
+  padding: 0.5rem;
 }
 
 .dyk--item-delete {
@@ -85,6 +86,11 @@
 
 .dyk--item-add-svg path,
 .dyk--item-add-svg polygon {
+  fill: var(--admin-color-text);
+}
+
+.dyk--item-delete path,
+.dyk--item-delete rect {
   fill: var(--admin-color-text);
 }
 
@@ -150,14 +156,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-area: 8/1/9/13;
+  grid-area: 9/1/10/13;
   padding-top: 1rem;
 }
 
 .dyk--submit {
   width: 8rem;
   height: 3rem;
-  background-color: var(--admin-color-accent);
+  background-color: var(--admin-color-detail);
   border: 1px solid var(--admin-color-detail);
   border-radius: 5px;
   color: var(--admin-color-text);
