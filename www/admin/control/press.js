@@ -19,7 +19,6 @@ setInterval(() => {
       return;
     }
     slidelength = Number(len.value);
-    console.log(slidelength);
     socket.emit("config", { slideLength: Number(slidelength) });
   }
 }, 100);
