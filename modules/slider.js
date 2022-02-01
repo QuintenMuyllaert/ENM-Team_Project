@@ -38,6 +38,7 @@ module.exports = {
     }
     module.exports.send(module.exports.config());
     if (module.exports.slideNr == 0 && module.exports.config().showEndAnimation) {
+      module.exports.send({ event: "refresh" });
       module.exports.send({ event: "showEndAnimation" });
       await module.exports.delay(1000 * module.exports.config().endAnimationLength);
     }
