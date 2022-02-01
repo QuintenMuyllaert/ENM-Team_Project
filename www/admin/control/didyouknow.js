@@ -14,7 +14,7 @@ setInterval(() => {
 pageFunction["./control/didyouknow.html"] = async () => {
   const facts = await fetchTxt("../data/facts.csv");
   const factsPreview = document.querySelector(".weetje");
-  const factsPlaceholder = document.querySelector(".dyk--container-items");
+  let factsPlaceholder = document.querySelector(".dyk--container-items");
   const newfact = document.querySelector(".dyk--item-add");
   const submit = document.querySelector(".js-send");
   const space = document.querySelector(".js-space");
@@ -39,7 +39,7 @@ pageFunction["./control/didyouknow.html"] = async () => {
     if (window.getSelection) {
       text = window.getSelection().toString();
     }
-    if (text == "") {
+    if (text == "" || text == " ") {
       return;
     }
     for (item of document.querySelectorAll(".dyk--item-text")) {
@@ -54,7 +54,7 @@ pageFunction["./control/didyouknow.html"] = async () => {
     if (window.getSelection) {
       text = window.getSelection().toString();
     }
-    if (text == "") {
+    if (text == "" || text == " ") {
       return;
     }
     for (item of document.querySelectorAll(".dyk--item-text")) {
@@ -74,14 +74,21 @@ pageFunction["./control/didyouknow.html"] = async () => {
     socket.emit("updatefacts", newData);
   });
   for (item of document.querySelectorAll(".dyk--item-delete")) {
-    item.addEventListener("click", (item) => {
+    item.addEventListener("click", async (item) => {
       console.log("click");
 
-      const facts = item.srcElement;
+      let facts = item.srcElement;
       const id = facts.id.split("del")[1];
       facts.remove();
       console.log(document.getElementById(id).value);
       document.getElementById(id).remove();
+      const factsHTML = document.querySelectorAll(".dyk--item-text");
+      for (let fact of factsHTML) {
+        fact.addEventListener("click", () => {
+          factsPreview.innerHTML = fact.value;
+          activeFact = fact;
+        });
+      }
     });
   }
 
@@ -101,14 +108,22 @@ pageFunction["./control/didyouknow.html"] = async () => {
       });
     }
     for (item of document.querySelectorAll(".dyk--item-delete")) {
-      item.addEventListener("click", (item) => {
+      item.addEventListener("click", async (item) => {
         console.log("click");
 
-        const facts = item.srcElement;
+        let facts = item.srcElement;
         const id = facts.id.split("del")[1];
         facts.remove();
         console.log(document.getElementById(id).value);
         document.getElementById(id).remove();
+        const factsHTML = document.querySelectorAll(".dyk--item-text");
+        factsPlaceholder.innerHTML = factsString;
+        for (let fact of factsHTML) {
+          fact.addEventListener("click", () => {
+            factsPreview.innerHTML = fact.value;
+            activeFact = fact;
+          });
+        }
       });
     }
   });
