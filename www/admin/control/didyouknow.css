@@ -55,12 +55,18 @@
 
 .dyk--item-text {
   background-color: var(--admin-color-background);
-  border-color: var(--admin-color-detail);
-  border-radius: 2px;
+  border: 1px solid var(--admin-color-detail);
+  border-radius: 1rem;
   height: 3rem;
   width: 80%;
   color: var(--admin-color-text);
   padding: 0.5rem;
+}
+
+.dyk--item-text:active,
+.dyk--item-text:focus,
+.dyk--item-text:focus-visible {
+  outline: none;
 }
 
 .dyk--item-delete {
