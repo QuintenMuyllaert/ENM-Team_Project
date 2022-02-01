@@ -1,12 +1,12 @@
 [
     {
-        "question": "Placeholder question",
+        "question": "Wat was de transfosite vroeger?",
         "answers": [
-            "Placeholder answer",
-            "Placeholder answer",
-            "Placeholder answer"
+            "Electriciteitscentrale",
+            "Kerncentrale",
+            "Waterkrachtcentrale"
         ],
-        "correct": ""
+        "correct": "Electriciteitscentrale"
     },
     {
         "question": "Verbruikt de duiktank meer energie dan er opgewekt wordt over de site?",
@@ -41,5 +41,14 @@
             "Blok 2"
         ],
         "correct": "Blok 1"
+    },
+    {
+        "question": "Wat is groene energie?",
+        "answers": [
+            "Energie van de planten",
+            "Energie dat niets te maken heeft met elektriciteit",
+            "Energie dat opgewekt wordt zonder het mileu te beschadigen"
+        ],
+        "correct": "Energie dat opgewekt wordt zonder het mileu te beschadigen"
     }
 ]
