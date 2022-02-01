@@ -1,126 +1,78 @@
 pageFunction["./control/quiz.html"] = async () => {
   console.log("Loaded quiz page.");
-  const question = await fetch("../data/questions.json");
-  const question_text = await question.json();
-  const questions = document.querySelector(".quiz--questions-list");
-  const submit = document.querySelector(".js-submit");
-  const delete_item = document.querySelector(".js-delete");
-  let selected = 0;
-  let new_html = `<p class="quiz--title">Quiz questions:</p>`;
+  let questions = await fetchJSON("../data/questions.json");
+  const render = async () => {
+    let selected = -1;
+    let correct = -1;
+    document.querySelector(".admin--page-container").innerHTML = await fetchString("./control/quiz.html");
 
-  for (item of question_text) {
-    new_html += `<div class="quiz--question-item">
-    <p class="quiz--question-text">${item.question}</p>
-    <svg class="quiz--question-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-      <path d="M0 0h24v24H0V0z" fill="none" />
-      <path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" />
-    </svg>
-  </div>`;
-  }
-  questions.innerHTML = new_html;
-  const detail = document.querySelectorAll(".quiz--question-item");
-  for (quest of detail) {
-    quest.addEventListener("click", async (item) => {
-      const facts = item.srcElement;
-      const question = await fetch("../data/questions.json");
-      const question_text = await question.json();
-      let i = 0;
-      for (item of question_text) {
-        if (item.question == facts.innerText) {
-          selected = i;
-          document.querySelector(".quiz--answer-input").value = item.question;
-          let idnum = 1;
+    const quizQuestionHtml = `<div class="quiz--question-item">
+        <p class="quiz--question-text">##replace##</p>
+        <svg class="quiz--question-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+          <path d="M0 0h24v24H0V0z" fill="none" />
+          <path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" />
+        </svg>
+      </div>`;
 
-          for (aswer of item.answers) {
-            if (aswer == item.correct) {
-              document.getElementById(`radio${idnum}`).checked = true;
-            }
-            document.getElementById(`Antwoord${idnum}`).value = aswer;
-            idnum++;
-          }
-          if (idnum == 3) {
-            document.getElementById(`Antwoord${idnum}`).value = "";
-          }
+    let HTMLquestions = document.querySelectorAll(".quiz--question-item");
+    for (const h of HTMLquestions) {
+      h.outerHTML = "";
+    }
+
+    for (const question of questions) {
+      document.querySelector(".quiz--questions-list").innerHTML += quizQuestionHtml.replace("##replace##", question.question);
+    }
+
+    HTMLquestions = document.querySelectorAll(".quiz--question-item");
+    for (let i = 0; i < HTMLquestions.length; i++) {
+      const h = HTMLquestions[i];
+      h.addEventListener("click", async () => {
+        selected = i;
+        document.querySelector(".quiz--answer-input").value = questions[i].question;
+        for (let j = 0; j < 3; j++) {
+          document.querySelector(`#Antwoord${j}`).value = questions[i].answers[j] || "";
         }
-        i++;
-      }
-    });
-  }
-  const adder = document.querySelector(".js-add");
-  adder.addEventListener("click", async () => {
-    const questions = document.querySelector(".quiz--questions-list");
-    questions.innerHTML += `<div class="quiz--question-item">
-    <p class="quiz--question-text">placeholder</p>
-    <svg class="quiz--question-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-      <path d="M0 0h24v24H0V0z" fill="none" />
-      <path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" />
-    </svg>
-  </div>`;
-    const detail = document.querySelectorAll(".quiz--question-item");
-    for (quest of detail) {
-      quest.addEventListener("click", async (item) => {
-        const facts = item.srcElement;
-        const question = await fetch("../data/questions.json");
-        const question_text = await question.json();
-        let i = 0;
-        for (item of question_text) {
-          if (item.question == facts.innerText) {
-            selected = i;
-            document.querySelector(".quiz--answer-input").value = item.question;
-            let idnum = 1;
-
-            for (aswer of item.answers) {
-              if (aswer == item.correct) {
-                document.getElementById(`radio${idnum}`).checked = true;
-              }
-              document.getElementById(`Antwoord${idnum}`).value = aswer;
-              idnum++;
-            }
-            if (idnum == 3) {
-              document.getElementById(`Antwoord${idnum}`).value = "";
-            }
-          }
-          i++;
-        }
+        let correct = questions[i].answers.indexOf(questions[i].correct);
+        document.querySelector(`#radio${correct}`).click();
       });
     }
-  });
-  delete_item.addEventListener("click", async () => {
-    const question = await fetch("../data/questions.json");
-    let question_text = await question.json();
-    question_text.splice(selected, 1);
-    socket.emit("questions", question_text);
-  });
 
-  submit.addEventListener("click", async () => {
-    const and1 = document.getElementById(`Antwoord1`).value;
-    const and2 = document.getElementById(`Antwoord2`).value;
-    const and3 = document.getElementById(`Antwoord3`).value;
-    const vraag = document.querySelector(".quiz--answer-input").value;
-    let correct = "";
-    for (let i = 1; i < 4; i++) {
-      if (document.getElementById(`radio${i}`).checked == true) {
-        correct = document.getElementById(`Antwoord${i}`).value;
+    document.querySelector(".js-submit").addEventListener("click", async () => {
+      if (selected >= 0) {
+        questions[selected] = {
+          question: document.querySelector(".quiz--answer-input").value,
+          answers: [document.querySelector(`#Antwoord0`).value, document.querySelector(`#Antwoord1`).value, document.querySelector(`#Antwoord2`).value],
+        };
+        questions[selected].correct = questions[selected].answers[correct];
+
+        if (questions[selected].answers[2] == "") {
+          questions[selected].answers.pop();
+        }
       }
+      socket.emit("questions", questions);
+      render();
+    });
+
+    document.querySelector(".js-delete").addEventListener("click", async () => {
+      questions.splice(selected, 1);
+      socket.emit("questions", questions);
+      render();
+    });
+
+    for (let i = 0; i < 3; i++) {
+      document.querySelector(`#radio${i}`).addEventListener("click", async function () {
+        correct = i;
+      });
     }
-    let object = {};
-    if (and3 == "") {
-      object = {
-        question: vraag,
-        answers: [and1, and2],
-        correct: correct,
-      };
-    } else {
-      object = {
-        question: vraag,
-        answers: [and1, and2, and3],
-        correct: correct,
-      };
-    }
-    const question = await fetch("../data/questions.json");
-    let question_text = await question.json();
-    question_text[selected] = object;
-    console.log(question_text);
-    socket.emit("questions", question_text);
-  });
+
+    document.querySelector(".dyk--item-add-svg").addEventListener("click", async () => {
+      questions.push({
+        question: "Sample question",
+        answers: ["A", "B", "C"],
+        correct: "A",
+      });
+      render();
+    });
+  };
+  render();
 };
