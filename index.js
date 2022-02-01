@@ -136,7 +136,7 @@ io.on("connection", async (socket) => {
       return;
     }
 
-    if (!(obj.username && obj.password)) {
+    if (!obj.username || !obj.password) {
       console.log("Authentication failed, wrong credentials.");
       socket.emit("auth", false);
       return;
