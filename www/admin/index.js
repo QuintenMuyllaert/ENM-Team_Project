@@ -70,7 +70,11 @@ socket.on("connect", () => {
     document.querySelector("body").innerHTML = await fetchString("./control/index.html");
     init();
   });
-
+  socket.on("qrcode", async (data) => {
+    console.log(data);
+    const code = document.querySelector(".js-qrcode");
+    code.src = data;
+  });
   socket.on("influxData", (data) => {
     console.log("Got processed influx data!");
     //influx variable is a global variable that stores the latest influx data point.
