@@ -56,7 +56,7 @@
 .dyk--item-text {
   background-color: var(--admin-color-background);
   border: 1px solid var(--admin-color-detail);
-  border-radius: 1rem;
+  border-radius: 5px;
   height: 3rem;
   width: 80%;
   color: var(--admin-color-text);
