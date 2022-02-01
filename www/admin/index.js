@@ -40,7 +40,7 @@ socket.on("connect", () => {
 
   socket.on("2FA", (data) => {
     if (data == "exist") {
-      const exist = document.querySelector(".js-recovery");
+      const exist = document.querySelector(".js-recovery-input");
       exist.innerHTML = `<label class="admin--fieldset-label admin--fieldset-recovery" for="recovery">Recovery</label>
       <input class="admin--fieldset-input admin--fieldset-recovery admin--qrcode js-field--recovery" type="text" id="recovery" />`;
     }
