@@ -10,7 +10,7 @@
       }
 
       .cls-sunwhite {
-        fill: #fff;
+        fill: #f3f3f3;
       }
 
       .cls-panel-background {
