@@ -162,15 +162,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-area: 9/1/10/13;
+  grid-area: 7/10/8/13;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding-top: 1rem;
 }
 
 .dyk--submit {
-  width: 8rem;
-  height: 3rem;
+  width: 12rem;
+  height: 4rem;
   background-color: var(--admin-color-detail);
   border: 1px solid var(--admin-color-detail);
   border-radius: 5px;
   color: var(--admin-color-text);
+  grid-area: 7/10/8/13;
+  margin-right: 2rem;
+  margin-top: 1rem;
 }
