@@ -8,6 +8,9 @@ let influx = {};
 //(avgKey(influx.Totaal,"_value")/1000).toFixed(2) + "kWh;
 
 setInterval(async () => {
+  if (influx == null) {
+    return;
+  }
   const elements = document.querySelectorAll("[dataElement]");
   for (const e of elements) {
     const checkElement = (e) => {

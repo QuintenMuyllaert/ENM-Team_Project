@@ -7,6 +7,7 @@ const { Server } = require("socket.io");
 const speakeasy = require("speakeasy");
 const qrcode = require("qrcode");
 const siofu = require("socketio-file-upload");
+const { exec } = require("child_process");
 
 const console = require("./modules/console.js");
 const influx = require("./modules/influx.js");
@@ -14,8 +15,6 @@ const tree = require("./modules/tree.js");
 const mqtt = require("./modules/mqtt.js");
 const tamper = require("./modules/tamper.js");
 const slider = require("./modules/slider.js");
-const writer = require("./modules/write.js");
-const deleter = require("./modules/deleteinflux.js");
 
 const config = fs.existsSync(path.join(__dirname, "config.json")) ? require("./config.json") : false;
 console.log("Starting ENM-G2 Team_Project!\nMade possible by :\n - Quinten Muyllaert\n - Toby Bostoen\n - Jorrit Verfaillie\n - Florian Milleville\n");
@@ -26,6 +25,13 @@ configer.generateFrontend();
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
+
+const cmdline = (cmd, cb = () => {}) => {
+  exec(cmd, (e, stdout) => {
+    cb(stdout.toString());
+  });
+};
+
 slider.init(io);
 
 Date.prototype.minusDays = function (days) {
@@ -47,8 +53,6 @@ if (config.topic) {
 }
 
 influx.connect();
-writer.connect();
-// deleter.delete();
 influx.fetchPeriodically(io);
 
 app.use(express.static(path.join(__dirname, "www")));
@@ -348,10 +352,17 @@ io.on("connection", async (socket) => {
   socket.on("error", (err) => console.error);
 });
 
-server.listen(config.port || 80, async () => {
-  console.log("App launched");
-  if (!config) {
-    console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
-    return;
+cmdline(`sudo kill $(sudo lsof -t -i:${config.port || 80})`, () => {
+  try {
+    server.listen(config.port || 80, async () => {
+      console.log("App launched");
+      if (!config) {
+        console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
+        return;
+      }
+    });
+  } catch (err) {
+    console.log(":'(");
+    process.exit(1);
   }
 });
