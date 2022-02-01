@@ -117,9 +117,9 @@ const authFunction = () => {
   } else {
     const username = htmlUsername.value;
     const password = htmlPassword.value;
-    htmlUsername.disabled = true;
-    htmlPassword.disabled = true;
-    htmlButtonAuth.disabled = true;
+    //htmlUsername.disabled = true;
+    //htmlPassword.disabled = true;
+    //htmlButtonAuth.disabled = true;
     socket.emit("auth", { username: username, password: password });
   }
   console.log("Auth request sent!");
