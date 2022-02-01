@@ -85,7 +85,17 @@ io.on("connection", async (socket) => {
   socket.on("disconnect", () => {
     console.log(`User disconnected : "${socket.id}".`);
   });
-
+  if (!config.twofactor) {
+    console.log("No twofactor secret in config, generating twofactor secret!");
+    const secret = speakeasy.generateSecret({
+      name: "Transfo_Recovery",
+    });
+    config.twofactor = secret.ascii;
+    qrcode.toDataURL(secret.otpauth_url, function (err, data) {
+      socket.emit("qrcode", data);
+    });
+    fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
+  }
   socket.on("updatefacts", async (facts) => {
     if (!socket.auth) {
       return;
@@ -146,18 +156,6 @@ io.on("connection", async (socket) => {
       console.log("No username and/or password provided in config, registering user!");
       config.username = await bcrypt.hash(obj.username, await bcrypt.genSalt(10));
       config.password = await bcrypt.hash(obj.password, await bcrypt.genSalt(10));
-      fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
-    }
-
-    if (!config.twofactor) {
-      console.log("No twofactor secret in config, generating twofactor secret!");
-      const secret = speakeasy.generateSecret({
-        name: "Transfo_Recovery",
-      });
-      config.twofactor = secret.ascii;
-      qrcode.toDataURL(secret.otpauth_url, function (err, data) {
-        socket.emit("qrcode", data);
-      });
       fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
     }
 
