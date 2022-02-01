@@ -88,6 +88,11 @@
   fill: var(--admin-color-text);
 }
 
+.dyk--item-delete path,
+.dyk--item-delete rect {
+  fill: var(--admin-color-text);
+}
+
 .dyk--preview-container {
   grid-area: 4/10/7/13;
 }
