@@ -44,6 +44,14 @@
 
   pointer-events: none;
 }
+.quiz--item-add {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
 
 .quiz--answer-item-fieldset {
   width: 80%;
