@@ -41,8 +41,8 @@ socket.on("connect", () => {
   socket.on("2FA", (data) => {
     if (data == "exist") {
       const exist = document.querySelector(".js-recovery");
-      exist.innerHTML = `<label class="admin--fieldset-label admin--fieldset-password" for="password">Recovery</label>
-      <input class="admin--fieldset-input admin--fieldset-password admin--qrcode js-field--recovery" type="password"  id="password"  />`;
+      exist.innerHTML = `<label class="admin--fieldset-label admin--fieldset-recovery" for="recovery">Recovery</label>
+      <input class="admin--fieldset-input admin--fieldset-recovery admin--qrcode js-field--recovery" type="text" id="recovery"  />`;
     }
   });
 
