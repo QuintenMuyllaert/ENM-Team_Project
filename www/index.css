@@ -130,6 +130,10 @@
   color: var(--global-color-neutral);
 }
 
+.weetje {
+  font-size: 1.2rem;
+}
+
 .slide--didyouknow-text-container h2 {
   padding-bottom: 0.8rem;
   font-weight: 600;
