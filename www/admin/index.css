@@ -126,6 +126,12 @@ body {
   justify-self: center;
 }
 
+.admin--qrcode {
+  margin: auto;
+  display: flex;
+  margin-bottom: 10%;
+}
+
 .o-hide-accessible {
   position: absolute;
   width: 1px;
