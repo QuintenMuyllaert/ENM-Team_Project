@@ -1,12 +1,28 @@
 let folder = "slide";
 let order = [];
-
+let slideLength = 0;
 const showPrompt = async () => {
   await delay(500);
   document.querySelector(".press--prompt").classList.remove("prompt-down");
   await delay(2000);
   document.querySelector(".press--prompt").classList.add("prompt-down");
 };
+
+setInterval(() => {
+  const len = document.querySelector("#slidelength");
+  if (!len) {
+    return;
+  }
+
+  if (Number(slidelength) != Number(len.value)) {
+    if (Number(len.value) == 0) {
+      return;
+    }
+    slidelength = Number(len.value);
+    console.log(slidelength);
+    socket.emit("config", { slideLength: Number(slidelength) });
+  }
+}, 100);
 
 pageFunction["./control/press.html"] = async () => {
   tree = await fetchJSON("../tree.json");
@@ -27,6 +43,8 @@ pageFunction["./control/press.html"] = async () => {
     }
   }
   let fileName = "../" + folder + "/" + lookupList(tree[folder], ".html")[pageNrToEdit];
+
+  document.querySelector("#slidelength").value = Number((await fetchJSON("../config.json")).slideLength);
 
   document.querySelector(".press--addslide").textContent = folder == "template" ? "-" : "+";
   document.querySelector(".press--addslide").addEventListener("click", async function () {
