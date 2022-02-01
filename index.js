@@ -85,7 +85,17 @@ io.on("connection", async (socket) => {
   socket.on("disconnect", () => {
     console.log(`User disconnected : "${socket.id}".`);
   });
-
+  if (!config.twofactor) {
+    console.log("No twofactor secret in config, generating twofactor secret!");
+    const secret = speakeasy.generateSecret({
+      name: "Transfo_Recovery",
+    });
+    config.twofactor = secret.ascii;
+    qrcode.toDataURL(secret.otpauth_url, function (err, data) {
+      socket.emit("qrcode", data);
+    });
+    fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
+  }
   socket.on("updatefacts", async (facts) => {
     if (!socket.auth) {
       return;
@@ -149,18 +159,6 @@ io.on("connection", async (socket) => {
       fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
     }
 
-    if (!config.twofactor) {
-      console.log("No twofactor secret in config, generating twofactor secret!");
-      const secret = speakeasy.generateSecret({
-        name: "Transfo_Recovery",
-      });
-      config.twofactor = secret.ascii;
-      qrcode.toDataURL(secret.otpauth_url, function (err, data) {
-        socket.emit("qrcode", data);
-      });
-      fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
-    }
-
     if (!tamper.structure({ username: "", password: "" }, obj)) {
       console.log("Login wrong structure.");
       return;
@@ -211,7 +209,9 @@ io.on("connection", async (socket) => {
     }
 
     console.log("Sending config command to frontend!");
-    fs.writeFileSync(path.join(__dirname, "www", "config.json"), JSON.stringify({ ...config, ...data }, null, 4));
+    const frontendConfig = JSON.parse(fs.readFileSync(path.join(__dirname, "www", "config.json")));
+
+    fs.writeFileSync(path.join(__dirname, "www", "config.json"), JSON.stringify({ ...frontendConfig, ...data }, null, 4));
     //refresh frontend
     io.emit("slide", { event: "refresh" });
   });
