@@ -6,7 +6,7 @@ pageFunction["./control/quiz.html"] = async () => {
   const submit = document.querySelector(".js-submit");
   const delete_item = document.querySelector(".js-delete");
   let selected = 0;
-  let new_html = `<p class="quiz--title">Quizvragen:</p>`;
+  let new_html = `<p class="quiz--title">Quiz questions:</p>`;
 
   for (item of question_text) {
     new_html += `<div class="quiz--question-item">
