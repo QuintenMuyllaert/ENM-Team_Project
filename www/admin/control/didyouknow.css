@@ -83,6 +83,11 @@
   width: 40px;
 }
 
+.dyk--item-add-svg path,
+.dyk--item-add-svg polygon {
+  fill: var(--admin-color-text);
+}
+
 .dyk--preview-container {
   grid-area: 4/10/7/13;
 }
