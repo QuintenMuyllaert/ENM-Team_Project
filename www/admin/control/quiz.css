@@ -55,6 +55,14 @@
   pointer-events: none;
   cursor: pointer;
 }
+.quiz--item-add {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
 
 .quiz--question-icon:last-child {
   fill: var(--admin-color-text);
