@@ -4,6 +4,7 @@ pageFunction["./control/quiz.html"] = async () => {
   const question_text = await question.json();
   const questions = document.querySelector(".quiz--questions-container");
   const submit = document.querySelector(".js-submit");
+  const delete_item = document.querySelector(".js-delete");
   let selected = 0;
   let new_html = `<p class="quiz--title">Quizvragen:</p>`;
 
@@ -45,6 +46,13 @@ pageFunction["./control/quiz.html"] = async () => {
       }
     });
   }
+
+  delete_item.addEventListener("click", async () => {
+    const question = await fetch("../data/questions.json");
+    let question_text = await question.json();
+    question_text.splice(selected, 1);
+    socket.emit("questions", question_text);
+  });
 
   submit.addEventListener("click", async () => {
     const and1 = document.getElementById(`Antwoord1`).value;
