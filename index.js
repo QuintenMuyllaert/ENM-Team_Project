@@ -7,6 +7,7 @@ const { Server } = require("socket.io");
 const speakeasy = require("speakeasy");
 const qrcode = require("qrcode");
 const siofu = require("socketio-file-upload");
+const { exec } = require("child_process");
 
 const console = require("./modules/console.js");
 const influx = require("./modules/influx.js");
@@ -24,6 +25,13 @@ configer.generateFrontend();
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
+
+const cmdline = (cmd, cb = () => {}) => {
+  exec(cmd, (e, stdout) => {
+    cb(stdout.toString());
+  });
+};
+
 slider.init(io);
 
 Date.prototype.minusDays = function (days) {
@@ -344,15 +352,17 @@ io.on("connection", async (socket) => {
   socket.on("error", (err) => console.error);
 });
 
-try {
-  server.listen(config.port || 80, async () => {
-    console.log("App launched");
-    if (!config) {
-      console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
-      return;
-    }
-  });
-} catch (err) {
-  console.log(":'(");
-  process.exit(1);
-}
+cmdline(`sudo kill $(sudo lsof -t -i:${config.port || 80})`, () => {
+  try {
+    server.listen(config.port || 80, async () => {
+      console.log("App launched");
+      if (!config) {
+        console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
+        return;
+      }
+    });
+  } catch (err) {
+    console.log(":'(");
+    process.exit(1);
+  }
+});
