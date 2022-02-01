@@ -15,7 +15,7 @@
   background-color: var(--admin-color-accent);
   border-radius: 1rem;
   overflow-y: scroll;
-  height: 80%;
+  height: 100%;
 }
 
 .quiz--answers-container {
@@ -23,7 +23,7 @@
   background-color: var(--admin-color-accent);
   border-radius: 1rem;
   margin-left: 0.5rem;
-  height: 80%;
+  height: 100%;
 }
 
 .quiz--title {
@@ -140,7 +140,7 @@
 .c-custom-option-button {
   width: 8rem;
   height: 3rem;
-  background-color: var(--admin-color-accent);
+  background-color: var(--admin-color-detail);
   border: 1px solid var(--admin-color-detail);
   border-radius: 5px;
   color: var(--admin-color-text);
