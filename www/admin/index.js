@@ -106,12 +106,20 @@ socket.on("connect", () => {
 });
 
 const authFunction = () => {
-  const username = htmlUsername.value;
-  const password = htmlPassword.value;
-  htmlUsername.disabled = true;
-  htmlPassword.disabled = true;
-  htmlButtonAuth.disabled = true;
-  socket.emit("auth", { username: username, password: password });
+  let recover = document.querySelector(".js-field--recovery");
+  if (!recover) {
+    recover = "";
+  }
+  if (recover.value != "" && recover != "") {
+    socket.emit("forget", recover.value);
+  } else {
+    const username = htmlUsername.value;
+    const password = htmlPassword.value;
+    htmlUsername.disabled = true;
+    htmlPassword.disabled = true;
+    htmlButtonAuth.disabled = true;
+    socket.emit("auth", { username: username, password: password });
+  }
   console.log("Auth request sent!");
 };
 

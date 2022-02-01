@@ -96,7 +96,7 @@ io.on("connection", async (socket) => {
     });
     fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
   }
-  if (config.twofactor) {
+  if (config.username) {
     socket.emit("2FA", "exist");
   }
   socket.on("updatefacts", async (facts) => {
@@ -139,6 +139,10 @@ io.on("connection", async (socket) => {
       token: `${code}`,
     });
     console.log(verfied);
+    if (verfied == true) {
+      console.log("Authentication successfull!");
+      socket.emit("auth", true);
+    }
   });
 
   socket.on("auth", async (obj) => {
