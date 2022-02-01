@@ -47,7 +47,7 @@ if (config.topic) {
 }
 
 influx.connect();
-writer.connect();
+// writer.connect();
 // deleter.delete();
 influx.fetchPeriodically(io);
 
