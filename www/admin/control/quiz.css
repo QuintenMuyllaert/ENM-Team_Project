@@ -140,7 +140,7 @@
 .c-custom-option-button {
   width: 8rem;
   height: 3rem;
-  background-color: var(--admin-color-accent);
+  background-color: var(--admin-color-detail);
   border: 1px solid var(--admin-color-detail);
   border-radius: 5px;
   color: var(--admin-color-text);
