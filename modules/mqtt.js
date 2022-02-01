@@ -1,10 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 const mqtt = require("mqtt");
-const writer = require("../modules/write.js");
 const config = fs.existsSync(path.join(__dirname, "../config.json")) ? require("../config.json") : false;
 const client = config.mqtt ? mqtt.connect(config.mqtt) : false;
-let i = 0;
 let io = false;
 let connected = false;
 
@@ -53,11 +51,6 @@ if (client) {
 
     console.log("Sending sanitized data to Socket.IO!");
     io.emit("mqttData", ret);
-    i++;
-    if (i == 20) {
-      writer.write(ret);
-      i = 0;
-    }
   });
 } else {
   console.log("NO MQTT URL PROVIDED IN CONFIG!");
