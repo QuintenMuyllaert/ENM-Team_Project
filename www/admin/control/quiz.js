@@ -56,6 +56,34 @@ pageFunction["./control/quiz.html"] = async () => {
       <path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" />
     </svg>
   </div>`;
+    const detail = document.querySelectorAll(".quiz--question-item");
+    for (quest of detail) {
+      quest.addEventListener("click", async (item) => {
+        const facts = item.srcElement;
+        const question = await fetch("../data/questions.json");
+        const question_text = await question.json();
+        let i = 0;
+        for (item of question_text) {
+          if (item.question == facts.innerText) {
+            selected = i;
+            document.querySelector(".quiz--answer-input").value = item.question;
+            let idnum = 1;
+
+            for (aswer of item.answers) {
+              if (aswer == item.correct) {
+                document.getElementById(`radio${idnum}`).checked = true;
+              }
+              document.getElementById(`Antwoord${idnum}`).value = aswer;
+              idnum++;
+            }
+            if (idnum == 3) {
+              document.getElementById(`Antwoord${idnum}`).value = "";
+            }
+          }
+          i++;
+        }
+      });
+    }
   });
   delete_item.addEventListener("click", async () => {
     const question = await fetch("../data/questions.json");
