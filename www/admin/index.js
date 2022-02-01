@@ -79,9 +79,10 @@ socket.on("connect", () => {
     init();
   });
   socket.on("qrcode", async (data) => {
-    console.log(data);
-    const code = document.querySelector(".js-qrcode");
-    code.src = data;
+    const codeContainer = document.querySelector(".js-recovery");
+    const explanationContainer = document.querySelector(".js-recovery-explanation");
+    codeContainer.innerHTML = `<img src="${data}" class="js-qrcode admin--qrcode"></img>`;
+    explanationContainer.innerHTML = `<div class="admin--recovery-container js-recovery-explanation"><p class="admin--qrcode-explanation">Scan deze QR-code om een recovery code te krijgen als je uw wachtwoord en username vergeten bent!</br>Gebruik Google Authenticator om de QR-code te scannen!</p></div>`;
   });
   socket.on("influxData", (data) => {
     console.log("Got processed influx data!");
