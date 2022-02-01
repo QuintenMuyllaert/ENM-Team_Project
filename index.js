@@ -211,7 +211,9 @@ io.on("connection", async (socket) => {
     }
 
     console.log("Sending config command to frontend!");
-    fs.writeFileSync(path.join(__dirname, "www", "config.json"), JSON.stringify({ ...config, ...data }, null, 4));
+    const frontendConfig = JSON.parse(fs.readFileSync(path.join(__dirname, "www", "config.json")));
+
+    fs.writeFileSync(path.join(__dirname, "www", "config.json"), JSON.stringify({ ...frontendConfig, ...data }, null, 4));
     //refresh frontend
     io.emit("slide", { event: "refresh" });
   });
