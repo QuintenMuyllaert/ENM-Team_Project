@@ -137,7 +137,7 @@ body {
 }
 
 .admin--qrcode {
-  /* margin-bottom: 10%; */
+  margin-bottom: 4%;
   padding-bottom: 1rem;
 }
 
@@ -146,6 +146,18 @@ body {
   display: flex;
   justify-self: center;
   padding: 1rem 0.6rem;
+}
+
+.admin--recovery-container-input {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.admin--recovery-container input {
+  justify-self: center;
+  z-index: 4;
 }
 
 .o-hide-accessible {
