@@ -87,8 +87,8 @@ body {
 }
 
 .admin--recovery-container {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  display: flex;
+  justify-content: center;
 }
 
 .admin--fieldset-recovery {
@@ -137,9 +137,15 @@ body {
 }
 
 .admin--qrcode {
-  margin: auto;
+  /* margin-bottom: 10%; */
+  padding-bottom: 1rem;
+}
+
+.admin--qrcode-explanation {
+  font-size: 1rem;
   display: flex;
-  margin-bottom: 10%;
+  justify-self: center;
+  padding: 1rem 0.6rem;
 }
 
 .o-hide-accessible {
