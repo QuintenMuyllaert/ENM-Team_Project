@@ -96,6 +96,9 @@ io.on("connection", async (socket) => {
     });
     fs.writeFileSync("./config.json", JSON.stringify(config, null, 4));
   }
+  if (config.twofactor) {
+    socket.emit("2FA", "exist");
+  }
   socket.on("updatefacts", async (facts) => {
     if (!socket.auth) {
       return;

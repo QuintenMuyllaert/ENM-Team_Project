@@ -38,6 +38,14 @@ socket.on("connect", () => {
   connected = true;
   console.log("Connection to server made!");
 
+  socket.on("2FA", (data) => {
+    if (data == "exist") {
+      const exist = document.querySelector(".js-recovery");
+      exist.innerHTML = `<label class="admin--fieldset-label admin--fieldset-password" for="password">Recovery</label>
+      <input class="admin--fieldset-input admin--fieldset-password admin--qrcode js-field--recovery" type="password"  id="password"  />`;
+    }
+  });
+
   socket.on("auth", async (success) => {
     if (success) {
       console.log("Authentication successfull!");
