@@ -16,8 +16,9 @@ const loadPageContent = async (e) => {
 //Gets called as soon as client has logged in and the page is loaded.
 const init = async () => {
   tree = await fetchJSON("../tree.json");
-
+  document.querySelector(".admin--profile-name").textContent = username;
   //Queryselectors
+
   htmlNavlist = document.querySelector(".admin--nav-list");
 
   //Event listeners
@@ -40,6 +41,9 @@ socket.on("connect", () => {
   socket.on("auth", async (success) => {
     if (success) {
       console.log("Authentication successfull!");
+
+      username = htmlUsername.value;
+
       //TODO! add green class to fields...
       auth = true;
       htmlUsername.value = "";
