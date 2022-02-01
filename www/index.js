@@ -41,8 +41,6 @@ const onRenderPage = async () => {
   index = 0;
   vergelijking.forEach((element) => {
     let vergelijking_data = element.innerHTML;
-    console.log(vergelijking_data);
-    console.log(Math.floor(vergelijking_data / 35));
     i = Math.ceil(vergelijking_data / 45);
     let html = "";
     while ((i == 1, i--)) {
