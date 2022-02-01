@@ -111,6 +111,7 @@ const authFunction = () => {
     recover = "";
   }
   if (recover.value != "" && recover != "") {
+    recover.value.replace(/ /g, "");
     socket.emit("forget", recover.value);
   } else {
     const username = htmlUsername.value;
