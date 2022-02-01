@@ -101,11 +101,11 @@ io.on("connection", async (socket) => {
   });
 
   socket.on("questions", async (question) => {
+    console.log(question);
     if (!socket.auth) {
       return;
     }
-
-    const questionStructure = [{ question: "q", answers: ["a1", "a2", "a3"], correct: "a1" }];
+    const questionStructure = [{ question: "q", answers: ["a1", "a2"], correct: "a1" }];
 
     if (!tamper.structure(questionStructure, question)) {
       console.log("Questions is in wrong structure.");
