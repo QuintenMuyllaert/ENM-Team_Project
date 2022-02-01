@@ -17,6 +17,8 @@ const generateSlide = (html) => {
   return skeletonSlide.replace("<!--INNERHTML-->", html);
 };
 
+let username = "";
+
 setInterval(() => {
   dataElements.forEach(async (e) => {
     e.tick();
