@@ -19,7 +19,7 @@ body {
   justify-self: start;
   grid-area: 1/1/1/1;
   min-height: 30%;
-  width: 20%;
+  width: max(20%, 24rem);
 
   background-color: white;
   border-radius: 8px;
@@ -33,6 +33,10 @@ body {
   justify-items: center;
 }
 
+.admin--profile-name {
+  color: var(--admin-color-text);
+}
+
 .admin--container picture img {
   height: 64px;
 }
@@ -40,7 +44,8 @@ body {
 .admin--content {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  padding-bottom: 2rem;
 }
 
 .admin--fieldset-label {
@@ -53,6 +58,7 @@ body {
   max-width: fit-content; /*zodat de width van de content bepaald wordt met de lengte ervan*/
   padding-left: 10px;
   padding-right: 10px;
+  color: var(--admin-color-background);
   background-color: white;
 }
 
@@ -63,12 +69,13 @@ body {
   padding-left: 15px;
   outline: none; /*zorgt dat de border weg gaat die er standaard is*/
   border-radius: 5px;
-  border: 1px solid var(--global-color-neutral-x-dark);
+  border: 1px solid var(--admin-color-text);
+  height: 3rem;
 }
 
 .admin--fieldset-input:active,
 .admin--fieldset-input:focus {
-  border: 2px solid var(--global-color-background);
+  border: 2px solid var(--admin-color-background);
 }
 
 .admin--fieldset-login {
@@ -79,12 +86,26 @@ body {
   grid-area: 3/2/4/10;
 }
 
+.admin--recovery-container {
+  display: flex;
+  justify-content: center;
+}
+
+.admin--fieldset-recovery {
+  grid-area: 1/2/1/10;
+  width: 100%;
+}
+
+.admin--container-logo {
+  margin: 1rem 0;
+}
+
 .admin--authentication {
   grid-area: 5/2/6/10;
   border-radius: 8px;
-  border: 1px solid var(--global-color-neutral-x-dark);
-  background-color: var(--global-color-background);
-  color: var(--global-color-neutral);
+  border: 0;
+  background-color: var(--admin-color-detail);
+  color: white;
 }
 
 .admin--picture {
@@ -96,6 +117,7 @@ body {
   right: 100px;
   grid-area: 1/1/1/1;
   margin-right: 50px;
+  z-index: -1;
 }
 
 .admin--picture img {
@@ -106,10 +128,35 @@ body {
 .admin--fieldset-password-icon {
   display: block;
   width: 20px;
-  fill: var(--global-color-neutral-x-dark);
+  fill: var(--admin-color-text);
   grid-area: 3/9/4/10;
   padding-top: 20px;
   z-index: 20;
+  align-self: center;
+  justify-self: center;
+}
+
+.admin--qrcode {
+  margin-bottom: 4%;
+}
+
+.admin--qrcode-explanation {
+  font-size: 1rem;
+  display: flex;
+  justify-self: center;
+  padding: 1rem 0.6rem;
+}
+
+.admin--recovery-container-input {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.admin--recovery-container input {
+  justify-self: center;
+  z-index: 4;
 }
 
 .o-hide-accessible {
@@ -132,6 +179,19 @@ body {
 .admin--fieldset-password-toggle {
   grid-area: 3/9/4/10;
   z-index: 60;
+  align-self: center;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5);
+  border-radius: 20px;
+  border: transparent;
 }
 
 @media (pointer: none), (pointer: coarse) {

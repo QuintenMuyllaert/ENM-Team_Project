@@ -1,13 +1,13 @@
 [
   {
-    "question": "Wekt de transfo site meer groene energie op dan dat een gemiddeld gezin verbruikt op een dag?",
-    "answers": ["ja", "nee"],
-    "correct": "ja"
+    "question": "Wat was de transfosite vroeger?",
+    "answers": ["Electriciteitscentrale", "Kerncentrale", "Waterkrachtcentrale"],
+    "correct": "Electriciteitscentrale"
   },
   {
     "question": "Verbruikt de duiktank meer energie dan er opgewekt wordt over de site?",
     "answers": ["ja", "nee"],
-    "correct": "nee"
+    "correct": "ja"
   },
   {
     "question": "Wekt de transfo alleen maar groene energie op?",
@@ -20,8 +20,8 @@
     "correct": "Duiktank"
   },
   {
-    "question": "Bij welk gebouw wordt er de meeste groene energie opgewekt?",
-    "answers": ["Duiktank", "Blok 1", "Blok 2"],
-    "correct": "Blok 1"
+    "question": "Wat is groene energie?",
+    "answers": ["Energie van de planten", "Energie uit batterijen", "Energie uit hernieuwbare bronnen"],
+    "correct": "Energie uit hernieuwbare bronnen"
   }
 ]

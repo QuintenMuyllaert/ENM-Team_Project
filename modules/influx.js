@@ -2,6 +2,7 @@ const path = require("path");
 const fs = require("fs");
 const { InfluxDB } = require("@influxdata/influxdb-client");
 const config = fs.existsSync(path.join(__dirname, "../config.json")) ? require("../config.json") : false;
+const { getSunset, getSunrise } = require("sunrise-sunset-js");
 
 module.exports = {
   lastHour: {},
@@ -13,6 +14,15 @@ module.exports = {
       console.log("NO URL PROVIDED FOR INFLUXDB!");
       return;
     }
+    console.log("Setting basisy.");
+    module.exports.oneSecond = 1;
+    module.exports.oneMinute = 60 * module.exports.oneSecond;
+    module.exports.oneHour = 60 * module.exports.oneMinute;
+    module.exports.oneDay = 24 * module.exports.oneHour;
+    module.exports.oneWeek = 7 * module.exports.oneDay;
+    module.exports.oneMonth = 30.4368499 * module.exports.oneDay;
+    module.exports.oneYear = 365.242199 * module.exports.oneDay;
+
     console.log("Connecting.");
     module.exports.queryApi = new InfluxDB({ url, token }).getQueryApi(org);
   },
@@ -32,53 +42,169 @@ module.exports = {
       return false;
     }
   },
-  fetch: async (io, days) => {
+  calculateDayNight: (data, basis) => {
+    //hours (server time) we see as morning / evening
+    //morning <= time < evening = day
+    //!day = night
+    const cords = [50.81268, 3.33848];
+    const morning = new Date(getSunrise(...cords)).getHours();
+    const evening = new Date(getSunset(...cords)).getHours();
+
+    let listdag = 0;
+    let listnacht = 0;
+
+    let lenDag = 0;
+    let lenNacht = 0;
+
+    for (const thing of data) {
+      if (thing.time) {
+        const time = parseInt(thing.time.split("T")[1].split(":")[0]);
+        if (time < evening && time >= morning) {
+          listdag += thing.val;
+          lenDag++;
+        } else {
+          listnacht += thing.val;
+          lenNacht++;
+        }
+      }
+    }
+
+    return {
+      day: {
+        total: (listdag / lenDag) * basis,
+        avg: listdag / lenDag,
+      },
+      night: {
+        total: (listnacht / lenNacht) * basis,
+        avg: listnacht / lenNacht,
+      },
+    };
+  },
+  sanitize: async (io) => {
+    const timelabels = ["minuut", "uur", "dag", "week", "maand", "jaar"];
+    const basisy = [module.exports.oneMinute, module.exports.oneHour, module.exports.oneHour, module.exports.oneHour, module.exports.oneDay, module.exports.oneMonth];
+    const amt = [1 / 24 / 60, 1 / 24, 1, 8, 31, 357];
+
+    const basisyTotal = [1 / 60, 1, 24, 7 * 24, 30.4368499 * 24, 365.242199 * 24];
+
+    let dataByMeter = {};
+    let moreDataByMeter = {};
+    for (const i in timelabels) {
+      const basis = basisy[i];
+      const label = timelabels[i];
+      const [data, data2] = await module.exports.fetch(amt[i], basis);
+
+      for (const thing of data) {
+        const obj = {
+          val: thing._value,
+          time: thing._time,
+        };
+        if (!dataByMeter[thing._field]) {
+          dataByMeter[thing._field] = {};
+        }
+        if (!dataByMeter[thing._field][label]) {
+          dataByMeter[thing._field][label] = { data: [obj], basis: label };
+        } else {
+          dataByMeter[thing._field][label].data.unshift(obj);
+        }
+      }
+
+      //some value's can't get "meaned"
+      for (const thing of data2) {
+        const obj = {
+          val: thing._value,
+          time: thing._time,
+        };
+        if (!dataByMeter[thing._field]) {
+          moreDataByMeter[thing._field] = {};
+        }
+        if (!moreDataByMeter[thing._field]) {
+          //nothing to do
+        } else if (!moreDataByMeter[thing._field][label]) {
+          moreDataByMeter[thing._field][label] = { data: [obj], basis: label };
+        } else {
+          moreDataByMeter[thing._field][label].data.unshift(obj);
+        }
+      }
+
+      dataByMeter = { ...dataByMeter, ...moreDataByMeter };
+
+      const meters = Object.keys(dataByMeter);
+      for (const meter of meters) {
+        let sum = 0;
+        const len = dataByMeter[meter][label].data.length;
+        for (const point of dataByMeter[meter][label].data) {
+          sum += point.val;
+        }
+        const avg = sum / len; // = W
+        const tot = avg * basisyTotal[i]; // = W/basis
+        dataByMeter[meter][label].gemiddeld = avg;
+        dataByMeter[meter][label].totaal = tot;
+        if (basis == module.exports.oneHour) {
+          const dayNight = module.exports.calculateDayNight(dataByMeter[meter][label].data, basisyTotal[i]);
+          dataByMeter[meter][label].overdag = {
+            gemiddeld: dayNight.night.avg,
+            totaal: dayNight.night.total,
+          };
+          dataByMeter[meter][label].snachts = {
+            gemiddeld: dayNight.day.avg,
+            totaal: dayNight.day.total,
+          };
+        }
+      }
+    }
+
+    const meters = Object.keys(dataByMeter);
+    for (const meter of meters) {
+      //#Blame Senne & CO
+      if (!dataByMeter[meter]["dag"]) {
+        delete dataByMeter[meter];
+      }
+    }
+
+    console.log("Sending data to socket");
+    module.exports.data = dataByMeter;
+    io.emit("influxData", dataByMeter);
+  },
+  secondsToDays: (s) => {
+    const oneDayInSeconds = 60 * 60 * 24;
+    return s / oneDayInSeconds;
+  },
+  fetch: async (days, basis) => {
     if (!config) {
       console.log("PLEASE ADD THE CORRECT CONFIG.JSON!!!");
       return;
     }
     console.log("Attempting to fetch data from InfluxDB.");
-
     let today = new Date(Date.now());
     today.setHours(1, 0, 0, 0);
     const stopdate = today.toISOString();
     today = today.minusDays(days);
     const startdate = today.toISOString();
-    const querry = `from(bucket: "${config.bucket}") |> range(start: ${startdate}, stop: ${stopdate}) |> aggregateWindow(every: 1h, fn: last, createEmpty: false) `;
+    const querry = `from(bucket: "${config.bucket}") |> range(start: ${startdate}, stop: ${stopdate}) |> aggregateWindow(every: ${Math.round(basis)}s, fn: mean, createEmpty: false) `;
     const data = await module.exports.run(querry);
 
-    if (!data) {
+    const querry2 = `from(bucket: "${config.bucket}") |> range(start: ${startdate}, stop: ${stopdate}) |> aggregateWindow(every: ${Math.round(basis)}s, fn: last, createEmpty: false) `;
+    const data2 = await module.exports.run(querry2);
+
+    if (!data || !data2) {
       console.log("Something went wrong while fetching data!\nGot empty data object, possibly because the database is offline.");
-      return;
+      return [[], []];
     }
 
-    const ret = {};
-    for (const thing of data) {
-      if (!ret[thing._field]) {
-        ret[thing._field] = [thing];
-      } else {
-        ret[thing._field].push(thing);
-      }
-    }
-    if (days == 1) {
-      module.exports.lastHour = ret;
-      io.emit("influx", module.exports.lastHour);
-      console.log(`Pushed data to Socket.IO on topic "influx"!`);
-    }
-    if (days == 7) {
-      module.exports.lastWeek = ret;
-      io.emit("influxWeek", module.exports.lastWeek);
-      console.log(`Pushed data to Socket.IO on topic "influxWeek"!`);
-    }
+    return [data, data2];
   },
   fetchPeriodically: async (io) => {
     console.log("First periodical fetch of the data.");
-    await module.exports.fetch(io, 1);
-    await module.exports.fetch(io, 7);
+    //await module.exports.fetch(io, 1);
+    //await module.exports.fetch(io, 7);
+
+    await module.exports.sanitize(io);
     setInterval(async () => {
       console.log("Periodical fetch of the data.");
-      await module.exports.fetch(io, 1);
-      await module.exports.fetch(io, 7);
-    }, 5000);
+      await module.exports.sanitize(io);
+      //await module.exports.fetch(io, 1);
+      //await module.exports.fetch(io, 7);
+    }, 60 * 1000);
   },
 };

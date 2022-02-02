@@ -7,80 +7,126 @@ const dataElement = class {
     this._data = value;
     this.update();
   }
-  constructor(query, initialData, override) {
+  constructor(element, initialData, override) {
+    if (!element.dataElementLinked) {
+      element.dataElementLinked = true;
+    }
     dataElements.push(this);
-    this.query = query;
+    this.element = element;
     this.data = initialData;
     if (!override) {
       return;
     }
     const keys = Object.keys(override);
     for (const key of keys) {
-      this[key] = override[key];
+      this[`_${key}`] = override[key];
     }
+    if (!element.hasInit) {
+      element.hasInit = true;
+      this.init();
+    }
+    this.tick();
   }
-  init() {}
-  render() {}
-  unrender() {}
-  update() {}
-  onInit(cb) {
-    this.init = cb;
+  init() {
+    if (!this.element) {
+      return;
+    }
+    if (!this._init) {
+      return;
+    }
+    if (this.element.getAttribute("dataElement") != "") {
+      return;
+    }
+    return this._init();
   }
-  onRender(cb) {
-    this.render = cb;
+  render() {
+    if (!this.element) {
+      return;
+    }
+    if (!this._render) {
+      return;
+    }
+    if (this.element.getAttribute("dataElement") != "") {
+      return;
+    }
+    return this._render();
   }
-  onUnRender(cb) {
-    this.unrender = cb;
+  unrender() {
+    if (!this.element) {
+      return;
+    }
+    if (!this._unrender) {
+      return;
+    }
+    if (this.element.getAttribute("dataElement") != "") {
+      return;
+    }
+    return this._unrender();
   }
-  onUpdate(cb) {
-    this.update = cb;
+  update() {
+    if (!this.element) {
+      return;
+    }
+    if (!this._update) {
+      return;
+    }
+    if (this.element.getAttribute("dataElement") != "") {
+      return;
+    }
+    return this._update();
   }
-  updateData(data) {
-    this.data = data;
+  tick(data) {
+    if (!this.element) {
+      return;
+    }
+    if (this.element.getAttribute("dataElement") != "") {
+      return;
+    }
+    const value = this.element.getAttribute("dataValue");
+    if (!value) {
+      console.error("No value");
+      return;
+    }
+
+    let newData = this.data;
+    try {
+      newData = eval(`(() => {return ${value}})()`);
+    } catch (e) {
+      console.error("Something went wrong.");
+    }
+    if (newData == this.data) {
+      return;
+    }
+    this.data = newData;
   }
 };
 
 const elementDefaultsText = {
   init: function () {
-    this.element = document.querySelector(this.query);
+    //this.element = document.querySelector(this.query);
   },
   render: function () {
-    if (!this.element) {
-      return;
-    }
     this.element.textContent = this.data;
   },
   update: function () {
-    if (!this.element) {
-      return;
-    }
     this.element.textContent = this.data;
   },
 };
 
 const elementDefaultsInnerHTML = {
   init: function () {
-    this.element = document.querySelector(this.query);
+    //this.element = document.querySelector(this.query);
   },
   render: function () {
-    if (!this.element) {
-      return;
-    }
     this.element.innerHTML = this.data;
   },
   update: function () {
-    if (!this.element) {
-      return;
-    }
     this.element.innerHTML = this.data;
   },
 };
 
 const elementDefaultsChart = {
   render: async function () {
-    if (!this.element) {
-      return;
-    }
     if (!this.element.graph) {
       return;
     }
@@ -88,17 +134,15 @@ const elementDefaultsChart = {
     this.element.graph.data.datasets[0].data = [];
     this.element.graph.update();
     await delay(500);
-    this.element.graph.data.datasets[0].data = this.data;
+    this.element.graph.data.datasets[0].data = this.data.data;
     this.element.graph.update();
   },
   update: function () {
-    if (!this.element) {
-      return;
-    }
     if (!this.element.graph) {
       return;
     }
-    this.element.graph.data.datasets[0].data = this.data;
+    this.element.graph.data.datasets[0].data = this.data.data;
+    this.element.graph.data.labels = this.data.labels;
     this.element.graph.update();
   },
 };

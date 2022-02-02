@@ -1,0 +1,66 @@
+<div class="press--container">
+  <div>
+    <h2 class="press--title">Slide editor</h2>
+
+    <div class="press--slide-nav-container">
+      <nav class="press--slide-nav">
+        <button class="press--undo">
+          <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M12.5,8C9.85,8 7.45,9 5.6,10.6L2,7V16H11L7.38,12.38C8.77,11.22 10.54,10.5 12.5,10.5C16.04,10.5 19.05,12.81 20.1,16L22.47,15.22C21.08,11.03 17.15,8 12.5,8Z" /></svg>
+        </button>
+        <button class="press--goback">&larr;</button>
+        <p class="press--number">0</p>
+        <button class="press--goforward">&rarr;</button>
+        <button class="press--save">
+          <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z" /></svg>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <div class="press--slide-container notch">
+    <div class="press--slide-scale"><div class="press--slide-viewport"></div></div>
+    <div class="press--toolbox">
+      <h2>Toolbox</h2>
+      <div>
+        <label for="toolbox--selected">selected</label>
+        <textarea id="toolbox--selected" class="press-selected-item"></textarea>
+      </div>
+      <div class="press--stack">
+        <label for="siofu_input">select file</label>
+        <label for="siofu_input" class="press--dropbox">
+          <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M2 12H4V17H20V12H22V17C22 18.11 21.11 19 20 19H4C2.9 19 2 18.11 2 17V12M12 2L6.46 7.46L7.88 8.88L11 5.75V15H13V5.75L16.13 8.88L17.55 7.45L12 2Z" /></svg>
+        </label>
+        <input type="file" id="siofu_input" title="" />
+      </div>
+
+      <div>
+        <label for="toolbox--dataValue">data value</label>
+        <textarea id="toolbox--dataValue" class="press-selected-item"></textarea>
+      </div>
+      <div>
+        <label for="toolbox--dataType">data type</label>
+        <textarea id="toolbox--dataType" class="press-selected-item"></textarea>
+      </div>
+      <div>
+        <p>slide number</p>
+        <div class="press--sidebyside">
+          <button class="press--button press--movepageleft">&larr;</button>
+          <p class="press--newpagenr">0</p>
+          <button class="press--button press--movepageright">&rarr;</button>
+        </div>
+      </div>
+      <div>
+        <label for="slidelength">slide length ( seconds )</label>
+        <input id="slidelength" type="number" />
+      </div>
+    </div>
+    <div class="press--corner press--sidebyside">
+      <button class="press--trash">🗑️</button>
+      <button class="press--addslide">+</button>
+    </div>
+
+    <div class="press--prompt prompt-down">
+      <p class="press--prompt-text">Changes have been applied!</p>
+    </div>
+  </div>
+</div>

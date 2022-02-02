@@ -1,21 +1,19 @@
-<div class="control--body">
-  <div class="control--logo">
-    <img class="control--logo-img" src="../img/logo.png" alt="" />
-  </div>
-  <div class="control--sidebar">
-    <ul class="control--sidebar-list">
-      <li class="control--sidebar-list-item js-slides">Slides</li>
-      <li class="control--sidebar-list-item js-slide-add">Voeg slide toe</li>
-      <li class="control--sidebar-list-item js-slide-weetjes">Weetjes</li>
-    </ul>
-  </div>
-  <div class="control--top-bar">
-    <div class="control--top-bar-title">
-      <h1 class="control--top-bar-title-name js-control-home">Home</h1>
+<main class="admin--main-content">
+  <nav class="admin--navigation">
+    <div class="admin--nav-content">
+      <picture class="admin--logo">
+        <img src="../img/logo-white-alpha.png" alt="logo transfo" />
+      </picture>
+      <ul class="admin--nav-list">
+        <li htmlFile="./control/press.html" class="selected"><button>Slide editor</button></li>
+        <li htmlFile="./control/didyouknow2.html"><button>Facts</button></li>
+        <li htmlFile="./control/quiz.html"><button>Quiz</button></li>
+      </ul>
     </div>
-    <div class="control--top-bar-profile">
-      <h1 class="control--top-bar-profile-name">profile</h1>
+    <div class="admin--profile">
+      <p class="admin--profile-name">Admin</p>
+      <div class="admin--profile-picture"></div>
     </div>
-  </div>
-  <div class="control--page main--container center"></div>
-</div>
+  </nav>
+  <section class="admin--page-container"></section>
+</main>
