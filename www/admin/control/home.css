@@ -9,37 +9,37 @@
 
 .home--input {
   grid-area: 1 / 1 / span 8 / span 5;
-  background-color: #f3f3f3;
+  background-color: var(--admin-color-container);
   padding: 10px;
   border-radius: 5px;
 }
 
 .home--input-element {
-    display: flex;
-    margin-bottom: 16px;
-    background-color: #dc0000;
-    padding: 5px;
-    border-radius: 5px;
-    color: white;
-    flex-direction: column;
+  display: flex;
+  margin-bottom: 16px;
+  background-color: var(--admin-color-detail);
+  padding: 5px;
+  border-radius: 5px;
+  color: var(--admin-color-accent);
+  flex-direction: column;
 }
 
 .home--input-input {
-    width: 70px;
-    padding: 5px;
-    border-radius: 5px;
-    border: none;
-    margin-top: 5px;
+  width: 70px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 5px;
 }
 
 .home--input-submit {
-    width: 100px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 2px solid #dc0000;
-    background-color: white;
+  width: 100px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid var(--admin-color-detail);
+  background-color: var(--admin-color-container);
 }
 
 .home--input-submit:hover {
-    background-color: #f3f3f3;
+  background-color: var(--admin-color-text);
 }

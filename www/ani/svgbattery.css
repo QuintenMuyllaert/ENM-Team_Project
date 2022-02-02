@@ -1,0 +1,111 @@
+.svg--battery-bat * {
+    animation-name: animation_battery;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+
+.svg--battery-bat #bat1 {
+  opacity: var(--svg--battery-opacity-1);
+}
+
+.svg--battery-bat #bat2 {
+  opacity: var(--svg--battery-opacity-2);
+}
+
+.svg--battery-bat #bat3 {
+  opacity: var(--svg--battery-opacity-3);
+}
+
+.svg--battery-bat #bat4 {
+  opacity: var(--svg--battery-opacity-4);
+}
+
+.svg--battery-bat #bat5 {
+  opacity: var(--svg--battery-opacity-5);
+}
+
+@keyframes animation_battery {
+  0% {
+    --svg--battery-opacity-1: 0;
+    --svg--battery-opacity-2: 0;
+    --svg--battery-opacity-3: 0;
+    --svg--battery-opacity-4: 0;
+    --svg--battery-opacity-5: 0;
+  }
+  10% {
+    --svg--battery-opacity-1: 1;
+    --svg--battery-opacity-2: 0;
+    --svg--battery-opacity-3: 0;
+    --svg--battery-opacity-4: 0;
+    --svg--battery-opacity-5: 0;
+  }
+
+  20% {
+    --svg--battery-opacity-1: 1;
+    --svg--battery-opacity-2: 1;
+    --svg--battery-opacity-3: 0;
+    --svg--battery-opacity-4: 0;
+    --svg--battery-opacity-5: 0;
+  }
+
+  30% {
+    --svg--battery-opacity-1: 1;
+    --svg--battery-opacity-2: 1;
+    --svg--battery-opacity-3: 1;
+    --svg--battery-opacity-4: 0;
+    --svg--battery-opacity-5: 0;
+  }
+
+  40% {
+    --svg--battery-opacity-1: 1;
+    --svg--battery-opacity-2: 1;
+    --svg--battery-opacity-3: 1;
+    --svg--battery-opacity-4: 1;
+    --svg--battery-opacity-5: 0;
+  }
+  50% {
+    --svg--battery-opacity-1: 1;
+    --svg--battery-opacity-2: 1;
+    --svg--battery-opacity-3: 1;
+    --svg--battery-opacity-4: 1;
+    --svg--battery-opacity-5: 1;
+  }
+  60% {
+    --svg--battery-opacity-1: 1;
+    --svg--battery-opacity-2: 1;
+    --svg--battery-opacity-3: 1;
+    --svg--battery-opacity-4: 1;
+    --svg--battery-opacity-5: 0;
+  }
+
+  70% {
+    --svg--battery-opacity-1: 1;
+    --svg--battery-opacity-2: 1;
+    --svg--battery-opacity-3: 1;
+    --svg--battery-opacity-4: 0;
+    --svg--battery-opacity-5: 0;
+  }
+  80% {
+    --svg--battery-opacity-1: 1;
+    --svg--battery-opacity-2: 1;
+    --svg--battery-opacity-3: 0;
+    --svg--battery-opacity-4: 0;
+    --svg--battery-opacity-5: 0;
+  }
+  90% {
+    --svg--battery-opacity-1: 1;
+    --svg--battery-opacity-2: 0;
+    --svg--battery-opacity-3: 0;
+    --svg--battery-opacity-4: 0;
+    --svg--battery-opacity-5: 0;
+  }
+  100% {
+    --svg--battery-opacity-1: 0;
+    --svg--battery-opacity-2: 0;
+    --svg--battery-opacity-3: 0;
+    --svg--battery-opacity-4: 0;
+    --svg--battery-opacity-5: 0;
+  }
+}

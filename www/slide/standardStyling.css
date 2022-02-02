@@ -1,0 +1,1084 @@
+/*
+    This is the general styling of the slides
+*/
+
+.main {
+  display: grid;
+  --horizontal-grid: 12;
+  --vertical-grid: 24;
+  grid-template-columns: repeat(var(--vertical-grid), minmax(0, calc(100% / var(--vertical-grid))));
+  grid-template-rows: repeat(var(--horizontal-grid), minmax(0, calc(100% / var(--horizontal-grid))));
+  gap: 10px;
+  height: 100%;
+  width: 100%;
+  --global-background-item: #f3f3f3;
+}
+
+.title {
+  color: var(--global-color-title);
+}
+
+.placeholder-image {
+  height: 100%;
+  width: 100%;
+}
+
+/*
+    This is the section for the header and the title of the slides
+*/
+
+.header {
+  grid-area: 1/2/2/25;
+  padding-top: 2%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 130%;
+}
+
+.header--title-container {
+  grid-area: 1/2/2/6;
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+.header--title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: start;
+  padding-bottom: 2px;
+  border-bottom: 5px solid black;
+  color: var(--global-color-title);
+  width: max-content;
+}
+
+/*
+    This is the section for the general style of items in a page 
+*/
+
+.item--style {
+  background-color: var(--global-background-item);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.item--style-small-info {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+}
+
+.item--style-piechart-container {
+  display: flex;
+  gap: 0px;
+}
+
+/*
+    Section for the information inside a card
+*/
+
+.item--title {
+  justify-self: start;
+  align-self: center;
+  height: 50%;
+  width: 20%;
+}
+
+.item--icons-compare {
+  display: flex;
+  gap: 5%;
+  align-self: center;
+  justify-content: center;
+  padding: 0 2% 5% 2%;
+}
+
+.item--container {
+  align-self: center;
+  justify-self: center;
+  width: 100% !important;
+}
+
+/*
+    Section specific for the small boxes
+*/
+
+.item--small-text {
+  padding-top: 1rem;
+  color: var(--global-color-text);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.item--small-value-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/*
+    Section specific for the medium compare boxes
+*/
+
+.item--style-medium-compare {
+  display: flex;
+  justify-content: space-between;
+  height: 100% !important;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+
+.item--style-medium-compare-text-container {
+  display: grid;
+  justify-content: center;
+  grid-template-rows: repeat(2, 1fr);
+  height: 100%;
+  width: 40%;
+}
+
+.item--style-medium-compare-value-container {
+  display: flex;
+  gap: 1%;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 5%;
+}
+
+.item--style-medium-compare-value {
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.item--style-medium-compare-unit {
+  font-size: 125%;
+  padding-top: 5%;
+  padding-left: 1%;
+  font-weight: 400;
+  display: flex;
+  justify-self: end;
+}
+
+.item--style-medium-compare-text {
+  grid-area: 2/1/3/1;
+  height: 30%;
+  font-size: 1.5rem;
+  color: var(--global-color-text);
+  white-space: nowrap;
+  display: flex;
+  justify-self: start;
+}
+
+.item--style-medium-compare-line {
+  height: 100%;
+  width: auto;
+}
+
+.item--style-medium-compare-icons {
+  padding: 1rem 0;
+  height: 100%;
+  width: 40%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.item--medium-compare-above-right {
+  width: 100%;
+  height: 100%;
+}
+
+/*
+    Section specific for the medium data boxes
+*/
+
+.item--medium-container {
+  display: flex;
+  gap: 2%;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.item--medium-value-text-container {
+  padding-left: 5%;
+  font-size: 150%;
+  font-weight: bold;
+  width: 100%;
+}
+
+.item--medium-value-container {
+  display: flex;
+  padding-bottom: 5%;
+}
+
+.item--medium-text {
+  font-size: 100%;
+  color: var(--global-color-text);
+  white-space: nowrap;
+}
+
+/*
+    Section specific for the medium data boxes in the green energy slides
+*/
+
+.item--medium-energy-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.item--medium-energy-info-container {
+  align-self: center;
+}
+
+.item--medium-energy-text-container {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+}
+
+.item--medium-energy-value {
+  font-weight: bold;
+  color: var(--global-color-title);
+  font-size: 2.25rem;
+}
+
+.item--medium-energy-unit {
+  font-weight: 400;
+  color: var(--global-color-title);
+  font-size: 1.5rem;
+  padding-top: 8px;
+}
+
+.item--medium-energy-text {
+  font-size: 1.5rem;
+}
+
+/*
+  Section specific for the midium quiz boxes
+*/
+
+.item--medium-quiz-container {
+  display: grid;
+  grid-template-columns: auto max-content;
+  padding: 1rem;
+  height: 100%;
+}
+
+.item--medium-quiz-question {
+  font-size: 1.5rem;
+  color: var(--global-color-title);
+  width: 100%;
+}
+
+.item--medium-quiz-timer {
+  width: calc(4 * var(--global-font-size));
+  height: calc(4 * var(--global-font-size));
+  border: 1px solid var(--global-color-title);
+  border-radius: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.item--medium-quiz-timer * {
+  text-align: center;
+}
+
+.item--medium-quiz-answers-container {
+  display: grid;
+  gap: 3%;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.item--medium-quiz-answers-container-seperate {
+  height: 100%;
+  width: 100%;
+}
+
+.item--medium-quiz-answers-above {
+  grid-area: 1/1/2/1;
+}
+
+.item--medium-quiz-answers-middle {
+  grid-area: 2/1/3/1;
+}
+
+.item--medium-quiz-answers-below {
+  grid-area: 3/1/4/1;
+}
+
+.item--medium-quiz-answers-above-middle {
+  grid-area: 1/1/2/1;
+}
+
+.item--medium-quiz-answers-below-middle {
+  grid-area: 2/1/3/1;
+}
+
+.item--medium-quiz-answers-correct {
+  grid-area: 1/1/1/13;
+}
+
+.item--medium-quiz-answer-correct {
+  background-color: green;
+  color: white;
+}
+
+.item--medium-quiz-answer-false {
+  opacity: 0.3;
+}
+
+.item--medium-quiz-answer-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 120%;
+  height: 100%;
+  width: 100%;
+}
+
+.item--medium-quiz-answer-correct-style {
+  border: 1rem solid green;
+  color: green;
+  text-decoration: underline;
+}
+/*
+    Section specific for the big image boxes
+*/
+
+.item--big-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.item--big-picture-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  justify-items: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.item--big-picture {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  justify-items: center;
+  align-items: center;
+  overflow: hidden;
+  /*padding-top: 200px;*/ /*Why?*/
+}
+
+.item--big-image {
+  grid-area: 1/1/1/1;
+  /* height: 93.5%; */
+  height: auto;
+  width: 100%;
+}
+
+.item--big-title {
+  display: flex;
+  justify-content: center;
+  padding: 2% 5% 2% 5%;
+  color: var(--global-color-title);
+  font-size: 200%;
+}
+
+.item--big-graph-container {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item--big-graph-canvas {
+  display: flex;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.item--big-image-legend-title {
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  padding-bottom: 1rem;
+}
+
+.item--big-image-legend {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  padding-top: 4rem;
+}
+
+.item--big-image-legend-item:before {
+  content: "- ";
+}
+
+.item--big-image-legend-style {
+  padding: 0;
+  padding-bottom: 1rem;
+}
+
+.item--big-image-legend-item {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.item--big-left-big,
+.item--big-right-big {
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.item--big-left-full {
+  height: max-content;
+}
+
+.item--medium-quiz-above {
+  height: max-content;
+}
+
+/*
+  Section specific for the big slideshow box
+*/
+
+.item--big-slide-container {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.item--big-slide-image {
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*
+    Section specific for the data shown in the small and medium compare boxes
+*/
+
+.item--value {
+  padding-right: 3%;
+  font-size: 200%;
+  font-weight: bold;
+  line-height: 2rem;
+}
+
+.item--unit {
+  font-weight: 400;
+  font-size: 125%;
+  margin-top: auto;
+}
+
+/*
+    Section specific for the data shown in the medium data boxes
+*/
+
+.item--medium-value {
+  font-weight: bold;
+  font-size: 150%;
+}
+
+.item--medium-unit {
+  font-size: 90%;
+  padding-left: 5%;
+  padding-bottom: 1px;
+  font-weight: 400;
+  align-self: flex-end;
+}
+
+/*
+  Section specific for the activity data shown in the medium boxes
+*/
+
+.item--medium-slide-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1.2rem;
+  gap: 5%;
+}
+
+.item--medium-slide-text {
+  font-size: 150%;
+}
+
+.item--medium-slide-text span {
+  font-weight: bold;
+  color: var(--global-color-title);
+}
+
+.item--medium-slide-icon {
+  height: 70px;
+  width: 70px;
+}
+
+.item--medium-activities-container {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  display: grid;
+  grid-template-rows: fit-content auto;
+}
+
+.item--medium-activities-title {
+  font-size: 175%;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.item--medium-activities-summary-container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.item--medium-activities-summary {
+  font-size: 120%;
+  justify-items: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 30%;
+  row-gap: 20%;
+  padding-top: 5%;
+  padding-bottom: 10%;
+}
+
+.item--medium-activities-summary-item {
+  display: grid;
+  gap: 10px;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  margin: auto;
+}
+
+.item--medium-activities-summary-picture {
+  justify-self: end;
+}
+.item--medium-activities-summary-text {
+  justify-self: start;
+}
+
+.item--medium-activities-summary-picture {
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+}
+
+.item--medium-activities-summary-image path {
+  fill: var(--global-color-neutral);
+}
+
+.item--medium-activities-summary-text {
+  font-size: 120%;
+}
+
+/*
+    Section specific for the medium box with explanation about the flywheel and turbine chimney
+*/
+
+.item--medium-explanation-beneath-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.item--medium-explanation-beneath-text {
+  font-size: 1.5rem;
+}
+
+/*
+    Section specific for the medium box with images
+*/
+
+.item--medium-images-right {
+  padding: 1rem;
+  height: max-content;
+  align-self: end;
+}
+
+.item--medium-images-picture {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  position: relative;
+}
+
+.item--medium-images-image {
+  width: 100%;
+  height: auto;
+}
+
+.item--medium-images-image-left {
+  top: 0;
+  left: 0;
+  padding-right: 10rem;
+}
+
+.item--medium-images-image-right {
+  height: 100%;
+  width: 48%;
+  top: 0;
+  left: calc(1rem + 50%);
+}
+
+/*
+    Overlay image box
+*/
+
+.item--overlay-children {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  align-items: center;
+  justify-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.item--overlay-children > * {
+  position: absolute;
+  height: 100%;
+  width: auto;
+  grid-area: 1/1/1/1;
+  padding: 0;
+}
+
+/*
+    Section specific for the medium box with the explanation
+*/
+
+.item--medium-explanation-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: repeat(3, 33%);
+  padding: 1rem;
+}
+
+.item--medium-explanation-style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.item--medium-explanation-text-above-container {
+  grid-area: 1/1/2/1;
+}
+
+.item--medium-explanation-text-above {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--global-color-title);
+}
+
+.item--medium-explanation-equal {
+  grid-area: 2/1/3/1;
+  font-size: 700%;
+  color: var(--global-color-text);
+  font-weight: bold;
+}
+
+.item--medium-explanation-text-below {
+  grid-area: 3/1/4/1;
+  font-size: 1.5rem;
+}
+
+.item--medium-explanation-text-below span {
+  font-weight: bold;
+  color: var(--global-color-title);
+}
+
+/*
+    Section specific for the medium box with the explanation summary
+*/
+
+.item--medium-explanation-summary-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 20% 1fr;
+}
+
+.item--medium-explanation-summary-title {
+  grid-area: 1/1/2/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: var(--global-color-title);
+}
+
+.item--medium-explanation-summary-items-container {
+  grid-area: 2/1/3/1;
+  height: 100%;
+  width: 100%;
+  padding: 0 5% 0 5%;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(3, 33%);
+  align-items: center;
+  gap: 0 1rem;
+}
+
+.item--medium-explanation-summary-item-style {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: auto max-content;
+  align-items: center;
+  justify-items: center;
+}
+
+.item--medium-explanation-summary-item-text {
+  font-size: 1.5rem;
+  justify-self: start;
+}
+
+.item--medium-explanation-summary-item-picture {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.item--medium-explanation-summary-item-picture-padding {
+  padding-right: 20%;
+}
+
+.item--medium-explanation-summary-item-icon {
+  height: 70px;
+  width: auto;
+  justify-content: end;
+}
+
+.item--medium-explanation-summary-item-left-above {
+  grid-area: 1/1/2/2;
+}
+
+.item--medium-explanation-summary-item-left-middle {
+  grid-area: 2/1/3/2;
+}
+
+.item--medium-explanation-summary-item-left-below {
+  grid-area: 3/1/4/2;
+}
+
+.item--medium-explanation-summary-item-right-above {
+  grid-area: 1/2/2/3;
+}
+
+.item--medium-explanation-summary-item-right-middle {
+  grid-area: 2/2/3/3;
+}
+
+/*
+    Section specific for the medium box with the explanation for each individual power source
+*/
+
+.item--medium-explanation-individual-container {
+  width: 100%;
+  height: 100%;
+}
+
+.item--medium-explanation-individual-title {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.item--medium-explanation-individual-info-container {
+  height: 80%;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  justify-content: space-between;
+}
+
+.item--medium-explanation-individual-info-text {
+  padding-bottom: 2.5rem;
+  font-size: 1.5rem;
+}
+
+.item--medium-explanation-individual-info-text-comparison {
+  font-size: 1.5rem;
+}
+
+.item--medium-explanation-individual-info-picture {
+  height: 100%;
+  width: auto;
+}
+
+.item--medium-explanation-individual-info-image {
+  height: 80%;
+  margin-top: 10%;
+  margin-right: 2rem;
+}
+
+/*
+    Section specific for the medium box with the comparison for each individual power source
+*/
+
+.item--medium-explanation-comparison-container {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item--medium-explanation-comparison-title {
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.item--medium-explanation-comparison-graph {
+  height: 100% !important;
+  width: 100% !important;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/*
+    Section specific for the sun and moon icon
+*/
+
+.item--medium-icon-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding-right: 5%;
+  align-items: center;
+}
+
+/*
+    Section specific for the piechart
+*/
+
+.piechart--card-style {
+  display: flex;
+  gap: 0px;
+}
+
+.piechart--container-big {
+  height: 100%;
+  width: 100%;
+  padding: 0 5% 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+    Section for the placement of cards
+*/
+
+.item--big-left {
+  grid-area: 3/2/10/13;
+}
+
+.item--big-slideshow-left {
+  grid-area: 3/2/10/13;
+}
+
+.item--big-slideshow-left-full {
+  grid-area: 3/2/12/13;
+}
+
+.item--big-left-big {
+  grid-area: 3/2/11/13;
+}
+
+.item--big-left-full {
+  grid-area: 3/2/13/13;
+}
+
+.item--big-right-big {
+  grid-area: 3/13/11/24;
+}
+
+.item--small-below-left {
+  grid-area: 10/2/12/7;
+}
+
+.item--small-below-middle {
+  grid-area: 10/7/12/13;
+}
+
+.item--small-above-left {
+  grid-area: 3/14/5/17;
+  display: flex;
+  justify-content: center;
+}
+
+.item--small-middle-left {
+  grid-area: 5/14/7/17;
+  display: flex;
+  justify-content: center;
+}
+
+.item--medium-compare-above-right {
+  grid-area: 3/17/7/24;
+}
+
+.item--medium-compare-above-right-wide {
+  grid-area: 3/14/7/24;
+}
+
+.item--medium-explanation-above-right {
+  grid-area: 3/14/7/24;
+}
+
+.item--medium-explanation-summary-right {
+  grid-area: 7/14/12/24;
+}
+
+.item--medium-piechart-right {
+  grid-area: 7/14/12/24;
+}
+
+.item--medium-images-right {
+  grid-area: 7/14/12/24;
+}
+
+.item--medium-quiz-above {
+  grid-area: 3/14/6/24;
+}
+
+.item--medium-quiz-answers-above-place {
+  grid-area: 5/14/12/24;
+}
+
+.item--medium-activity-below {
+  grid-area: 10/2/12/13;
+}
+
+.item--medium-activity-above {
+  grid-area: 3/14/7/24;
+}
+
+.item--medium-explanation-below-left {
+  grid-area: 11/2/13/13;
+}
+
+.item--medium-explanation-below-right {
+  grid-area: 11/13/13/24;
+}
+/*
+  Section specific for the focus page 
+*/
+
+.focus--main {
+  width: 100%;
+  height: 100%;
+}
+
+.focus--main * {
+  grid-area: 1/1/1/1;
+}
+
+.focus--main picture {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+
+.focus--main picture img {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.focus--text-container {
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+  align-self: end;
+  background-color: var(--global-color-neutral);
+  z-index: 10;
+}
+
+.focus--text-container * {
+  text-align: center;
+}
+
+.focus--text-container * span {
+  color: var(--global-color-background);
+  font-weight: 800;
+  /* text-decoration: underline; */
+}
+
+.focus--bubble-container {
+  grid-template-columns: repeat(4, 1fr);
+  display: grid;
+  align-items: end;
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.focus--bubble-container * {
+  grid-area: auto;
+  opacity: 0.95;
+  width: 150%;
+  height: 150%;
+}
+
+.focus--bubble-special {
+  width: 100%;
+  height: 100%;
+}

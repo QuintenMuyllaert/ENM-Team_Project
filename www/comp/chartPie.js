@@ -51,18 +51,12 @@ const chartPieInit = function () {
 };
 
 const chartPieRender = async function () {
-  if (!this.element) {
-    return;
-  }
   this.update(true);
   await delay(500);
   this.update(false);
 };
 
 const chartPieUpdate = function (clear = false) {
-  if (!this.element) {
-    return;
-  }
   const title = this.data.title;
   let data = this.data.data;
   const labels = this.data.labels;
@@ -132,4 +126,10 @@ const chartPieUpdate = function (clear = false) {
     percentage = (duiktank / 100) * 283.14; //283.140 is de top en zorgt voor niks van percentage (100%)
     piece.style["stroke-dashoffset"] = percentage;
   }
+};
+
+const elementDefaultsPie = {
+  init: chartPieInit,
+  render: chartPieRender,
+  update: chartPieUpdate,
 };

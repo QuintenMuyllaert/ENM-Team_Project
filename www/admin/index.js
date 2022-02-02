@@ -1,74 +1,64 @@
-const socket = io();
-const pages = [];
-let connected = false;
-let auth = false;
-let passwordShow = false;
+const loadPageContent = async (e) => {
+  const htmlFile = e.getAttribute("htmlFile");
 
-let htmlUsername, htmlPassword, htmlButtonAuth, htmlButtonShowPassword, htmlControlDidYouKnow,htmlControlHomeSlideLength, htmlControlHomeStaticSlide, htmlControlHome;;
-let skeletonSlide = "";
-const generateSlide = (html) => {
-  return skeletonSlide.replace("<!--INNERHTML-->", html);
-};
-
-const loadHomePage = async () => {
-  skeletonSlide = await fetchString("./control/home.html");
-  let html = generateSlide(await fetchString("./control/home.html"));
-
-  document.querySelector(".control--page").innerHTML = html;
-
-  htmlControlHomeSlideLength = document.querySelector(".js-home-slide-length");
-  htmlControlHomeStaticSlide = document.querySelector(".js-home-static-slide");
-
-  config = await fetchJSON("../config.json");
-  staticSlideNr = config.staticSlideNr;
-  slideLength = config.slideLength;
-  endAnimationLength = config.endAnimationLength;
-  useScalingFunction = config.useScalingFunction;
-  htmlControlHomeSlideLength.value = slideLength;
-  htmlControlHomeStaticSlide.value = staticSlideNr;
-};
-
-
-const pageRender = async () => {
-  htmlControlDidYouKnow = document.querySelector(".js-slide-weetjes");
-  htmlControlHome = document.querySelector(".js-control-home");
-
-  loadHomePage();
-
-  htmlControlHome.addEventListener("click", async () => {
-    loadHomePage();
+  htmlNavlist.querySelectorAll(".selected").forEach((e) => {
+    e.classList.remove("selected");
   });
+  e.classList.add("selected");
+  document.querySelector(".admin--page-container").innerHTML = await fetchString(htmlFile);
+  if (pageFunction[htmlFile]) {
+    pageFunction[htmlFile](htmlFile);
+  } else {
+    console.log(`No function associated with "${htmlFile}".`);
+  }
+};
 
-  htmlControlDidYouKnow.addEventListener("click", async () => {
-    skeletonSlide = await fetchString("./control/didyouknow.html");
-    let html = generateSlide(await fetchString("./control/didyouknow.html"));
-    document.querySelector(".control--page").innerHTML = html;
-    htmlControlDidYouKnowText = document.querySelector(".js-dyk-text");
+//Gets called as soon as client has logged in and the page is loaded.
+const init = async () => {
+  tree = await fetchJSON("../tree.json");
+  document.querySelector(".admin--profile-name").textContent = username;
+  //Queryselectors
 
-    didyouknows = await fetchTxt("../data/facts.csv");
+  htmlNavlist = document.querySelector(".admin--nav-list");
 
-    html = "";
-    didyouknows.forEach((element) => {
-      html += `<h1 class"dyk--text-element">${element}</h1>`;
+  //Event listeners
+  for (const e of htmlNavlist.children) {
+    e.addEventListener("click", async () => {
+      await loadPageContent(e);
     });
-    htmlControlDidYouKnowText.innerHTML = html;
-  });
+  }
+
+  const htmlNavSelected = htmlNavlist.querySelector(".selected");
+  if (htmlNavSelected) {
+    loadPageContent(htmlNavSelected);
+  }
 };
 
 socket.on("connect", () => {
   connected = true;
   console.log("Connection to server made!");
 
+  socket.on("2FA", (data) => {
+    if (data == "exist") {
+      const exist = document.querySelector(".js-recovery-input");
+      exist.innerHTML = `<label class="admin--fieldset-label admin--fieldset-recovery" for="recovery">Recovery</label>
+      <input class="admin--fieldset-input admin--fieldset-recovery admin--qrcode js-field--recovery" type="text" placeholder="123456" id="recovery" />`;
+    }
+  });
+
   socket.on("auth", async (success) => {
     if (success) {
       console.log("Authentication successfull!");
-      //add green class to fields...
+
+      username = htmlUsername.value;
+
+      //TODO! add green class to fields...
       auth = true;
       htmlUsername.value = "";
       htmlPassword.value = "";
     } else {
       console.log("Authentication failed!");
-      //add error class to fields...
+      //TODO! add error class to fields...
       auth = false;
       htmlUsername.disabled = false;
       htmlPassword.disabled = false;
@@ -84,8 +74,26 @@ socket.on("connect", () => {
       return;
     }
 
+    //replace entire body with main dashboard.
     document.querySelector("body").innerHTML = await fetchString("./control/index.html");
-    pageRender();
+    init();
+  });
+  socket.on("qrcode", async (data) => {
+    const codeContainer = document.querySelector(".js-recovery");
+    const explanationContainer = document.querySelector(".js-recovery-explanation");
+    codeContainer.innerHTML = `<img src="${data}" class="js-qrcode admin--qrcode"></img>`;
+    explanationContainer.innerHTML = `<div class="admin--recovery-container js-recovery-explanation"><p class="admin--qrcode-explanation">Scan deze QR-code om een recovery code te krijgen als je uw wachtwoord en username vergeten bent!</br>Gebruik Google Authenticator om de QR-code te scannen!</p></div>`;
+  });
+  socket.on("influxData", (data) => {
+    console.log("Got processed influx data!");
+    //influx variable is a global variable that stores the latest influx data point.
+    influx = data;
+
+    //Update all dataElements elements
+    console.log(influx);
+    dataElements.forEach(async (e) => {
+      e.tick();
+    });
   });
 
   socket.on("admin", (data) => {
@@ -98,7 +106,27 @@ socket.on("connect", () => {
   });
 });
 
+const authFunction = () => {
+  let recover = document.querySelector(".js-field--recovery");
+  if (!recover) {
+    recover = "";
+  }
+  if (recover.value != "" && recover != "") {
+    recover.value.replace(/ /g, "");
+    socket.emit("forget", recover.value);
+  } else {
+    const username = htmlUsername.value;
+    const password = htmlPassword.value;
+    //htmlUsername.disabled = true;
+    //htmlPassword.disabled = true;
+    //htmlButtonAuth.disabled = true;
+    socket.emit("auth", { username: username, password: password });
+  }
+  console.log("Auth request sent!");
+};
+
 document.addEventListener("DOMContentLoaded", async () => {
+  //Queryselectors
   htmlUsername = document.querySelector(".admin--authentication-login");
   htmlPassword = document.querySelector(".admin--authentication-password");
   htmlButtonAuth = document.querySelector(".admin--authentication");
@@ -106,15 +134,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   htmlIconShowPassword = document.querySelector(".admin--fieldset-password-icon-show");
   htmlIconHidePassword = document.querySelector(".admin--fieldset-password-icon-hide");
 
-  htmlButtonAuth.addEventListener("click", () => {
-    const username = htmlUsername.value;
-    const password = htmlPassword.value;
-    htmlUsername.disabled = true;
-    htmlPassword.disabled = true;
-    htmlButtonAuth.disabled = true;
-    socket.emit("auth", { username: username, password: password });
-    console.log("Auth request sent!");
-  });
+  //Debug override functions
+  if (instantLogin) {
+    authFunction();
+  }
+
+  //Event listeners
+  htmlButtonAuth.addEventListener("click", authFunction);
 
   htmlButtonShowPassword.addEventListener("change", () => {
     passwordShow = !passwordShow;

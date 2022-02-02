@@ -1,6 +1,5 @@
 const chartInitElectrical = function () {
-  this.element = document.querySelector(this.query);
-  if (!this.element) {
+  if (this.element.graph) {
     return;
   }
 
@@ -16,7 +15,7 @@ const chartInitElectrical = function () {
           barThickness: 30,
           maxBarThickness: 100,
           minBarLength: 1,
-          data: data,
+          data: this.data,
           backgroundColor: ["red", "gray"],
         },
       ],
