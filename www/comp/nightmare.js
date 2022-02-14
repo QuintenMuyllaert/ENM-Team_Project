@@ -8,9 +8,6 @@ let influx = {};
 //(avgKey(influx.Totaal,"_value")/1000).toFixed(2) + "kWh;
 
 setInterval(async () => {
-  if (influx == null) {
-    return;
-  }
   const elements = document.querySelectorAll("[dataElement]");
   for (const e of elements) {
     const checkElement = (e) => {
@@ -41,8 +38,15 @@ setInterval(async () => {
       try {
         valuevar = eval(`(() => {return ${value}})()`);
       } catch (e) {
-        console.log("Value does not exist.", value);
-        return;
+        //console.log("Value does not exist.", value);
+        //return;
+        try {
+          //if db doesnt log any minute data anymore -> replace to hour data.. :(
+          valuevar = eval(`(() => {return ${value.replace(/\.minuut\./g, ".uur.")}})()`);
+        } catch (e) {
+          console.log("Value does not exist.", value);
+          return;
+        }
       }
 
       if (typevar == null || typevar == undefined || typevar == "") {
